@@ -1,0 +1,362 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Chainstack
+providerId: chainstack
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Blockchain
+  - RPC
+  - Multi-Chain
+  - Infrastructure
+description: Reconciled plans and Request Unit (RU) pricing for the Chainstack multi-chain RPC platform. Source-
+  chainstack.com/pricing and docs.chainstack.com. 1 RU = 1 full-node API request; 2 RU = 1 archive-node request.
+sources:
+  - https://chainstack.com/pricing/
+  - https://docs.chainstack.com/docs/pricing
+  - https://chainstack.com/products/global-nodes/
+  - https://chainstack.com/products/unlimited-nodes/
+plans:
+  - id: chainstack-developer
+    name: Developer
+    type: free
+    description: Free tier for prototyping and personal projects. Community support, WebSockets, crypto payment
+      support.
+    entries:
+      - label: Monthly fee
+        name: fee
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Included Request Units
+        name: included_ru
+        type: included
+        metric: request_unit
+        limit: 3000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Overage Request Units
+        name: overage_ru
+        type: metered
+        metric: request_unit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1000000
+        price: '20.00'
+        userMultiplied: false
+    features:
+      - Requests-per-second cap of 25 RPS
+      - 1 project
+      - Global node access (geo-balanced)
+      - WebSocket subscriptions
+      - Crypto payment support
+      - Community support
+  - id: chainstack-growth
+    name: Growth
+    type: subscription
+    description: Entry paid tier; unlocks archive data, debug/trace APIs, trader nodes, and marketplace access.
+    entries:
+      - label: Monthly fee
+        name: fee
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '49.00'
+        userMultiplied: false
+      - label: Annual monthly fee
+        name: fee_annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '40.00'
+        userMultiplied: false
+      - label: Included Request Units
+        name: included_ru
+        type: included
+        metric: request_unit
+        limit: 20000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Overage Request Units
+        name: overage_ru
+        type: metered
+        metric: request_unit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1000000
+        price: '15.00'
+        userMultiplied: false
+    features:
+      - Requests-per-second cap of 250 RPS
+      - 10 projects
+      - Archive data access (2 RU per archive request)
+      - Debug & Trace APIs
+      - Trader Node access (low-latency mempool)
+      - Marketplace access
+      - Standard support (24x5, <24h response)
+  - id: chainstack-pro
+    name: Pro
+    type: subscription
+    description: Production tier with dedicated nodes, RBAC logs, and SSO.
+    entries:
+      - label: Monthly fee
+        name: fee
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '199.00'
+        userMultiplied: false
+      - label: Annual monthly fee
+        name: fee_annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '166.00'
+        userMultiplied: false
+      - label: Included Request Units
+        name: included_ru
+        type: included
+        metric: request_unit
+        limit: 80000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Overage Request Units
+        name: overage_ru
+        type: metered
+        metric: request_unit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1000000
+        price: '12.50'
+        userMultiplied: false
+    features:
+      - Requests-per-second cap of 400 RPS
+      - 15 projects
+      - Dedicated Nodes (from $0.50 per compute hour)
+      - Multi-user RBAC logs
+      - SSO
+      - Standard support
+  - id: chainstack-business
+    name: Business
+    type: subscription
+    description: Higher-volume tier with role-based access control.
+    entries:
+      - label: Monthly fee
+        name: fee
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '499.00'
+        userMultiplied: false
+      - label: Annual monthly fee
+        name: fee_annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '416.00'
+        userMultiplied: false
+      - label: Included Request Units
+        name: included_ru
+        type: included
+        metric: request_unit
+        limit: 200000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Overage Request Units
+        name: overage_ru
+        type: metered
+        metric: request_unit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1000000
+        price: '10.00'
+        userMultiplied: false
+    features:
+      - Requests-per-second cap of 600 RPS
+      - 20 projects
+      - Role-based access control
+      - All Pro features
+  - id: chainstack-enterprise
+    name: Enterprise
+    type: contact-sales
+    description: Custom-quoted plan for production scale workloads. Includes dedicated gateway, private networking,
+      white-label branding, custom SLAs.
+    entries:
+      - label: Monthly fee (starting)
+        name: fee
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '990.00'
+        userMultiplied: false
+      - label: Annual monthly fee (starting)
+        name: fee_annual
+        type: recurring
+        metric: subscription
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '825.00'
+        userMultiplied: false
+      - label: Included Request Units
+        name: included_ru
+        type: included
+        metric: request_unit
+        limit: 400000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Overage Request Units
+        name: overage_ru
+        type: metered
+        metric: request_unit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1000000
+        price: '5.00'
+        userMultiplied: false
+    features:
+      - Unlimited RPS
+      - Unlimited projects
+      - Dedicated gateway
+      - Private networking
+      - White-label branding
+      - Custom SLAs (>= 99.99 percent uptime)
+      - 24/7 priority support
+  - id: chainstack-payg
+    name: Pay-As-You-Go
+    type: usage-based
+    description: Custom enterprise PAYG; targets accounts spending more than 1000 USD per month; typically delivers
+      50 percent or more savings versus tiers.
+    entries:
+      - label: Pay-as-you-go Request Units
+        name: payg_ru
+        type: metered
+        metric: request_unit
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1000000
+        price: '5.00'
+        userMultiplied: false
+    features:
+      - Custom commitments
+      - Volume-based discounts
+      - Pay only for what you use
+addons:
+  - name: Unlimited Node
+    description: Flat-fee tier-based RPS commitment with no per-request charges.
+    entries:
+      - label: 25 RPS
+        price: '149.00'
+        unit: month
+      - label: 100 RPS
+        price: '299.00'
+        unit: month
+      - label: 250 RPS
+        price: '599.00'
+        unit: month
+      - label: 500 RPS
+        price: '1199.00'
+        unit: month
+      - label: 1000 RPS
+        price: '3199.00'
+        unit: month
+  - name: Yellowstone gRPC (Solana)
+    description: Real-time Solana account/transaction/slot streaming via Yellowstone Geyser plugin.
+    entries:
+      - label: 1 stream
+        price: '49.00'
+        unit: month
+      - label: Up to 10 streams
+        price: '449.00'
+        unit: month
+  - name: Dedicated Node
+    description: Isolated node infrastructure with extended namespaces (debug, txpool) and GraphQL.
+    entries:
+      - label: Starter
+        price: '678.00'
+        unit: month
+        description: Starting price; varies by chain, machine size, and region.
+      - label: Compute hour
+        price: '0.50'
+        unit: hour
+        description: Pro-tier and above metered compute charge.
+  - name: Warp Transactions
+    description: Optimized propagation for paid transaction broadcast.
+    entries:
+      - label: Per transaction
+        price: '0.15'
+        unit: transaction
+support:
+  - name: Community
+    price: '0.00'
+    description: Public Discord, docs, and community forums.
+  - name: Standard
+    price: included
+    description: 24x5 ticket support with under 24 hour response, included with Growth and above.
+  - name: Professional
+    price: '100.00'
+    unit: month
+    description: Faster response SLAs and priority queue.
+  - name: Premium
+    price: '1000.00'
+    unit: month
+    description: 24x7 priority support with dedicated CSM and incident bridge.
+geo:
+  - Asia-Pacific
+  - Europe
+  - United States
+notes:
+  - Annual billing delivers up to 16 percent savings versus month-to-month.
+  - Archive data requests cost 2 RU each; full-node requests cost 1 RU each.
+  - Request Units are computed at the platform layer; no per-method multipliers are applied.
+  - Crypto payments accepted via NOWPayments (150+ supported coins).

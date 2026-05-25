@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Chainstack Faucet API — Funding
+  description: Chainstack Faucet API — Funding business capability. Request testnet funds and retrieve faucet
+    transaction history across Chainstack-supported testnets.
+  tags:
+    - Chainstack
+    - Faucet
+    - Testnet
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      CHAINSTACK_FAUCET_JWT: CHAINSTACK_FAUCET_JWT
+capability:
+  consumes:
+    - type: http
+      namespace: faucet-funding
+      baseUri: https://api.chainstack.com/v1/faucet
+      description: Chainstack public testnet faucet.
+      resources:
+        - name: faucet
+          path: /{chain}
+          operations:
+            - name: requestFunds
+              method: POST
+              description: Request testnet funds for a supported chain (hoodi, sepolia, bnb-testnet,
+                zksync-testnet, scroll-sepolia-testnet, amoy).
+              outputRawFormat: json
+              inputParameters:
+                - name: chain
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+        - name: transactions-history
+          path: /transactions-history
+          operations:
+            - name: getTransactionHistory
+              method: GET
+              description: Retrieve faucet transaction history for the authenticated organization.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+      authentication:
+        type: bearer
+        value: '{{env.CHAINSTACK_FAUCET_JWT}}'
+        placement: header
+  exposes:
+    - type: mcp
+      namespace: faucet-funding-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Chainstack testnet faucet.
+      tools:
+        - name: chainstack-faucet-request
+          description: Request testnet funds from the Chainstack faucet.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: faucet-funding.requestFunds
+          with:
+            chain: tools.chain
+            body: tools.body
+        - name: chainstack-faucet-history
+          description: Retrieve faucet transaction history.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: faucet-funding.getTransactionHistory

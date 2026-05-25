@@ -1,0 +1,589 @@
+aid: chainstack
+url: https://raw.githubusercontent.com/api-evangelist/chainstack/refs/heads/main/apis.yml
+name: Chainstack
+tags:
+- Blockchain
+- Multi-Chain
+- RPC
+- Node Infrastructure
+- Web3
+- Crypto
+- Ethereum
+- Solana
+- Bitcoin
+- DeFi
+- MEV
+- Trader Node
+- Archive Data
+- MCP
+- AI Agents
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+description: |
+  Chainstack is a managed multi-chain RPC and node infrastructure platform supporting 70+ blockchain protocols including
+  Ethereum, Solana, Bitcoin, BNB Smart Chain, Polygon, Arbitrum, Optimism, Base, Avalanche, TON, TRON, Starknet, zkSync
+  Era, Hyperliquid, Monad, and many more. The platform exposes a REST Platform API for organization, project, network,
+  and node lifecycle management, JSON-RPC endpoints for every supported chain, a Faucet API for testnet funding, real-
+  time Solana streaming via Yellowstone gRPC, low-latency Trader Nodes via bloXroute, archive data with debug and trace
+  namespaces, MEV protection, Flashblocks preconfirmations, and a Chainstack MCP server for AI agents.
+apis:
+- aid: chainstack:chainstack-platform-api
+  name: Chainstack Platform API
+  tags:
+  - Platform
+  - Organization
+  - Projects
+  - Networks
+  - Nodes
+  - Management
+  humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/platform-api-getting-started
+    type: Documentation
+  - url: openapi/chainstack-platform-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/chainstack-node-schema.json
+    type: JSONSchema
+  - url: json-ld/chainstack-context.jsonld
+    type: JSONLD
+  - type: NaftikoCapability
+    url: capabilities/platform-organization.yaml
+  - type: NaftikoCapability
+    url: capabilities/platform-projects.yaml
+  - type: NaftikoCapability
+    url: capabilities/platform-networks.yaml
+  - type: NaftikoCapability
+    url: capabilities/platform-nodes.yaml
+  - type: NaftikoCapability
+    url: capabilities/platform-faucet.yaml
+  description: REST API at api.chainstack.com for managing your organization, projects, networks, and managed nodes.
+    Bearer-token authenticated via per-user API keys. v2 endpoints recommended; v1 endpoints cover organizations,
+    projects, networks, nodes, marketplace, and legacy Goerli/Sepolia faucets.
+- aid: chainstack:chainstack-faucet-api
+  name: Chainstack Faucet API
+  tags:
+  - Faucet
+  - Testnet
+  - Developer Tools
+  humanURL: https://faucet.chainstack.com/
+  properties:
+  - url: https://faucet.chainstack.com/
+    type: Faucet
+  - url: openapi/chainstack-faucet-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/faucet-funding.yaml
+  description: Public Chainstack-operated testnet faucet for Hoodi, Sepolia, BNB Testnet, zkSync Testnet, Scroll
+    Sepolia, and Polygon Amoy. JWT-authenticated POST /v1/faucet/{chain} request endpoint plus a transaction-history
+    endpoint. Also available as a Telegram Mini App and via the Chainstack MCP server.
+- aid: chainstack:chainstack-ethereum-node-api
+  name: Chainstack Ethereum Node API
+  tags:
+  - Ethereum
+  - EVM
+  - JSON-RPC
+  - Layer 1
+  humanURL: https://docs.chainstack.com/reference/ethereum-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/ethereum-getting-started
+    type: Documentation
+  - url: openapi/chainstack-ethereum-node-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/chainstack-jsonrpc-envelope-schema.json
+    type: JSONSchema
+  - type: NaftikoCapability
+    url: capabilities/chain-ethereum-rpc.yaml
+  description: Chainstack-managed Ethereum mainnet and testnet JSON-RPC nodes. 40+ documented eth_/net_/web3_
+    methods plus debug_/trace_ namespaces on archive nodes. Global, Dedicated, Unlimited, and Trader node archetypes
+    supported.
+- aid: chainstack:chainstack-ethereum-beacon-chain-api
+  name: Chainstack Ethereum Beacon Chain API
+  tags:
+  - Ethereum
+  - Beacon Chain
+  - Consensus Layer
+  - REST
+  humanURL: https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started
+    type: Documentation
+  - url: openapi/chainstack-ethereum-beacon-chain-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-ethereum-beacon-chain-rpc.yaml
+  description: Ethereum consensus-layer Beacon Chain REST API exposed through Chainstack-managed nodes. Validator,
+    state, block, sync, and node-info endpoints.
+- aid: chainstack:chainstack-solana-node-api
+  name: Chainstack Solana Node API
+  tags:
+  - Solana
+  - JSON-RPC
+  - Yellowstone
+  - gRPC
+  humanURL: https://docs.chainstack.com/reference/solana-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/solana-getting-started
+    type: Documentation
+  - url: openapi/chainstack-solana-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-solana-rpc.yaml
+  description: Chainstack-managed Solana JSON-RPC nodes (mainnet, devnet, testnet) covering 52+ documented RPC
+    methods plus Yellowstone gRPC Geyser plugin for real-time account, transaction, and slot streaming. Trader Node
+    available for low-latency mempool access.
+- aid: chainstack:chainstack-bitcoin-node-api
+  name: Chainstack Bitcoin Node API
+  tags:
+  - Bitcoin
+  - UTXO
+  - JSON-RPC
+  humanURL: https://docs.chainstack.com/reference/bitcoin-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/bitcoin-getting-started
+    type: Documentation
+  - url: openapi/chainstack-bitcoin-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-bitcoin-rpc.yaml
+  description: Chainstack-managed Bitcoin Core nodes exposing the canonical Bitcoin JSON-RPC API. 40 documented
+    methods covering blocks, transactions, wallet, mining, network, and raw-transaction operations.
+- aid: chainstack:chainstack-bnb-node-api
+  name: Chainstack BNB Smart Chain Node API
+  tags:
+  - BNB Smart Chain
+  - BSC
+  - EVM
+  - JSON-RPC
+  humanURL: https://docs.chainstack.com/reference/bnb-chain-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/bnb-chain-getting-started
+    type: Documentation
+  - url: openapi/chainstack-bnb-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-bnb-rpc.yaml
+  description: Chainstack-managed BNB Smart Chain JSON-RPC nodes. 43+ documented EVM methods plus archive support
+    on dedicated nodes.
+- aid: chainstack:chainstack-polygon-node-api
+  name: Chainstack Polygon Node API
+  tags:
+  - Polygon
+  - EVM
+  - JSON-RPC
+  - PoS
+  humanURL: https://docs.chainstack.com/reference/polygon-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/polygon-getting-started
+    type: Documentation
+  - url: openapi/chainstack-polygon-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-polygon-rpc.yaml
+  description: Chainstack-managed Polygon mainnet (PoS) and Polygon Amoy testnet JSON-RPC nodes with debug/trace
+    namespaces available on archive nodes.
+- aid: chainstack:chainstack-arbitrum-node-api
+  name: Chainstack Arbitrum Node API
+  tags:
+  - Arbitrum
+  - Layer 2
+  - Rollup
+  - EVM
+  humanURL: https://docs.chainstack.com/reference/arbitrum-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/arbitrum-getting-started
+    type: Documentation
+  - url: openapi/chainstack-arbitrum-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-arbitrum-rpc.yaml
+  description: Chainstack-managed Arbitrum One and Arbitrum Sepolia JSON-RPC nodes. 51 documented eth_/arb_ methods.
+- aid: chainstack:chainstack-optimism-node-api
+  name: Chainstack Optimism Node API
+  tags:
+  - Optimism
+  - Layer 2
+  - Rollup
+  - EVM
+  - OP Stack
+  humanURL: https://docs.chainstack.com/reference/optimism-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/optimism-getting-started
+    type: Documentation
+  - url: openapi/chainstack-optimism-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-optimism-rpc.yaml
+  description: Chainstack-managed Optimism mainnet and Sepolia JSON-RPC nodes with Flashblocks preconfirmation
+    support (250 ms). 48 documented eth_/op_ methods.
+- aid: chainstack:chainstack-base-node-api
+  name: Chainstack Base Node API
+  tags:
+  - Base
+  - Layer 2
+  - Rollup
+  - EVM
+  - OP Stack
+  humanURL: https://docs.chainstack.com/reference/base-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/base-getting-started
+    type: Documentation
+  - url: openapi/chainstack-base-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-base-rpc.yaml
+  description: Chainstack-managed Base mainnet and Sepolia JSON-RPC nodes. 60 documented eth_/op_ methods plus
+    Flashblocks (200 ms preconfirmations).
+- aid: chainstack:chainstack-avalanche-node-api
+  name: Chainstack Avalanche Node API
+  tags:
+  - Avalanche
+  - Layer 1
+  - EVM
+  - C-Chain
+  humanURL: https://docs.chainstack.com/reference/avalanche-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/avalanche-getting-started
+    type: Documentation
+  - url: openapi/chainstack-avalanche-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-avalanche-rpc.yaml
+  description: Chainstack-managed Avalanche C-Chain JSON-RPC nodes and Subnets support.
+- aid: chainstack:chainstack-fantom-node-api
+  name: Chainstack Fantom Node API
+  tags:
+  - Fantom
+  - Sonic
+  - EVM
+  - Layer 1
+  humanURL: https://docs.chainstack.com/reference/fantom-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/fantom-getting-started
+    type: Documentation
+  - url: openapi/chainstack-fantom-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-fantom-rpc.yaml
+  description: Chainstack-managed Fantom Opera mainnet JSON-RPC nodes.
+- aid: chainstack:chainstack-gnosis-node-api
+  name: Chainstack Gnosis Node API
+  tags:
+  - Gnosis Chain
+  - EVM
+  - Layer 1
+  humanURL: https://docs.chainstack.com/reference/gnosis-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/gnosis-getting-started
+    type: Documentation
+  - url: openapi/chainstack-gnosis-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-gnosis-rpc.yaml
+  description: Chainstack-managed Gnosis Chain JSON-RPC nodes.
+- aid: chainstack:chainstack-cronos-node-api
+  name: Chainstack Cronos Node API
+  tags:
+  - Cronos
+  - EVM
+  - Layer 1
+  humanURL: https://docs.chainstack.com/reference/cronos-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/cronos-getting-started
+    type: Documentation
+  - url: openapi/chainstack-cronos-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-cronos-rpc.yaml
+  description: Chainstack-managed Cronos JSON-RPC nodes.
+- aid: chainstack:chainstack-aurora-node-api
+  name: Chainstack Aurora Node API
+  tags:
+  - Aurora
+  - EVM
+  - NEAR
+  humanURL: https://docs.chainstack.com/reference/aurora-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/aurora-getting-started
+    type: Documentation
+  - url: openapi/chainstack-aurora-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-aurora-rpc.yaml
+  description: Chainstack-managed Aurora (EVM on NEAR) JSON-RPC nodes.
+- aid: chainstack:chainstack-ronin-node-api
+  name: Chainstack Ronin Node API
+  tags:
+  - Ronin
+  - EVM
+  - Gaming
+  humanURL: https://docs.chainstack.com/reference/ronin-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/ronin-getting-started
+    type: Documentation
+  - url: openapi/chainstack-ronin-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-ronin-rpc.yaml
+  description: Chainstack-managed Ronin JSON-RPC nodes for the Axie Infinity gaming chain.
+- aid: chainstack:chainstack-tron-node-api
+  name: Chainstack TRON Node API
+  tags:
+  - TRON
+  - Layer 1
+  - Non-EVM
+  humanURL: https://docs.chainstack.com/reference/tron-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/tron-getting-started
+    type: Documentation
+  - url: openapi/chainstack-tron-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-tron-rpc.yaml
+  description: Chainstack-managed TRON full and Solidity nodes with 150+ documented HTTP API methods.
+- aid: chainstack:chainstack-ton-node-api
+  name: Chainstack TON Node API
+  tags:
+  - TON
+  - The Open Network
+  - Layer 1
+  - Non-EVM
+  humanURL: https://docs.chainstack.com/reference/ton-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/ton-getting-started
+    type: Documentation
+  - url: openapi/chainstack-ton-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-ton-rpc.yaml
+  description: Chainstack-managed The Open Network (TON) HTTP API nodes. 59 documented methods covering accounts,
+    blocks, transactions, jettons, and NFTs.
+- aid: chainstack:chainstack-starknet-node-api
+  name: Chainstack Starknet Node API
+  tags:
+  - Starknet
+  - Layer 2
+  - ZK Rollup
+  - Cairo
+  humanURL: https://docs.chainstack.com/reference/starknet-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/starknet-getting-started
+    type: Documentation
+  - url: openapi/chainstack-starknet-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-starknet-rpc.yaml
+  description: Chainstack-managed Starknet JSON-RPC nodes.
+- aid: chainstack:chainstack-zksync-node-api
+  name: Chainstack zkSync Era Node API
+  tags:
+  - zkSync Era
+  - Layer 2
+  - ZK Rollup
+  - EVM-Compatible
+  humanURL: https://docs.chainstack.com/reference/zksync-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/zksync-getting-started
+    type: Documentation
+  - url: openapi/chainstack-zksync-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-zksync-rpc.yaml
+  description: Chainstack-managed zkSync Era JSON-RPC nodes with zks_ namespace extensions.
+- aid: chainstack:chainstack-polygon-zkevm-node-api
+  name: Chainstack Polygon zkEVM Node API
+  tags:
+  - Polygon zkEVM
+  - Layer 2
+  - ZK Rollup
+  - EVM
+  humanURL: https://docs.chainstack.com/reference/polygon-zkevm-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/polygon-zkevm-getting-started
+    type: Documentation
+  - url: openapi/chainstack-polygon-zkevm-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-polygon-zkevm-rpc.yaml
+  description: Chainstack-managed Polygon zkEVM JSON-RPC nodes with zkevm_ namespace extensions.
+- aid: chainstack:chainstack-hyperliquid-node-api
+  name: Chainstack Hyperliquid Node API
+  tags:
+  - Hyperliquid
+  - HyperCore
+  - HyperEVM
+  - Perpetual DEX
+  humanURL: https://docs.chainstack.com/reference/hyperliquid-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/hyperliquid-getting-started
+    type: Documentation
+  - url: openapi/chainstack-hyperliquid-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-hyperliquid-rpc.yaml
+  description: Chainstack-managed Hyperliquid HyperCore and HyperEVM nodes. 185 documented HTTP methods covering
+    perpetual DEX state, orders, fills, and EVM RPC.
+- aid: chainstack:chainstack-monad-node-api
+  name: Chainstack Monad Node API
+  tags:
+  - Monad
+  - EVM
+  - Parallel Execution
+  - Layer 1
+  humanURL: https://docs.chainstack.com/reference/monad-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/monad-getting-started
+    type: Documentation
+  - url: openapi/chainstack-monad-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-monad-rpc.yaml
+  description: Chainstack-managed Monad JSON-RPC nodes (high-throughput EVM with parallel execution).
+- aid: chainstack:chainstack-plasma-node-api
+  name: Chainstack Plasma Node API
+  tags:
+  - Plasma
+  - EVM
+  - Stablecoins
+  humanURL: https://docs.chainstack.com/reference/plasma-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/plasma-getting-started
+    type: Documentation
+  - url: openapi/chainstack-plasma-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-plasma-rpc.yaml
+  description: Chainstack-managed Plasma JSON-RPC nodes (stablecoin-optimized chain).
+- aid: chainstack:chainstack-tempo-node-api
+  name: Chainstack Tempo Node API
+  tags:
+  - Tempo
+  - EVM
+  - Emerging
+  humanURL: https://docs.chainstack.com/reference/tempo-getting-started
+  properties:
+  - url: https://docs.chainstack.com/reference/tempo-getting-started
+    type: Documentation
+  - url: openapi/chainstack-tempo-node-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/chain-tempo-rpc.yaml
+  description: Chainstack-managed Tempo JSON-RPC nodes (emerging EVM chain).
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/chainstack/
+- type: Twitter
+  url: https://x.com/chainstackhq
+- type: Github
+  url: https://github.com/chainstack
+- type: Discord
+  url: https://discord.com/invite/Cymtg2f7pX
+- type: YouTube
+  url: https://www.youtube.com/@Chainstack
+- url: https://chainstack.com
+  name: Chainstack
+  type: Website
+- url: https://docs.chainstack.com
+  name: Chainstack Developer Portal
+  type: Portal
+- url: https://docs.chainstack.com/reference/platform-api-getting-started
+  name: Platform API Reference
+  type: Documentation
+- url: https://docs.chainstack.com/reference/getting-started
+  name: RPC API Reference
+  type: Documentation
+- url: https://docs.chainstack.com/docs/about-limits
+  name: Limits and Quotas
+  type: RateLimits
+  data: rate-limits/chainstack-rate-limits.yml
+- url: https://docs.chainstack.com/docs/about-billing
+  name: Billing and Compute Units
+  type: Documentation
+- url: https://docs.chainstack.com/docs/pricing
+  name: Pricing Documentation
+  type: Documentation
+- url: https://chainstack.com/pricing/
+  name: Chainstack Pricing
+  type: Pricing
+  data: plans/chainstack-plans-pricing.yml
+- url: https://faucet.chainstack.com/
+  name: Chainstack Faucet
+  type: Faucet
+- url: https://support.chainstack.com
+  name: Chainstack Support
+  type: Support
+- url: https://ideas.chainstack.com/
+  name: Chainstack Ideas
+  type: Feedback
+- url: https://chainstack.com/blog/
+  name: Chainstack Blog
+  type: Blog
+- url: https://chainstack.com/changelog/
+  name: Chainstack Changelog
+  type: ChangeLog
+- url: https://chainstack.status.io
+  name: Chainstack Status
+  type: StatusPage
+- url: https://chainstack.com/terms-of-service/
+  name: Terms of Service
+  type: TermsOfService
+- url: https://chainstack.com/privacy-policy/
+  name: Privacy Policy
+  type: PrivacyPolicy
+- url: https://chainstack.com/security/
+  name: Security
+  type: Security
+- url: https://github.com/chainstack/dev-portal
+  name: Chainstack Developer Portal (Source)
+  type: Source
+- url: https://github.com/chainstack/erigon
+  name: Chainstack Erigon Fork
+  type: Source
+- url: https://github.com/chainstack/bsc-erigon
+  name: Chainstack BSC Erigon
+  type: Source
+- url: https://github.com/chainstack/op-erigon
+  name: Chainstack Optimism Erigon
+  type: Source
+- url: https://github.com/chainstack/solana-exporter
+  name: Solana Prometheus Exporter
+  type: Tools
+- url: https://github.com/chainstack/solana-rpc-ruby
+  name: Solana RPC Ruby Client
+  type: SDK
+- url: https://github.com/chainstack/multichaincli
+  name: MultiChain Python CLI Wrapper
+  type: SDK
+- url: https://github.com/chainstack/bitcoincli
+  name: Bitcoin Python JSON-RPC Wrapper
+  type: SDK
+- url: https://github.com/chainstack/web3quorum
+  name: web3.py Quorum Extension
+  type: SDK
+- url: https://github.com/chainstack/terraform-openstack-rke2
+  name: Terraform Module for RKE2 on OpenStack
+  type: Tools
+- url: https://chainstack.com/products/global-nodes/
+  name: Global Nodes Product
+  type: Product
+- url: https://chainstack.com/products/dedicated-nodes/
+  name: Dedicated Nodes Product
+  type: Product
+- url: https://chainstack.com/products/unlimited-nodes/
+  name: Unlimited Nodes Product
+  type: Product
+- url: https://chainstack.com/products/trader-nodes/
+  name: Trader Nodes Product
+  type: Product
+- url: https://chainstack.com/products/yellowstone-grpc/
+  name: Yellowstone gRPC for Solana
+  type: Product
+- url: https://chainstack.com/build-better/
+  name: Supported Protocols
+  type: Documentation
+- type: Vocabulary
+  url: vocabulary/chainstack-vocabulary.yml
+- type: SpectralRules
+  url: rules/chainstack-rules.yml
+- type: FinOps
+  url: finops/chainstack-finops.yml

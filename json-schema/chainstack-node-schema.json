@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chainstack/main/json-schema/chainstack-node-schema.json",
+  "title": "ChainstackNode",
+  "description": "Schema for a Chainstack-managed blockchain node as exposed by the Platform API.",
+  "type": "object",
+  "required": ["id", "name", "type", "protocol", "network", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^nd-[0-9]{3}-[0-9]{3}-[0-9]{3}$",
+      "description": "Stable Chainstack node identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable node name."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["global", "dedicated", "unlimited", "trader"],
+      "description": "Node deployment archetype."
+    },
+    "protocol": {
+      "type": "string",
+      "description": "Blockchain protocol (e.g. ethereum, solana, bitcoin, bnb, polygon, arbitrum, base, optimism, avalanche, ton, sui, tron, starknet, zksync, hyperliquid)."
+    },
+    "network": {
+      "type": "string",
+      "description": "Network ID this node serves (e.g. ethereum-mainnet, polygon-amoy, solana-devnet)."
+    },
+    "region": {
+      "type": "string",
+      "enum": ["us-east", "us-west", "eu-west", "eu-central", "ap-southeast", "ap-northeast"],
+      "description": "Deployment region."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "running", "stopped", "error", "deleting"],
+      "description": "Lifecycle status of the node."
+    },
+    "details": {
+      "type": "object",
+      "description": "Per-protocol node details including HTTPS RPC URL, WSS URL, and any chain-specific properties.",
+      "properties": {
+        "https_endpoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Authenticated HTTPS RPC URL."
+        },
+        "wss_endpoint": {
+          "type": "string",
+          "format": "uri",
+          "description": "Authenticated WSS RPC URL."
+        },
+        "client": {
+          "type": "string",
+          "description": "Underlying node client (e.g. geth, erigon, nethermind, reth, solana-validator, bitcoin-core)."
+        },
+        "archive": {
+          "type": "boolean",
+          "description": "Whether this node serves archive (historical state) requests."
+        },
+        "extra_namespaces": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Extended namespaces enabled on this node (e.g. debug, trace, txpool)."
+        }
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "description": "Deployment configuration (machine size, archive add-on, MEV protection, etc.)."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

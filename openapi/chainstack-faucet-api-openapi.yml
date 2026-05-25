@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Faucet API
+  version: 1.0.0
+  description: Public testnet faucet for Chainstack-supported networks. Authenticate with the JWT bearer token issued for
+    your Chainstack account and request testnet funds for Sepolia, Hoodi, BNB Testnet, zkSync Testnet, Scroll Sepolia, and
+    Polygon Amoy. Includes transaction history endpoint.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://api.chainstack.com/v1/faucet
+  description: Production
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+- BearerAuth: []
+paths:
+  /{chain}:
+    post:
+      tags:
+      - faucet
+      summary: Request funds
+      operationId: requestFunds
+      parameters:
+      - name: chain
+        in: path
+        description: Chainstack Faucet API.
+        required: true
+        schema:
+          type: string
+          enum:
+          - hoodi
+          - sepolia
+          - bnb-testnet
+          - zksync-testnet
+          - scroll-sepolia-testnet
+          - amoy
+          default: null
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: The recipient address.
+                  example: '0x06f0aB63eD883C61b9e4447fCbD9603dfC189662'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Funds successfully sent.
+        '400':
+          description: Address is not valid.
+        '401':
+          description: Unauthorized access, invalid API key.
+        '429':
+          description: Too many requests or balance exceeded.
+  /transactions-history:
+    get:
+      summary: Transaction History
+      description: Retrieves the transaction history for a specified organization ID.
+      tags:
+      - History
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          description: Transaction history retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    protocol:
+                      type: string
+                      description: The protocol used for the transaction.
+                    network:
+                      type: string
+                      description: The network used for the transaction.
+                    amount:
+                      type: object
+                      properties:
+                        $numberDecimal:
+                          type: string
+                      description: The amount sent in the transaction.
+                    address:
+                      type: string
+                      description: The address to which the amount was sent.
+                    userId:
+                      type: string
+                      description: User ID associated with the transaction.
+                    organizationId:
+                      type: string
+                      description: Organization ID associated with the transaction.
+                    transactionHash:
+                      type: string
+                      nullable: true
+                      description: Transaction hash, nullable if not available.
+                    timestamp:
+                      type: integer
+                      description: Timestamp of the transaction in milliseconds.
+        '401':
+          description: Unauthorized access, invalid API key.
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message.
+tags:
+- name: Faucet
+- name: History

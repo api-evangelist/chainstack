@@ -1,0 +1,107 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Chainstack
+providerId: chainstack
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Blockchain
+  - RPC
+  - Rate Limiting
+  - Quotas
+description: Reconciled rate limits for the Chainstack multi-chain RPC platform. Plan-based RPS ceilings, Request
+  Unit monthly quotas, and 429 throttling on overage. Response Retry-After advised.
+sources:
+  - https://chainstack.com/pricing/
+  - https://docs.chainstack.com/docs/limits
+  - https://docs.chainstack.com/docs/about-billing
+  - https://docs.chainstack.com/reference/platform-api-getting-started
+headers:
+  limit: x-ratelimit-limit
+  remaining: x-ratelimit-remaining
+  reset: x-ratelimit-reset
+  retryAfter: retry-after
+responseCodes:
+  throttled: 429
+  quotaExceeded: 402
+  invalidAuth: 401
+algorithm: token-bucket
+spendLimits:
+  - tier: Developer (Free)
+    creditPurchase: $0
+    monthlyCap: 3M RU included, then $20/1M RU
+  - tier: Growth
+    creditPurchase: $49/mo
+    monthlyCap: 20M RU included, then $15/1M RU
+  - tier: Pro
+    creditPurchase: $199/mo
+    monthlyCap: 80M RU included, then $12.50/1M RU
+  - tier: Business
+    creditPurchase: $499/mo
+    monthlyCap: 200M RU included, then $10/1M RU
+  - tier: Enterprise
+    creditPurchase: $990+/mo
+    monthlyCap: 400M+ RU included, then $5/1M RU
+  - tier: Pay-As-You-Go
+    creditPurchase: N/A
+    monthlyCap: no limit, $5/1M RU
+limits:
+  - tier: Developer
+    surface: All Chainstack-managed nodes
+    rps: 25
+    monthlyRequestUnits: 3000000
+  - tier: Growth
+    surface: All Chainstack-managed nodes
+    rps: 250
+    monthlyRequestUnits: 20000000
+  - tier: Pro
+    surface: All Chainstack-managed nodes
+    rps: 400
+    monthlyRequestUnits: 80000000
+  - tier: Business
+    surface: All Chainstack-managed nodes
+    rps: 600
+    monthlyRequestUnits: 200000000
+  - tier: Enterprise
+    surface: All Chainstack-managed nodes
+    rps: -1
+    monthlyRequestUnits: 400000000
+  - tier: Unlimited Node 25 RPS
+    surface: Dedicated Unlimited Node
+    rps: 25
+    monthlyRequestUnits: -1
+  - tier: Unlimited Node 100 RPS
+    surface: Dedicated Unlimited Node
+    rps: 100
+    monthlyRequestUnits: -1
+  - tier: Unlimited Node 250 RPS
+    surface: Dedicated Unlimited Node
+    rps: 250
+    monthlyRequestUnits: -1
+  - tier: Unlimited Node 500 RPS
+    surface: Dedicated Unlimited Node
+    rps: 500
+    monthlyRequestUnits: -1
+  - tier: Unlimited Node 1000 RPS
+    surface: Dedicated Unlimited Node
+    rps: 1000
+    monthlyRequestUnits: -1
+weights:
+  - resource: Full-node RPC request
+    cost: 1 RU
+  - resource: Archive-node RPC request
+    cost: 2 RU
+  - resource: Trace/Debug RPC request
+    cost: depends on method; documented per archive add-on
+  - resource: Warp transaction broadcast
+    cost: $0.15 per transaction (separate billing line)
+  - resource: Yellowstone gRPC stream
+    cost: flat add-on subscription
+notes:
+  - Each project, organization, and individual node share the plan-level RPS ceiling.
+  - Overage Request Units are billed at the per-tier per-million rate.
+  - Multi-region routing automatically dispatches to the lowest-latency node; per-region RPS is not enforced.
+  - Trader Nodes apply their own latency-optimized routing and are not subject to standard RPS limits.
+  - Faucet API enforces a per-account daily limit; specific number is undocumented publicly.

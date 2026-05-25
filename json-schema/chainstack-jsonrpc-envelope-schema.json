@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/chainstack/main/json-schema/chainstack-jsonrpc-envelope-schema.json",
+  "title": "ChainstackJsonRpcEnvelope",
+  "description": "Canonical JSON-RPC 2.0 request/response envelope used by every Chainstack-managed RPC node (EVM, Solana, Bitcoin, TON, TRON, etc.).",
+  "oneOf": [
+    {"$ref": "#/$defs/Request"},
+    {"$ref": "#/$defs/Response"},
+    {"$ref": "#/$defs/BatchRequest"},
+    {"$ref": "#/$defs/BatchResponse"}
+  ],
+  "$defs": {
+    "Request": {
+      "type": "object",
+      "required": ["jsonrpc", "method"],
+      "properties": {
+        "jsonrpc": {"const": "2.0"},
+        "id": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "integer"},
+            {"type": "null"}
+          ]
+        },
+        "method": {"type": "string"},
+        "params": {
+          "oneOf": [
+            {"type": "array"},
+            {"type": "object"}
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Response": {
+      "type": "object",
+      "required": ["jsonrpc", "id"],
+      "properties": {
+        "jsonrpc": {"const": "2.0"},
+        "id": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "integer"},
+            {"type": "null"}
+          ]
+        },
+        "result": {},
+        "error": {"$ref": "#/$defs/Error"}
+      },
+      "oneOf": [
+        {"required": ["result"]},
+        {"required": ["error"]}
+      ]
+    },
+    "Error": {
+      "type": "object",
+      "required": ["code", "message"],
+      "properties": {
+        "code": {"type": "integer"},
+        "message": {"type": "string"},
+        "data": {}
+      }
+    },
+    "BatchRequest": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Request"},
+      "minItems": 1
+    },
+    "BatchResponse": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Response"},
+      "minItems": 1
+    }
+  }
+}

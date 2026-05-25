@@ -1,0 +1,91 @@
+vocabulary: API Commons Vocabulary
+vocabularyVersion: '0.1'
+provider: Chainstack
+providerId: chainstack
+created: '2026-05-25'
+modified: '2026-05-25'
+description: Operational and capability vocabulary for the Chainstack multi-chain RPC platform. Maps Chainstack-
+  specific terms to common blockchain-infrastructure dimensions.
+sources:
+  - https://docs.chainstack.com
+  - https://chainstack.com/pricing/
+  - https://chainstack.com/products/
+terms:
+  - term: Request Unit
+    abbreviation: RU
+    definition: The atomic billing unit on Chainstack. 1 RU equals 1 full-node JSON-RPC request; 2 RU equals 1
+      archive-node JSON-RPC request. RPC method type does not affect the cost.
+    dimension: Billing
+  - term: Global Node
+    definition: Geo-balanced managed RPC node that automatically routes a client request to the lowest-latency
+      Chainstack region.
+    dimension: Node Archetype
+  - term: Dedicated Node
+    definition: Isolated single-tenant managed node with extended namespaces (debug, txpool, trace) and GraphQL
+      support. Higher SLA, hourly compute charge.
+    dimension: Node Archetype
+  - term: Unlimited Node
+    definition: Flat-fee tier-based RPS commitment node; no per-request charges within the RPS allocation.
+    dimension: Node Archetype
+  - term: Trader Node
+    definition: Low-latency mempool-optimized node integrated with bloXroute BDN; designed for MEV, arbitrage,
+      and high-frequency trading workloads.
+    dimension: Node Archetype
+  - term: Yellowstone gRPC
+    definition: Real-time Solana streaming via the Yellowstone Geyser plugin. Streams accounts, transactions, and
+      slots over gRPC with lower latency than RPC polling.
+    dimension: Streaming
+  - term: Warp Transaction
+    definition: Premium transaction-broadcast service charged per transaction; ships transactions through
+      optimized propagation paths.
+    dimension: Transaction Propagation
+  - term: MEV Protection
+    definition: Add-on that routes transactions through sandwich-/frontrun-resistant builders.
+    dimension: Security
+  - term: Flashblocks
+    definition: Preconfirmation support on rollup networks (Base 200 ms, Optimism 250 ms) for ultra-low-latency
+      transaction visibility.
+    dimension: Performance
+  - term: Faucet
+    definition: Chainstack-operated public testnet faucet across Hoodi, Sepolia, BNB Testnet, zkSync Testnet,
+      Scroll Sepolia, and Polygon Amoy.
+    dimension: Developer Tools
+  - term: Compute Unit
+    definition: Hourly metered compute charge applied to Pro-tier and above Dedicated Nodes (from $0.50 per
+      hour).
+    dimension: Billing
+  - term: Project
+    definition: Chainstack organizational grouping for related networks and nodes.
+    dimension: Organization
+  - term: Network
+    definition: Chainstack abstraction over a protocol + chain (e.g. ethereum-mainnet, polygon-amoy). Groups
+      project nodes.
+    dimension: Organization
+  - term: Marketplace
+    definition: One-click installable apps with unified Chainstack billing.
+    dimension: Ecosystem
+  - term: MCP Server (Chainstack)
+    definition: Chainstack-hosted MCP server providing agent access to agents page, node deployment, doc search,
+      and faucet operations.
+    dimension: AI Integration
+dimensions:
+  - name: Billing
+    description: How Chainstack meters and charges usage (Request Units, compute hours, transactions, streams).
+  - name: Node Archetype
+    description: Deployment shape of a managed Chainstack node (Global, Dedicated, Unlimited, Trader).
+  - name: Streaming
+    description: Real-time data delivery mechanisms (Yellowstone gRPC, WebSocket subscriptions).
+  - name: Transaction Propagation
+    description: How and where transactions are broadcast to mempools.
+  - name: Security
+    description: Security and MEV-protection features.
+  - name: Performance
+    description: Latency and throughput-oriented features.
+  - name: Developer Tools
+    description: Faucet, MCP server, marketplace, and other developer-facing utilities.
+  - name: Organization
+    description: Resource hierarchy concepts (Organization, Project, Network, Node).
+  - name: Ecosystem
+    description: Marketplace and partner integrations.
+  - name: AI Integration
+    description: MCP and AI-agent-oriented capabilities.

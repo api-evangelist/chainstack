@@ -1,0 +1,100 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "chainstack": "https://api.chainstack.com/v1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+
+    "Organization": {
+      "@id": "chainstack:Organization",
+      "@context": {
+        "id": {"@id": "chainstack:Organization/id", "@type": "xsd:string"},
+        "name": {"@id": "chainstack:Organization/name", "@type": "xsd:string"}
+      }
+    },
+
+    "Project": {
+      "@id": "chainstack:Project",
+      "@context": {
+        "id": {"@id": "chainstack:Project/id", "@type": "xsd:string"},
+        "name": {"@id": "chainstack:Project/name", "@type": "xsd:string"},
+        "type": {"@id": "chainstack:Project/type", "@type": "xsd:string"},
+        "networks": {"@id": "chainstack:Project/networks", "@type": "xsd:integer"},
+        "created_at": {"@id": "chainstack:Project/createdAt", "@type": "xsd:dateTime"},
+        "creator": {"@id": "chainstack:Project/creator", "@type": "chainstack:User"}
+      }
+    },
+
+    "Network": {
+      "@id": "chainstack:Network",
+      "@context": {
+        "id": {"@id": "chainstack:Network/id", "@type": "xsd:string"},
+        "name": {"@id": "chainstack:Network/name", "@type": "xsd:string"},
+        "protocol": {"@id": "chainstack:Network/protocol", "@type": "xsd:string"},
+        "consensus": {"@id": "chainstack:Network/consensus", "@type": "xsd:string"},
+        "status": {"@id": "chainstack:Network/status", "@type": "xsd:string"},
+        "project": {"@id": "chainstack:Network/project", "@type": "chainstack:Project"}
+      }
+    },
+
+    "Node": {
+      "@id": "chainstack:Node",
+      "@context": {
+        "id": {"@id": "chainstack:Node/id", "@type": "xsd:string"},
+        "name": {"@id": "chainstack:Node/name", "@type": "xsd:string"},
+        "type": {"@id": "chainstack:Node/type", "@type": "xsd:string"},
+        "protocol": {"@id": "chainstack:Node/protocol", "@type": "xsd:string"},
+        "network": {"@id": "chainstack:Node/network", "@type": "xsd:string"},
+        "region": {"@id": "chainstack:Node/region", "@type": "xsd:string"},
+        "status": {"@id": "chainstack:Node/status", "@type": "xsd:string"},
+        "details": {"@id": "chainstack:Node/details"},
+        "configuration": {"@id": "chainstack:Node/configuration"}
+      }
+    },
+
+    "User": {
+      "@id": "chainstack:User",
+      "@context": {
+        "id": {"@id": "chainstack:User/id", "@type": "xsd:string"},
+        "email": {"@id": "chainstack:User/email", "@type": "xsd:string"},
+        "first_name": {"@id": "chainstack:User/firstName", "@type": "xsd:string"},
+        "last_name": {"@id": "chainstack:User/lastName", "@type": "xsd:string"}
+      }
+    },
+
+    "JsonRpcRequest": {
+      "@id": "chainstack:JsonRpcRequest",
+      "@context": {
+        "jsonrpc": {"@id": "chainstack:JsonRpcRequest/jsonrpc", "@type": "xsd:string"},
+        "id": {"@id": "chainstack:JsonRpcRequest/id"},
+        "method": {"@id": "chainstack:JsonRpcRequest/method", "@type": "xsd:string"},
+        "params": {"@id": "chainstack:JsonRpcRequest/params", "@container": "@list"}
+      }
+    },
+
+    "JsonRpcResponse": {
+      "@id": "chainstack:JsonRpcResponse",
+      "@context": {
+        "jsonrpc": {"@id": "chainstack:JsonRpcResponse/jsonrpc", "@type": "xsd:string"},
+        "id": {"@id": "chainstack:JsonRpcResponse/id"},
+        "result": {"@id": "chainstack:JsonRpcResponse/result"},
+        "error": {"@id": "chainstack:JsonRpcResponse/error"}
+      }
+    },
+
+    "FaucetTransaction": {
+      "@id": "chainstack:FaucetTransaction",
+      "@context": {
+        "protocol": {"@id": "chainstack:FaucetTransaction/protocol", "@type": "xsd:string"},
+        "network": {"@id": "chainstack:FaucetTransaction/network", "@type": "xsd:string"},
+        "amount": {"@id": "chainstack:FaucetTransaction/amount"},
+        "recipient": {"@id": "chainstack:FaucetTransaction/recipient", "@type": "xsd:string"},
+        "transaction_hash": {"@id": "chainstack:FaucetTransaction/transactionHash", "@type": "xsd:string"},
+        "created_at": {"@id": "chainstack:FaucetTransaction/createdAt", "@type": "xsd:dateTime"}
+      }
+    }
+  }
+}

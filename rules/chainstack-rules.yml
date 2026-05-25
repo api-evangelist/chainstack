@@ -1,0 +1,66 @@
+extends:
+  - spectral:oas
+formats:
+  - oas3
+rules:
+  chainstack-info-contact-required:
+    description: Chainstack OpenAPI documents must declare the support contact.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+  chainstack-info-license-required:
+    description: Chainstack OpenAPI documents must declare a license.
+    severity: warn
+    given: $.info
+    then:
+      field: license
+      function: truthy
+  chainstack-server-https-required:
+    description: Chainstack server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+  chainstack-operation-summary-title-case:
+    description: Operation summaries should use Title Case.
+    severity: warn
+    given: $.paths[*][*].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][A-Za-z0-9]*)(\s+([A-Z][A-Za-z0-9]*|\d+))*$'
+  chainstack-operation-tag-required:
+    description: Every operation should declare at least one tag.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: length
+      functionOptions:
+        min: 1
+  chainstack-operation-id-required:
+    description: Every operation must declare an operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+  chainstack-jsonrpc-post-required:
+    description: Chainstack RPC node operations must use POST (JSON-RPC over HTTPS).
+    severity: warn
+    given: $.paths[*]
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          not:
+            anyOf:
+              - required: [get]
+              - required: [put]
+              - required: [patch]
+              - required: [delete]

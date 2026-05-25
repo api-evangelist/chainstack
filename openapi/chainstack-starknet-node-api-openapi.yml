@@ -1,0 +1,633 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Starknet Node API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Starknet blockchain. Endpoints follow the canonical JSON-RPC over HTTPS
+    interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>).
+    Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/starknet_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: General
+paths:
+  /starknet_call:
+    post:
+      summary: Starknet_Call
+      description: starknet_call
+      operationId: starknetCall
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_call
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        calldata:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/FELT'
+                          default:
+                          - '0x03a20d4f7b4229e7c4863dab158b4d076d7f454b893d90a62011882dc4caca2a'
+                        contract_address:
+                          type: string
+                          default: '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'
+                        entry_point_selector:
+                          type: string
+                          default: '0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e'
+                    - type: string
+                      enum:
+                      - pending
+                  default:
+                  - calldata:
+                    - '0x03a20d4f7b4229e7c4863dab158b4d076d7f454b893d90a62011882dc4caca2a'
+                    contract_address: '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'
+                    entry_point_selector: '0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e'
+                  - pending
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_estimateFee:
+    post:
+      summary: starknet_estimateFee
+      description: starknet_estimateFee
+      operationId: starknetEstimateFee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                jsonrpc:
+                  type: string
+                method:
+                  type: string
+                params:
+                  type: object
+                  properties:
+                    request:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          max_fee:
+                            $ref: '#/components/schemas/FELT'
+                          version:
+                            type: string
+                          signature:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/FELT'
+                          sender_address:
+                            type: string
+                          calldata:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/FELT'
+                          nonce:
+                            $ref: '#/components/schemas/FELT'
+                    block_id:
+                      type: object
+                      properties:
+                        block_number:
+                          type: integer
+              default:
+                id: 0
+                jsonrpc: '2.0'
+                method: starknet_estimateFee
+                params:
+                  request:
+                  - type: INVOKE
+                    max_fee: '0xb3a2f1ab6d632'
+                    version: '0x1'
+                    signature:
+                    - '0x54c2201c7b9021777389e208e28eafc67e4ba1f1aa7016a1123b61c6ff79c29'
+                    - '0x58c2d97614e5abfd9668b314f344c945d16ea154cb32a7b08b4445204f1f1d3'
+                    sender_address: '0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10'
+                    calldata:
+                    - '0x3'
+                    - '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'
+                    - '0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c'
+                    - '0x3'
+                    - '0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff'
+                    - '0x984e103a8acd6'
+                    - '0x0'
+                    - '0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8'
+                    - '0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c'
+                    - '0x3'
+                    - '0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff'
+                    - '0x4c4b40'
+                    - '0x0'
+                    - '0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff'
+                    - '0x2f0b3c5710379609eb5495f1ecd348cb28167711b73609fe565a72734550354'
+                    - '0xe'
+                    - '0x569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10'
+                    - '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'
+                    - '0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8'
+                    - '0x1f4'
+                    - '0xa76cc'
+                    - '0xa7b5e'
+                    - '0x984e103a8acd6'
+                    - '0x0'
+                    - '0x4c4b40'
+                    - '0x0'
+                    - '0x9542431aa6bf1'
+                    - '0x0'
+                    - '0x4ac4a0'
+                    - '0x0'
+                    nonce: '0x51'
+                  block_id:
+                    block_number: 385940
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_estimateMessageFee:
+    post:
+      summary: starknet_estimateMessageFee
+      description: starknet_estimateMessageFee
+      operationId: starknetEstimateMessageFee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                jsonrpc:
+                  type: string
+                method:
+                  type: string
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        from_address:
+                          type: string
+                        to_address:
+                          type: string
+                        entry_point_selector:
+                          type: string
+                        payload:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/FELT'
+                    - type: object
+                      properties:
+                        block_number:
+                          type: integer
+              default:
+                id: 0
+                jsonrpc: '2.0'
+                method: starknet_estimateMessageFee
+                params:
+                - from_address: '0xae0ee0a63a2ce6baeeffe56e7714fb4efe48d419'
+                  to_address: '0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82'
+                  entry_point_selector: '0x02d757788a8d8d6f21d1cd40bce38a8222d70654214e96ff95d8086e684fbee5'
+                  payload:
+                  - '0x1cf4ca56a4841f8a7d39d22d5369434f74e480b370be7bc5a814384b758e604'
+                  - '0x6a94d74f430000'
+                  - '0x0'
+                - block_number: 387702
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_getClassAt:
+    post:
+      summary: starknet_getClassAt
+      description: starknet_getClassAt
+      operationId: starknetGetClassAt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_getClassAt
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        block_number:
+                          type: integer
+                          default: 385940
+                    - type: string
+                      default: '0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82'
+              default:
+                id: 1
+                jsonrpc: '2.0'
+                method: starknet_getClassAt
+                params:
+                - block_number: 385940
+                - '0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82'
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_getClassHashAt:
+    post:
+      summary: starknet_getClassHashAt
+      description: starknet_getClassHashAt
+      operationId: starknetGetClassHashAt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_getClassHashAt
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        block_number:
+                          type: integer
+                          default: 385940
+                    - type: string
+                      default: '0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82'
+              default:
+                id: 1
+                jsonrpc: '2.0'
+                method: starknet_getClassHashAt
+                params:
+                - block_number: 385940
+                - '0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82'
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_getNonce:
+    post:
+      summary: starknet_getNonce
+      description: starknet_getNonce
+      operationId: starknetGetNonce
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_getNonce
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        block_number:
+                          type: integer
+                          default: 385940
+                    - type: string
+                      default: '0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10'
+              default:
+                id: 1
+                jsonrpc: '2.0'
+                method: starknet_getNonce
+                params:
+                - block_number: 385940
+                - '0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10'
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_getStorageAt:
+    post:
+      summary: starknet_getStorageAt
+      description: starknet_getStorageAt
+      operationId: starknetGetStorageAt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_getStorageAt
+                params:
+                  type: array
+                  items:
+                    type: string
+                  default:
+                  - '0x00dA114221cb83fa859DBdb4C44bEeaa0BB37C7537ad5ae66Fe5e0efD20E6eB3'
+                  - '0x2de7ac669936cc3b4e9784ff23826dc9056c74d54d3f41f1b0d28b36966369e'
+                  - latest
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_getTransactionByBlockIdAndIndex:
+    post:
+      summary: starknet_getTransactionByBlockIdAndIndex
+      description: starknet_getTransactionByBlockIdAndIndex
+      operationId: starknetGetTransactionByBlockIdAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_getTransactionByBlockIdAndIndex
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        block_number:
+                          type: integer
+                          default: 7015
+                    - type: integer
+                      default: 19
+              default:
+                id: 1
+                jsonrpc: '2.0'
+                method: starknet_getTransactionByBlockIdAndIndex
+                params:
+                - block_number: 7015
+                - 19
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_getTransactionByHash:
+    post:
+      summary: starknet_getTransactionByHash
+      description: starknet_getTransactionByHash
+      operationId: starknetGetTransactionByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_getTransactionByHash
+                params:
+                  type: array
+                  items:
+                    type: string
+                  default:
+                  - '0x295ee040949bd23a4bba5d5fa0d9d776c3b1fc7cafd511d025e689e665d05b2'
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_simulateTransactions:
+    post:
+      summary: starknet_simulateTransactions
+      description: starknet_simulateTransactions
+      operationId: starknetSimulateTransactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 0
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_simulateTransactions
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        block_number:
+                          type: integer
+                    - type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          max_fee:
+                            $ref: '#/components/schemas/FELT'
+                          version:
+                            type: string
+                          signature:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/FELT'
+                          sender_address:
+                            type: string
+                          calldata:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/FELT'
+                          nonce:
+                            $ref: '#/components/schemas/FELT'
+                    - type: array
+                      items:
+                        type: string
+              default:
+                id: 0
+                jsonrpc: '2.0'
+                method: starknet_simulateTransactions
+                params:
+                - block_number: 385940
+                - - type: INVOKE
+                    max_fee: '0xb3a2f1ab6d632'
+                    version: '0x1'
+                    signature:
+                    - '0x54c2201c7b9021777389e208e28eafc67e4ba1f1aa7016a1123b61c6ff79c29'
+                    - '0x58c2d97614e5abfd9668b314f344c945d16ea154cb32a7b08b4445204f1f1d3'
+                    sender_address: '0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10'
+                    calldata:
+                    - '0x3'
+                    - '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'
+                    - '0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c'
+                    - '0x3'
+                    - '0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff'
+                    - '0x984e103a8acd6'
+                    - '0x0'
+                    - '0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8'
+                    - '0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c'
+                    - '0x3'
+                    - '0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff'
+                    - '0x4c4b40'
+                    - '0x0'
+                    - '0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff'
+                    - '0x2f0b3c5710379609eb5495f1ecd348cb28167711b73609fe565a72734550354'
+                    - '0xe'
+                    - '0x569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10'
+                    - '0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7'
+                    - '0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8'
+                    - '0x1f4'
+                    - '0xa76cc'
+                    - '0xa7b5e'
+                    - '0x984e103a8acd6'
+                    - '0x0'
+                    - '0x4c4b40'
+                    - '0x0'
+                    - '0x9542431aa6bf1'
+                    - '0x0'
+                    - '0x4ac4a0'
+                    - '0x0'
+                    nonce: '0x51'
+                - - SKIP_VALIDATE
+                  - SKIP_FEE_CHARGE
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+  /starknet_traceBlockTransactions:
+    post:
+      summary: starknet_traceBlockTransactions
+      description: starknet_traceBlockTransactions
+      operationId: starknetTraceBlockTransactions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: starknet_traceBlockTransactions
+                params:
+                  type: object
+                  properties:
+                    block_id:
+                      type: object
+                      properties:
+                        block_number:
+                          type: integer
+                          default: 456600
+              default:
+                id: 1
+                jsonrpc: '2.0'
+                method: starknet_traceBlockTransactions
+                params:
+                  block_id:
+                    block_number: 456600
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - General
+components:
+  schemas:
+    FELT:
+      type: string
+      title: Field element
+      description: A field element. represented by at most 63 hex digits
+      pattern: ^0x(0|[a-fA-F1-9]{1}[a-fA-F0-9]{0,62})$
