@@ -1,6 +1,7 @@
 aid: chainstack
 url: https://raw.githubusercontent.com/api-evangelist/chainstack/refs/heads/main/apis.yml
 name: Chainstack
+modified: 2026-05-29
 tags:
 - Blockchain
 - Multi-Chain
@@ -90,6 +91,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-ethereum-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - url: json-schema/chainstack-jsonrpc-envelope-schema.json
     type: JSONSchema
   - type: NaftikoCapability
@@ -127,6 +130,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-solana-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-solana-rpc.yaml
   description: Chainstack-managed Solana JSON-RPC nodes (mainnet, devnet, testnet) covering 52+ documented RPC
@@ -178,6 +183,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-polygon-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-polygon-rpc.yaml
   description: Chainstack-managed Polygon mainnet (PoS) and Polygon Amoy testnet JSON-RPC nodes with debug/trace
@@ -195,6 +202,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-arbitrum-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-arbitrum-rpc.yaml
   description: Chainstack-managed Arbitrum One and Arbitrum Sepolia JSON-RPC nodes. 51 documented eth_/arb_ methods.
@@ -212,6 +221,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-optimism-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-optimism-rpc.yaml
   description: Chainstack-managed Optimism mainnet and Sepolia JSON-RPC nodes with Flashblocks preconfirmation
@@ -230,6 +241,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-base-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-base-rpc.yaml
   description: Chainstack-managed Base mainnet and Sepolia JSON-RPC nodes. 60 documented eth_/op_ methods plus
@@ -247,6 +260,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-avalanche-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-avalanche-rpc.yaml
   description: Chainstack-managed Avalanche C-Chain JSON-RPC nodes and Subnets support.
@@ -278,6 +293,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-gnosis-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-gnosis-rpc.yaml
   description: Chainstack-managed Gnosis Chain JSON-RPC nodes.
@@ -323,6 +340,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-ronin-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-ronin-rpc.yaml
   description: Chainstack-managed Ronin JSON-RPC nodes for the Axie Infinity gaming chain.
@@ -419,6 +438,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-hyperliquid-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-hyperliquid-rpc.yaml
   description: Chainstack-managed Hyperliquid HyperCore and HyperEVM nodes. 185 documented HTTP methods covering
@@ -436,6 +457,8 @@ apis:
     type: Documentation
   - url: openapi/chainstack-monad-node-api-openapi.yml
     type: OpenAPI
+  - url: asyncapi/chainstack-asyncapi.yml
+    type: AsyncAPI
   - type: NaftikoCapability
     url: capabilities/chain-monad-rpc.yaml
   description: Chainstack-managed Monad JSON-RPC nodes (high-throughput EVM with parallel execution).

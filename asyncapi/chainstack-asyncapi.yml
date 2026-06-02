@@ -1,0 +1,2780 @@
+asyncapi: 2.6.0
+info:
+  title: Chainstack RPC WebSocket APIs
+  version: 1.0.0
+  description: |
+    AsyncAPI 2.6 specification for Chainstack's JSON-RPC WebSocket (WSS) subscription APIs.
+
+    Chainstack-managed nodes expose a persistent WebSocket endpoint per node that accepts JSON-RPC
+    2.0 messages. Clients open a single `wss://` connection, send an `eth_subscribe` (EVM chains),
+    `*Subscribe` (Solana), or other chain-specific subscription request, and then receive a stream
+    of push notifications until they call the corresponding unsubscribe method or close the socket.
+
+    Every channel, message and parameter in this document is sourced from Chainstack's public
+    Developer Portal (https://docs.chainstack.com). Only subscriptions that Chainstack explicitly
+    documents are included.
+
+    Connection limits documented by Chainstack for managed nodes:
+      - 3,600 second (1 hour) idle timeout per WebSocket connection.
+      - Maximum 500 concurrent WebSocket connections per node.
+      - Each pushed notification is billable as one request unit (except on Unlimited Nodes).
+
+    Reference: https://docs.chainstack.com/docs/handle-real-time-data-using-websockets-with-javascript-and-python
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+    url: https://support.chainstack.com
+  license:
+    name: Chainstack Terms of Service
+    url: https://chainstack.com/terms-of-service/
+  termsOfService: https://chainstack.com/terms-of-service/
+  x-documentation: https://docs.chainstack.com
+  x-source: https://docs.chainstack.com/llms.txt
+
+defaultContentType: application/json
+
+servers:
+  evm-mainnet:
+    url: wss://{network}.core.chainstack.com/{auth_key}
+    protocol: wss
+    description: |
+      Canonical Chainstack-managed EVM node WebSocket endpoint. The {network} segment
+      identifies the chain/network (for example `ethereum-mainnet`, `polygon-mainnet`,
+      `bsc-mainnet`, `arbitrum-mainnet`, `optimism-mainnet`, `base-mainnet`,
+      `avalanche-mainnet`, `gnosis-mainnet`, `hyperliquid-mainnet`). The {auth_key}
+      path segment is the per-node access key issued by the Chainstack platform.
+      Example: wss://ethereum-mainnet.core.chainstack.com/AUTH_KEY.
+      Source: https://docs.chainstack.com/docs/evm-node-connection-http-vs-websocket
+    variables:
+      network:
+        default: ethereum-mainnet
+        description: Network slug for the Chainstack-managed chain (e.g. ethereum-mainnet, polygon-mainnet).
+      auth_key:
+        default: AUTH_KEY
+        description: Per-node access key issued by the Chainstack platform.
+  dedicated-node:
+    url: wss://{node_id}.p2pify.com/{auth_key}
+    protocol: wss
+    description: |
+      Chainstack Dedicated / Trader Node WebSocket endpoint. The {node_id} is the
+      provisioned per-node identifier (for example `nd-422-757-666`) and {auth_key}
+      is the per-node access key. Example: wss://nd-422-757-666.p2pify.com/AUTH_KEY.
+    variables:
+      node_id:
+        default: nd-000-000-000
+        description: Per-node identifier provisioned by the Chainstack platform.
+      auth_key:
+        default: AUTH_KEY
+        description: Per-node access key issued by the Chainstack platform.
+
+tags:
+  - name: EVM
+    description: EVM-compatible JSON-RPC subscriptions exposed via eth_subscribe.
+  - name: Ethereum
+    description: Ethereum mainnet and testnet WebSocket subscriptions.
+  - name: Polygon
+    description: Polygon PoS WebSocket subscriptions.
+  - name: Arbitrum
+    description: Arbitrum WebSocket subscriptions.
+  - name: Optimism
+    description: Optimism WebSocket subscriptions.
+  - name: Base
+    description: Base WebSocket subscriptions including Flashblocks preconfirmations.
+  - name: Avalanche
+    description: Avalanche C-Chain WebSocket subscriptions.
+  - name: Gnosis
+    description: Gnosis Chain WebSocket subscriptions.
+  - name: Ronin
+    description: Ronin WebSocket subscriptions.
+  - name: Hyperliquid
+    description: Hyperliquid HyperEVM WebSocket subscriptions.
+  - name: Monad
+    description: Monad WebSocket subscriptions including monadNewHeads lifecycle stream.
+  - name: Solana
+    description: Solana WebSocket pub/sub subscriptions.
+  - name: Subscribe
+    description: Channels that initiate a JSON-RPC subscription.
+  - name: Unsubscribe
+    description: Channels that cancel an existing JSON-RPC subscription.
+  - name: Notification
+    description: Server-pushed subscription notifications.
+
+channels:
+
+  # ---------------------------------------------------------------------------
+  # Ethereum eth_subscribe
+  # https://docs.chainstack.com/reference/ethereum-subscribenewblockheaders
+  # https://docs.chainstack.com/reference/ethereum-subscribelogs
+  # https://docs.chainstack.com/reference/ethereum-subscribependingtransactions
+  # https://docs.chainstack.com/reference/ethereum-subscribesyncing
+  # https://docs.chainstack.com/reference/ethereum-native-subscribe-newheads
+  # https://docs.chainstack.com/reference/ethereum-native-subscribe-logs
+  # https://docs.chainstack.com/reference/ethereum-native-subscribe-newpendingtransactions
+  # https://docs.chainstack.com/reference/ethereum-native-unsubscribe
+  # ---------------------------------------------------------------------------
+  ethereum/eth_subscribe/newHeads:
+    description: Subscribe to new Ethereum block headers via WebSocket. Server pushes one notification per new canonical block.
+    publish:
+      operationId: ethereumSubscribeNewHeads
+      summary: Subscribe to newHeads on Ethereum
+      tags:
+        - name: Ethereum
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewHeadsRequest'
+    subscribe:
+      operationId: ethereumNewHeadsNotification
+      summary: Receive Ethereum newHeads notifications
+      tags:
+        - name: Ethereum
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionNewHeadsNotification'
+
+  ethereum/eth_subscribe/logs:
+    description: Subscribe to Ethereum event logs matching an optional address/topics filter.
+    publish:
+      operationId: ethereumSubscribeLogs
+      summary: Subscribe to logs on Ethereum
+      tags:
+        - name: Ethereum
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeLogsRequest'
+    subscribe:
+      operationId: ethereumLogsNotification
+      summary: Receive Ethereum logs notifications
+      tags:
+        - name: Ethereum
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  ethereum/eth_subscribe/newPendingTransactions:
+    description: Subscribe to the hash (or full body) of every new pending transaction entering the Ethereum mempool.
+    publish:
+      operationId: ethereumSubscribeNewPendingTransactions
+      summary: Subscribe to newPendingTransactions on Ethereum
+      tags:
+        - name: Ethereum
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewPendingTransactionsRequest'
+    subscribe:
+      operationId: ethereumNewPendingTransactionsNotification
+      summary: Receive Ethereum newPendingTransactions notifications
+      tags:
+        - name: Ethereum
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionPendingTxNotification'
+
+  ethereum/eth_subscribe/syncing:
+    description: Subscribe to Ethereum node syncing status. Pushes a sync object while syncing; pushes `false` once synced.
+    publish:
+      operationId: ethereumSubscribeSyncing
+      summary: Subscribe to syncing on Ethereum
+      tags:
+        - name: Ethereum
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeSyncingRequest'
+    subscribe:
+      operationId: ethereumSyncingNotification
+      summary: Receive Ethereum syncing notifications
+      tags:
+        - name: Ethereum
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionSyncingNotification'
+
+  ethereum/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on an Ethereum node.
+    publish:
+      operationId: ethereumUnsubscribe
+      summary: Cancel an Ethereum subscription
+      tags:
+        - name: Ethereum
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Polygon eth_subscribe
+  # https://docs.chainstack.com/reference/polygon-subscribenewblockheaders
+  # https://docs.chainstack.com/reference/polygon-subscribelogs
+  # https://docs.chainstack.com/reference/polygon-subscribependingtransactions
+  # https://docs.chainstack.com/reference/polygon-subscribesyncing
+  # https://docs.chainstack.com/reference/polygon-native-subscribe-newheads
+  # https://docs.chainstack.com/reference/polygon-native-subscribe-logs
+  # https://docs.chainstack.com/reference/polygon-native-subscribe-newpendingtransactions
+  # https://docs.chainstack.com/reference/polygon-native-unsubscribe
+  # ---------------------------------------------------------------------------
+  polygon/eth_subscribe/newHeads:
+    description: Subscribe to new Polygon PoS block headers via WebSocket.
+    publish:
+      operationId: polygonSubscribeNewHeads
+      summary: Subscribe to newHeads on Polygon
+      tags:
+        - name: Polygon
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewHeadsRequest'
+    subscribe:
+      operationId: polygonNewHeadsNotification
+      summary: Receive Polygon newHeads notifications
+      tags:
+        - name: Polygon
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionNewHeadsNotification'
+
+  polygon/eth_subscribe/logs:
+    description: Subscribe to Polygon event logs matching an optional address/topics filter.
+    publish:
+      operationId: polygonSubscribeLogs
+      summary: Subscribe to logs on Polygon
+      tags:
+        - name: Polygon
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeLogsRequest'
+    subscribe:
+      operationId: polygonLogsNotification
+      summary: Receive Polygon logs notifications
+      tags:
+        - name: Polygon
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  polygon/eth_subscribe/newPendingTransactions:
+    description: Subscribe to new pending transactions in the Polygon mempool.
+    publish:
+      operationId: polygonSubscribeNewPendingTransactions
+      summary: Subscribe to newPendingTransactions on Polygon
+      tags:
+        - name: Polygon
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewPendingTransactionsRequest'
+    subscribe:
+      operationId: polygonNewPendingTransactionsNotification
+      summary: Receive Polygon newPendingTransactions notifications
+      tags:
+        - name: Polygon
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionPendingTxNotification'
+
+  polygon/eth_subscribe/syncing:
+    description: Subscribe to Polygon node syncing status.
+    publish:
+      operationId: polygonSubscribeSyncing
+      summary: Subscribe to syncing on Polygon
+      tags:
+        - name: Polygon
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeSyncingRequest'
+    subscribe:
+      operationId: polygonSyncingNotification
+      summary: Receive Polygon syncing notifications
+      tags:
+        - name: Polygon
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionSyncingNotification'
+
+  polygon/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on a Polygon node.
+    publish:
+      operationId: polygonUnsubscribe
+      summary: Cancel a Polygon subscription
+      tags:
+        - name: Polygon
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Arbitrum eth_subscribe
+  # https://docs.chainstack.com/reference/arbitrum-subscribenewblockheaders
+  # https://docs.chainstack.com/reference/arbitrum-subscribelogs
+  # https://docs.chainstack.com/reference/arbitrum-subscribesyncing
+  # https://docs.chainstack.com/reference/arbitrum-native-subscribe-newheads
+  # https://docs.chainstack.com/reference/arbitrum-native-subscribe-logs
+  # https://docs.chainstack.com/reference/arbitrum-native-unsubscribe
+  # ---------------------------------------------------------------------------
+  arbitrum/eth_subscribe/newHeads:
+    description: Subscribe to new Arbitrum block headers via WebSocket.
+    publish:
+      operationId: arbitrumSubscribeNewHeads
+      summary: Subscribe to newHeads on Arbitrum
+      tags:
+        - name: Arbitrum
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewHeadsRequest'
+    subscribe:
+      operationId: arbitrumNewHeadsNotification
+      summary: Receive Arbitrum newHeads notifications
+      tags:
+        - name: Arbitrum
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionNewHeadsNotification'
+
+  arbitrum/eth_subscribe/logs:
+    description: Subscribe to Arbitrum event logs matching an optional address/topics filter.
+    publish:
+      operationId: arbitrumSubscribeLogs
+      summary: Subscribe to logs on Arbitrum
+      tags:
+        - name: Arbitrum
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeLogsRequest'
+    subscribe:
+      operationId: arbitrumLogsNotification
+      summary: Receive Arbitrum logs notifications
+      tags:
+        - name: Arbitrum
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  arbitrum/eth_subscribe/syncing:
+    description: Subscribe to Arbitrum node syncing status.
+    publish:
+      operationId: arbitrumSubscribeSyncing
+      summary: Subscribe to syncing on Arbitrum
+      tags:
+        - name: Arbitrum
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeSyncingRequest'
+    subscribe:
+      operationId: arbitrumSyncingNotification
+      summary: Receive Arbitrum syncing notifications
+      tags:
+        - name: Arbitrum
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionSyncingNotification'
+
+  arbitrum/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on an Arbitrum node.
+    publish:
+      operationId: arbitrumUnsubscribe
+      summary: Cancel an Arbitrum subscription
+      tags:
+        - name: Arbitrum
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Optimism eth_subscribe
+  # https://docs.chainstack.com/reference/optimism-subscribenewheads
+  # https://docs.chainstack.com/reference/optimism-subscribelogs
+  # https://docs.chainstack.com/reference/optimism-unsubscribe
+  # ---------------------------------------------------------------------------
+  optimism/eth_subscribe/newHeads:
+    description: Subscribe to new Optimism block headers via WebSocket.
+    publish:
+      operationId: optimismSubscribeNewHeads
+      summary: Subscribe to newHeads on Optimism
+      tags:
+        - name: Optimism
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewHeadsRequest'
+    subscribe:
+      operationId: optimismNewHeadsNotification
+      summary: Receive Optimism newHeads notifications
+      tags:
+        - name: Optimism
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionNewHeadsNotification'
+
+  optimism/eth_subscribe/logs:
+    description: Subscribe to Optimism event logs matching an optional address/topics filter.
+    publish:
+      operationId: optimismSubscribeLogs
+      summary: Subscribe to logs on Optimism
+      tags:
+        - name: Optimism
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeLogsRequest'
+    subscribe:
+      operationId: optimismLogsNotification
+      summary: Receive Optimism logs notifications
+      tags:
+        - name: Optimism
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  optimism/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on an Optimism node.
+    publish:
+      operationId: optimismUnsubscribe
+      summary: Cancel an Optimism subscription
+      tags:
+        - name: Optimism
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Base eth_subscribe (including Flashblocks preconfirmations)
+  # https://docs.chainstack.com/reference/base-subscribe-newflashblocks
+  # https://docs.chainstack.com/reference/base-subscribe-newflashblocktransactions
+  # https://docs.chainstack.com/reference/base-subscribe-pendinglogs
+  # https://docs.chainstack.com/reference/base-unsubscribe
+  # ---------------------------------------------------------------------------
+  base/eth_subscribe/newFlashblocks:
+    description: |
+      Subscribe to Chainstack Base Flashblocks preconfirmations. Streams a block snapshot
+      approximately every 200 ms while a block is forming. The snapshot's `hash` and
+      `stateRoot` are zero until the block is finalized.
+    publish:
+      operationId: baseSubscribeNewFlashblocks
+      summary: Subscribe to newFlashblocks on Base
+      tags:
+        - name: Base
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/BaseSubscribeNewFlashblocksRequest'
+    subscribe:
+      operationId: baseNewFlashblocksNotification
+      summary: Receive Base newFlashblocks notifications
+      tags:
+        - name: Base
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionFlashblockNotification'
+
+  base/eth_subscribe/newFlashblockTransactions:
+    description: |
+      Subscribe to transactions inside Base Flashblocks preconfirmations. The optional
+      boolean parameter `true` requests full transaction objects (and associated logs)
+      in each notification; otherwise minimal data is returned.
+    publish:
+      operationId: baseSubscribeNewFlashblockTransactions
+      summary: Subscribe to newFlashblockTransactions on Base
+      tags:
+        - name: Base
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/BaseSubscribeNewFlashblockTransactionsRequest'
+    subscribe:
+      operationId: baseNewFlashblockTransactionsNotification
+      summary: Receive Base newFlashblockTransactions notifications
+      tags:
+        - name: Base
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionFlashblockTxNotification'
+
+  base/eth_subscribe/pendingLogs:
+    description: |
+      Subscribe to event logs emitted by pre-confirmed Flashblock transactions on Base.
+      Delivered roughly every 200 ms over WebSocket and filtered by address/topics.
+    publish:
+      operationId: baseSubscribePendingLogs
+      summary: Subscribe to pendingLogs on Base
+      tags:
+        - name: Base
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/BaseSubscribePendingLogsRequest'
+    subscribe:
+      operationId: basePendingLogsNotification
+      summary: Receive Base pendingLogs notifications
+      tags:
+        - name: Base
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  base/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on a Base node.
+    publish:
+      operationId: baseUnsubscribe
+      summary: Cancel a Base subscription
+      tags:
+        - name: Base
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Avalanche eth_subscribe
+  # https://docs.chainstack.com/reference/avalanche-subscribenewblockheaders
+  # https://docs.chainstack.com/reference/avalanche-subscribelogs
+  # https://docs.chainstack.com/reference/avalanche-subscribependingtransactions
+  # https://docs.chainstack.com/reference/avalanche-subscribesyncing
+  # https://docs.chainstack.com/reference/avalanche-native-subscribe-newheads
+  # https://docs.chainstack.com/reference/avalanche-native-subscribe-logs
+  # https://docs.chainstack.com/reference/avalanche-native-subscribe-newpendingtransactions
+  # https://docs.chainstack.com/reference/avalanche-native-unsubscribe
+  # ---------------------------------------------------------------------------
+  avalanche/eth_subscribe/newHeads:
+    description: Subscribe to new Avalanche C-Chain block headers via WebSocket.
+    publish:
+      operationId: avalancheSubscribeNewHeads
+      summary: Subscribe to newHeads on Avalanche
+      tags:
+        - name: Avalanche
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewHeadsRequest'
+    subscribe:
+      operationId: avalancheNewHeadsNotification
+      summary: Receive Avalanche newHeads notifications
+      tags:
+        - name: Avalanche
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionNewHeadsNotification'
+
+  avalanche/eth_subscribe/logs:
+    description: Subscribe to Avalanche event logs matching an optional address/topics filter.
+    publish:
+      operationId: avalancheSubscribeLogs
+      summary: Subscribe to logs on Avalanche
+      tags:
+        - name: Avalanche
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeLogsRequest'
+    subscribe:
+      operationId: avalancheLogsNotification
+      summary: Receive Avalanche logs notifications
+      tags:
+        - name: Avalanche
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  avalanche/eth_subscribe/newPendingTransactions:
+    description: Subscribe to new pending transactions in the Avalanche mempool.
+    publish:
+      operationId: avalancheSubscribeNewPendingTransactions
+      summary: Subscribe to newPendingTransactions on Avalanche
+      tags:
+        - name: Avalanche
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewPendingTransactionsRequest'
+    subscribe:
+      operationId: avalancheNewPendingTransactionsNotification
+      summary: Receive Avalanche newPendingTransactions notifications
+      tags:
+        - name: Avalanche
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionPendingTxNotification'
+
+  avalanche/eth_subscribe/syncing:
+    description: Subscribe to Avalanche node syncing status.
+    publish:
+      operationId: avalancheSubscribeSyncing
+      summary: Subscribe to syncing on Avalanche
+      tags:
+        - name: Avalanche
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeSyncingRequest'
+    subscribe:
+      operationId: avalancheSyncingNotification
+      summary: Receive Avalanche syncing notifications
+      tags:
+        - name: Avalanche
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionSyncingNotification'
+
+  avalanche/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on an Avalanche node.
+    publish:
+      operationId: avalancheUnsubscribe
+      summary: Cancel an Avalanche subscription
+      tags:
+        - name: Avalanche
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Gnosis eth_subscribe
+  # https://docs.chainstack.com/reference/gnosis-subscribenewblockheaders
+  # https://docs.chainstack.com/reference/gnosis-subscribelogs
+  # https://docs.chainstack.com/reference/gnosis-subscribependingtransactions
+  # https://docs.chainstack.com/reference/gnosis-subscribesyncing
+  # https://docs.chainstack.com/reference/gnosis-native-subscribe-newheads
+  # https://docs.chainstack.com/reference/gnosis-native-subscribe-logs
+  # https://docs.chainstack.com/reference/gnosis-native-subscribe-newpendingtransactions
+  # https://docs.chainstack.com/reference/gnosis-native-unsubscribe
+  # ---------------------------------------------------------------------------
+  gnosis/eth_subscribe/newHeads:
+    description: Subscribe to new Gnosis Chain block headers via WebSocket.
+    publish:
+      operationId: gnosisSubscribeNewHeads
+      summary: Subscribe to newHeads on Gnosis
+      tags:
+        - name: Gnosis
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewHeadsRequest'
+    subscribe:
+      operationId: gnosisNewHeadsNotification
+      summary: Receive Gnosis newHeads notifications
+      tags:
+        - name: Gnosis
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionNewHeadsNotification'
+
+  gnosis/eth_subscribe/logs:
+    description: Subscribe to Gnosis Chain event logs matching an optional address/topics filter.
+    publish:
+      operationId: gnosisSubscribeLogs
+      summary: Subscribe to logs on Gnosis
+      tags:
+        - name: Gnosis
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeLogsRequest'
+    subscribe:
+      operationId: gnosisLogsNotification
+      summary: Receive Gnosis logs notifications
+      tags:
+        - name: Gnosis
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  gnosis/eth_subscribe/newPendingTransactions:
+    description: Subscribe to new pending transactions in the Gnosis Chain mempool.
+    publish:
+      operationId: gnosisSubscribeNewPendingTransactions
+      summary: Subscribe to newPendingTransactions on Gnosis
+      tags:
+        - name: Gnosis
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewPendingTransactionsRequest'
+    subscribe:
+      operationId: gnosisNewPendingTransactionsNotification
+      summary: Receive Gnosis newPendingTransactions notifications
+      tags:
+        - name: Gnosis
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionPendingTxNotification'
+
+  gnosis/eth_subscribe/syncing:
+    description: Subscribe to Gnosis Chain node syncing status.
+    publish:
+      operationId: gnosisSubscribeSyncing
+      summary: Subscribe to syncing on Gnosis
+      tags:
+        - name: Gnosis
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeSyncingRequest'
+    subscribe:
+      operationId: gnosisSyncingNotification
+      summary: Receive Gnosis syncing notifications
+      tags:
+        - name: Gnosis
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionSyncingNotification'
+
+  gnosis/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on a Gnosis Chain node.
+    publish:
+      operationId: gnosisUnsubscribe
+      summary: Cancel a Gnosis subscription
+      tags:
+        - name: Gnosis
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Ronin eth_subscribe
+  # https://docs.chainstack.com/reference/ronin-subscribenewheads
+  # https://docs.chainstack.com/reference/ronin-subscribelogs
+  # https://docs.chainstack.com/reference/ronin-subscribenewpendingtransactions
+  # https://docs.chainstack.com/reference/ronin-unsubscribe
+  # ---------------------------------------------------------------------------
+  ronin/eth_subscribe/newHeads:
+    description: Subscribe to new Ronin block headers via WebSocket.
+    publish:
+      operationId: roninSubscribeNewHeads
+      summary: Subscribe to newHeads on Ronin
+      tags:
+        - name: Ronin
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewHeadsRequest'
+    subscribe:
+      operationId: roninNewHeadsNotification
+      summary: Receive Ronin newHeads notifications
+      tags:
+        - name: Ronin
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionNewHeadsNotification'
+
+  ronin/eth_subscribe/logs:
+    description: Subscribe to Ronin event logs matching an optional address/topics filter.
+    publish:
+      operationId: roninSubscribeLogs
+      summary: Subscribe to logs on Ronin
+      tags:
+        - name: Ronin
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeLogsRequest'
+    subscribe:
+      operationId: roninLogsNotification
+      summary: Receive Ronin logs notifications
+      tags:
+        - name: Ronin
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  ronin/eth_subscribe/newPendingTransactions:
+    description: Subscribe to new pending transactions in the Ronin mempool.
+    publish:
+      operationId: roninSubscribeNewPendingTransactions
+      summary: Subscribe to newPendingTransactions on Ronin
+      tags:
+        - name: Ronin
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewPendingTransactionsRequest'
+    subscribe:
+      operationId: roninNewPendingTransactionsNotification
+      summary: Receive Ronin newPendingTransactions notifications
+      tags:
+        - name: Ronin
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionPendingTxNotification'
+
+  ronin/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on a Ronin node.
+    publish:
+      operationId: roninUnsubscribe
+      summary: Cancel a Ronin subscription
+      tags:
+        - name: Ronin
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Hyperliquid EVM eth_subscribe
+  # https://docs.chainstack.com/reference/hyperliquid-evm-eth-subscribe-newheads
+  # https://docs.chainstack.com/reference/hyperliquid-evm-eth-subscribe-logs
+  # https://docs.chainstack.com/reference/hyperliquid-evm-eth-subscribe-syncing
+  # https://docs.chainstack.com/reference/hyperliquid-evm-eth-unsubscribe
+  # ---------------------------------------------------------------------------
+  hyperliquid/eth_subscribe/newHeads:
+    description: Subscribe to new HyperEVM block headers via WebSocket.
+    publish:
+      operationId: hyperliquidSubscribeNewHeads
+      summary: Subscribe to newHeads on Hyperliquid HyperEVM
+      tags:
+        - name: Hyperliquid
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeNewHeadsRequest'
+    subscribe:
+      operationId: hyperliquidNewHeadsNotification
+      summary: Receive Hyperliquid newHeads notifications
+      tags:
+        - name: Hyperliquid
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionNewHeadsNotification'
+
+  hyperliquid/eth_subscribe/logs:
+    description: Subscribe to HyperEVM event logs matching an optional address/topics filter.
+    publish:
+      operationId: hyperliquidSubscribeLogs
+      summary: Subscribe to logs on Hyperliquid HyperEVM
+      tags:
+        - name: Hyperliquid
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeLogsRequest'
+    subscribe:
+      operationId: hyperliquidLogsNotification
+      summary: Receive Hyperliquid logs notifications
+      tags:
+        - name: Hyperliquid
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionLogNotification'
+
+  hyperliquid/eth_subscribe/syncing:
+    description: Subscribe to HyperEVM node syncing status.
+    publish:
+      operationId: hyperliquidSubscribeSyncing
+      summary: Subscribe to syncing on Hyperliquid HyperEVM
+      tags:
+        - name: Hyperliquid
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/EthSubscribeSyncingRequest'
+    subscribe:
+      operationId: hyperliquidSyncingNotification
+      summary: Receive Hyperliquid syncing notifications
+      tags:
+        - name: Hyperliquid
+        - name: Notification
+      message:
+        $ref: '#/components/messages/EthSubscriptionSyncingNotification'
+
+  hyperliquid/eth_unsubscribe:
+    description: Cancel any active eth_subscribe subscription on a HyperEVM node.
+    publish:
+      operationId: hyperliquidUnsubscribe
+      summary: Cancel a Hyperliquid HyperEVM subscription
+      tags:
+        - name: Hyperliquid
+        - name: EVM
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/EthUnsubscribeRequest'
+
+  # ---------------------------------------------------------------------------
+  # Monad eth_subscribe (chain-specific monadNewHeads)
+  # https://docs.chainstack.com/reference/monad-subscribe-monadnewheads
+  # ---------------------------------------------------------------------------
+  monad/eth_subscribe/monadNewHeads:
+    description: |
+      Subscribe to Monad block headers via the consensus lifecycle. Each notification
+      includes a `blockId` and `commitState` (Proposed / Voted / Finalized / Verified).
+      The same block number may appear multiple times as its `commitState` advances.
+      Typically delivers roughly one second ahead of the standard `newHeads` event.
+    publish:
+      operationId: monadSubscribeMonadNewHeads
+      summary: Subscribe to monadNewHeads on Monad
+      tags:
+        - name: Monad
+        - name: EVM
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/MonadSubscribeMonadNewHeadsRequest'
+    subscribe:
+      operationId: monadMonadNewHeadsNotification
+      summary: Receive Monad monadNewHeads notifications
+      tags:
+        - name: Monad
+        - name: Notification
+      message:
+        $ref: '#/components/messages/MonadSubscriptionMonadNewHeadsNotification'
+
+  # ---------------------------------------------------------------------------
+  # Solana WebSocket pub/sub
+  # https://docs.chainstack.com/reference/accountsubscribe-solana
+  # https://docs.chainstack.com/reference/programsubscribe-solana
+  # https://docs.chainstack.com/reference/logssubscribe-solana
+  # https://docs.chainstack.com/reference/signaturesubscribe-solana
+  # https://docs.chainstack.com/reference/slotsubscribe-solana
+  # https://docs.chainstack.com/reference/slotsupdatessubscribe-solana
+  # https://docs.chainstack.com/reference/blocksubscribe-solana
+  # https://docs.chainstack.com/reference/rootsubscribe-solana
+  # https://docs.chainstack.com/reference/accountunsubscribe-solana
+  # https://docs.chainstack.com/reference/programunsubscribe-solana
+  # https://docs.chainstack.com/reference/logsunsubscribe-solana
+  # https://docs.chainstack.com/reference/signatureunsubscribe-solana
+  # https://docs.chainstack.com/reference/slotunsubscribe-solana
+  # https://docs.chainstack.com/reference/slotsupdatesunsubscribe-solana
+  # https://docs.chainstack.com/reference/blockunsubscribe-solana
+  # https://docs.chainstack.com/reference/rootunsubscribe-solana
+  # ---------------------------------------------------------------------------
+  solana/accountSubscribe:
+    description: Subscribe to changes on a single Solana account.
+    publish:
+      operationId: solanaAccountSubscribe
+      summary: Subscribe to a Solana account
+      tags:
+        - name: Solana
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/SolanaAccountSubscribeRequest'
+    subscribe:
+      operationId: solanaAccountNotification
+      summary: Receive Solana account change notifications
+      tags:
+        - name: Solana
+        - name: Notification
+      message:
+        $ref: '#/components/messages/SolanaAccountNotification'
+
+  solana/accountUnsubscribe:
+    description: Cancel an existing accountSubscribe subscription.
+    publish:
+      operationId: solanaAccountUnsubscribe
+      summary: Cancel a Solana accountSubscribe
+      tags:
+        - name: Solana
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/SolanaUnsubscribeRequest'
+
+  solana/programSubscribe:
+    description: Subscribe to changes on all accounts owned by a Solana program.
+    publish:
+      operationId: solanaProgramSubscribe
+      summary: Subscribe to a Solana program
+      tags:
+        - name: Solana
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/SolanaProgramSubscribeRequest'
+    subscribe:
+      operationId: solanaProgramNotification
+      summary: Receive Solana program-owned account notifications
+      tags:
+        - name: Solana
+        - name: Notification
+      message:
+        $ref: '#/components/messages/SolanaProgramNotification'
+
+  solana/programUnsubscribe:
+    description: Cancel an existing programSubscribe subscription.
+    publish:
+      operationId: solanaProgramUnsubscribe
+      summary: Cancel a Solana programSubscribe
+      tags:
+        - name: Solana
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/SolanaUnsubscribeRequest'
+
+  solana/logsSubscribe:
+    description: Subscribe to transaction logs on Solana, optionally filtered by mentioned accounts.
+    publish:
+      operationId: solanaLogsSubscribe
+      summary: Subscribe to Solana logs
+      tags:
+        - name: Solana
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/SolanaLogsSubscribeRequest'
+    subscribe:
+      operationId: solanaLogsNotification
+      summary: Receive Solana logs notifications
+      tags:
+        - name: Solana
+        - name: Notification
+      message:
+        $ref: '#/components/messages/SolanaLogsNotification'
+
+  solana/logsUnsubscribe:
+    description: Cancel an existing logsSubscribe subscription.
+    publish:
+      operationId: solanaLogsUnsubscribe
+      summary: Cancel a Solana logsSubscribe
+      tags:
+        - name: Solana
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/SolanaUnsubscribeRequest'
+
+  solana/signatureSubscribe:
+    description: Subscribe to status changes for a specific transaction signature.
+    publish:
+      operationId: solanaSignatureSubscribe
+      summary: Subscribe to a Solana transaction signature
+      tags:
+        - name: Solana
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/SolanaSignatureSubscribeRequest'
+    subscribe:
+      operationId: solanaSignatureNotification
+      summary: Receive Solana signature notifications
+      tags:
+        - name: Solana
+        - name: Notification
+      message:
+        $ref: '#/components/messages/SolanaSignatureNotification'
+
+  solana/signatureUnsubscribe:
+    description: Cancel an existing signatureSubscribe subscription.
+    publish:
+      operationId: solanaSignatureUnsubscribe
+      summary: Cancel a Solana signatureSubscribe
+      tags:
+        - name: Solana
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/SolanaUnsubscribeRequest'
+
+  solana/slotSubscribe:
+    description: Subscribe to notifications about new Solana slots being processed by the validator.
+    publish:
+      operationId: solanaSlotSubscribe
+      summary: Subscribe to Solana slots
+      tags:
+        - name: Solana
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/SolanaSlotSubscribeRequest'
+    subscribe:
+      operationId: solanaSlotNotification
+      summary: Receive Solana slot notifications
+      tags:
+        - name: Solana
+        - name: Notification
+      message:
+        $ref: '#/components/messages/SolanaSlotNotification'
+
+  solana/slotUnsubscribe:
+    description: Cancel an existing slotSubscribe subscription.
+    publish:
+      operationId: solanaSlotUnsubscribe
+      summary: Cancel a Solana slotSubscribe
+      tags:
+        - name: Solana
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/SolanaUnsubscribeRequest'
+
+  solana/slotsUpdatesSubscribe:
+    description: Subscribe to detailed slot update notifications (first shred received, completed, created bank, frozen, optimistically confirmed, root).
+    publish:
+      operationId: solanaSlotsUpdatesSubscribe
+      summary: Subscribe to Solana slots updates
+      tags:
+        - name: Solana
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/SolanaSlotsUpdatesSubscribeRequest'
+    subscribe:
+      operationId: solanaSlotsUpdatesNotification
+      summary: Receive Solana slots updates notifications
+      tags:
+        - name: Solana
+        - name: Notification
+      message:
+        $ref: '#/components/messages/SolanaSlotsUpdatesNotification'
+
+  solana/slotsUpdatesUnsubscribe:
+    description: Cancel an existing slotsUpdatesSubscribe subscription.
+    publish:
+      operationId: solanaSlotsUpdatesUnsubscribe
+      summary: Cancel a Solana slotsUpdatesSubscribe
+      tags:
+        - name: Solana
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/SolanaUnsubscribeRequest'
+
+  solana/blockSubscribe:
+    description: |
+      Subscribe to confirmed Solana blocks. Available on Chainstack Solana Mainnet
+      and Devnet (per the Chainstack August 15, 2024 release).
+    publish:
+      operationId: solanaBlockSubscribe
+      summary: Subscribe to Solana blocks
+      tags:
+        - name: Solana
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/SolanaBlockSubscribeRequest'
+    subscribe:
+      operationId: solanaBlockNotification
+      summary: Receive Solana block notifications
+      tags:
+        - name: Solana
+        - name: Notification
+      message:
+        $ref: '#/components/messages/SolanaBlockNotification'
+
+  solana/blockUnsubscribe:
+    description: Cancel an existing blockSubscribe subscription.
+    publish:
+      operationId: solanaBlockUnsubscribe
+      summary: Cancel a Solana blockSubscribe
+      tags:
+        - name: Solana
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/SolanaUnsubscribeRequest'
+
+  solana/rootSubscribe:
+    description: Subscribe to root slot notifications (rooted slot number + estimated production timestamp).
+    publish:
+      operationId: solanaRootSubscribe
+      summary: Subscribe to Solana root slots
+      tags:
+        - name: Solana
+        - name: Subscribe
+      message:
+        $ref: '#/components/messages/SolanaRootSubscribeRequest'
+    subscribe:
+      operationId: solanaRootNotification
+      summary: Receive Solana root notifications
+      tags:
+        - name: Solana
+        - name: Notification
+      message:
+        $ref: '#/components/messages/SolanaRootNotification'
+
+  solana/rootUnsubscribe:
+    description: Cancel an existing rootSubscribe subscription.
+    publish:
+      operationId: solanaRootUnsubscribe
+      summary: Cancel a Solana rootSubscribe
+      tags:
+        - name: Solana
+        - name: Unsubscribe
+      message:
+        $ref: '#/components/messages/SolanaUnsubscribeRequest'
+
+components:
+
+  messages:
+
+    # =========================================================================
+    # JSON-RPC subscription requests - EVM
+    # =========================================================================
+
+    EthSubscribeNewHeadsRequest:
+      name: ethSubscribeNewHeads
+      title: eth_subscribe ("newHeads") request
+      summary: JSON-RPC 2.0 request to subscribe to new block headers.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscribeNewHeadsRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            id: 1
+            jsonrpc: '2.0'
+            method: eth_subscribe
+            params:
+              - newHeads
+
+    EthSubscribeLogsRequest:
+      name: ethSubscribeLogs
+      title: eth_subscribe ("logs") request
+      summary: JSON-RPC 2.0 request to subscribe to event logs matching an address/topics filter.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscribeLogsRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: eth_subscribe
+            params:
+              - logs
+              - address: '0x4d224452801ACEd8B2F0aebE155379bb5D594381'
+                topics:
+                  - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+
+    EthSubscribeNewPendingTransactionsRequest:
+      name: ethSubscribeNewPendingTransactions
+      title: eth_subscribe ("newPendingTransactions") request
+      summary: JSON-RPC 2.0 request to subscribe to new pending transactions.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscribeNewPendingTransactionsRequest'
+      examples:
+        - name: HashesOnly
+          payload:
+            id: 1
+            jsonrpc: '2.0'
+            method: eth_subscribe
+            params:
+              - newPendingTransactions
+        - name: FullTransactionObjects
+          payload:
+            id: 1
+            jsonrpc: '2.0'
+            method: eth_subscribe
+            params:
+              - newPendingTransactions
+              - true
+
+    EthSubscribeSyncingRequest:
+      name: ethSubscribeSyncing
+      title: eth_subscribe ("syncing") request
+      summary: JSON-RPC 2.0 request to subscribe to node sync status changes.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscribeSyncingRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            id: 1
+            jsonrpc: '2.0'
+            method: eth_subscribe
+            params:
+              - syncing
+
+    EthUnsubscribeRequest:
+      name: ethUnsubscribe
+      title: eth_unsubscribe request
+      summary: JSON-RPC 2.0 request to cancel an existing subscription.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthUnsubscribeRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            id: 1
+            jsonrpc: '2.0'
+            method: eth_unsubscribe
+            params:
+              - '0x9cef478923ff08bf67fde6c64013158d'
+
+    BaseSubscribeNewFlashblocksRequest:
+      name: baseSubscribeNewFlashblocks
+      title: eth_subscribe ("newFlashblocks") request (Base)
+      summary: Subscribe to Chainstack Base Flashblocks preconfirmation snapshots (~200 ms cadence).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/BaseSubscribeNewFlashblocksRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: eth_subscribe
+            params:
+              - newFlashblocks
+
+    BaseSubscribeNewFlashblockTransactionsRequest:
+      name: baseSubscribeNewFlashblockTransactions
+      title: eth_subscribe ("newFlashblockTransactions") request (Base)
+      summary: Subscribe to transactions inside Base Flashblocks preconfirmations.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/BaseSubscribeNewFlashblockTransactionsRequest'
+      examples:
+        - name: MinimalData
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: eth_subscribe
+            params:
+              - newFlashblockTransactions
+        - name: FullTransactionObjects
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: eth_subscribe
+            params:
+              - newFlashblockTransactions
+              - true
+
+    BaseSubscribePendingLogsRequest:
+      name: baseSubscribePendingLogs
+      title: eth_subscribe ("pendingLogs") request (Base)
+      summary: Subscribe to event logs from pre-confirmed Flashblock transactions on Base.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/BaseSubscribePendingLogsRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: eth_subscribe
+            params:
+              - pendingLogs
+              - address: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+                topics:
+                  - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+
+    MonadSubscribeMonadNewHeadsRequest:
+      name: monadSubscribeMonadNewHeads
+      title: eth_subscribe ("monadNewHeads") request (Monad)
+      summary: Subscribe to Monad block headers across the consensus lifecycle.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/MonadSubscribeMonadNewHeadsRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            id: 1
+            jsonrpc: '2.0'
+            method: eth_subscribe
+            params:
+              - monadNewHeads
+
+    # =========================================================================
+    # JSON-RPC subscription notifications - EVM
+    # =========================================================================
+
+    EthSubscriptionNewHeadsNotification:
+      name: ethSubscriptionNewHeads
+      title: eth_subscription notification (newHeads)
+      summary: Push notification carrying a new block header.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscriptionNewHeadsNotification'
+
+    EthSubscriptionLogNotification:
+      name: ethSubscriptionLog
+      title: eth_subscription notification (logs / pendingLogs)
+      summary: Push notification carrying an event log.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscriptionLogNotification'
+
+    EthSubscriptionPendingTxNotification:
+      name: ethSubscriptionPendingTx
+      title: eth_subscription notification (newPendingTransactions)
+      summary: Push notification carrying a pending transaction hash or full transaction object.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscriptionPendingTxNotification'
+
+    EthSubscriptionSyncingNotification:
+      name: ethSubscriptionSyncing
+      title: eth_subscription notification (syncing)
+      summary: Push notification carrying a sync status object or `false`.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscriptionSyncingNotification'
+
+    EthSubscriptionFlashblockNotification:
+      name: ethSubscriptionFlashblock
+      title: eth_subscription notification (newFlashblocks)
+      summary: Push notification carrying a Base Flashblocks block-in-progress snapshot.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscriptionFlashblockNotification'
+
+    EthSubscriptionFlashblockTxNotification:
+      name: ethSubscriptionFlashblockTx
+      title: eth_subscription notification (newFlashblockTransactions)
+      summary: Push notification carrying a transaction included in a Base Flashblocks preconfirmation.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EthSubscriptionFlashblockTxNotification'
+
+    MonadSubscriptionMonadNewHeadsNotification:
+      name: monadSubscriptionMonadNewHeads
+      title: eth_subscription notification (monadNewHeads)
+      summary: Push notification carrying a Monad block header tagged with its commitState.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/MonadSubscriptionMonadNewHeadsNotification'
+
+    # =========================================================================
+    # JSON-RPC subscription requests - Solana
+    # =========================================================================
+
+    SolanaAccountSubscribeRequest:
+      name: solanaAccountSubscribe
+      title: accountSubscribe request (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaAccountSubscribeRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: accountSubscribe
+            params:
+              - 39azUYFWPz3VHgKCf3VChUwbpURdCHRxjWVowf5jUJjg
+              - encoding: jsonParsed
+                commitment: finalized
+
+    SolanaProgramSubscribeRequest:
+      name: solanaProgramSubscribe
+      title: programSubscribe request (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaProgramSubscribeRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: programSubscribe
+            params:
+              - 6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P
+              - encoding: jsonParsed
+                commitment: finalized
+
+    SolanaLogsSubscribeRequest:
+      name: solanaLogsSubscribe
+      title: logsSubscribe request (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaLogsSubscribeRequest'
+      examples:
+        - name: AllLogs
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: logsSubscribe
+            params:
+              - all
+        - name: FilteredByMentions
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: logsSubscribe
+            params:
+              - mentions:
+                  - 11111111111111111111111111111111
+              - commitment: finalized
+
+    SolanaSignatureSubscribeRequest:
+      name: solanaSignatureSubscribe
+      title: signatureSubscribe request (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaSignatureSubscribeRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: signatureSubscribe
+            params:
+              - 5h7iN3JmJzVtL4UTQHkxnhq8Pj3eNm9DvLwTQqgxwjNT9PqXJ8mCgUgFb1m4kK
+              - commitment: finalized
+                enableReceivedNotification: true
+
+    SolanaSlotSubscribeRequest:
+      name: solanaSlotSubscribe
+      title: slotSubscribe request (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaSlotSubscribeRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: slotSubscribe
+
+    SolanaSlotsUpdatesSubscribeRequest:
+      name: solanaSlotsUpdatesSubscribe
+      title: slotsUpdatesSubscribe request (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaSlotsUpdatesSubscribeRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: slotsUpdatesSubscribe
+
+    SolanaBlockSubscribeRequest:
+      name: solanaBlockSubscribe
+      title: blockSubscribe request (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaBlockSubscribeRequest'
+      examples:
+        - name: ByProgramMention
+          payload:
+            jsonrpc: '2.0'
+            id: '1'
+            method: blockSubscribe
+            params:
+              - mentionsAccountOrProgram: 6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P
+              - commitment: confirmed
+                encoding: base64
+
+    SolanaRootSubscribeRequest:
+      name: solanaRootSubscribe
+      title: rootSubscribe request (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaRootSubscribeRequest'
+      examples:
+        - name: BasicRequest
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: rootSubscribe
+
+    SolanaUnsubscribeRequest:
+      name: solanaUnsubscribe
+      title: Solana unsubscribe request
+      summary: Cancel an existing Solana subscription by ID. The method name varies (accountUnsubscribe, programUnsubscribe, logsUnsubscribe, signatureUnsubscribe, slotUnsubscribe, slotsUpdatesUnsubscribe, blockUnsubscribe, rootUnsubscribe).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaUnsubscribeRequest'
+      examples:
+        - name: AccountUnsubscribe
+          payload:
+            jsonrpc: '2.0'
+            id: 1
+            method: accountUnsubscribe
+            params:
+              - 0
+
+    # =========================================================================
+    # JSON-RPC subscription notifications - Solana
+    # =========================================================================
+
+    SolanaAccountNotification:
+      name: solanaAccountNotification
+      title: accountNotification (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaAccountNotification'
+
+    SolanaProgramNotification:
+      name: solanaProgramNotification
+      title: programNotification (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaProgramNotification'
+
+    SolanaLogsNotification:
+      name: solanaLogsNotification
+      title: logsNotification (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaLogsNotification'
+
+    SolanaSignatureNotification:
+      name: solanaSignatureNotification
+      title: signatureNotification (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaSignatureNotification'
+
+    SolanaSlotNotification:
+      name: solanaSlotNotification
+      title: slotNotification (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaSlotNotification'
+
+    SolanaSlotsUpdatesNotification:
+      name: solanaSlotsUpdatesNotification
+      title: slotsUpdatesNotification (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaSlotsUpdatesNotification'
+
+    SolanaBlockNotification:
+      name: solanaBlockNotification
+      title: blockNotification (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaBlockNotification'
+
+    SolanaRootNotification:
+      name: solanaRootNotification
+      title: rootNotification (Solana)
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SolanaRootNotification'
+
+  schemas:
+
+    # =========================================================================
+    # JSON-RPC envelopes
+    # =========================================================================
+
+    JsonRpcRequestEnvelope:
+      type: object
+      description: Common JSON-RPC 2.0 request envelope used by every Chainstack RPC subscription channel.
+      required:
+        - jsonrpc
+        - method
+      properties:
+        jsonrpc:
+          type: string
+          enum: ['2.0']
+          default: '2.0'
+        id:
+          oneOf:
+            - type: integer
+            - type: string
+          description: Client-chosen identifier echoed in the JSON-RPC response.
+          default: 1
+        method:
+          type: string
+          description: JSON-RPC method name (e.g. eth_subscribe, eth_unsubscribe, accountSubscribe).
+        params:
+          type: array
+          description: Method parameters; structure depends on the method.
+
+    JsonRpcSubscribeResponse:
+      type: object
+      description: JSON-RPC 2.0 response returned immediately after a subscribe call. The `result` is the subscription ID used to correlate subsequent push notifications and to issue an unsubscribe.
+      required:
+        - jsonrpc
+        - id
+      properties:
+        jsonrpc:
+          type: string
+          enum: ['2.0']
+        id:
+          oneOf:
+            - type: integer
+            - type: string
+        result:
+          description: Subscription ID. EVM endpoints return a hex string; Solana endpoints return an integer.
+          oneOf:
+            - type: string
+              pattern: '^0x[0-9a-fA-F]+$'
+            - type: integer
+
+    JsonRpcUnsubscribeResponse:
+      type: object
+      description: JSON-RPC 2.0 response returned after an unsubscribe call. `result` is `true` if the subscription was found and cancelled.
+      required:
+        - jsonrpc
+        - id
+      properties:
+        jsonrpc:
+          type: string
+          enum: ['2.0']
+        id:
+          oneOf:
+            - type: integer
+            - type: string
+        result:
+          type: boolean
+
+    # =========================================================================
+    # EVM eth_subscribe request payloads
+    # =========================================================================
+
+    EthSubscribeNewHeadsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_subscribe
+              default: eth_subscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                type: string
+                enum: ['newHeads']
+
+    EthSubscribeLogsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_subscribe
+              default: eth_subscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    enum: ['logs']
+                  - type: object
+                    description: Log filter for the subscription.
+                    properties:
+                      address:
+                        oneOf:
+                          - type: string
+                            description: Single contract address.
+                          - type: array
+                            items:
+                              type: string
+                      topics:
+                        type: array
+                        description: |
+                          Up to four 32-byte topics. Each element may be a string (exact match),
+                          null (wildcard), or an array of strings (OR-match).
+                        items:
+                          oneOf:
+                            - type: string
+                            - type: 'null'
+                            - type: array
+                              items:
+                                type: string
+
+    EthSubscribeNewPendingTransactionsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_subscribe
+              default: eth_subscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    enum: ['newPendingTransactions']
+                  - type: boolean
+                    description: When `true`, push the full transaction object instead of just the hash.
+
+    EthSubscribeSyncingRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_subscribe
+              default: eth_subscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                type: string
+                enum: ['syncing']
+
+    EthUnsubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_unsubscribe
+              default: eth_unsubscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                type: string
+                description: Subscription ID to cancel (hex string).
+                pattern: '^0x[0-9a-fA-F]+$'
+
+    BaseSubscribeNewFlashblocksRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_subscribe
+              default: eth_subscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                type: string
+                enum: ['newFlashblocks']
+
+    BaseSubscribeNewFlashblockTransactionsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_subscribe
+              default: eth_subscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    enum: ['newFlashblockTransactions']
+                  - type: boolean
+                    description: When `true`, include complete transaction objects and associated logs in each notification.
+
+    BaseSubscribePendingLogsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_subscribe
+              default: eth_subscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    enum: ['pendingLogs']
+                  - type: object
+                    properties:
+                      address:
+                        oneOf:
+                          - type: string
+                          - type: array
+                            items:
+                              type: string
+                      topics:
+                        type: array
+                        items:
+                          oneOf:
+                            - type: string
+                            - type: 'null'
+                            - type: array
+                              items:
+                                type: string
+
+    MonadSubscribeMonadNewHeadsRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: eth_subscribe
+              default: eth_subscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                type: string
+                enum: ['monadNewHeads']
+
+    # =========================================================================
+    # EVM eth_subscription notification payloads
+    # =========================================================================
+
+    EthSubscriptionNotificationEnvelope:
+      type: object
+      description: |
+        Common envelope used for every eth_subscribe push notification. The server emits
+        a JSON-RPC 2.0 "notification" (no `id`) with method `eth_subscription` and a
+        `params` object containing the originating `subscription` ID and a `result` payload.
+      required:
+        - jsonrpc
+        - method
+        - params
+      properties:
+        jsonrpc:
+          type: string
+          enum: ['2.0']
+        method:
+          type: string
+          const: eth_subscription
+        params:
+          type: object
+          required:
+            - subscription
+          properties:
+            subscription:
+              type: string
+              description: Subscription ID that this notification belongs to.
+              pattern: '^0x[0-9a-fA-F]+$'
+            result:
+              description: Payload specific to the subscription type.
+
+    EthBlockHeader:
+      type: object
+      description: Ethereum block header pushed by newHeads.
+      properties:
+        number:
+          type: string
+          description: Block number, hex-encoded.
+        hash:
+          type: string
+          description: Block hash.
+        parentHash:
+          type: string
+        nonce:
+          type: string
+        sha3Uncles:
+          type: string
+        logsBloom:
+          type: string
+        transactionsRoot:
+          type: string
+        stateRoot:
+          type: string
+        receiptsRoot:
+          type: string
+        miner:
+          type: string
+        difficulty:
+          type: string
+        totalDifficulty:
+          type: string
+        extraData:
+          type: string
+        size:
+          type: string
+        gasLimit:
+          type: string
+        gasUsed:
+          type: string
+        timestamp:
+          type: string
+        baseFeePerGas:
+          type: string
+        mixHash:
+          type: string
+        withdrawalsRoot:
+          type: string
+        blobGasUsed:
+          type: string
+        excessBlobGas:
+          type: string
+        parentBeaconBlockRoot:
+          type: string
+
+    EthLog:
+      type: object
+      description: Ethereum event log pushed by logs.
+      properties:
+        removed:
+          type: boolean
+        logIndex:
+          type: string
+        transactionIndex:
+          type: string
+        transactionHash:
+          type: string
+        blockHash:
+          type: string
+        blockNumber:
+          type: string
+        address:
+          type: string
+        data:
+          type: string
+        topics:
+          type: array
+          items:
+            type: string
+
+    EthTransaction:
+      type: object
+      description: Ethereum transaction object (subset of fields).
+      properties:
+        hash:
+          type: string
+        nonce:
+          type: string
+        blockHash:
+          type: string
+          nullable: true
+        blockNumber:
+          type: string
+          nullable: true
+        transactionIndex:
+          type: string
+          nullable: true
+        from:
+          type: string
+        to:
+          type: string
+          nullable: true
+        value:
+          type: string
+        gas:
+          type: string
+        gasPrice:
+          type: string
+        maxFeePerGas:
+          type: string
+        maxPriorityFeePerGas:
+          type: string
+        input:
+          type: string
+        type:
+          type: string
+        chainId:
+          type: string
+        accessList:
+          type: array
+          items:
+            type: object
+        v:
+          type: string
+        r:
+          type: string
+        s:
+          type: string
+
+    EthSyncStatus:
+      description: |
+        While the node is syncing, the value is an object containing sync progress.
+        Once fully synced, the value becomes `false`.
+      oneOf:
+        - type: boolean
+          enum: [false]
+        - type: object
+          properties:
+            syncing:
+              type: boolean
+            status:
+              type: object
+              properties:
+                startingBlock:
+                  type: string
+                currentBlock:
+                  type: string
+                highestBlock:
+                  type: string
+                pulledStates:
+                  type: string
+                knownStates:
+                  type: string
+
+    EthSubscriptionNewHeadsNotification:
+      allOf:
+        - $ref: '#/components/schemas/EthSubscriptionNotificationEnvelope'
+        - type: object
+          properties:
+            params:
+              type: object
+              properties:
+                result:
+                  $ref: '#/components/schemas/EthBlockHeader'
+
+    EthSubscriptionLogNotification:
+      allOf:
+        - $ref: '#/components/schemas/EthSubscriptionNotificationEnvelope'
+        - type: object
+          properties:
+            params:
+              type: object
+              properties:
+                result:
+                  $ref: '#/components/schemas/EthLog'
+
+    EthSubscriptionPendingTxNotification:
+      allOf:
+        - $ref: '#/components/schemas/EthSubscriptionNotificationEnvelope'
+        - type: object
+          properties:
+            params:
+              type: object
+              properties:
+                result:
+                  description: A pending transaction hash (default) or full transaction object (when subscribed with `true`).
+                  oneOf:
+                    - type: string
+                    - $ref: '#/components/schemas/EthTransaction'
+
+    EthSubscriptionSyncingNotification:
+      allOf:
+        - $ref: '#/components/schemas/EthSubscriptionNotificationEnvelope'
+        - type: object
+          properties:
+            params:
+              type: object
+              properties:
+                result:
+                  $ref: '#/components/schemas/EthSyncStatus'
+
+    EthSubscriptionFlashblockNotification:
+      allOf:
+        - $ref: '#/components/schemas/EthSubscriptionNotificationEnvelope'
+        - type: object
+          properties:
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  description: |
+                    Base Flashblocks block snapshot. While the block is still forming,
+                    `hash` and `stateRoot` are returned as 0x0000...0000.
+                  properties:
+                    hash:
+                      type: string
+                    parentHash:
+                      type: string
+                    stateRoot:
+                      type: string
+                    number:
+                      type: string
+                    timestamp:
+                      type: string
+                    gasUsed:
+                      type: string
+                    gasLimit:
+                      type: string
+                    baseFeePerGas:
+                      type: string
+                    miner:
+                      type: string
+                    transactions:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/EthTransaction'
+
+    EthSubscriptionFlashblockTxNotification:
+      allOf:
+        - $ref: '#/components/schemas/EthSubscriptionNotificationEnvelope'
+        - type: object
+          properties:
+            params:
+              type: object
+              properties:
+                result:
+                  oneOf:
+                    - type: string
+                      description: Pre-confirmed transaction hash (default).
+                    - type: object
+                      description: Full pre-confirmed transaction object with associated logs (when subscribed with `true`).
+                      properties:
+                        transaction:
+                          $ref: '#/components/schemas/EthTransaction'
+                        logs:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/EthLog'
+
+    MonadSubscriptionMonadNewHeadsNotification:
+      allOf:
+        - $ref: '#/components/schemas/EthSubscriptionNotificationEnvelope'
+        - type: object
+          properties:
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  description: |
+                    Monad block header tagged with the consensus lifecycle stage of the proposal.
+                    The same block number may appear multiple times as `commitState` advances.
+                  properties:
+                    blockId:
+                      type: string
+                      description: Unique identifier for the specific block proposal.
+                    commitState:
+                      type: string
+                      enum: [Proposed, Voted, Finalized, Verified]
+                      description: Current lifecycle stage of the block.
+                    number:
+                      type: string
+                    hash:
+                      type: string
+                    parentHash:
+                      type: string
+                    timestamp:
+                      type: string
+                    gasUsed:
+                      type: string
+                    gasLimit:
+                      type: string
+                    miner:
+                      type: string
+
+    # =========================================================================
+    # Solana subscription request payloads
+    # =========================================================================
+
+    SolanaCommitment:
+      type: string
+      enum: [processed, confirmed, finalized]
+      default: finalized
+      description: Solana state-query commitment level.
+
+    SolanaEncoding:
+      type: string
+      enum: [base58, base64, base64+zstd, jsonParsed]
+      description: Encoding used for the account or transaction data payload.
+
+    SolanaAccountSubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: accountSubscribe
+              default: accountSubscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    description: Base-58 account public key.
+                  - type: object
+                    properties:
+                      encoding:
+                        $ref: '#/components/schemas/SolanaEncoding'
+                      commitment:
+                        $ref: '#/components/schemas/SolanaCommitment'
+
+    SolanaProgramSubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: programSubscribe
+              default: programSubscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    description: Base-58 program ID public key.
+                  - type: object
+                    properties:
+                      encoding:
+                        $ref: '#/components/schemas/SolanaEncoding'
+                      commitment:
+                        $ref: '#/components/schemas/SolanaCommitment'
+                      filters:
+                        type: array
+                        description: memcmp or dataSize filters.
+                        items:
+                          type: object
+
+    SolanaLogsSubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: logsSubscribe
+              default: logsSubscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    enum: ['all']
+                  - type: object
+                    properties:
+                      mentions:
+                        type: array
+                        items:
+                          type: string
+                          description: Base-58 public key to filter on.
+                  - type: object
+                    properties:
+                      commitment:
+                        $ref: '#/components/schemas/SolanaCommitment'
+
+    SolanaSignatureSubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: signatureSubscribe
+              default: signatureSubscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    description: Base-58 transaction signature.
+                  - type: object
+                    properties:
+                      commitment:
+                        $ref: '#/components/schemas/SolanaCommitment'
+                      enableReceivedNotification:
+                        type: boolean
+                        default: false
+
+    SolanaSlotSubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+          properties:
+            method:
+              type: string
+              const: slotSubscribe
+              default: slotSubscribe
+
+    SolanaSlotsUpdatesSubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+          properties:
+            method:
+              type: string
+              const: slotsUpdatesSubscribe
+              default: slotsUpdatesSubscribe
+
+    SolanaBlockSubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              const: blockSubscribe
+              default: blockSubscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 2
+              items:
+                anyOf:
+                  - type: string
+                    enum: ['all']
+                  - type: object
+                    properties:
+                      mentionsAccountOrProgram:
+                        type: string
+                        description: Base-58 account or program public key to filter on.
+                      slot:
+                        type: integer
+                        description: Starting slot number for block notifications.
+                  - type: object
+                    properties:
+                      commitment:
+                        $ref: '#/components/schemas/SolanaCommitment'
+                      encoding:
+                        type: string
+                        enum: [json, jsonParsed, base58, base64]
+                      transactionDetails:
+                        type: string
+                        enum: [full, accounts, signatures, none]
+                      showRewards:
+                        type: boolean
+                      maxSupportedTransactionVersion:
+                        type: integer
+
+    SolanaRootSubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+          properties:
+            method:
+              type: string
+              const: rootSubscribe
+              default: rootSubscribe
+
+    SolanaUnsubscribeRequest:
+      allOf:
+        - $ref: '#/components/schemas/JsonRpcRequestEnvelope'
+        - type: object
+          required:
+            - method
+            - params
+          properties:
+            method:
+              type: string
+              enum:
+                - accountUnsubscribe
+                - programUnsubscribe
+                - logsUnsubscribe
+                - signatureUnsubscribe
+                - slotUnsubscribe
+                - slotsUpdatesUnsubscribe
+                - blockUnsubscribe
+                - rootUnsubscribe
+            params:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                type: integer
+                description: Subscription ID returned by the corresponding subscribe call.
+
+    # =========================================================================
+    # Solana notification payloads
+    # =========================================================================
+
+    SolanaNotificationEnvelope:
+      type: object
+      description: |
+        Common envelope used by every Solana subscription push notification. The server
+        emits a JSON-RPC 2.0 notification (no `id`) whose `method` matches the originating
+        subscription (e.g. accountNotification, programNotification, slotNotification).
+      required:
+        - jsonrpc
+        - method
+        - params
+      properties:
+        jsonrpc:
+          type: string
+          enum: ['2.0']
+        method:
+          type: string
+          description: Notification method name (e.g. accountNotification, programNotification, logsNotification, signatureNotification, slotNotification, slotsUpdatesNotification, blockNotification, rootNotification).
+        params:
+          type: object
+          required:
+            - subscription
+          properties:
+            subscription:
+              type: integer
+              description: Subscription ID that this notification belongs to.
+            result:
+              description: Notification payload (shape depends on the originating subscription).
+
+    SolanaContext:
+      type: object
+      properties:
+        slot:
+          type: integer
+
+    SolanaAccount:
+      type: object
+      properties:
+        lamports:
+          type: integer
+        owner:
+          type: string
+        data:
+          description: Account data, encoded per the subscription's encoding option.
+          oneOf:
+            - type: array
+              items:
+                type: string
+            - type: object
+            - type: string
+        executable:
+          type: boolean
+        rentEpoch:
+          type: integer
+
+    SolanaAccountNotification:
+      allOf:
+        - $ref: '#/components/schemas/SolanaNotificationEnvelope'
+        - type: object
+          properties:
+            method:
+              type: string
+              const: accountNotification
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    context:
+                      $ref: '#/components/schemas/SolanaContext'
+                    value:
+                      $ref: '#/components/schemas/SolanaAccount'
+
+    SolanaProgramNotification:
+      allOf:
+        - $ref: '#/components/schemas/SolanaNotificationEnvelope'
+        - type: object
+          properties:
+            method:
+              type: string
+              const: programNotification
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    context:
+                      $ref: '#/components/schemas/SolanaContext'
+                    value:
+                      type: object
+                      properties:
+                        pubkey:
+                          type: string
+                        account:
+                          $ref: '#/components/schemas/SolanaAccount'
+
+    SolanaLogsNotification:
+      allOf:
+        - $ref: '#/components/schemas/SolanaNotificationEnvelope'
+        - type: object
+          properties:
+            method:
+              type: string
+              const: logsNotification
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    context:
+                      $ref: '#/components/schemas/SolanaContext'
+                    value:
+                      type: object
+                      properties:
+                        signature:
+                          type: string
+                        err:
+                          nullable: true
+                          oneOf:
+                            - type: object
+                            - type: string
+                        logs:
+                          type: array
+                          items:
+                            type: string
+
+    SolanaSignatureNotification:
+      allOf:
+        - $ref: '#/components/schemas/SolanaNotificationEnvelope'
+        - type: object
+          properties:
+            method:
+              type: string
+              const: signatureNotification
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    context:
+                      $ref: '#/components/schemas/SolanaContext'
+                    value:
+                      type: object
+                      properties:
+                        err:
+                          nullable: true
+                          oneOf:
+                            - type: object
+                            - type: string
+
+    SolanaSlotNotification:
+      allOf:
+        - $ref: '#/components/schemas/SolanaNotificationEnvelope'
+        - type: object
+          properties:
+            method:
+              type: string
+              const: slotNotification
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    parent:
+                      type: integer
+                    root:
+                      type: integer
+                    slot:
+                      type: integer
+
+    SolanaSlotsUpdatesNotification:
+      allOf:
+        - $ref: '#/components/schemas/SolanaNotificationEnvelope'
+        - type: object
+          properties:
+            method:
+              type: string
+              const: slotsUpdatesNotification
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    parent:
+                      type: integer
+                    slot:
+                      type: integer
+                    timestamp:
+                      type: integer
+                    type:
+                      type: string
+                      enum:
+                        - firstShredReceived
+                        - completed
+                        - createdBank
+                        - frozen
+                        - dead
+                        - optimisticConfirmation
+                        - root
+
+    SolanaBlockNotification:
+      allOf:
+        - $ref: '#/components/schemas/SolanaNotificationEnvelope'
+        - type: object
+          properties:
+            method:
+              type: string
+              const: blockNotification
+            params:
+              type: object
+              properties:
+                result:
+                  type: object
+                  properties:
+                    context:
+                      $ref: '#/components/schemas/SolanaContext'
+                    value:
+                      type: object
+                      properties:
+                        slot:
+                          type: integer
+                        err:
+                          nullable: true
+                          oneOf:
+                            - type: object
+                            - type: string
+                        block:
+                          type: object
+                          properties:
+                            blockhash:
+                              type: string
+                            previousBlockhash:
+                              type: string
+                            parentSlot:
+                              type: integer
+                            blockTime:
+                              type: integer
+                              nullable: true
+                            blockHeight:
+                              type: integer
+                              nullable: true
+                            transactions:
+                              type: array
+                              items:
+                                type: object
+
+    SolanaRootNotification:
+      allOf:
+        - $ref: '#/components/schemas/SolanaNotificationEnvelope'
+        - type: object
+          properties:
+            method:
+              type: string
+              const: rootNotification
+            params:
+              type: object
+              properties:
+                result:
+                  type: integer
+                  description: Newly rooted slot number.
+
+  securitySchemes:
+    nodeAccessKey:
+      type: httpApiKey
+      description: |
+        Chainstack node access keys are embedded directly in the WebSocket URL path
+        (`wss://<host>/<auth_key>`). Authentication is therefore handled at the URL
+        layer rather than via HTTP headers — there is no Bearer or basic-auth header
+        for the WebSocket session itself.
+      in: query
+      name: auth_key
