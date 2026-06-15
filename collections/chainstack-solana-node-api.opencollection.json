@@ -1,0 +1,798 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Solana Node API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getAccountInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAccountInfo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getAccountInfo"
+        },
+        {
+          "info": {
+            "name": "getBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getBalance"
+        },
+        {
+          "info": {
+            "name": "getBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getBlock"
+        },
+        {
+          "info": {
+            "name": "getBlockCommitment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockCommitment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getBlockCommitment"
+        },
+        {
+          "info": {
+            "name": "getBlockHeight",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockHeight",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getBlockHeight"
+        },
+        {
+          "info": {
+            "name": "getBlockProduction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockProduction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getBlockProduction"
+        },
+        {
+          "info": {
+            "name": "getBlockTime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockTime",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getBlockTime"
+        },
+        {
+          "info": {
+            "name": "getBlocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlocks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getBlocks"
+        },
+        {
+          "info": {
+            "name": "getBlocksWithLimit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlocksWithLimit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getBlocksWithLimit"
+        },
+        {
+          "info": {
+            "name": "getClusterNodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getClusterNodes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getClusterNodes"
+        },
+        {
+          "info": {
+            "name": "getEpochInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getEpochInfo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getEpochInfo"
+        },
+        {
+          "info": {
+            "name": "getEpochSchedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getEpochSchedule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getEpochSchedule"
+        },
+        {
+          "info": {
+            "name": "getFeeForMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getFeeForMessage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getFeeForMessage"
+        },
+        {
+          "info": {
+            "name": "getFirstAvailableBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getFirstAvailableBlock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getFirstAvailableBlock"
+        },
+        {
+          "info": {
+            "name": "getGenesisHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getGenesisHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getGenesisHash"
+        },
+        {
+          "info": {
+            "name": "getHealth",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getHealth",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getHealth"
+        },
+        {
+          "info": {
+            "name": "getHighestSnapshotSlot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getHighestSnapshotSlot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getHighestSnapshotSlot"
+        },
+        {
+          "info": {
+            "name": "getIdentity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getIdentity",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getIdentity"
+        },
+        {
+          "info": {
+            "name": "getInflationGovernor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getInflationGovernor",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getInflationGovernor"
+        },
+        {
+          "info": {
+            "name": "getInflationRate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getInflationRate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getInflationRate"
+        },
+        {
+          "info": {
+            "name": "getInflationReward",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getInflationReward",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getInflationReward"
+        },
+        {
+          "info": {
+            "name": "getLargestAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getLargestAccounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getLargestAccounts"
+        },
+        {
+          "info": {
+            "name": "getLatestBlockhash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getLatestBlockhash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getLatestBlockhash"
+        },
+        {
+          "info": {
+            "name": "getLeaderSchedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getLeaderSchedule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getLeaderSchedule"
+        },
+        {
+          "info": {
+            "name": "getMaxRetransmitSlot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMaxRetransmitSlot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getMaxRetransmitSlot"
+        },
+        {
+          "info": {
+            "name": "getMaxShredInsertSlot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMaxShredInsertSlot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getMaxShredInsertSlot"
+        },
+        {
+          "info": {
+            "name": "getMinimumBalanceForRentExemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMinimumBalanceForRentExemption",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getMinimumBalanceForRentExemption"
+        },
+        {
+          "info": {
+            "name": "getMultipleAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMultipleAccounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getMultipleAccounts"
+        },
+        {
+          "info": {
+            "name": "getProgramAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getProgramAccounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getProgramAccounts"
+        },
+        {
+          "info": {
+            "name": "getRecentBlockhash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getRecentBlockhash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getRecentBlockhash"
+        },
+        {
+          "info": {
+            "name": "getRecentPerformanceSamples",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getRecentPerformanceSamples",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getRecentPerformanceSamples"
+        },
+        {
+          "info": {
+            "name": "getRecentPrioritizationFees",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getRecentPrioritizationFees",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getRecentPrioritizationFees"
+        },
+        {
+          "info": {
+            "name": "getSignatureStatuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSignatureStatuses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getSignatureStatuses"
+        },
+        {
+          "info": {
+            "name": "getSignaturesForAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSignaturesForAddress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getSignaturesForAddress"
+        },
+        {
+          "info": {
+            "name": "getSlot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSlot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getSlot"
+        },
+        {
+          "info": {
+            "name": "getSlotLeader",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSlotLeader",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getSlotLeader"
+        },
+        {
+          "info": {
+            "name": "getSlotLeaders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSlotLeaders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getSlotLeaders"
+        },
+        {
+          "info": {
+            "name": "getStakeMinimumDelegation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getStakeMinimumDelegation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getStakeMinimumDelegation"
+        },
+        {
+          "info": {
+            "name": "getSupply",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSupply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getSupply"
+        },
+        {
+          "info": {
+            "name": "getTokenAccountBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTokenAccountBalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getTokenAccountBalance"
+        },
+        {
+          "info": {
+            "name": "getTokenAccountsByDelegate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTokenAccountsByDelegate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getTokenAccountsByDelegate"
+        },
+        {
+          "info": {
+            "name": "getTokenAccountsByOwner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTokenAccountsByOwner",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getTokenAccountsByOwner"
+        },
+        {
+          "info": {
+            "name": "getTokenLargestAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTokenLargestAccounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getTokenLargestAccounts"
+        },
+        {
+          "info": {
+            "name": "getTokenSupply",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTokenSupply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getTokenSupply"
+        },
+        {
+          "info": {
+            "name": "getTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getTransaction"
+        },
+        {
+          "info": {
+            "name": "getTransactionCount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTransactionCount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getTransactionCount"
+        },
+        {
+          "info": {
+            "name": "getVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getVersion",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getVersion"
+        },
+        {
+          "info": {
+            "name": "getVoteAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getVoteAccounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "getVoteAccounts"
+        },
+        {
+          "info": {
+            "name": "isBlockhashValid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/isBlockhashValid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "isBlockhashValid"
+        },
+        {
+          "info": {
+            "name": "minimumLedgerSlot",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/minimumLedgerSlot",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "minimumLedgerSlot"
+        },
+        {
+          "info": {
+            "name": "sendTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/sendTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "sendTransaction"
+        },
+        {
+          "info": {
+            "name": "simulateTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/simulateTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "simulateTransaction"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

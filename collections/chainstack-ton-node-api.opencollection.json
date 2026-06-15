@@ -1,0 +1,1679 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack TON Node API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "detectAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/detectAddress",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to detect"
+              }
+            ]
+          },
+          "docs": "detectAddress"
+        },
+        {
+          "info": {
+            "name": "estimateFee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/estimateFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "estimateFee"
+        },
+        {
+          "info": {
+            "name": "getAddressBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAddressBalance",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get the balance for"
+              }
+            ]
+          },
+          "docs": "getAddressBalance"
+        },
+        {
+          "info": {
+            "name": "getAddressInformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAddressInformation",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get information for"
+              }
+            ]
+          },
+          "docs": "getAddressInformation"
+        },
+        {
+          "info": {
+            "name": "getAddressState",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAddressState",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get the state for"
+              }
+            ]
+          },
+          "docs": "getAddressState"
+        },
+        {
+          "info": {
+            "name": "getBlockHeader",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockHeader",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              }
+            ]
+          },
+          "docs": "getBlockHeader"
+        },
+        {
+          "info": {
+            "name": "getBlockTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockTransactions",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              },
+              {
+                "name": "count",
+                "value": "40",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              }
+            ]
+          },
+          "docs": "getBlockTransactions"
+        },
+        {
+          "info": {
+            "name": "getBlockTransactionsExt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockTransactionsExt",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              },
+              {
+                "name": "count",
+                "value": "40",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              }
+            ]
+          },
+          "docs": "getBlockTransactionsExt"
+        },
+        {
+          "info": {
+            "name": "getConfigParam",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getConfigParam",
+            "params": [
+              {
+                "name": "config_id",
+                "value": "5",
+                "type": "query",
+                "description": "The ID of the configuration parameter to retrieve"
+              }
+            ]
+          },
+          "docs": "getConfigParam"
+        },
+        {
+          "info": {
+            "name": "getConsensusBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getConsensusBlock"
+          },
+          "docs": "getConsensusBlock"
+        },
+        {
+          "info": {
+            "name": "getExtendedAddressInformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getExtendedAddressInformation",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get extended information for"
+              }
+            ]
+          },
+          "docs": "getExtendedAddressInformation"
+        },
+        {
+          "info": {
+            "name": "getMasterchainBlockSignatures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMasterchainBlockSignatures",
+            "params": [
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the masterchain block"
+              }
+            ]
+          },
+          "docs": "getMasterchainBlockSignatures"
+        },
+        {
+          "info": {
+            "name": "getMasterchainInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMasterchainInfo"
+          },
+          "docs": "getMasterchainInfo"
+        },
+        {
+          "info": {
+            "name": "getShardBlockProof",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getShardBlockProof",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              }
+            ]
+          },
+          "docs": "getShardBlockProof"
+        },
+        {
+          "info": {
+            "name": "getTokenData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTokenData",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
+                "type": "query",
+                "description": "The address of the token contract"
+              }
+            ]
+          },
+          "docs": "getTokenData"
+        },
+        {
+          "info": {
+            "name": "getTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTransactions",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get transactions for"
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              },
+              {
+                "name": "to_lt",
+                "value": "0",
+                "type": "query",
+                "description": "The logical time to start the search from (0 means from the latest)"
+              },
+              {
+                "name": "archival",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to use archival node for the query"
+              }
+            ]
+          },
+          "docs": "getTransactions"
+        },
+        {
+          "info": {
+            "name": "getWalletInformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getWalletInformation",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get wallet information for"
+              }
+            ]
+          },
+          "docs": "getWalletInformation"
+        },
+        {
+          "info": {
+            "name": "Jsonrpc Handler",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonRPC",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "All methods in the API are available through JSON-RPC protocol ([spec](https://www.jsonrpc.org/specification))."
+        },
+        {
+          "info": {
+            "name": "lookupBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/lookupBlock",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              }
+            ]
+          },
+          "docs": "lookupBlock"
+        },
+        {
+          "info": {
+            "name": "packAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/packAddress",
+            "params": [
+              {
+                "name": "address",
+                "value": "0:ed1691307050047117b998b561d8de82d31fbf84910ced6eb5fc92e7485ef8a7",
+                "type": "query",
+                "description": "The raw address to pack"
+              }
+            ]
+          },
+          "docs": "packAddress"
+        },
+        {
+          "info": {
+            "name": "runGetMethod",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/runGetMethod",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "runGetMethod"
+        },
+        {
+          "info": {
+            "name": "sendBoc",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/sendBoc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "sendBoc"
+        },
+        {
+          "info": {
+            "name": "sendBocReturnHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/sendBocReturnHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "sendBocReturnHash"
+        },
+        {
+          "info": {
+            "name": "sendQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/sendQuery",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "sendQuery"
+        },
+        {
+          "info": {
+            "name": "Shards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shards",
+            "params": [
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the masterchain block"
+              }
+            ]
+          },
+          "docs": "Shards"
+        },
+        {
+          "info": {
+            "name": "tryLocateResultTx",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/tryLocateResultTx",
+            "params": [
+              {
+                "name": "source",
+                "value": "UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1",
+                "type": "query",
+                "description": "The source address of the original transaction"
+              },
+              {
+                "name": "destination",
+                "value": "UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA",
+                "type": "query",
+                "description": "The destination address of the original transaction"
+              },
+              {
+                "name": "created_lt",
+                "value": "47597573000002",
+                "type": "query",
+                "description": "The logical time when the original transaction was created"
+              }
+            ]
+          },
+          "docs": "tryLocateResultTx"
+        },
+        {
+          "info": {
+            "name": "tryLocateSourceTx",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/tryLocateSourceTx",
+            "params": [
+              {
+                "name": "source",
+                "value": "UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1",
+                "type": "query",
+                "description": "The source address of the result transaction"
+              },
+              {
+                "name": "destination",
+                "value": "UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA",
+                "type": "query",
+                "description": "The destination address of the result transaction"
+              },
+              {
+                "name": "created_lt",
+                "value": "47597573000002",
+                "type": "query",
+                "description": "The logical time when the result transaction was created"
+              }
+            ]
+          },
+          "docs": "tryLocateSourceTx"
+        },
+        {
+          "info": {
+            "name": "tryLocateTx",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/tryLocateTx",
+            "params": [
+              {
+                "name": "source",
+                "value": "UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1",
+                "type": "query",
+                "description": "The source address of the transaction"
+              },
+              {
+                "name": "destination",
+                "value": "UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA",
+                "type": "query",
+                "description": "The destination address of the transaction"
+              },
+              {
+                "name": "created_lt",
+                "value": "47597573000002",
+                "type": "query",
+                "description": "The logical time when the transaction was created"
+              }
+            ]
+          },
+          "docs": "tryLocateTx"
+        },
+        {
+          "info": {
+            "name": "unpackAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/unpackAddress",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The user-friendly address to unpack"
+              }
+            ]
+          },
+          "docs": "unpackAddress"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "V3",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Account Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAccountInfo",
+            "params": [
+              {
+                "name": "address",
+                "value": "Ef-1JetbPF9ubc1ga-57oHoOyDA1IShJt-BVlJnA9rrVTfrB",
+                "type": "query",
+                "description": "The address of the account to retrieve information for"
+              }
+            ]
+          },
+          "docs": "Retrieves information about a specific account on the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Account States",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAccountStates",
+            "params": [
+              {
+                "name": "account_address",
+                "value": "",
+                "type": "query",
+                "description": "Account address to query"
+              },
+              {
+                "name": "include_boc",
+                "value": "",
+                "type": "query",
+                "description": "Include account state BoC in response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of states to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of states to skip"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Query account states with historical data"
+        },
+        {
+          "info": {
+            "name": "Get Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getActions",
+            "params": [
+              {
+                "name": "action_id",
+                "value": "",
+                "type": "query",
+                "description": "Action ID to filter by"
+              },
+              {
+                "name": "trace_id",
+                "value": "",
+                "type": "query",
+                "description": "Trace ID to get actions for"
+              },
+              {
+                "name": "tx_hash",
+                "value": "",
+                "type": "query",
+                "description": "Transaction hash to get actions for"
+              },
+              {
+                "name": "tx_lt",
+                "value": "",
+                "type": "query",
+                "description": "Transaction logical time"
+              },
+              {
+                "name": "account",
+                "value": "",
+                "type": "query",
+                "description": "Filter by account address"
+              },
+              {
+                "name": "action_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by action type (e.g., JettonTransfer, NftItemTransfer)"
+              },
+              {
+                "name": "start_utime",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (unix timestamp)"
+              },
+              {
+                "name": "end_utime",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (unix timestamp)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of actions to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of actions to skip"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Retrieves decoded actions from transactions"
+        },
+        {
+          "info": {
+            "name": "Get Address Book Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAddressBookInfo",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "The address to look up in the address book"
+              }
+            ]
+          },
+          "docs": "Retrieves information about an address from the address book"
+        },
+        {
+          "info": {
+            "name": "Get Adjacent Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAdjacentTransactions",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "The hash of the reference transaction"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction of adjacent transactions to retrieve"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of transactions to skip before starting to return results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting order of the transactions"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of transactions adjacent to a specific transaction"
+        },
+        {
+          "info": {
+            "name": "Get Blocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlocks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of blocks to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of blocks to skip before starting to return results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting order of the blocks"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of blocks from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getEvents",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "query",
+                "description": "Filter by account address"
+              },
+              {
+                "name": "start_utime",
+                "value": "",
+                "type": "query",
+                "description": "Start of time range (unix timestamp)"
+              },
+              {
+                "name": "end_utime",
+                "value": "",
+                "type": "query",
+                "description": "End of time range (unix timestamp)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of events to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of events to skip"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Query blockchain events with decoded actions"
+        },
+        {
+          "info": {
+            "name": "Get Jetton Burns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getJettonBurns",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "The address of the Jetton master contract"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of burn events to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of burn events to skip before starting to return results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting order of the burn events"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of Jetton burn events for a specific Jetton address from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Jetton Masters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getJettonMasters",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of Jetton masters to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of Jetton masters to skip before starting to return results"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of Jetton master contracts from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Jetton Transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getJettonTransfers",
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction of transfers to retrieve"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of transfers to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of transfers to skip before starting to return results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting order of the transfers"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of Jetton transfers from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Jetton Wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getJettonWallets",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of Jetton wallets to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of Jetton wallets to skip before starting to return results"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of Jetton wallets from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Masterchain Block Shard State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMasterchainBlockShardState",
+            "params": [
+              {
+                "name": "seqno",
+                "value": "",
+                "type": "query",
+                "description": "The sequence number of the masterchain block"
+              }
+            ]
+          },
+          "docs": "Retrieves the shard state of a specific masterchain block"
+        },
+        {
+          "info": {
+            "name": "Get Masterchain Block Shards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMasterchainBlockShards",
+            "params": [
+              {
+                "name": "seqno",
+                "value": "",
+                "type": "query",
+                "description": "The sequence number of the masterchain block"
+              }
+            ]
+          },
+          "docs": "Retrieves the shards of a specific masterchain block"
+        },
+        {
+          "info": {
+            "name": "Get Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMessages",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of messages to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of messages to skip before starting to return results"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of messages from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMetadata",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Address to get metadata for"
+              }
+            ]
+          },
+          "docs": "Query address metadata including names and labels"
+        },
+        {
+          "info": {
+            "name": "Get Multisig Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMultisigOrders",
+            "params": [
+              {
+                "name": "multisig_address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by multisig wallet address"
+              },
+              {
+                "name": "order_address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by order contract address"
+              },
+              {
+                "name": "is_executed",
+                "value": "",
+                "type": "query",
+                "description": "Filter by execution status"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of orders to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of orders to skip"
+              }
+            ]
+          },
+          "docs": "Get pending orders for multisig wallets"
+        },
+        {
+          "info": {
+            "name": "Get Multisig Wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMultisigWallets",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Multisig wallet address"
+              },
+              {
+                "name": "proposer_address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by proposer address"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of wallets to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of wallets to skip"
+              }
+            ]
+          },
+          "docs": "Get multisig wallet contracts and their configuration"
+        },
+        {
+          "info": {
+            "name": "Get NFT Collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getNFTCollections",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of collections to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of collections to skip before starting to return results"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of NFT collections from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get NFT Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getNFTItems",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "NFT item address in any form. Max: 1000."
+              },
+              {
+                "name": "owner_address",
+                "value": "",
+                "type": "query",
+                "description": "Address of NFT item owner in any form. Max: 1000."
+              },
+              {
+                "name": "collection_address",
+                "value": "",
+                "type": "query",
+                "description": "Collection address in any form"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "Index of item for given collection. Max: 1000."
+              },
+              {
+                "name": "sort_by_last_transaction_lt",
+                "value": "",
+                "type": "query",
+                "description": "Sort NFT items by last transaction lt descending. Warning: results may be inconsistent during pagination with limit and offset."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of NFT items to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of NFT items to skip before starting to return results"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of NFT items from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get NFT Transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getNFTTransfers",
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction of transfers to retrieve"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of transfers to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of transfers to skip before starting to return results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting order of the transfers"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of NFT transfers from the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Pending Traces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getPendingTraces",
+            "params": [
+              {
+                "name": "trace_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by trace ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of traces to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of traces to skip"
+              }
+            ]
+          },
+          "docs": "Get traces that are pending completion"
+        },
+        {
+          "info": {
+            "name": "Get Pending Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getPendingTransactions",
+            "params": [
+              {
+                "name": "account",
+                "value": "",
+                "type": "query",
+                "description": "Filter by account address"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of transactions to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions to skip"
+              }
+            ]
+          },
+          "docs": "Get transactions that are pending finalization"
+        },
+        {
+          "info": {
+            "name": "Get Top Accounts by Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTopAccountsByBalance",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of accounts to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of accounts to skip"
+              }
+            ]
+          },
+          "docs": "Get accounts with the highest TON balances"
+        },
+        {
+          "info": {
+            "name": "Get Traces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTraces",
+            "params": [
+              {
+                "name": "trace_id",
+                "value": "",
+                "type": "query",
+                "description": "Trace ID to filter by"
+              },
+              {
+                "name": "tx_hash",
+                "value": "",
+                "type": "query",
+                "description": "Transaction hash to get traces for"
+              },
+              {
+                "name": "tx_lt",
+                "value": "",
+                "type": "query",
+                "description": "Transaction logical time"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of traces to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of traces to skip"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Retrieves transaction traces by specified filters"
+        },
+        {
+          "info": {
+            "name": "Get Transactions by Masterchain Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTransactionsByMasterchainBlock",
+            "params": [
+              {
+                "name": "seqno",
+                "value": "",
+                "type": "query",
+                "description": "The sequence number of the masterchain block"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of transactions to skip before starting to return results"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "The sorting order of the transactions"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of transactions for a specific masterchain block"
+        },
+        {
+          "info": {
+            "name": "Get Transactions by Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTransactionsByMessage",
+            "params": [
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction of the message (in or out)"
+              },
+              {
+                "name": "msg_hash",
+                "value": "",
+                "type": "query",
+                "description": "The hash of the message"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "The number of transactions to skip before starting to return results"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of transactions related to a specific message"
+        },
+        {
+          "info": {
+            "name": "Get Wallet Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getWalletInfo",
+            "params": [
+              {
+                "name": "address",
+                "value": "0QAvTjjA5ZBbHN3a-SYnO1qvzlgNx09OC2bhYBPAbfs3S6q7",
+                "type": "query",
+                "description": "The address of the wallet to retrieve information for"
+              }
+            ]
+          },
+          "docs": "Retrieves information about a specific wallet on the TON blockchain"
+        },
+        {
+          "info": {
+            "name": "Get Wallet States",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getWalletStates",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Wallet address to query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              }
+            ]
+          },
+          "docs": "Query wallet states for addresses"
+        },
+        {
+          "info": {
+            "name": "Send Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/sendMessage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an external message to the TON network"
+        },
+        {
+          "info": {
+            "name": "Get Vesting Contracts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/vesting",
+            "params": [
+              {
+                "name": "contract_address",
+                "value": "",
+                "type": "query",
+                "description": "Vesting contract address in any form. Max: 1000."
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query",
+                "description": "Wallet address to filter by owner or sender. Max: 1000."
+              },
+              {
+                "name": "check_whitelist",
+                "value": "",
+                "type": "query",
+                "description": "Check if wallet address is in whitelist."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit number of queried rows. Use with *offset* to batch read."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Skip first N rows. Use with *limit* to batch read."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-API-Key",
+              "value": "{{X-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get vesting contracts by specified filters"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

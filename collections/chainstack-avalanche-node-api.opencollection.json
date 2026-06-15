@@ -1,0 +1,555 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Avalanche Node API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_getBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBalance"
+        },
+        {
+          "info": {
+            "name": "eth_getCode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getCode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getCode"
+        },
+        {
+          "info": {
+            "name": "eth_getStorageAt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getStorageAt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getStorageAt"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionCount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionCount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionCount"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Blocks Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_blockNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_blockNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_blockNumber"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockByNumber"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockTransactionCountByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockTransactionCountByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockTransactionCountByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockTransactionCountByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockTransactionCountByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockTransactionCountByNumber"
+        },
+        {
+          "info": {
+            "name": "eth_newBlockFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_newBlockFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newBlockFilter"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Chain Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_chainId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_chainId",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_chainId"
+        },
+        {
+          "info": {
+            "name": "Eth_Syncing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_syncing",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Eth_Syncing"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Client Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Net_Listening",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/net_listening",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Net_Listening"
+        },
+        {
+          "info": {
+            "name": "web3_clientVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/web3_clientVersion",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "web3_clientVersion"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Debug And Trace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "debug_traceBlockByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceBlockByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceBlockByHash"
+        },
+        {
+          "info": {
+            "name": "debug_traceBlockByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceBlockByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceBlockByNumber"
+        },
+        {
+          "info": {
+            "name": "debug_traceCall",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceCall",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceCall"
+        },
+        {
+          "info": {
+            "name": "debug_traceTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceTransaction"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Execute Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Eth_Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Eth_Call"
+        },
+        {
+          "info": {
+            "name": "eth_sendRawTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_sendRawTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_sendRawTransaction"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Filter Handling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_getFilterChanges",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getFilterChanges",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getFilterChanges"
+        },
+        {
+          "info": {
+            "name": "eth_uninstallFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_uninstallFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_uninstallFilter"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Gas Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_estimateGas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_estimateGas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_estimateGas"
+        },
+        {
+          "info": {
+            "name": "eth_gasPrice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_gasPrice",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_gasPrice"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logs And Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_getLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getLogs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getLogs"
+        },
+        {
+          "info": {
+            "name": "eth_newFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_newFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newFilter"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_getTransactionByBlockHashAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionByBlockHashAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByBlockHashAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionByBlockNumberAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionByBlockNumberAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByBlockNumberAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionReceipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionReceipt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionReceipt"
+        },
+        {
+          "info": {
+            "name": "eth_newPendingTransactionFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_newPendingTransactionFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newPendingTransactionFilter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

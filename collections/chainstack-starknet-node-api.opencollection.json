@@ -1,0 +1,183 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Starknet Node API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Starknet_Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_call"
+        },
+        {
+          "info": {
+            "name": "starknet_estimateFee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_estimateFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_estimateFee"
+        },
+        {
+          "info": {
+            "name": "starknet_estimateMessageFee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_estimateMessageFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_estimateMessageFee"
+        },
+        {
+          "info": {
+            "name": "starknet_getClassAt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_getClassAt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_getClassAt"
+        },
+        {
+          "info": {
+            "name": "starknet_getClassHashAt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_getClassHashAt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_getClassHashAt"
+        },
+        {
+          "info": {
+            "name": "starknet_getNonce",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_getNonce",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_getNonce"
+        },
+        {
+          "info": {
+            "name": "starknet_getStorageAt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_getStorageAt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_getStorageAt"
+        },
+        {
+          "info": {
+            "name": "starknet_getTransactionByBlockIdAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_getTransactionByBlockIdAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_getTransactionByBlockIdAndIndex"
+        },
+        {
+          "info": {
+            "name": "starknet_getTransactionByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_getTransactionByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_getTransactionByHash"
+        },
+        {
+          "info": {
+            "name": "starknet_simulateTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_simulateTransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_simulateTransactions"
+        },
+        {
+          "info": {
+            "name": "starknet_traceBlockTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/starknet_traceBlockTransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "starknet_traceBlockTransactions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

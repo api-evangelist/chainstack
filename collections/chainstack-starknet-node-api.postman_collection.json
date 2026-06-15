@@ -1,0 +1,1227 @@
+{
+  "item": [
+    {
+      "id": "17250c92-f3cb-4737-a725-2a639809e0c4",
+      "name": "General",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5539dfbf-0018-456d-84d7-b6ef4b5c09de",
+          "name": "Starknet_Call",
+          "request": {
+            "name": "Starknet_Call",
+            "description": {
+              "content": "starknet_call",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_call"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_call\",\n  \"params\": [\n    {\n      \"calldata\": [\n        \"0x03a20d4f7b4229e7c4863dab158b4d076d7f454b893d90a62011882dc4caca2a\"\n      ],\n      \"contract_address\": \"0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n      \"entry_point_selector\": \"0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e\"\n    },\n    \"pending\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aad0a88e-73ca-4492-9dd1-ed38ed2718ba",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_call"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_call\",\n  \"params\": [\n    {\n      \"calldata\": [\n        \"0x03a20d4f7b4229e7c4863dab158b4d076d7f454b893d90a62011882dc4caca2a\"\n      ],\n      \"contract_address\": \"0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n      \"entry_point_selector\": \"0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e\"\n    },\n    \"pending\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba899565-8352-404c-abd8-89f94c7ead93",
+          "name": "starknet_estimateFee",
+          "request": {
+            "name": "starknet_estimateFee",
+            "description": {
+              "content": "starknet_estimateFee",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_estimateFee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_estimateFee\",\n  \"params\": {\n    \"request\": [\n      {\n        \"type\": \"INVOKE\",\n        \"max_fee\": \"0xb3a2f1ab6d632\",\n        \"version\": \"0x1\",\n        \"signature\": [\n          \"0x54c2201c7b9021777389e208e28eafc67e4ba1f1aa7016a1123b61c6ff79c29\",\n          \"0x58c2d97614e5abfd9668b314f344c945d16ea154cb32a7b08b4445204f1f1d3\"\n        ],\n        \"sender_address\": \"0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\",\n        \"calldata\": [\n          \"0x3\",\n          \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n          \"0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c\",\n          \"0x3\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x984e103a8acd6\",\n          \"0x0\",\n          \"0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8\",\n          \"0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c\",\n          \"0x3\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x4c4b40\",\n          \"0x0\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x2f0b3c5710379609eb5495f1ecd348cb28167711b73609fe565a72734550354\",\n          \"0xe\",\n          \"0x569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\",\n          \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n          \"0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8\",\n          \"0x1f4\",\n          \"0xa76cc\",\n          \"0xa7b5e\",\n          \"0x984e103a8acd6\",\n          \"0x0\",\n          \"0x4c4b40\",\n          \"0x0\",\n          \"0x9542431aa6bf1\",\n          \"0x0\",\n          \"0x4ac4a0\",\n          \"0x0\"\n        ],\n        \"nonce\": \"0x51\"\n      }\n    ],\n    \"block_id\": {\n      \"block_number\": 385940\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c422e2dd-62a7-4d35-9d16-5d3df2769ad7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_estimateFee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_estimateFee\",\n  \"params\": {\n    \"request\": [\n      {\n        \"type\": \"INVOKE\",\n        \"max_fee\": \"0xb3a2f1ab6d632\",\n        \"version\": \"0x1\",\n        \"signature\": [\n          \"0x54c2201c7b9021777389e208e28eafc67e4ba1f1aa7016a1123b61c6ff79c29\",\n          \"0x58c2d97614e5abfd9668b314f344c945d16ea154cb32a7b08b4445204f1f1d3\"\n        ],\n        \"sender_address\": \"0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\",\n        \"calldata\": [\n          \"0x3\",\n          \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n          \"0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c\",\n          \"0x3\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x984e103a8acd6\",\n          \"0x0\",\n          \"0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8\",\n          \"0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c\",\n          \"0x3\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x4c4b40\",\n          \"0x0\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x2f0b3c5710379609eb5495f1ecd348cb28167711b73609fe565a72734550354\",\n          \"0xe\",\n          \"0x569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\",\n          \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n          \"0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8\",\n          \"0x1f4\",\n          \"0xa76cc\",\n          \"0xa7b5e\",\n          \"0x984e103a8acd6\",\n          \"0x0\",\n          \"0x4c4b40\",\n          \"0x0\",\n          \"0x9542431aa6bf1\",\n          \"0x0\",\n          \"0x4ac4a0\",\n          \"0x0\"\n        ],\n        \"nonce\": \"0x51\"\n      }\n    ],\n    \"block_id\": {\n      \"block_number\": 385940\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6922d09-937a-490d-be5f-f7c0055d9c0d",
+          "name": "starknet_estimateMessageFee",
+          "request": {
+            "name": "starknet_estimateMessageFee",
+            "description": {
+              "content": "starknet_estimateMessageFee",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_estimateMessageFee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_estimateMessageFee\",\n  \"params\": [\n    {\n      \"from_address\": \"0xae0ee0a63a2ce6baeeffe56e7714fb4efe48d419\",\n      \"to_address\": \"0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82\",\n      \"entry_point_selector\": \"0x02d757788a8d8d6f21d1cd40bce38a8222d70654214e96ff95d8086e684fbee5\",\n      \"payload\": [\n        \"0x1cf4ca56a4841f8a7d39d22d5369434f74e480b370be7bc5a814384b758e604\",\n        \"0x6a94d74f430000\",\n        \"0x0\"\n      ]\n    },\n    {\n      \"block_number\": 387702\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d405a4f-c192-47a4-aa0e-956a6fb4b579",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_estimateMessageFee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_estimateMessageFee\",\n  \"params\": [\n    {\n      \"from_address\": \"0xae0ee0a63a2ce6baeeffe56e7714fb4efe48d419\",\n      \"to_address\": \"0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82\",\n      \"entry_point_selector\": \"0x02d757788a8d8d6f21d1cd40bce38a8222d70654214e96ff95d8086e684fbee5\",\n      \"payload\": [\n        \"0x1cf4ca56a4841f8a7d39d22d5369434f74e480b370be7bc5a814384b758e604\",\n        \"0x6a94d74f430000\",\n        \"0x0\"\n      ]\n    },\n    {\n      \"block_number\": 387702\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "682a193c-fb2f-4548-9334-e1f0ecc809de",
+          "name": "starknet_getClassAt",
+          "request": {
+            "name": "starknet_getClassAt",
+            "description": {
+              "content": "starknet_getClassAt",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_getClassAt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getClassAt\",\n  \"params\": [\n    {\n      \"block_number\": 385940\n    },\n    \"0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d417baaf-b45a-4cea-90da-721617dbe9ee",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_getClassAt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getClassAt\",\n  \"params\": [\n    {\n      \"block_number\": 385940\n    },\n    \"0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f0371d1-4344-4aa9-a2f3-5928615e3bc6",
+          "name": "starknet_getClassHashAt",
+          "request": {
+            "name": "starknet_getClassHashAt",
+            "description": {
+              "content": "starknet_getClassHashAt",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_getClassHashAt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getClassHashAt\",\n  \"params\": [\n    {\n      \"block_number\": 385940\n    },\n    \"0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f6a8572-290d-4285-940e-8004e35e3451",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_getClassHashAt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getClassHashAt\",\n  \"params\": [\n    {\n      \"block_number\": 385940\n    },\n    \"0x073314940630fd6dcda0d772d4c972c4e0a9946bef9dabf4ef84eda8ef542b82\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecfbb21c-89a9-4002-aa1e-bd96dd42f6b6",
+          "name": "starknet_getNonce",
+          "request": {
+            "name": "starknet_getNonce",
+            "description": {
+              "content": "starknet_getNonce",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_getNonce"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getNonce\",\n  \"params\": [\n    {\n      \"block_number\": 385940\n    },\n    \"0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd2917c6-0e26-4134-bf03-248bfd4d398c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_getNonce"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getNonce\",\n  \"params\": [\n    {\n      \"block_number\": 385940\n    },\n    \"0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5333b28-5721-4d8c-9ff2-fa7d0de7185d",
+          "name": "starknet_getStorageAt",
+          "request": {
+            "name": "starknet_getStorageAt",
+            "description": {
+              "content": "starknet_getStorageAt",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_getStorageAt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getStorageAt\",\n  \"params\": [\n    \"0x00dA114221cb83fa859DBdb4C44bEeaa0BB37C7537ad5ae66Fe5e0efD20E6eB3\",\n    \"0x2de7ac669936cc3b4e9784ff23826dc9056c74d54d3f41f1b0d28b36966369e\",\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "024e11f8-07bd-4b4a-bd1d-a356a01a0919",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_getStorageAt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getStorageAt\",\n  \"params\": [\n    \"0x00dA114221cb83fa859DBdb4C44bEeaa0BB37C7537ad5ae66Fe5e0efD20E6eB3\",\n    \"0x2de7ac669936cc3b4e9784ff23826dc9056c74d54d3f41f1b0d28b36966369e\",\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72a5a758-a6c8-4dae-9f6d-47f883412b89",
+          "name": "starknet_getTransactionByBlockIdAndIndex",
+          "request": {
+            "name": "starknet_getTransactionByBlockIdAndIndex",
+            "description": {
+              "content": "starknet_getTransactionByBlockIdAndIndex",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_getTransactionByBlockIdAndIndex"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getTransactionByBlockIdAndIndex\",\n  \"params\": [\n    {\n      \"block_number\": 7015\n    },\n    19\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c087a734-2b9b-4547-90a3-80fc41e4dd80",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_getTransactionByBlockIdAndIndex"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getTransactionByBlockIdAndIndex\",\n  \"params\": [\n    {\n      \"block_number\": 7015\n    },\n    19\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76d934bc-c5f7-451a-a1c9-e1f9b1ff1e9a",
+          "name": "starknet_getTransactionByHash",
+          "request": {
+            "name": "starknet_getTransactionByHash",
+            "description": {
+              "content": "starknet_getTransactionByHash",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_getTransactionByHash"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getTransactionByHash\",\n  \"params\": [\n    \"0x295ee040949bd23a4bba5d5fa0d9d776c3b1fc7cafd511d025e689e665d05b2\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "23e9c2f0-8774-48d3-bdc5-34a36e383033",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_getTransactionByHash"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_getTransactionByHash\",\n  \"params\": [\n    \"0x295ee040949bd23a4bba5d5fa0d9d776c3b1fc7cafd511d025e689e665d05b2\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87af5ccc-a18f-4ab1-abbf-888ddfc48bfe",
+          "name": "starknet_simulateTransactions",
+          "request": {
+            "name": "starknet_simulateTransactions",
+            "description": {
+              "content": "starknet_simulateTransactions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_simulateTransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 0,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_simulateTransactions\",\n  \"params\": [\n    {\n      \"block_number\": 385940\n    },\n    [\n      {\n        \"type\": \"INVOKE\",\n        \"max_fee\": \"0xb3a2f1ab6d632\",\n        \"version\": \"0x1\",\n        \"signature\": [\n          \"0x54c2201c7b9021777389e208e28eafc67e4ba1f1aa7016a1123b61c6ff79c29\",\n          \"0x58c2d97614e5abfd9668b314f344c945d16ea154cb32a7b08b4445204f1f1d3\"\n        ],\n        \"sender_address\": \"0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\",\n        \"calldata\": [\n          \"0x3\",\n          \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n          \"0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c\",\n          \"0x3\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x984e103a8acd6\",\n          \"0x0\",\n          \"0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8\",\n          \"0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c\",\n          \"0x3\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x4c4b40\",\n          \"0x0\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x2f0b3c5710379609eb5495f1ecd348cb28167711b73609fe565a72734550354\",\n          \"0xe\",\n          \"0x569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\",\n          \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n          \"0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8\",\n          \"0x1f4\",\n          \"0xa76cc\",\n          \"0xa7b5e\",\n          \"0x984e103a8acd6\",\n          \"0x0\",\n          \"0x4c4b40\",\n          \"0x0\",\n          \"0x9542431aa6bf1\",\n          \"0x0\",\n          \"0x4ac4a0\",\n          \"0x0\"\n        ],\n        \"nonce\": \"0x51\"\n      }\n    ],\n    [\n      \"SKIP_VALIDATE\",\n      \"SKIP_FEE_CHARGE\"\n    ]\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5729398-fd13-4396-a176-4aff09308f90",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_simulateTransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 0,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_simulateTransactions\",\n  \"params\": [\n    {\n      \"block_number\": 385940\n    },\n    [\n      {\n        \"type\": \"INVOKE\",\n        \"max_fee\": \"0xb3a2f1ab6d632\",\n        \"version\": \"0x1\",\n        \"signature\": [\n          \"0x54c2201c7b9021777389e208e28eafc67e4ba1f1aa7016a1123b61c6ff79c29\",\n          \"0x58c2d97614e5abfd9668b314f344c945d16ea154cb32a7b08b4445204f1f1d3\"\n        ],\n        \"sender_address\": \"0x0569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\",\n        \"calldata\": [\n          \"0x3\",\n          \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n          \"0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c\",\n          \"0x3\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x984e103a8acd6\",\n          \"0x0\",\n          \"0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8\",\n          \"0x219209e083275171774dab1df80982e9df2096516f06319c5c6d71ae0a8480c\",\n          \"0x3\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x4c4b40\",\n          \"0x0\",\n          \"0xfff107e2403123c7df78d91728a7ee5cfd557aec0fa2d2bdc5891c286bbfff\",\n          \"0x2f0b3c5710379609eb5495f1ecd348cb28167711b73609fe565a72734550354\",\n          \"0xe\",\n          \"0x569b13e8164bc8000c0bbcf4887856516643af123c5bc3b01e229e92f9cfd10\",\n          \"0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7\",\n          \"0x68f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8\",\n          \"0x1f4\",\n          \"0xa76cc\",\n          \"0xa7b5e\",\n          \"0x984e103a8acd6\",\n          \"0x0\",\n          \"0x4c4b40\",\n          \"0x0\",\n          \"0x9542431aa6bf1\",\n          \"0x0\",\n          \"0x4ac4a0\",\n          \"0x0\"\n        ],\n        \"nonce\": \"0x51\"\n      }\n    ],\n    [\n      \"SKIP_VALIDATE\",\n      \"SKIP_FEE_CHARGE\"\n    ]\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a960172-d843-4804-89d9-d237ed84828e",
+          "name": "starknet_traceBlockTransactions",
+          "request": {
+            "name": "starknet_traceBlockTransactions",
+            "description": {
+              "content": "starknet_traceBlockTransactions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "starknet_traceBlockTransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_traceBlockTransactions\",\n  \"params\": {\n    \"block_id\": {\n      \"block_number\": 456600\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9630e26c-800a-4f02-91b8-798b53585ed4",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "starknet_traceBlockTransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"starknet_traceBlockTransactions\",\n  \"params\": {\n    \"block_id\": {\n      \"block_number\": 456600\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "58d9d9e5-d1d0-4148-b0b0-f6131685dd08",
+    "name": "Chainstack Starknet Node API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Starknet blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/starknet_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}

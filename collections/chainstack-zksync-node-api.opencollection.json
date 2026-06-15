@@ -1,0 +1,243 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack zkSync Era Node API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "zks_L1BatchNumber | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_L1BatchNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_L1BatchNumber | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_L1ChainId | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_L1ChainId",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_L1ChainId | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_estimateFee example",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_estimateFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_estimateFee example"
+        },
+        {
+          "info": {
+            "name": "zks_estimateGasL1ToL2 | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_estimateGasL1ToL2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_estimateGasL1ToL2 | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getAllAccountBalances | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getAllAccountBalances",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getAllAccountBalances | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getBlockDetails | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getBlockDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getBlockDetails | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getBridgeContracts | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getBridgeContracts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getBridgeContracts | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getBytecodeByHash | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getBytecodeByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getBytecodeByHash | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getL1BatchBlockRange | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getL1BatchBlockRange",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getL1BatchBlockRange | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getL1BatchDetails | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getL1BatchDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getL1BatchDetails | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getL2ToL1LogProof | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getL2ToL1LogProof",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getL2ToL1LogProof | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getMainContract | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getMainContract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getMainContract | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getRawBlockTransactions | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getRawBlockTransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getRawBlockTransactions | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getTestnetPaymaster | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getTestnetPaymaster",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getTestnetPaymaster | zkSync Era"
+        },
+        {
+          "info": {
+            "name": "zks_getTransactionDetails | zkSync Era",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zks_getTransactionDetails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zks_getTransactionDetails | zkSync Era"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

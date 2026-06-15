@@ -1,0 +1,671 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Ethereum Beacon Chain API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the Ethereum deposit contract configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/deposit_contract"
+          },
+          "docs": "Get the Ethereum deposit contract configuration"
+        },
+        {
+          "info": {
+            "name": "Get the Ethereum fork schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/fork_schedule"
+          },
+          "docs": "Get the Ethereum fork schedule"
+        },
+        {
+          "info": {
+            "name": "Get fork information for a specific state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/fork_version_by_state_id",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier which can be a slot number, an epoch number, a block root, or special values like  'genesis' or 'head'."
+              }
+            ]
+          },
+          "docs": "Get fork information for a specific state"
+        },
+        {
+          "info": {
+            "name": "Genesis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/genesis_data",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "Your API key"
+              }
+            ]
+          },
+          "docs": "Genesis"
+        },
+        {
+          "info": {
+            "name": "Node configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/node_config"
+          },
+          "docs": "Node configuration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Debug",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get fork choice leaves",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getDebugBeaconHeadsV2"
+          },
+          "docs": "Retrieves all possible chain heads (leaves of fork choice tree). This endpoint provides insight into the current fork choice state by returning all potential chain heads that the beacon node is tracking."
+        },
+        {
+          "info": {
+            "name": "Get full BeaconState object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getDebugBeaconStateV2",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier. Can be one of: 'head' (canonical head in node's view), 'genesis', 'finalized', 'justified', <slot>, <hex encoded stateRoot with 0x prefix>."
+              }
+            ]
+          },
+          "docs": "Returns full BeaconState object for given stateId. This is a comprehensive debug endpoint that provides the complete state of the beacon chain at a specific point, including all validator information, balances, and other state details. Depending on Accept header it can be returned either as JSON or as bytes serialized by SSZ."
+        },
+        {
+          "info": {
+            "name": "Get fork choice array",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getDebugForkChoice"
+          },
+          "docs": "Retrieves all current fork choice context including justified and finalized checkpoints, and the complete fork choice tree with all nodes and their weights."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/subscribe_to_events",
+            "params": [
+              {
+                "name": "topics",
+                "value": "",
+                "type": "query",
+                "description": "Topics to subscribe to, e.g., 'head'"
+              }
+            ]
+          },
+          "docs": "Subscribe to events"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "State",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the root of the beacon block by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBeaconBlockRootByBlockId",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+              }
+            ]
+          },
+          "docs": "Get the root of the beacon block by block_id"
+        },
+        {
+          "info": {
+            "name": "Get beacon blocks by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBeaconBlocksByBlockId",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+              }
+            ]
+          },
+          "docs": "Get beacon blocks by block_id"
+        },
+        {
+          "info": {
+            "name": "Get beacon headers by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBeaconHeadersByBlockId",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+              }
+            ]
+          },
+          "docs": "Get beacon headers by block_id"
+        },
+        {
+          "info": {
+            "name": "Get beacon headers by slot and parent root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBeaconHeadersBySlotAndParentRoot",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "Slot number"
+              },
+              {
+                "name": "parent_root",
+                "value": "",
+                "type": "query",
+                "description": "Parent root hash"
+              }
+            ]
+          },
+          "docs": "Get beacon headers by slot and parent root"
+        },
+        {
+          "info": {
+            "name": "Get blobs by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlobsByBlockId",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific slot number."
+              }
+            ]
+          },
+          "docs": "Get blobs by block_id"
+        },
+        {
+          "info": {
+            "name": "Get committees by state, epoch, index, and slot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getCommitteesByStateIdEpochIndexAndSlot",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "Committee index"
+              },
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "Slot number"
+              }
+            ]
+          },
+          "docs": "Get committees by state, epoch, index, and slot"
+        },
+        {
+          "info": {
+            "name": "Get finality checkpoints for a given state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getFinalityCheckpoints",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+              }
+            ]
+          },
+          "docs": "Get finality checkpoints for a given state"
+        },
+        {
+          "info": {
+            "name": "Get the root of a given state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getStateRoot",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+              }
+            ]
+          },
+          "docs": "Get the root of a given state"
+        },
+        {
+          "info": {
+            "name": "Get sync committee contribution for a given slot, subcommittee index, and beacon block root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSyncCommitteeContribution",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "Slot for which to retrieve the sync committee contribution"
+              },
+              {
+                "name": "subcommittee_index",
+                "value": "",
+                "type": "query",
+                "description": "Subcommittee index for which to retrieve the sync committee contribution"
+              },
+              {
+                "name": "beacon_block_root",
+                "value": "",
+                "type": "query",
+                "description": "Beacon block root for which to retrieve the sync committee contribution"
+              }
+            ]
+          },
+          "docs": "Get sync committee contribution for a given slot, subcommittee index, and beacon block root"
+        },
+        {
+          "info": {
+            "name": "Get sync committees by state and epoch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSyncCommitteesByStateIdAndEpoch",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number"
+              }
+            ]
+          },
+          "docs": "Get sync committees by state and epoch"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Validatiors Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get attestation data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/attestation_data",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "Slot for which to retrieve attestation data"
+              },
+              {
+                "name": "committee_index",
+                "value": "",
+                "type": "query",
+                "description": "Committee index for which to retrieve attestation data"
+              }
+            ]
+          },
+          "docs": "Get attestation data"
+        },
+        {
+          "info": {
+            "name": "Get attestations of the beacon block by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/attestation_of_beacon_block_by_block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+              }
+            ]
+          },
+          "docs": "Get attestations of the beacon block by block_id"
+        },
+        {
+          "info": {
+            "name": "Get attester slashings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/attester_slashings"
+          },
+          "docs": "Get attester slashings"
+        },
+        {
+          "info": {
+            "name": "Get attestations from the beacon pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/beacon_pool_attestations",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "The slot number to filter attestations"
+              },
+              {
+                "name": "committee_index",
+                "value": "",
+                "type": "query",
+                "description": "The committee index to filter attestations"
+              }
+            ]
+          },
+          "docs": "Get attestations from the beacon pool"
+        },
+        {
+          "info": {
+            "name": "Produce an unsigned blinded block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/produce_unsigned_blinded_block",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "path",
+                "description": "Slot for which to produce a new blinded block"
+              },
+              {
+                "name": "randao_reveal",
+                "value": "",
+                "type": "query",
+                "description": "RANDAO reveal for the block"
+              },
+              {
+                "name": "graffiti",
+                "value": "",
+                "type": "query",
+                "description": "Graffiti for the block"
+              }
+            ]
+          },
+          "docs": "Produce an unsigned blinded block"
+        },
+        {
+          "info": {
+            "name": "Produce a new block for the given slot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/produce_unsigned_block",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "path",
+                "description": "Slot for which to produce a new block"
+              },
+              {
+                "name": "randao_reveal",
+                "value": "",
+                "type": "query",
+                "description": "RANDAO reveal for the block"
+              },
+              {
+                "name": "graffiti",
+                "value": "",
+                "type": "query",
+                "description": "Graffiti for the block"
+              }
+            ]
+          },
+          "docs": "Produce a new block for the given slot"
+        },
+        {
+          "info": {
+            "name": "Get proposer duties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/proposer_duties",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "path",
+                "description": "Epoch for which to get the proposer duties"
+              }
+            ]
+          },
+          "docs": "Get proposer duties"
+        },
+        {
+          "info": {
+            "name": "Get proposer slashings from the beacon pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/proposer_slashings"
+          },
+          "docs": "Get proposer slashings from the beacon pool"
+        },
+        {
+          "info": {
+            "name": "Get validator balances by state and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/validator_balances",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Validator ID"
+              }
+            ]
+          },
+          "docs": "Get validator balances by state and ID"
+        },
+        {
+          "info": {
+            "name": "Get information about a specific validator in a given state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/validator_information_by_state_id",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+              },
+              {
+                "name": "validator_index",
+                "value": "",
+                "type": "path",
+                "description": "Index of the validator (default is '1')."
+              }
+            ]
+          },
+          "docs": "Get information about a specific validator in a given state"
+        },
+        {
+          "info": {
+            "name": "Get validator by state and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/validator_information_by_state_id_or_public_key",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path",
+                "description": "Validator index"
+              }
+            ]
+          },
+          "docs": "Get validator by state and ID"
+        },
+        {
+          "info": {
+            "name": "Get voluntary exits from the beacon pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/voluntary_exits"
+          },
+          "docs": "Get voluntary exits from the beacon pool"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

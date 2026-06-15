@@ -1,0 +1,2344 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack TRON Node API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wallet/Accountpermissionupdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/accountpermissionupdate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Accountpermissionupdate"
+        },
+        {
+          "info": {
+            "name": "Wallet/Broadcasthex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/broadcasthex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Broadcasthex"
+        },
+        {
+          "info": {
+            "name": "Wallet/Broadcasttransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/broadcasttransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Broadcasttransaction"
+        },
+        {
+          "info": {
+            "name": "Wallet/Cancelallunfreezev2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/cancelallunfreezev2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Cancelallunfreezev2"
+        },
+        {
+          "info": {
+            "name": "Wallet/Clearabi",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/clearabi",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Clearabi"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createaccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/createaccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createaccount"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createassetissue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/createassetissue",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createassetissue"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createshieldedcontractparameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/createshieldedcontractparameters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createshieldedcontractparameters"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createshieldedcontractparameterswithoutask",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/createshieldedcontractparameterswithoutask",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createshieldedcontractparameterswithoutask"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createspendauthsig",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/createspendauthsig",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createspendauthsig"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createtransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/createtransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createtransaction"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createwitness",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/createwitness",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createwitness"
+        },
+        {
+          "info": {
+            "name": "Wallet/Delegateresource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/delegateresource",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Delegateresource"
+        },
+        {
+          "info": {
+            "name": "Wallet/Deploycontract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/deploycontract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Deploycontract"
+        },
+        {
+          "info": {
+            "name": "Wallet/Estimateenergy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/estimateenergy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Estimateenergy"
+        },
+        {
+          "info": {
+            "name": "Create a new exchange trading pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/exchangecreate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new trading pair on the TRON decentralized exchange with initial liquidity provision"
+        },
+        {
+          "info": {
+            "name": "Add liquidity to an exchange pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/exchangeinject",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds liquidity to an existing exchange trading pair on the TRON decentralized exchange"
+        },
+        {
+          "info": {
+            "name": "Execute a token swap transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/exchangetransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a token swap transaction on the TRON decentralized exchange"
+        },
+        {
+          "info": {
+            "name": "Remove liquidity from an exchange pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/exchangewithdraw",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes liquidity from an existing exchange trading pair on the TRON decentralized exchange"
+        },
+        {
+          "info": {
+            "name": "Wallet/Freezebalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/freezebalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Freezebalance"
+        },
+        {
+          "info": {
+            "name": "Wallet/Freezebalancev2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/freezebalancev2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Freezebalancev2"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getaccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getaccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getaccount"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getaccountbalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getaccountbalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getaccountbalance"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getaccountnet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getaccountnet",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getaccountnet"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getaccountresource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getaccountresource",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getaccountresource"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getapprovedlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getapprovedlist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getapprovedlist"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getassetissuebyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getassetissuebyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getassetissuebyid"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getassetissuebyname",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getassetissuebyname",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getassetissuebyname"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getassetissuelist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getassetissuelist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getassetissuelist"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getassetissuelistbyname",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getassetissuelistbyname",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getassetissuelistbyname"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getavailableunfreezecount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getavailableunfreezecount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getavailableunfreezecount"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getbandwidthprices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getbandwidthprices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getbandwidthprices"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getblock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getblock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getblock"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getblockbalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getblockbalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getblockbalance"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getblockbyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getblockbyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getblockbyid"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getblockbylatestnum",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getblockbylatestnum",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getblockbylatestnum"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getblockbylimitnext",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getblockbylimitnext",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getblockbylimitnext"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getblockbynum",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getblockbynum",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getblockbynum"
+        },
+        {
+          "info": {
+            "name": "wallet/getBrokerage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getbrokerage",
+            "params": [
+              {
+                "name": "address",
+                "value": "41928c9af0651632157ef27a2cf17ca72c575a4d21",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "wallet/getBrokerage"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getburntrx",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getburntrx",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getburntrx"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getcandelegatedmaxsize",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getcandelegatedmaxsize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getcandelegatedmaxsize"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getcanwithdrawunfreezeamount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getcanwithdrawunfreezeamount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getcanwithdrawunfreezeamount"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getchainparameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getchainparameters"
+          },
+          "docs": "Wallet/Getchainparameters"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getcontract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getcontract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getcontract"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getcontractinfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getcontractinfo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getcontractinfo"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getdelegatedresource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getdelegatedresource",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getdelegatedresource"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getdelegatedresourceaccountindex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getdelegatedresourceaccountindex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getdelegatedresourceaccountindex"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getdelegatedresourceaccountindexv2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getdelegatedresourceaccountindexv2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getdelegatedresourceaccountindexv2"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getdelegatedresourcev2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getdelegatedresourcev2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getdelegatedresourcev2"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getenergyprices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getenergyprices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getenergyprices"
+        },
+        {
+          "info": {
+            "name": "Get exchange pair details by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getexchangebyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves detailed information about a specific exchange trading pair by its unique identifier"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getmarketorderbyaccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getmarketorderbyaccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getmarketorderbyaccount"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getmarketorderbyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getmarketorderbyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getmarketorderbyid"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getmarketorderlistbypair",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getmarketorderlistbypair",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getmarketorderlistbypair"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getmarketpairlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getmarketpairlist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getmarketpairlist"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getmarketpricebypair",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getmarketpricebypair",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getmarketpricebypair"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getmerkletreevoucherinfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getmerkletreevoucherinfo",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getmerkletreevoucherinfo"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getnewshieldedaddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getnewshieldedaddress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getnewshieldedaddress"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getnextmaintenancetime",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getnextmaintenancetime",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getnextmaintenancetime"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getnodeinfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getnodeinfo"
+          },
+          "docs": "Wallet/Getnodeinfo"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getnowblock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getnowblock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getnowblock"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getpaginatedassetissuelist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getpaginatedassetissuelist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getpaginatedassetissuelist"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getpaginatedproposallist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getpaginatedproposallist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getpaginatedproposallist"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getpendingsize",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getpendingsize"
+          },
+          "docs": "Wallet/Getpendingsize"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getproposalbyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getproposalbyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getproposalbyid"
+        },
+        {
+          "info": {
+            "name": "wallet/getReward",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getreward",
+            "params": [
+              {
+                "name": "address",
+                "value": "41b487cdb2d8dc7b2a8e5e7e7b4e3e8b8b8b8b8b",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "wallet/getReward"
+        },
+        {
+          "info": {
+            "name": "Wallet/Gettransactionbyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/gettransactionbyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Gettransactionbyid"
+        },
+        {
+          "info": {
+            "name": "Wallet/Gettransactionfrompending",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/gettransactionfrompending",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Gettransactionfrompending"
+        },
+        {
+          "info": {
+            "name": "Wallet/Gettransactioninfobyblocknum",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/gettransactioninfobyblocknum",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Gettransactioninfobyblocknum"
+        },
+        {
+          "info": {
+            "name": "Wallet/Gettransactioninfobyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/gettransactioninfobyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Gettransactioninfobyid"
+        },
+        {
+          "info": {
+            "name": "Wallet/Gettransactionlistfrompending",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/gettransactionlistfrompending"
+          },
+          "docs": "Wallet/Gettransactionlistfrompending"
+        },
+        {
+          "info": {
+            "name": "Wallet/Gettriggerinputforshieldedtrc20Contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/gettriggerinputforshieldedtrc20contract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Gettriggerinputforshieldedtrc20Contract"
+        },
+        {
+          "info": {
+            "name": "Wallet/Isshieldedtrc20Contractnotespent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/isshieldedtrc20contractnotespent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Isshieldedtrc20Contractnotespent"
+        },
+        {
+          "info": {
+            "name": "Eth_Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Eth_Accounts"
+        },
+        {
+          "info": {
+            "name": "eth_blockNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_blocknumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_blockNumber"
+        },
+        {
+          "info": {
+            "name": "eth_blockNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_blocknumber_test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_blockNumber"
+        },
+        {
+          "info": {
+            "name": "Eth_Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Eth_Call"
+        },
+        {
+          "info": {
+            "name": "eth_chainId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_chainid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_chainId"
+        },
+        {
+          "info": {
+            "name": "Eth_Coinbase",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_coinbase",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Eth_Coinbase"
+        },
+        {
+          "info": {
+            "name": "eth_estimateGas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_estimateGas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_estimateGas"
+        },
+        {
+          "info": {
+            "name": "eth_gasPrice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_gasPrice",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_gasPrice"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getBlockByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getBlockByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockByNumber"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockTransactionCountByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getBlockTransactionCountByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockTransactionCountByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockTransactionCountByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getBlockTransactionCountByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockTransactionCountByNumber"
+        },
+        {
+          "info": {
+            "name": "eth_getCode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getCode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getCode"
+        },
+        {
+          "info": {
+            "name": "eth_getFilterChanges",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getFilterChanges",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getFilterChanges"
+        },
+        {
+          "info": {
+            "name": "eth_getFilterLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getFilterLogs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getFilterLogs"
+        },
+        {
+          "info": {
+            "name": "eth_getLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getLogs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getLogs"
+        },
+        {
+          "info": {
+            "name": "eth_getStorageAt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getStorageAt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getStorageAt"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionByBlockHashAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getTransactionByBlockHashAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByBlockHashAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionByBlockNumberAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getTransactionByBlockNumberAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByBlockNumberAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getTransactionByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionReceipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getTransactionReceipt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionReceipt"
+        },
+        {
+          "info": {
+            "name": "eth_getWork",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getWork",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getWork"
+        },
+        {
+          "info": {
+            "name": "eth_getBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_getbalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBalance"
+        },
+        {
+          "info": {
+            "name": "eth_newBlockFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_newBlockFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newBlockFilter"
+        },
+        {
+          "info": {
+            "name": "eth_newFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_newFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newFilter"
+        },
+        {
+          "info": {
+            "name": "eth_protocolVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_protocolVersion",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_protocolVersion"
+        },
+        {
+          "info": {
+            "name": "Eth_Syncing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_syncing",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Eth_Syncing"
+        },
+        {
+          "info": {
+            "name": "eth_uninstallFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_eth_uninstallFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_uninstallFilter"
+        },
+        {
+          "info": {
+            "name": "Net_Listening",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_net_listening",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Net_Listening"
+        },
+        {
+          "info": {
+            "name": "net_peerCount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_net_peerCount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "net_peerCount"
+        },
+        {
+          "info": {
+            "name": "Net_Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_net_version",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Net_Version"
+        },
+        {
+          "info": {
+            "name": "web3_clientVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_web3_clientVersion",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "web3_clientVersion"
+        },
+        {
+          "info": {
+            "name": "Web3_Sha3",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonrpc_web3_sha3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Web3_Sha3"
+        },
+        {
+          "info": {
+            "name": "List all trading pairs on the decentralized exchange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/listexchanges",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves a list of all trading pairs available on the TRON decentralized exchange"
+        },
+        {
+          "info": {
+            "name": "Wallet/Listnodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/listnodes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Listnodes"
+        },
+        {
+          "info": {
+            "name": "Wallet/Listproposals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/listproposals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Listproposals"
+        },
+        {
+          "info": {
+            "name": "Wallet/Listwitnesses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/listwitnesses",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Listwitnesses"
+        },
+        {
+          "info": {
+            "name": "Wallet/Marketbuyasset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/marketbuyasset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Marketbuyasset"
+        },
+        {
+          "info": {
+            "name": "Wallet/Marketcancelorder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/marketcancelorder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Marketcancelorder"
+        },
+        {
+          "info": {
+            "name": "Wallet/Marketsellasset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/marketsellasset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Marketsellasset"
+        },
+        {
+          "info": {
+            "name": "Wallet/Participateassetissue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/participateassetissue",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Participateassetissue"
+        },
+        {
+          "info": {
+            "name": "Wallet/Proposalapprove",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/proposalapprove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Proposalapprove"
+        },
+        {
+          "info": {
+            "name": "Wallet/Proposalcreate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/proposalcreate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Proposalcreate"
+        },
+        {
+          "info": {
+            "name": "Wallet/Proposaldelete",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/proposaldelete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Proposaldelete"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createshieldedtransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_createshieldedtransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createshieldedtransaction"
+        },
+        {
+          "info": {
+            "name": "Wallet/Createshieldedtransactionwithoutspendauthsig",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_createshieldedtransactionwithoutspendauthsig",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Createshieldedtransactionwithoutspendauthsig"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getakfromask",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_getakfromask",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getakfromask"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getdiversifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_getdiversifier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getdiversifier"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getexpandedspendingkey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_getexpandedspendingkey",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getexpandedspendingkey"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getincomingviewingkey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_getincomingviewingkey",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getincomingviewingkey"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getnkfromnsk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_getnkfromnsk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getnkfromnsk"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getshieldedpaymentaddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_getshieldedpaymentaddress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getshieldedpaymentaddress"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getspendingkey",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_getspendingkey",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getspendingkey"
+        },
+        {
+          "info": {
+            "name": "Wallet/Getzenpaymentaddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_getzenpaymentaddress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Getzenpaymentaddress"
+        },
+        {
+          "info": {
+            "name": "Wallet/Scanshieldedtrc20Notesbyivk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_scanshieldedtrc20notesbyivk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Scanshieldedtrc20Notesbyivk"
+        },
+        {
+          "info": {
+            "name": "Wallet/Scanshieldedtrc20Notesbyovk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shielded_scanshieldedtrc20notesbyovk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Scanshieldedtrc20Notesbyovk"
+        },
+        {
+          "info": {
+            "name": "Test method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/test_jsonrpc"
+          },
+          "docs": "Test method"
+        },
+        {
+          "info": {
+            "name": "Wallet/Transferasset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/transferasset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Transferasset"
+        },
+        {
+          "info": {
+            "name": "Wallet/Triggerconstantcontract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/triggerconstantcontract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Triggerconstantcontract"
+        },
+        {
+          "info": {
+            "name": "Wallet/Triggersmartcontract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/triggersmartcontract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Triggersmartcontract"
+        },
+        {
+          "info": {
+            "name": "Wallet/Undelegateresource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/undelegateresource",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Undelegateresource"
+        },
+        {
+          "info": {
+            "name": "Wallet/Unfreezeasset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/unfreezeasset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Unfreezeasset"
+        },
+        {
+          "info": {
+            "name": "Wallet/Unfreezebalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/unfreezebalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Unfreezebalance"
+        },
+        {
+          "info": {
+            "name": "Wallet/Unfreezebalancev2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/unfreezebalancev2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Unfreezebalancev2"
+        },
+        {
+          "info": {
+            "name": "Wallet/Updateaccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/updateaccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Updateaccount"
+        },
+        {
+          "info": {
+            "name": "Wallet/Updateasset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/updateasset",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Updateasset"
+        },
+        {
+          "info": {
+            "name": "wallet/updateBrokerage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/updatebrokerage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "wallet/updateBrokerage"
+        },
+        {
+          "info": {
+            "name": "Wallet/Updateenergylimit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/updateenergylimit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Updateenergylimit"
+        },
+        {
+          "info": {
+            "name": "Wallet/Updatesetting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/updatesetting",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Updatesetting"
+        },
+        {
+          "info": {
+            "name": "Wallet/Updatewitness",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/updatewitness",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Updatewitness"
+        },
+        {
+          "info": {
+            "name": "Wallet/Validateaddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/validateaddress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Validateaddress"
+        },
+        {
+          "info": {
+            "name": "Wallet/Votewitnessaccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/votewitnessaccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Votewitnessaccount"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Getaccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_getaccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Getaccount"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Getblockbyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_getblockbyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Getblockbyid"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Getblockbylatestnum",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_getblockbylatestnum",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Getblockbylatestnum"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Getblockbylimitnext",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_getblockbylimitnext",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Getblockbylimitnext"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Getblockbynum",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_getblockbynum",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Getblockbynum"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Getnowblock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_getnowblock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Getnowblock"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Gettransactionbyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_gettransactionbyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Gettransactionbyid"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Gettransactioncountbyblocknum",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_gettransactioncountbyblocknum",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Gettransactioncountbyblocknum"
+        },
+        {
+          "info": {
+            "name": "Walletsolidity/Gettransactioninfobyid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/walletsolidity_gettransactioninfobyid",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Walletsolidity/Gettransactioninfobyid"
+        },
+        {
+          "info": {
+            "name": "Wallet/Withdrawbalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/withdrawbalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Withdrawbalance"
+        },
+        {
+          "info": {
+            "name": "Wallet/Withdrawexpireunfreeze",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/withdrawexpireunfreeze",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet/Withdrawexpireunfreeze"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
