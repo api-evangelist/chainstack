@@ -524,16 +524,16 @@ common:
     type: Tools
   - url: https://github.com/chainstack/solana-rpc-ruby
     name: Solana RPC Ruby Client
-    type: SDK
+    type: SDKs
   - url: https://github.com/chainstack/multichaincli
     name: MultiChain Python CLI Wrapper
-    type: SDK
+    type: SDKs
   - url: https://github.com/chainstack/bitcoincli
     name: Bitcoin Python JSON-RPC Wrapper
-    type: SDK
+    type: SDKs
   - url: https://github.com/chainstack/web3quorum
     name: web3.py Quorum Extension
-    type: SDK
+    type: SDKs
   - url: https://github.com/chainstack/terraform-openstack-rke2
     name: Terraform Module for RKE2 on OpenStack
     type: Tools
