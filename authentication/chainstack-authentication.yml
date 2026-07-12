@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/chainstack-faucet-api-openapi.yml, openapi/chainstack-platform-api-openapi.yml,
+  openapi/chainstack-ton-node-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/chainstack-faucet-api-openapi.yml
+  - openapi/chainstack-platform-api-openapi.yml
+- name: APIKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  sources:
+  - openapi/chainstack-ton-node-api-openapi.yml
+- name: APIKeyQuery
+  type: apiKey
+  in: query
+  parameter: api_key
+  sources:
+  - openapi/chainstack-ton-node-api-openapi.yml

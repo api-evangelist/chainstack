@@ -444,6 +444,12 @@ apis:
         type: OpenAPI
     description: Chainstack-managed Tempo JSON-RPC nodes (emerging EVM chain).
 common:
+  - type: VulnerabilityDisclosure
+    url: security/chainstack-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/chainstack-domain-security.yml
+  - type: Authentication
+    url: authentication/chainstack-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/chainstack/
   - type: Twitter
