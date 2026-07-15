@@ -444,6 +444,8 @@ apis:
         type: OpenAPI
     description: Chainstack-managed Tempo JSON-RPC nodes (emerging EVM chain).
 common:
+  - type: AgenticAccess
+    url: agentic-access/chainstack-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/chainstack-vulnerability-disclosure.yml
   - type: DomainSecurity
