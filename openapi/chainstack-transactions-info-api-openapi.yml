@@ -1,0 +1,245 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Transactions Info API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Transactions Info
+paths:
+  /eth_getTransactionByBlockHashAndIndex:
+    post:
+      tags:
+      - Transactions Info
+      summary: eth_getTransactionByBlockHashAndIndex
+      operationId: getTransactionByBlockHashAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByBlockHashAndIndex
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block hash
+                    - type: string
+                      title: Transaction index
+                  default:
+                  - '0x3e76cf8acbbc6d07a2ae51a7af0457589264e67aaf0e94e2d2e0c09e5b6c04db'
+                  - '0x3'
+      responses:
+        '200':
+          description: The transaction information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getTransactionByBlockNumberAndIndex:
+    post:
+      tags:
+      - Transactions Info
+      summary: eth_getTransactionByBlockNumberAndIndex
+      operationId: getTransactionByBlockNumberAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByBlockNumberAndIndex
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block number
+                    - type: string
+                      title: Transaction index
+                  default:
+                  - '0x19FEE31'
+                  - '0x4'
+      responses:
+        '200':
+          description: The transaction information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getTransactionByHash:
+    post:
+      tags:
+      - Transactions Info
+      summary: eth_getTransactionByHash
+      operationId: getTransactionByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByHash
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Transaction hash
+                  default:
+                  - '0xb6a5420f6b15efe09bec0b1febb3347808eb1576f74b7e012f253257d04b7a70'
+      responses:
+        '200':
+          description: The transaction information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getTransactionReceipt:
+    post:
+      tags:
+      - Transactions Info
+      summary: eth_getTransactionReceipt
+      operationId: getTransactionReceipt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionReceipt
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Transaction hash
+                  default:
+                  - '0xb6a5420f6b15efe09bec0b1febb3347808eb1576f74b7e012f253257d04b7a70'
+      responses:
+        '200':
+          description: The transaction receipt
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_newPendingTransactionFilter:
+    post:
+      summary: eth_newPendingTransactionFilter
+      operationId: newPendingTransactionFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_newPendingTransactionFilter
+                params:
+                  type: array
+                  default: []
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The new filter ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: string
+      tags:
+      - Transactions Info

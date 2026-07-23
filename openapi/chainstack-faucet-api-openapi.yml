@@ -1,10 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Chainstack Faucet API
+  title: Chainstack Arbitrum Node Account Info faucet API
   version: 1.0.0
-  description: Public testnet faucet for Chainstack-supported networks. Authenticate with the JWT bearer token issued for
-    your Chainstack account and request testnet funds for Sepolia, Hoodi, BNB Testnet, zkSync Testnet, Scroll Sepolia, and
-    Polygon Amoy. Includes transaction history endpoint.
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
@@ -12,16 +10,17 @@ info:
     name: Chainstack Terms
     url: https://chainstack.com/terms-of-service/
 servers:
-- url: https://api.chainstack.com/v1/faucet
-  description: Production
-components:
-  securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-security:
-- BearerAuth: []
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: faucet
 paths:
   /{chain}:
     post:
@@ -66,64 +65,98 @@ paths:
           description: Unauthorized access, invalid API key.
         '429':
           description: Too many requests or balance exceeded.
-  /transactions-history:
-    get:
-      summary: Transaction History
-      description: Retrieves the transaction history for a specified organization ID.
+  /v1/faucet/sepolia:
+    post:
+      operationId: sepoliaGoerli
+      summary: Sepolia Faucet
+      description: Request test tokens.
       tags:
-      - History
+      - faucet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FaucetSepoliaRequest'
+            examples:
+              value:
+                value:
+                  address: '0x1111111111111111111111111111111111111111'
+        required: true
       security:
-      - BearerAuth: []
+      - APIKeyAuthentication: []
       responses:
         '200':
-          description: Transaction history retrieved successfully.
+          description: ''
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    protocol:
-                      type: string
-                      description: The protocol used for the transaction.
-                    network:
-                      type: string
-                      description: The network used for the transaction.
-                    amount:
-                      type: object
-                      properties:
-                        $numberDecimal:
-                          type: string
-                      description: The amount sent in the transaction.
-                    address:
-                      type: string
-                      description: The address to which the amount was sent.
-                    userId:
-                      type: string
-                      description: User ID associated with the transaction.
-                    organizationId:
-                      type: string
-                      description: Organization ID associated with the transaction.
-                    transactionHash:
-                      type: string
-                      nullable: true
-                      description: Transaction hash, nullable if not available.
-                    timestamp:
-                      type: integer
-                      description: Timestamp of the transaction in milliseconds.
-        '401':
-          description: Unauthorized access, invalid API key.
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
+                $ref: '#/components/schemas/FaucetSepoliaResponse'
+              examples:
+                value:
+                  value:
+                    amountSent: 500000000000000000
+                    transaction: https://sepolia.etherscan.io/tx/0x1111111111111111111111111111111111111111111111111111111111111111
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/TooManyRequestsError'
+components:
+  responses:
+    ValidationError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
                 type: object
                 properties:
-                  error:
+                  code:
                     type: string
-                    description: Error message.
-tags:
-- name: Faucet
-- name: History
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                  fields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    description: Optional. Field-level validation errors.
+    TooManyRequestsError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+              nextFaucetAvailable:
+                type: string
+                description: The date when tokens can be requested next time.
+  schemas:
+    FaucetSepoliaRequest:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address to send tokens to.
+    FaucetSepoliaResponse:
+      type: object
+      properties:
+        amountSent:
+          type: number
+          description: Amount of tokens sent.
+        transaction:
+          type: string
+          description: Transaction details URL.

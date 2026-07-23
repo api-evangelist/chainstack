@@ -1,0 +1,193 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Logs And Events API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Logs And Events
+paths:
+  /eth_getLogs:
+    post:
+      tags:
+      - Logs And Events
+      summary: eth_getLogs
+      operationId: getLogs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  default: eth_getLogs
+                params:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      fromBlock:
+                        type: string
+                        title: from block
+                        description: The block number or tag to start searching for logs from.
+                        default: latest
+                      address:
+                        type: string
+                        title: smart contract address
+                        description: The contract address to retrieve the logs for.
+                      topics:
+                        type: array
+                        title: topics
+                        items:
+                          type: string
+                        description: An array of 32-byte topics to filter for. Each topic is treated as an OR condition.
+                  default:
+                  - fromBlock: latest
+                    address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8'
+                    topics:
+                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+      responses:
+        '200':
+          description: An array of log objects matching the specified filter.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: object
+  /eth_newFilter:
+    post:
+      tags:
+      - Logs And Events
+      summary: eth_newFilter
+      operationId: newFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  default: eth_newFilter
+                params:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      fromBlock:
+                        type: string
+                        title: from block
+                        description: The block number or tag to start searching for logs from.
+                        default: latest
+                      address:
+                        type: string
+                        title: smart contract address
+                        description: The contract address to retrieve the logs for.
+                      topics:
+                        type: array
+                        title: topics
+                        items:
+                          type: string
+                        description: An array of 32-byte topics to filter for. Each topic is treated as an OR condition.
+                  default:
+                  - fromBlock: latest
+                    address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8'
+                    topics:
+                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+      responses:
+        '200':
+          description: The filter ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_getFilterLogs:
+    post:
+      tags:
+      - Logs And Events
+      summary: eth_getFilterLogs
+      operationId: tempo-eth-getFilterLogs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getFilterLogs
+                params:
+                  type: array
+                  items: {}
+                  default:
+                  - '0x1'
+                  description: Filter ID
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Array of log objects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: object
+                    description: Array of log objects matching the filter

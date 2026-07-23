@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Organization API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Organization
+paths:
+  /v1/organization/:
+    get:
+      operationId: getOrganizatonInfo
+      summary: Get Organization name and ID
+      description: Get the name and ID of your organization.
+      tags:
+      - Organization
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+              examples:
+                organization:
+                  value:
+                    id: RG-123-456
+                    name: My organization
+          description: ''
+    patch:
+      operationId: updateOrganizationInfo
+      summary: Update Organization name
+      description: Change the name of your organization.
+      tags:
+      - Organization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationUpdate'
+            examples:
+              organization:
+                value:
+                  name: My organization
+        required: true
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+              examples:
+                organization:
+                  value:
+                    id: RG-123-456
+                    name: My organization
+          description: ''
+        '400':
+          $ref: '#/components/responses/ValidationError'
+components:
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Name of the organization.
+    OrganizationUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the organization.
+  responses:
+    ValidationError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                  fields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    description: Optional. Field-level validation errors.

@@ -1,0 +1,225 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Chain Info API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Chain Info
+paths:
+  /eth_chainId:
+    post:
+      tags:
+      - Chain Info
+      summary: eth_chainId
+      operationId: getChainId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_chainId
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The network Chain ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_syncing:
+    post:
+      tags:
+      - Chain Info
+      summary: Eth_Syncing
+      operationId: syncing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_syncing
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: Syncing information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_accounts:
+    post:
+      tags:
+      - Chain Info
+      summary: Eth_Accounts
+      operationId: accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_accounts
+                params:
+                  type: array
+                  items: {}
+                  default: []
+      responses:
+        '200':
+          description: Returns a list of addresses owned by the client.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true
+  /eth_hashrate:
+    post:
+      tags:
+      - Chain Info
+      summary: Eth_Hashrate
+      operationId: hashrate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_hashrate
+                params:
+                  type: array
+                  items: {}
+                  default: []
+      responses:
+        '200':
+          description: Returns the number of hashes per second that the node is mining with.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true
+  /eth_protocolVersion:
+    post:
+      tags:
+      - Chain Info
+      summary: eth_protocolVersion
+      operationId: protocolVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_protocolVersion
+                params:
+                  type: array
+                  items: {}
+                  default: []
+      responses:
+        '200':
+          description: Returns the current Ethereum protocol version.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true

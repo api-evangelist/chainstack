@@ -1,0 +1,1613 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info V2 API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: V2
+paths:
+  /detectAddress:
+    get:
+      tags:
+      - V2
+      summary: detectAddress
+      operationId: detectAddress
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The address to detect
+        schema:
+          type: string
+          default: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+        example: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+      responses:
+        '200':
+          description: Information about the detected address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  raw_form:
+                    type: string
+                    description: The raw form of the address
+                  bounceable:
+                    type: object
+                    properties:
+                      b64:
+                        type: string
+                        description: The bounceable address in base64 format
+                      b64url:
+                        type: string
+                        description: The bounceable address in base64url format
+                  non_bounceable:
+                    type: object
+                    properties:
+                      b64:
+                        type: string
+                        description: The non-bounceable address in base64 format
+                      b64url:
+                        type: string
+                        description: The non-bounceable address in base64url format
+                  given_type:
+                    type: string
+                    description: The type of the given address
+                  test_only:
+                    type: boolean
+                    description: Whether the address is for testnet only
+  /estimateFee:
+    post:
+      tags:
+      - V2
+      summary: estimateFee
+      operationId: estimateFee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: The address to send the message from
+                  default: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+                body:
+                  type: string
+                  description: The body of the message in base64 format
+                  default: te6cckEBAQEAAgAAAEysuc0=
+                init_code:
+                  type: string
+                  description: Optional init code in base64 format for contract deployment
+                init_data:
+                  type: string
+                  description: Optional init data in base64 format for contract deployment
+                ignore_chksig:
+                  type: boolean
+                  description: Whether to ignore the signature check
+                  default: true
+              required:
+              - address
+              - body
+      responses:
+        '200':
+          description: The estimated fee for the message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    description: Whether the operation was successful
+                  result:
+                    type: object
+                    properties:
+                      '@type':
+                        type: string
+                        description: The type of the result
+                      source_fees:
+                        type: object
+                        properties:
+                          '@type':
+                            type: string
+                          in_fwd_fee:
+                            type: integer
+                            description: The incoming forward fee
+                          storage_fee:
+                            type: integer
+                            description: The storage fee
+                          gas_fee:
+                            type: integer
+                            description: The gas fee
+                          fwd_fee:
+                            type: integer
+                            description: The forward fee
+                      destination_fees:
+                        type: array
+                        items:
+                          type: object
+                        description: Array of destination fees
+                      '@extra':
+                        type: string
+                        description: Extra information
+  /getAddressBalance:
+    get:
+      tags:
+      - V2
+      summary: getAddressBalance
+      operationId: getAddressBalance
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The address to get the balance for
+        schema:
+          type: string
+          default: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+        example: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+      responses:
+        '200':
+          description: The balance of the specified address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  balance:
+                    type: string
+                    description: The balance of the address in nanotons
+  /getAddressInformation:
+    get:
+      tags:
+      - V2
+      summary: getAddressInformation
+      operationId: getAddressInformation
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The address to get information for
+        schema:
+          type: string
+          default: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+        example: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+      responses:
+        '200':
+          description: Information about the specified address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  balance:
+                    type: string
+                    description: The balance of the address
+                  state:
+                    type: string
+                    description: The state of the address
+                  code:
+                    type: string
+                    description: The code of the address
+                  data:
+                    type: string
+                    description: The data of the address
+                  last_transaction_id:
+                    type: object
+                    properties:
+                      lt:
+                        type: string
+                        description: The logical time of the last transaction
+                      hash:
+                        type: string
+                        description: The hash of the last transaction
+                  error:
+                    type: object
+                  id:
+                    type: integer
+  /getAddressState:
+    get:
+      tags:
+      - V2
+      summary: getAddressState
+      operationId: getAddressState
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The address to get the state for
+        schema:
+          type: string
+          default: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+        example: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+      responses:
+        '200':
+          description: The current state of the specified address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: string
+                    description: The current state of the address
+                    enum:
+                    - active
+                    - uninitialized
+                    - frozen
+  /getBlockHeader:
+    get:
+      tags:
+      - V2
+      summary: getBlockHeader
+      operationId: getBlockHeader
+      parameters:
+      - name: workchain
+        in: query
+        required: true
+        description: The workchain ID
+        schema:
+          type: integer
+          default: -1
+        example: -1
+      - name: shard
+        in: query
+        required: true
+        description: The shard ID
+        schema:
+          type: string
+          default: '-9223372036854775808'
+        example: '-9223372036854775808'
+      - name: seqno
+        in: query
+        required: true
+        description: The sequence number of the block
+        schema:
+          type: integer
+          default: 39064874
+        example: 39064874
+      responses:
+        '200':
+          description: The header of the specified block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID of the block
+                      shard:
+                        type: string
+                        description: The shard ID of the block
+                      seqno:
+                        type: integer
+                        description: The sequence number of the block
+                      root_hash:
+                        type: string
+                        description: The root hash of the block
+                      file_hash:
+                        type: string
+                        description: The file hash of the block
+                  global_id:
+                    type: integer
+                    description: The global ID of the block
+                  version:
+                    type: integer
+                    description: The version of the block
+                  after_merge:
+                    type: boolean
+                    description: Whether the block was created after a merge
+                  before_split:
+                    type: boolean
+                    description: Whether the block was created before a split
+                  after_split:
+                    type: boolean
+                    description: Whether the block was created after a split
+                  want_merge:
+                    type: boolean
+                    description: Whether the block wants to merge
+                  want_split:
+                    type: boolean
+                    description: Whether the block wants to split
+                  validator_list_hash_short:
+                    type: integer
+                    description: The short hash of the validator list
+                  catchain_seqno:
+                    type: integer
+                    description: The sequence number in the catchain
+                  min_ref_mc_seqno:
+                    type: integer
+                    description: The minimum referenced masterchain sequence number
+                  is_key_block:
+                    type: boolean
+                    description: Whether the block is a key block
+                  prev_key_block_seqno:
+                    type: integer
+                    description: The sequence number of the previous key block
+                  start_lt:
+                    type: string
+                    description: The start logical time of the block
+                  end_lt:
+                    type: string
+                    description: The end logical time of the block
+                  gen_utime:
+                    type: integer
+                    description: The generation time of the block
+                  vert_seqno:
+                    type: integer
+                    description: The vertical sequence number of the block
+  /getBlockTransactions:
+    get:
+      tags:
+      - V2
+      summary: getBlockTransactions
+      operationId: getBlockTransactions
+      parameters:
+      - name: workchain
+        in: query
+        required: true
+        description: The workchain ID
+        schema:
+          type: integer
+          default: -1
+        example: -1
+      - name: shard
+        in: query
+        required: true
+        description: The shard ID
+        schema:
+          type: string
+          default: '-9223372036854775808'
+        example: '-9223372036854775808'
+      - name: seqno
+        in: query
+        required: true
+        description: The sequence number of the block
+        schema:
+          type: integer
+          default: 39064874
+        example: 39064874
+      - name: count
+        in: query
+        required: false
+        description: The maximum number of transactions to return
+        schema:
+          type: integer
+          default: 40
+        example: 40
+      responses:
+        '200':
+          description: Transactions from the specified block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID of the block
+                      shard:
+                        type: string
+                        description: The shard ID of the block
+                      seqno:
+                        type: integer
+                        description: The sequence number of the block
+                      root_hash:
+                        type: string
+                        description: The root hash of the block
+                      file_hash:
+                        type: string
+                        description: The file hash of the block
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account:
+                          type: string
+                          description: The account address involved in the transaction
+                        hash:
+                          type: string
+                          description: The transaction hash
+                        lt:
+                          type: string
+                          description: The logical time of the transaction
+                  incomplete:
+                    type: boolean
+                    description: Indicates if the returned list is incomplete
+  /getBlockTransactionsExt:
+    get:
+      tags:
+      - V2
+      summary: getBlockTransactionsExt
+      operationId: getBlockTransactionsExt
+      parameters:
+      - name: workchain
+        in: query
+        required: true
+        description: The workchain ID
+        schema:
+          type: integer
+          default: -1
+        example: -1
+      - name: shard
+        in: query
+        required: true
+        description: The shard ID
+        schema:
+          type: string
+          default: '-9223372036854775808'
+        example: '-9223372036854775808'
+      - name: seqno
+        in: query
+        required: true
+        description: The sequence number of the block
+        schema:
+          type: integer
+          default: 39064874
+        example: 39064874
+      - name: count
+        in: query
+        required: false
+        description: The maximum number of transactions to return
+        schema:
+          type: integer
+          default: 40
+        example: 40
+      responses:
+        '200':
+          description: Extended transaction information from the specified block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID of the block
+                      shard:
+                        type: string
+                        description: The shard ID of the block
+                      seqno:
+                        type: integer
+                        description: The sequence number of the block
+                      root_hash:
+                        type: string
+                        description: The root hash of the block
+                      file_hash:
+                        type: string
+                        description: The file hash of the block
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account:
+                          type: string
+                          description: The account address involved in the transaction
+                        hash:
+                          type: string
+                          description: The transaction hash
+                        lt:
+                          type: string
+                          description: The logical time of the transaction
+                        transaction:
+                          type: object
+                          description: Detailed transaction information
+                  incomplete:
+                    type: boolean
+                    description: Indicates if the returned list is incomplete
+  /getConfigParam:
+    get:
+      tags:
+      - V2
+      summary: getConfigParam
+      operationId: getConfigParam
+      parameters:
+      - name: config_id
+        in: query
+        required: true
+        description: The ID of the configuration parameter to retrieve
+        schema:
+          type: integer
+          default: 5
+        example: 5
+      responses:
+        '200':
+          description: The requested configuration parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config_id:
+                    type: integer
+                    description: The ID of the configuration parameter
+                  value:
+                    type: object
+                    description: The value of the configuration parameter
+                    additionalProperties: true
+  /getConsensusBlock:
+    get:
+      tags:
+      - V2
+      summary: getConsensusBlock
+      operationId: getConsensusBlock
+      responses:
+        '200':
+          description: Information about the latest consensus block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  consensus_block:
+                    type: integer
+                    description: The sequence number of the latest consensus block
+                  timestamp:
+                    type: integer
+                    description: The Unix timestamp of the latest consensus block
+                  timestamp_string:
+                    type: string
+                    description: The human-readable timestamp of the latest consensus block
+  /getExtendedAddressInformation:
+    get:
+      tags:
+      - V2
+      summary: getExtendedAddressInformation
+      operationId: getExtendedAddressInformation
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The address to get extended information for
+        schema:
+          type: string
+          default: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+        example: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+      responses:
+        '200':
+          description: Extended information about the specified address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    description: The address in human-readable form
+                  balance:
+                    type: string
+                    description: The balance of the address in nanotons
+                  state:
+                    type: string
+                    description: The state of the address (active, uninitialized, etc.)
+                  last_transaction_id:
+                    type: object
+                    properties:
+                      lt:
+                        type: string
+                        description: The logical time of the last transaction
+                      hash:
+                        type: string
+                        description: The hash of the last transaction
+                  block_id:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID
+                      shard:
+                        type: string
+                        description: The shard ID
+                      seqno:
+                        type: integer
+                        description: The sequence number
+                  code_hash:
+                    type: string
+                    description: The hash of the contract code
+                  data_hash:
+                    type: string
+                    description: The hash of the contract data
+                  acc_type:
+                    type: integer
+                    description: The account type
+                  acc_type_name:
+                    type: string
+                    description: The human-readable account type name
+  /getMasterchainBlockSignatures:
+    get:
+      tags:
+      - V2
+      summary: getMasterchainBlockSignatures
+      operationId: getMasterchainBlockSignatures
+      parameters:
+      - name: seqno
+        in: query
+        required: true
+        description: The sequence number of the masterchain block
+        schema:
+          type: integer
+          default: 39064874
+        example: 39064874
+      responses:
+        '200':
+          description: Signatures of the specified masterchain block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  signatures:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        node_id:
+                          type: string
+                          description: The ID of the validator node
+                        r:
+                          type: string
+                          description: The 'r' component of the signature
+                        s:
+                          type: string
+                          description: The 's' component of the signature
+                  validator_set_hash:
+                    type: string
+                    description: The hash of the validator set
+                  catchain_seqno:
+                    type: integer
+                    description: The sequence number in the catchain
+  /getMasterchainInfo:
+    get:
+      tags:
+      - V2
+      summary: getMasterchainInfo
+      operationId: getMasterchainInfo
+      responses:
+        '200':
+          description: Information about the current state of the TON masterchain
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  last:
+                    type: object
+                    properties:
+                      seqno:
+                        type: integer
+                        description: The sequence number of the last masterchain block
+                      shard:
+                        type: string
+                        description: The shard identifier of the last masterchain block
+                      workchain:
+                        type: integer
+                        description: The workchain identifier of the last masterchain block
+                      fileHash:
+                        type: string
+                        description: The file hash of the last masterchain block
+                      rootHash:
+                        type: string
+                        description: The root hash of the last masterchain block
+                  init:
+                    type: object
+                    properties:
+                      fileHash:
+                        type: string
+                        description: The file hash of the initial masterchain block
+                      rootHash:
+                        type: string
+                        description: The root hash of the initial masterchain block
+                  stateRootHash:
+                    type: string
+                    description: The state root hash of the masterchain
+                  version:
+                    type: integer
+                    description: The version of the masterchain
+  /getShardBlockProof:
+    get:
+      tags:
+      - V2
+      summary: getShardBlockProof
+      operationId: getShardBlockProof
+      parameters:
+      - name: workchain
+        in: query
+        required: true
+        description: The workchain ID
+        schema:
+          type: integer
+          default: -1
+        example: -1
+      - name: shard
+        in: query
+        required: true
+        description: The shard ID
+        schema:
+          type: string
+          default: '-9223372036854775808'
+        example: '-9223372036854775808'
+      - name: seqno
+        in: query
+        required: true
+        description: The sequence number of the block
+        schema:
+          type: integer
+          default: 39064874
+        example: 39064874
+      responses:
+        '200':
+          description: Proof of the specified shard block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  masterchain_block_root_hash:
+                    type: string
+                    description: The root hash of the masterchain block
+                  masterchain_block_seq_no:
+                    type: integer
+                    description: The sequence number of the masterchain block
+                  links:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        from:
+                          type: string
+                          description: The source block hash
+                        to:
+                          type: string
+                          description: The destination block hash
+                        dest_proof:
+                          type: string
+                          description: The proof of the destination block
+                        proof:
+                          type: string
+                          description: The proof of the link
+                  block_header:
+                    type: string
+                    description: The header of the shard block
+  /getTokenData:
+    get:
+      tags:
+      - V2
+      summary: getTokenData
+      operationId: getTokenData
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The address of the token contract
+        schema:
+          type: string
+          default: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+        example: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+      responses:
+        '200':
+          description: Data about the specified token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name of the token
+                  symbol:
+                    type: string
+                    description: The symbol of the token
+                  decimals:
+                    type: integer
+                    description: The number of decimal places for the token
+                  totalSupply:
+                    type: string
+                    description: The total supply of the token
+                  mintable:
+                    type: boolean
+                    description: Whether the token is mintable
+                  burnable:
+                    type: boolean
+                    description: Whether the token is burnable
+                  address:
+                    type: string
+                    description: The address of the token contract
+  /getTransactions:
+    get:
+      tags:
+      - V2
+      summary: getTransactions
+      operationId: getTransactions
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The address to get transactions for
+        schema:
+          type: string
+          default: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+        example: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+      - name: limit
+        in: query
+        required: false
+        description: The maximum number of transactions to return
+        schema:
+          type: integer
+          default: 10
+        example: 10
+      - name: to_lt
+        in: query
+        required: false
+        description: The logical time to start the search from (0 means from the latest)
+        schema:
+          type: integer
+          default: 0
+        example: 0
+      - name: archival
+        in: query
+        required: false
+        description: Whether to use archival node for the query
+        schema:
+          type: boolean
+          default: false
+        example: false
+      responses:
+        '200':
+          description: Transaction history for the specified address
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    transaction_id:
+                      type: object
+                      properties:
+                        lt:
+                          type: string
+                          description: The logical time of the transaction
+                        hash:
+                          type: string
+                          description: The hash of the transaction
+                    utime:
+                      type: integer
+                      description: Unix timestamp of the transaction
+                    fee:
+                      type: string
+                      description: The fee for the transaction in nanotons
+                    storage_fee:
+                      type: string
+                      description: The storage fee for the transaction in nanotons
+                    other_fee:
+                      type: string
+                      description: Other fees for the transaction in nanotons
+                    transaction_type:
+                      type: string
+                      description: The type of the transaction
+                    compute:
+                      type: object
+                      description: Computation details of the transaction
+                    action:
+                      type: object
+                      description: Action details of the transaction
+                    in_msg:
+                      type: object
+                      description: Details of the incoming message
+                    out_msgs:
+                      type: array
+                      description: Details of the outgoing messages
+  /getWalletInformation:
+    get:
+      tags:
+      - V2
+      summary: getWalletInformation
+      operationId: getWalletInformation
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The address to get wallet information for
+        schema:
+          type: string
+          default: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+        example: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+      responses:
+        '200':
+          description: Wallet information for the specified address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wallet:
+                    type: boolean
+                    description: Indicates if the address is a wallet
+                  balance:
+                    type: string
+                    description: The balance of the wallet in nanotons
+                  account_state:
+                    type: string
+                    description: The state of the account (active, uninitialized, etc.)
+                  wallet_type:
+                    type: string
+                    description: The type of the wallet contract
+                  seqno:
+                    type: integer
+                    description: The current sequence number of the wallet
+                  last_transaction_id:
+                    type: object
+                    properties:
+                      lt:
+                        type: string
+                        description: The logical time of the last transaction
+                      hash:
+                        type: string
+                        description: The hash of the last transaction
+  /jsonRPC:
+    post:
+      tags:
+      - V2
+      summary: Jsonrpc Handler
+      description: All methods in the API are available through JSON-RPC protocol ([spec](https://www.jsonrpc.org/specification)).
+      operationId: jsonrpc_handler_jsonRPC_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TonRequestJsonRPC'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeprecatedTonResponseJsonRPC'
+        '422':
+          description: Validation Error
+        '504':
+          description: Lite Server Timeout
+      security:
+      - APIKeyHeader: []
+      - APIKeyQuery: []
+  /lookupBlock:
+    get:
+      tags:
+      - V2
+      summary: lookupBlock
+      operationId: lookupBlock
+      parameters:
+      - name: workchain
+        in: query
+        required: true
+        description: The workchain ID
+        schema:
+          type: integer
+          default: -1
+        example: -1
+      - name: shard
+        in: query
+        required: true
+        description: The shard ID
+        schema:
+          type: string
+          default: '-9223372036854775808'
+        example: '-9223372036854775808'
+      - name: seqno
+        in: query
+        required: true
+        description: The sequence number of the block
+        schema:
+          type: integer
+          default: 39064874
+        example: 39064874
+      responses:
+        '200':
+          description: Information about the specified block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID of the block
+                      shard:
+                        type: string
+                        description: The shard ID of the block
+                      seqno:
+                        type: integer
+                        description: The sequence number of the block
+                      root_hash:
+                        type: string
+                        description: The root hash of the block
+                      file_hash:
+                        type: string
+                        description: The file hash of the block
+                  status:
+                    type: integer
+                    description: The status of the block
+                  global_id:
+                    type: integer
+                    description: The global ID of the block
+                  version:
+                    type: integer
+                    description: The version of the block
+                  after_merge:
+                    type: boolean
+                    description: Whether the block was created after a merge
+                  before_split:
+                    type: boolean
+                    description: Whether the block was created before a split
+                  want_merge:
+                    type: boolean
+                    description: Whether the block wants to merge
+                  want_split:
+                    type: boolean
+                    description: Whether the block wants to split
+                  gen_utime:
+                    type: integer
+                    description: The generation time of the block
+                  start_lt:
+                    type: string
+                    description: The start logical time of the block
+                  end_lt:
+                    type: string
+                    description: The end logical time of the block
+  /packAddress:
+    get:
+      tags:
+      - V2
+      summary: packAddress
+      operationId: packAddress
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The raw address to pack
+        schema:
+          type: string
+          default: 0:ed1691307050047117b998b561d8de82d31fbf84910ced6eb5fc92e7485ef8a7
+        example: 0:ed1691307050047117b998b561d8de82d31fbf84910ced6eb5fc92e7485ef8a7
+      responses:
+        '200':
+          description: The packed (user-friendly) address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    description: The packed address in user-friendly format
+  /runGetMethod:
+    post:
+      tags:
+      - V2
+      summary: runGetMethod
+      operationId: runGetMethod
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: The address of the smart contract
+                  default: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+                method:
+                  type: string
+                  description: The name of the get method to execute
+                  default: get_wallet_address
+                stack:
+                  type: array
+                  description: The stack of parameters for the method
+                  items:
+                    type: array
+                    items:
+                      type: string
+                  default:
+                  - - tvm.Slice
+                    - te6cckEBAQEAJAAAQ4AbUzrTQYTUv8s/I9ds2TSZgRjyrgl2S2LKcZMEFcxj6PARy3rF
+      responses:
+        '200':
+          description: The result of executing the get method
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exit_code:
+                    type: integer
+                    description: The exit code of the method execution
+                  stack:
+                    type: array
+                    description: The resulting stack after method execution
+                    items:
+                      type: array
+                      items:
+                        type: string
+                  gas_used:
+                    type: integer
+                    description: The amount of gas used for the execution
+  /sendBoc:
+    post:
+      tags:
+      - V2
+      summary: sendBoc
+      operationId: sendBoc
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                boc:
+                  type: string
+                  description: The serialized bag-of-cells in base64 format
+                  default: te6ccgEBAgEAqwAB4YgBVbC7Hu+g3htYXzst8L5ucV76NMzeBK3URJKebN2Y1kwADRfFu/r0HxgrOp/Iml8Li5x4gR10J5XYFS8z0fMWJ6JPeUF5xNSLrSDGFIqhJqkW1SEYQF8Dw5p4dI3oaFs4LCmpoxdkfKw0AAAAGAAcAQBoQgAwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL68=
+              required:
+              - boc
+      responses:
+        '200':
+          description: The result of sending the BoC
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    description: Whether the operation was successful
+                  result:
+                    type: object
+                    nullable: true
+                    properties:
+                      '@type':
+                        type: string
+                        description: The type of the result
+                      '@extra':
+                        type: string
+                        description: Extra information
+  /sendBocReturnHash:
+    post:
+      tags:
+      - V2
+      summary: sendBocReturnHash
+      operationId: sendBocReturnHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                boc:
+                  type: string
+                  description: The serialized bag-of-cells in base64 format
+                  default: te6ccgEBAgEAqwAB4YgBVbC7Hu+g3htYXzst8L5ucV76NMzeBK3URJKebN2Y1kwADRfFu/r0HxgrOp/Iml8Li5x4gR10J5XYFS8z0fMWJ6JPeUF5xNSLrSDGFIqhJqkW1SEYQF8Dw5p4dI3oaFs4LCmpoxdkfKw0AAAAGAAcAQBoQgAwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL68=
+              required:
+              - boc
+      responses:
+        '200':
+          description: The result of sending the BoC with the message hash
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    description: Whether the operation was successful
+                  result:
+                    type: object
+                    properties:
+                      '@type':
+                        type: string
+                        description: The type of the result
+                      hash:
+                        type: string
+                        description: The hash of the sent message
+                      '@extra':
+                        type: string
+                        description: Extra information
+  /sendQuery:
+    post:
+      tags:
+      - V2
+      summary: sendQuery
+      operationId: sendQuery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  description: The destination address for the message
+                  default: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+                body:
+                  type: string
+                  description: The body of the message in base64 format
+                  default: te6cckEBAQEAAgAAAEysuc0=
+                init_code:
+                  type: string
+                  description: Optional init code in base64 format for contract deployment
+                init_data:
+                  type: string
+                  description: Optional init data in base64 format for contract deployment
+              required:
+              - address
+              - body
+      responses:
+        '200':
+          description: The result of sending the query
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    description: Whether the operation was successful
+                  result:
+                    type: object
+                    nullable: true
+                    properties:
+                      '@type':
+                        type: string
+                        description: The type of the result
+                      '@extra':
+                        type: string
+                        description: Extra information
+  /shards:
+    get:
+      tags:
+      - V2
+      summary: Shards
+      operationId: shards
+      parameters:
+      - name: seqno
+        in: query
+        required: true
+        description: The sequence number of the masterchain block
+        schema:
+          type: integer
+          default: 39064874
+        example: 39064874
+      responses:
+        '200':
+          description: Information about shards for the specified masterchain block
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        workchain:
+                          type: integer
+                          description: The workchain ID
+                        shard:
+                          type: string
+                          description: The shard ID
+                        seqno:
+                          type: integer
+                          description: The sequence number of the shard block
+                        root_hash:
+                          type: string
+                          description: The root hash of the shard block
+                        file_hash:
+                          type: string
+                          description: The file hash of the shard block
+  /tryLocateResultTx:
+    get:
+      tags:
+      - V2
+      summary: tryLocateResultTx
+      operationId: tryLocateResultTx
+      parameters:
+      - name: source
+        in: query
+        required: true
+        description: The source address of the original transaction
+        schema:
+          type: string
+          default: UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1
+        example: UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1
+      - name: destination
+        in: query
+        required: true
+        description: The destination address of the original transaction
+        schema:
+          type: string
+          default: UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA
+        example: UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA
+      - name: created_lt
+        in: query
+        required: true
+        description: The logical time when the original transaction was created
+        schema:
+          type: string
+          default: '47597573000002'
+        example: '47597573000002'
+      responses:
+        '200':
+          description: Information about the located result transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID of the block containing the result transaction
+                      shard:
+                        type: string
+                        description: The shard ID of the block containing the result transaction
+                      seqno:
+                        type: integer
+                        description: The sequence number of the block containing the result transaction
+                      root_hash:
+                        type: string
+                        description: The root hash of the block containing the result transaction
+                      file_hash:
+                        type: string
+                        description: The file hash of the block containing the result transaction
+                  transaction_id:
+                    type: object
+                    properties:
+                      lt:
+                        type: string
+                        description: The logical time of the result transaction
+                      hash:
+                        type: string
+                        description: The hash of the result transaction
+  /tryLocateSourceTx:
+    get:
+      tags:
+      - V2
+      summary: tryLocateSourceTx
+      operationId: tryLocateSourceTx
+      parameters:
+      - name: source
+        in: query
+        required: true
+        description: The source address of the result transaction
+        schema:
+          type: string
+          default: UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1
+        example: UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1
+      - name: destination
+        in: query
+        required: true
+        description: The destination address of the result transaction
+        schema:
+          type: string
+          default: UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA
+        example: UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA
+      - name: created_lt
+        in: query
+        required: true
+        description: The logical time when the result transaction was created
+        schema:
+          type: string
+          default: '47597573000002'
+        example: '47597573000002'
+      responses:
+        '200':
+          description: Information about the located source transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID of the block containing the source transaction
+                      shard:
+                        type: string
+                        description: The shard ID of the block containing the source transaction
+                      seqno:
+                        type: integer
+                        description: The sequence number of the block containing the source transaction
+                      root_hash:
+                        type: string
+                        description: The root hash of the block containing the source transaction
+                      file_hash:
+                        type: string
+                        description: The file hash of the block containing the source transaction
+                  transaction_id:
+                    type: object
+                    properties:
+                      lt:
+                        type: string
+                        description: The logical time of the source transaction
+                      hash:
+                        type: string
+                        description: The hash of the source transaction
+  /tryLocateTx:
+    get:
+      tags:
+      - V2
+      summary: tryLocateTx
+      operationId: tryLocateTx
+      parameters:
+      - name: source
+        in: query
+        required: true
+        description: The source address of the transaction
+        schema:
+          type: string
+          default: UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1
+        example: UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1
+      - name: destination
+        in: query
+        required: true
+        description: The destination address of the transaction
+        schema:
+          type: string
+          default: UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA
+        example: UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA
+      - name: created_lt
+        in: query
+        required: true
+        description: The logical time when the transaction was created
+        schema:
+          type: string
+          default: '47597573000002'
+        example: '47597573000002'
+      responses:
+        '200':
+          description: Information about the located transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID of the block containing the transaction
+                      shard:
+                        type: string
+                        description: The shard ID of the block containing the transaction
+                      seqno:
+                        type: integer
+                        description: The sequence number of the block containing the transaction
+                      root_hash:
+                        type: string
+                        description: The root hash of the block containing the transaction
+                      file_hash:
+                        type: string
+                        description: The file hash of the block containing the transaction
+                  transaction_id:
+                    type: object
+                    properties:
+                      lt:
+                        type: string
+                        description: The logical time of the transaction
+                      hash:
+                        type: string
+                        description: The hash of the transaction
+  /unpackAddress:
+    get:
+      tags:
+      - V2
+      summary: unpackAddress
+      operationId: unpackAddress
+      parameters:
+      - name: address
+        in: query
+        required: true
+        description: The user-friendly address to unpack
+        schema:
+          type: string
+          default: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+        example: EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2
+      responses:
+        '200':
+          description: The unpacked (raw) address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    description: The unpacked address in raw format
+components:
+  schemas:
+    DeprecatedTonResponseJsonRPC:
+      properties:
+        ok:
+          type: boolean
+          title: Ok
+        result:
+          title: Result
+        error:
+          type: string
+          title: Error
+        code:
+          type: integer
+          title: Code
+        id:
+          type: string
+          title: Id
+        jsonrpc:
+          type: string
+          title: Jsonrpc
+          default: '2.0'
+      type: object
+      required:
+      - ok
+      - id
+      title: DeprecatedTonResponseJsonRPC
+    TonRequestJsonRPC:
+      properties:
+        method:
+          type: string
+          title: Method
+        params:
+          type: object
+          title: Params
+          default: {}
+        id:
+          type: string
+          title: Id
+        jsonrpc:
+          type: string
+          title: Jsonrpc
+      type: object
+      required:
+      - method
+      title: TonRequestJsonRPC

@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Txpool API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Txpool
+paths:
+  /txpool_content:
+    post:
+      tags:
+      - Txpool
+      summary: Txpool_Content
+      operationId: tempo-txpool-content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: txpool_content
+                params:
+                  type: array
+                  items: {}
+                  default: []
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Transaction pool content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      pending:
+                        type: object
+                        description: Pending transactions by address and nonce
+                      queued:
+                        type: object
+                        description: Queued transactions by address and nonce
+  /txpool_status:
+    post:
+      tags:
+      - Txpool
+      summary: Txpool_Status
+      operationId: tempo-txpool-status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: txpool_status
+                params:
+                  type: array
+                  items: {}
+                  default: []
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Transaction pool status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      pending:
+                        type: string
+                        description: Number of pending transactions
+                      queued:
+                        type: string
+                        description: Number of queued transactions

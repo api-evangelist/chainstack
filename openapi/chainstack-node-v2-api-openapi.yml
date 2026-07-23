@@ -1,0 +1,467 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Node V2 API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Node V2
+paths:
+  /v2/nodes/:
+    get:
+      operationId: listAllNodesV2
+      summary: List all nodes
+      description: List all nodes in the networks your organization is part of.
+      parameters:
+      - $ref: '#/components/parameters/NodeOrdering'
+      - $ref: '#/components/parameters/Pagination'
+      tags:
+      - Node V2
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - type: object
+                  properties:
+                    results:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/NodeV2'
+              examples:
+                list:
+                  value:
+                    count: 1
+                    next: null
+                    previous: null
+                    results:
+                    - id: ND-123-456-789
+                      name: My Ethereum node
+                      network: mainnet
+                      protocol: ethereum
+                      project: PR-123-456-789
+                      cloud: CC-0001
+                      region: us-east-1
+                      provider: aws
+                      status: running
+                      details:
+                        api_namespaces:
+                        - net
+                        - eth
+                        - web3
+                        - txpool
+                        - debug
+                        https_endpoint: https://nd-123-456-789.p2pify.com
+                        wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+                        beacon_endpoint: https://beacon-nd-123-456-789.p2pify.com
+                        graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
+                      blockchain: BC-000-000
+          description: ''
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+    post:
+      operationId: createNodeV2
+      summary: Create node
+      description: Create a new node in the specified project and blockchain.
+      tags:
+      - Node V2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeCreateV2'
+            examples:
+              node:
+                value:
+                  name: My Ethereum node
+                  project: PR-123-456-789
+                  cloud: CC-0001
+                  blockchain: BC-000-000
+        required: true
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeV2'
+              examples:
+                node:
+                  value:
+                    id: ND-123-456-789
+                    name: My Ethereum node
+                    network: mainnet
+                    protocol: ethereum
+                    project: PR-123-456-789
+                    cloud: CC-0001
+                    region: us-east-1
+                    provider: aws
+                    status: running
+                    details:
+                      api_namespaces:
+                      - net
+                      - eth
+                      - web3
+                      - txpool
+                      - debug
+                      https_endpoint: https://nd-123-456-789.p2pify.com
+                      wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+                      beacon_endpoint: https://beacon-nd-123-456-789.p2pify.com
+                      graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
+                    blockchain: BC-000-000
+          description: ''
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+  /v2/nodes/{id}/:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: retrieveNodeV2
+      summary: Retrieve node
+      description: Retrieve node details.
+      tags:
+      - Node V2
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeV2'
+              examples:
+                node:
+                  value:
+                    id: ND-123-456-789
+                    name: My Ethereum node
+                    network: mainnet
+                    protocol: ethereum
+                    project: PR-123-456-789
+                    cloud: CC-0001
+                    region: us-east-1
+                    provider: aws
+                    status: running
+                    details:
+                      api_namespaces:
+                      - net
+                      - eth
+                      - web3
+                      - txpool
+                      - debug
+                      https_endpoint: https://nd-123-456-789.p2pify.com
+                      wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+                      beacon_endpoint: https://beacon-nd-123-456-789.p2pify.com
+                      graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
+                    blockchain: BC-000-000
+          description: ''
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    patch:
+      operationId: updateNodeV2
+      summary: Update node
+      description: Change the node name.
+      tags:
+      - Node V2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeUpdateV2'
+            examples:
+              node:
+                value:
+                  name: My new node name
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeV2'
+              examples:
+                node:
+                  value:
+                    id: ND-123-456-789
+                    name: My new node name
+                    network: mainnet
+                    protocol: ethereum
+                    project: PR-123-456-789
+                    cloud: CC-0001
+                    region: us-east-1
+                    provider: aws
+                    status: running
+                    details:
+                      api_namespaces:
+                      - net
+                      - eth
+                      - web3
+                      - txpool
+                      - debug
+                      https_endpoint: https://nd-123-456-789.p2pify.com
+                      wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+                      beacon_endpoint: https://beacon-nd-123-456-789.p2pify.com
+                      graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
+                    blockchain: BC-000-000
+          description: ''
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      operationId: deleteNodeV2
+      summary: Delete node
+      description: Delete the node.
+      tags:
+      - Node V2
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+components:
+  responses:
+    ForbiddenError:
+      description: The request is not allowed with the current permissions.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    NotFoundError:
+      description: Object does not exist or caller has insufficient permissions to access it.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    ValidationError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                  fields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    description: Optional. Field-level validation errors.
+    UnauthorizedError:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+  schemas:
+    NodeCreateV2:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the node.
+        project:
+          type: string
+          description: ID of the project.
+          example: PR-123-123
+        cloud:
+          type: string
+          description: ID of the cloud.
+          example: CC-0016
+        blockchain:
+          type: string
+          description: Blockchain identifier.
+          example: BC-000-000
+      required:
+      - name
+      - project
+      - cloud
+      - blockchain
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+          description: Number of the objects in the paginated results.
+        next:
+          type: string
+          nullable: true
+          description: Link to the next page.
+        previous:
+          type: string
+          nullable: true
+          description: Link to the previous page.
+        results:
+          type: array
+          items:
+            type: object
+    NodeUpdateV2:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the node.
+    NodeV2:
+      type: object
+      required:
+      - id
+      - name
+      - network
+      - protocol
+      - project
+      - cloud
+      - region
+      - provider
+      - status
+      - details
+      - blockchain
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Name of the node.
+        network:
+          type: string
+          readOnly: true
+          description: Network name.
+        protocol:
+          type: string
+          readOnly: true
+          description: Protocol name.
+        project:
+          type: string
+          description: ID of the project.
+        cloud:
+          type: string
+          description: ID of the cloud.
+        region:
+          type: string
+          readOnly: true
+          description: Cloud region.
+        provider:
+          type: string
+          readOnly: true
+          description: Cloud provider.
+        status:
+          type: string
+          readOnly: true
+          description: Status of the node.
+        details:
+          type: object
+          readOnly: true
+          description: Protocol-specific attributes.
+        blockchain:
+          type: string
+          description: Blockchain identifier.
+          example: BC-000-000
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: A unique value identifying the Object.
+      schema:
+        type: string
+    NodeOrdering:
+      name: order_by
+      required: false
+      in: query
+      description: 'Which field to use when ordering the results.
+
+        <br> Use the `-` prefix to perform descending ordering (`-name`).
+
+        '
+      schema:
+        type: string
+        enum:
+        - name
+        - created_at
+    Pagination:
+      name: page
+      required: false
+      in: query
+      description: A page number within the paginated result set.
+      schema:
+        type: integer

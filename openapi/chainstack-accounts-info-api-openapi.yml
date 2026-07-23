@@ -1,0 +1,320 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Accounts Info API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Accounts Info
+paths:
+  /eth_getBalance:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getBalance
+      operationId: getBalance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBalance
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Address
+                      description: The address identifier.
+                    - type: string
+                      title: Block identifier
+                      description: The block identifier.
+                  default:
+                  - '0x13867a801e352e219c2d2AC29288Bf086e5C81ef'
+                  - pending
+      responses:
+        '200':
+          description: The account balance.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getCode:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getCode
+      operationId: getCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getCode
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Smart contract address
+                      description: The address identifier.
+                    - type: string
+                      title: Block identifier
+                      description: The block identifier.
+                  default:
+                  - '0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0'
+                  - latest
+      responses:
+        '200':
+          description: The smart contract code.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getStorageAt:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getStorageAt
+      operationId: getStorageAt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  default: eth_getStorageAt
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Smart contract address
+                      description: The address of the contract to query.
+                    - type: string
+                      title: Slot index
+                      description: The index of the storage position to query.
+                    - type: string
+                      title: Block ID
+                      description: The block number or tag to use as a reference.
+                  default:
+                  - '0x92c5dfaA4f5083914b1191a4618Ec35506C1CE16'
+                  - '0x0'
+                  - latest
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+      responses:
+        '200':
+          description: The value stored at the specified position.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_getTransactionCount:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getTransactionCount
+      operationId: getTransactionCount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionCount
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Address
+                      description: The address to check
+                    - type: string
+                      title: Block identifier
+                      description: The block identifier
+                  default:
+                  - '0x13867a801e352e219c2d2AC29288Bf086e5C81ef'
+                  - latest
+      responses:
+        '200':
+          description: The address nonce
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getProof:
+    post:
+      summary: eth_getProof
+      operationId: getProof
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                id:
+                  type: integer
+                method:
+                  type: string
+                  default: eth_getProof
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                    - type: array
+                      items:
+                        type: string
+                  default:
+                  - '0x548Da0F6b0AFD0094F735503D44e79a3769980Fd'
+                  - - '0xf6e506a9cbe7546a796b187c40609a170ea8073e047129a3cae1c38e6d7559b7'
+                  - latest
+      responses:
+        '200':
+          description: The proof information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+      tags:
+      - Accounts Info
+  /eth_getAccount:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getAccount
+      operationId: getAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getAccount
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Address
+                      description: The address of the account.
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
+                  default:
+                  - '0x0000000000000000000000000000000000000000'
+                  - latest
+      responses:
+        '200':
+          description: Returns the account information for a given address.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true

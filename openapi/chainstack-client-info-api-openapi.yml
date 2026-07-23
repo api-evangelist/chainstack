@@ -1,0 +1,226 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Client Info API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Client Info
+paths:
+  /web3_clientVersion:
+    post:
+      tags:
+      - Client Info
+      summary: web3_clientVersion
+      operationId: clientVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: web3_clientVersion
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The client running on this node.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /net_listening:
+    post:
+      tags:
+      - Client Info
+      summary: Net_Listening
+      operationId: listening
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: net_listening
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The boolean value that indicates whether or not a node is currently actively seeking peer connections.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /net_peerCount:
+    post:
+      tags:
+      - Client Info
+      summary: net_peerCount
+      operationId: peerCount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: net_peerCount
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The number of peers connected to the client.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /net_version:
+    post:
+      tags:
+      - Client Info
+      summary: Net_Version
+      operationId: net_version
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: net_version
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The current network ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /web3_sha3:
+    post:
+      tags:
+      - Client Info
+      summary: Web3_Sha3
+      operationId: web3Sha3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: web3_sha3
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Data
+                      description: The data to convert into a SHA3 hash.
+                  default:
+                  - '0x68656c6c6f20776f726c64'
+      responses:
+        '200':
+          description: Returns Keccak-256 (not the standardized SHA3-256) of the given data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true

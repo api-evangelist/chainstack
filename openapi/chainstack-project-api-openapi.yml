@@ -1,0 +1,456 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Project API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Project
+paths:
+  /v1/projects/:
+    get:
+      operationId: listAllProjects
+      summary: List all Projects
+      description: List all projects your organization is part of.
+      parameters:
+      - $ref: '#/components/parameters/ProjectOrdering'
+      - $ref: '#/components/parameters/Pagination'
+      - $ref: '#/components/parameters/OrganizationIdFilter'
+      - $ref: '#/components/parameters/NameFilter'
+      - $ref: '#/components/parameters/ProjectTypeFilter'
+      tags:
+      - Project
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - type: object
+                  properties:
+                    results:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Project'
+              examples:
+                list:
+                  value:
+                    count: 1
+                    next: null
+                    previous: null
+                    results:
+                    - id: PR-123-456
+                      name: My public chain project
+                      type: public
+                      networks: 0
+                      created_at: '2020-06-15T07:38:00.747Z'
+                      creator:
+                        id: UR-111-111-111
+                        email: john.smith@example.com
+                        first_name: John
+                        last_name: Smith
+                        organization:
+                          id: RG-123-456
+                          name: My organization
+          description: ''
+    post:
+      operationId: createProject
+      summary: Create Project
+      description: Create a project.
+      tags:
+      - Project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+            examples:
+              public chain:
+                $ref: '#/components/examples/PublicProjectCreate'
+        required: true
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                public chain:
+                  $ref: '#/components/examples/PublicProject'
+          description: ''
+        '400':
+          $ref: '#/components/responses/ValidationError'
+  /v1/projects/{id}/:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: retrieveProject
+      summary: Retrieve Project
+      description: Retrieve the project details.
+      tags:
+      - Project
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                public chain:
+                  $ref: '#/components/examples/PublicProject'
+          description: ''
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    patch:
+      operationId: updateProject
+      summary: Update Project
+      description: Change project name and project description.
+      tags:
+      - Project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdate'
+            examples:
+              project:
+                value:
+                  name: My new project name
+                  description: My new project description
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+              examples:
+                public chain:
+                  $ref: '#/components/examples/PublicProject'
+          description: ''
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+    delete:
+      operationId: deleteProject
+      summary: Delete Project
+      description: Delete the project.
+      tags:
+      - Project
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '204':
+          description: No response body
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /v1/projects/{id}/members/:
+    get:
+      operationId: retrieveProjectMembers
+      summary: Retrieve Project members
+      description: Retrieve members of a consortium project.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      - $ref: '#/components/parameters/Pagination'
+      tags:
+      - Project
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - type: object
+                  properties:
+                    results:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/ProjectMember'
+              examples:
+                list:
+                  value:
+                    count: 1
+                    next: null
+                    previous: null
+                    results:
+                    - id: RG-123-456
+                      name: My organization
+                      email: john.smith@example.com
+          description: ''
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+components:
+  schemas:
+    Project:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
+    ProjectUpdate:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
+      - type: object
+        properties:
+          type:
+            readOnly: true
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+          description: Number of the objects in the paginated results.
+        next:
+          type: string
+          nullable: true
+          description: Link to the next page.
+        previous:
+          type: string
+          nullable: true
+          description: Link to the previous page.
+        results:
+          type: array
+          items:
+            type: object
+    Object:
+      type: object
+      description: Common object representation.
+      readOnly: true
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+    CreatedAt:
+      type: string
+      format: date-time
+      readOnly: true
+      description: When the object was created.
+    BaseProject:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Name of the project.
+        description:
+          type: string
+          description: Description of the project.
+        type:
+          allOf:
+          - $ref: '#/components/schemas/ProjectTypeEnum'
+          default: public
+        members:
+          type: integer
+          readOnly: true
+          description: 'Number of members invited to the consortium project.
+
+            <br>Only for the `consortium` project.
+
+            '
+        networks:
+          type: integer
+          readOnly: true
+          description: Number of networks created in the project.
+        creator:
+          allOf:
+          - $ref: '#/components/schemas/Creator'
+          readOnly: true
+          description: Creator of the project.
+        created_at:
+          allOf:
+          - $ref: '#/components/schemas/CreatedAt'
+          description: When the project was created.
+    ProjectTypeEnum:
+      type: string
+      description: 'Type of the project.
+
+        <br>
+
+        * `public` for public chain project
+
+        '
+      enum:
+      - public
+    Creator:
+      type: object
+      description: Creator of the object.
+      readOnly: true
+      properties:
+        id:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        first_name:
+          type: string
+          readOnly: true
+        last_name:
+          type: string
+          readOnly: true
+        organization:
+          allOf:
+          - $ref: '#/components/schemas/Object'
+          description: Creator's organization.
+    ProjectMember:
+      type: object
+      description: Member organization of the consortium project.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+    ProjectCreate:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
+      - type: object
+        required:
+        - name
+  responses:
+    NotFoundError:
+      description: Object does not exist or caller has insufficient permissions to access it.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    ValidationError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                  fields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    description: Optional. Field-level validation errors.
+  parameters:
+    Pagination:
+      name: page
+      required: false
+      in: query
+      description: A page number within the paginated result set.
+      schema:
+        type: integer
+    OrganizationIdFilter:
+      name: organization
+      required: false
+      in: query
+      description: Filter by organization ID.
+      schema:
+        type: string
+    ProjectTypeFilter:
+      name: type
+      required: false
+      in: query
+      description: Filter by project type.
+      schema:
+        $ref: '#/components/schemas/ProjectTypeEnum'
+    Id:
+      name: id
+      in: path
+      required: true
+      description: A unique value identifying the Object.
+      schema:
+        type: string
+    ProjectOrdering:
+      name: order_by
+      required: false
+      in: query
+      description: 'Which field to use when ordering the results.
+
+        <br> Use the `-` prefix to perform descending ordering (`-name`).
+
+        '
+      schema:
+        type: string
+        enum:
+        - name
+        - created_at
+    NameFilter:
+      name: name
+      required: false
+      in: query
+      description: Filter by name.
+      schema:
+        type: string
+  examples:
+    PublicProject:
+      value:
+        id: PR-123-456
+        name: My public chain project
+        type: public
+        networks: 0
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    PublicProjectCreate:
+      value:
+        name: My public chain project
+        description: My public chain project description
+        type: public

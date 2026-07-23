@@ -1,0 +1,620 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Blocks Info API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Blocks Info
+paths:
+  /eth_blockNumber:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_blockNumber
+      operationId: eth_blockNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_blockNumber
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The latest block number.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getBlockByHash:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockByHash
+      operationId: getBlockByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockByHash
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block Hash
+                      description: The hash identifying the block.
+                    - type: boolean
+                      title: Transaction selector
+                      description: True for the full transactions, false for only the transaction hashes.
+                  default:
+                  - '0x7ccd0791880035667dfee8244ab96d9c091668859e9e72ded4890e6efde68b25'
+                  - false
+      responses:
+        '200':
+          description: The block information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getBlockByNumber:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockByNumber
+      operationId: getBlockByNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockByNumber
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block identifier
+                      description: The block number or tag.
+                    - type: boolean
+                      title: Transaction selector
+                      description: True for the full transactions, false for only the transaction hashes.
+                  default:
+                  - latest
+                  - false
+      responses:
+        '200':
+          description: The block information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getBlockTransactionCountByHash:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockTransactionCountByHash
+      operationId: getBlockTransactionCountByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockTransactionCountByHash
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Block hash
+                    description: The block hash identifier.
+                  default:
+                  - '0x7ccd0791880035667dfee8244ab96d9c091668859e9e72ded4890e6efde68b25'
+      responses:
+        '200':
+          description: The block information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_getBlockTransactionCountByNumber:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockTransactionCountByNumber
+      operationId: getBlockTransactionCountByNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockTransactionCountByNumber
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Block identifier
+                    description: The block number or tag.
+                  default:
+                  - latest
+      responses:
+        '200':
+          description: The block transaction count information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_newBlockFilter:
+    post:
+      summary: eth_newBlockFilter
+      operationId: newBlockFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_newBlockFilter
+                params:
+                  type: array
+                  default: []
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The new filter ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: string
+      tags:
+      - Blocks Info
+  /eth_getBlockReceipts:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockReceipts
+      operationId: getBlockReceipts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockReceipts
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
+                  default:
+                  - latest
+      responses:
+        '200':
+          description: Returns all transaction receipts for a given block.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true
+  /eth_getHeaderByHash:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getHeaderByHash
+      operationId: getHeaderByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getHeaderByHash
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block hash
+                      description: Hash of the block.
+                  default:
+                  - '0x0000000000000000000000000000000000000000000000000000000000000000'
+      responses:
+        '200':
+          description: Returns the block header by block hash.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true
+  /eth_getHeaderByNumber:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getHeaderByNumber
+      operationId: getHeaderByNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getHeaderByNumber
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
+                  default:
+                  - latest
+      responses:
+        '200':
+          description: Returns the block header by block number.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true
+  /eth_getUncleByBlockHashAndIndex:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getUncleByBlockHashAndIndex
+      operationId: getUncleByBlockHashAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getUncleByBlockHashAndIndex
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block hash
+                      description: Hash of the block.
+                    - type: string
+                      title: Uncle index
+                      description: The uncle index position.
+                  default:
+                  - '0x0000000000000000000000000000000000000000000000000000000000000000'
+                  - '0x0'
+      responses:
+        '200':
+          description: Returns information about an uncle by block hash and uncle index position.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true
+  /eth_getUncleByBlockNumberAndIndex:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getUncleByBlockNumberAndIndex
+      operationId: getUncleByBlockNumberAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getUncleByBlockNumberAndIndex
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
+                    - type: string
+                      title: Uncle index
+                      description: The uncle index position.
+                  default:
+                  - latest
+                  - '0x0'
+      responses:
+        '200':
+          description: Returns information about an uncle by block number and uncle index position.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true
+  /eth_getUncleCountByBlockHash:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getUncleCountByBlockHash
+      operationId: getUncleCountByBlockHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getUncleCountByBlockHash
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block hash
+                      description: Hash of the block.
+                  default:
+                  - '0x0000000000000000000000000000000000000000000000000000000000000000'
+      responses:
+        '200':
+          description: Returns the number of uncles in a block from a block matching the given block hash.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true
+  /eth_getUncleCountByBlockNumber:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getUncleCountByBlockNumber
+      operationId: getUncleCountByBlockNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getUncleCountByBlockNumber
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
+                  default:
+                  - latest
+      responses:
+        '200':
+          description: Returns the number of uncles in a block from a block matching the given block number.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true

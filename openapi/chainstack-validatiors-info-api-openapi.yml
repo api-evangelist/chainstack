@@ -1,0 +1,714 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Validatiors Info API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Validatiors Info
+paths:
+  /attestation_data:
+    get:
+      summary: Get attestation data
+      operationId: getAttestationData
+      parameters:
+      - name: slot
+        in: query
+        description: Slot for which to retrieve attestation data
+        required: true
+        schema:
+          type: integer
+          format: int64
+          default: 6244411
+      - name: committee_index
+        in: query
+        description: Committee index for which to retrieve attestation data
+        required: true
+        schema:
+          type: integer
+          format: int64
+          default: 5
+      responses:
+        '200':
+          description: Attestation data successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttestationData'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /attestation_of_beacon_block_by_block_id:
+    get:
+      summary: Get attestations of the beacon block by block_id
+      operationId: getBeaconBlockAttestationsByBlockId
+      parameters:
+      - name: block_id
+        in: path
+        description: Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root.
+        required: true
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Beacon block attestations successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconBlockAttestationsList'
+        '404':
+          description: Beacon block attestations not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /attester_slashings:
+    get:
+      summary: Get attester slashings
+      operationId: getBeaconPoolAttesterSlashings
+      responses:
+        '200':
+          description: Beacon pool attester slashings successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconPoolAttesterSlashingsList'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /beacon_pool_attestations:
+    get:
+      summary: Get attestations from the beacon pool
+      operationId: getBeaconPoolAttestationsBySlotAndCommitteeIndex
+      parameters:
+      - name: slot
+        in: query
+        description: The slot number to filter attestations
+        required: false
+        schema:
+          type: integer
+          format: int64
+          default: 6243475
+      - name: committee_index
+        in: query
+        description: The committee index to filter attestations
+        required: false
+        schema:
+          type: integer
+          format: int64
+          default: 10
+      responses:
+        '200':
+          description: Beacon pool attestations successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconPoolAttestationsList'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /produce_unsigned_blinded_block:
+    get:
+      summary: Produce an unsigned blinded block
+      operationId: produceBlindedBlock
+      parameters:
+      - name: slot
+        in: path
+        description: Slot for which to produce a new blinded block
+        required: true
+        schema:
+          type: integer
+          format: int64
+          default: 6244411
+      - name: randao_reveal
+        in: query
+        description: RANDAO reveal for the block
+        required: true
+        schema:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+          default: '0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25'
+      - name: graffiti
+        in: query
+        description: Graffiti for the block
+        required: false
+        schema:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+          example: '0x5374616b65576973650000000000000000000000000000000000000000000000'
+      responses:
+        '200':
+          description: Successfully produced a new blinded block
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Block'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /produce_unsigned_block:
+    get:
+      summary: Produce a new block for the given slot
+      operationId: produceBlock
+      parameters:
+      - name: slot
+        in: path
+        description: Slot for which to produce a new block
+        required: true
+        schema:
+          type: integer
+          format: int64
+          default: 6244478
+      - name: randao_reveal
+        in: query
+        description: RANDAO reveal for the block
+        required: true
+        schema:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+          default: '0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e'
+      - name: graffiti
+        in: query
+        description: Graffiti for the block
+        required: false
+        schema:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+          example: '0x4c69676874686f7573652f76342e302e322d72632e302d333564386339380000'
+      responses:
+        '200':
+          description: Successfully produced a new block
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Block'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /proposer_duties:
+    get:
+      summary: Get proposer duties
+      operationId: getProposerDuties
+      parameters:
+      - name: epoch
+        in: path
+        description: Epoch for which to get the proposer duties
+        required: true
+        schema:
+          type: integer
+          format: int64
+          default: 1
+      responses:
+        '200':
+          description: Successfully retrieved proposer duties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProposerDuties'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /proposer_slashings:
+    get:
+      summary: Get proposer slashings from the beacon pool
+      operationId: getBeaconPoolProposerSlashings
+      responses:
+        '200':
+          description: Beacon pool proposer slashings successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconPoolProposerSlashingsList'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /validator_balances:
+    get:
+      summary: Get validator balances by state and ID
+      operationId: getValidatorBalancesByStateIdAndValidatorId
+      parameters:
+      - name: state_id
+        in: path
+        description: State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number.
+        required: true
+        schema:
+          type: string
+          default: head
+      - name: id
+        in: query
+        description: Validator ID
+        required: true
+        schema:
+          type: string
+          default: 1
+      responses:
+        '200':
+          description: Validator balances successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidatorBalances'
+        '404':
+          description: Validator balances not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /validator_information_by_state_id:
+    get:
+      summary: Get information about a specific validator in a given state
+      operationId: getValidatorInformation
+      tags:
+      - Validatiors Info
+      parameters:
+      - name: state_id
+        in: path
+        required: true
+        description: State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head').
+        schema:
+          type: string
+          default: head
+      - name: validator_index
+        in: path
+        required: true
+        description: Index of the validator (default is '1').
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: Successful response with validator information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidatorInformation'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /validator_information_by_state_id_or_public_key:
+    get:
+      summary: Get validator by state and ID
+      operationId: getValidatorByStateIdAndIndex
+      parameters:
+      - name: state_id
+        in: path
+        description: State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number.
+        required: true
+        schema:
+          type: string
+          default: head
+      - name: index
+        in: path
+        description: Validator index
+        required: true
+        schema:
+          type: integer
+          format: int64
+          default: 1
+      responses:
+        '200':
+          description: Validator successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Validator'
+        '404':
+          description: Validator not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+  /voluntary_exits:
+    get:
+      summary: Get voluntary exits from the beacon pool
+      operationId: getBeaconPoolVoluntaryExits
+      responses:
+        '200':
+          description: Beacon pool voluntary exits successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconPoolVoluntaryExitsList'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Validatiors Info
+components:
+  schemas:
+    VoluntaryExit:
+      type: object
+      properties:
+        epoch:
+          type: integer
+          format: int64
+        validator_index:
+          type: integer
+          format: int64
+      required:
+      - epoch
+      - validator_index
+    AttestationData:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        index:
+          type: integer
+          format: int64
+        beacon_block_root:
+          type: string
+        source:
+          $ref: '#/components/schemas/Checkpoint'
+        target:
+          $ref: '#/components/schemas/Checkpoint'
+      required:
+      - slot
+      - index
+      - beacon_block_root
+      - source
+      - target
+    BalanceItem:
+      type: object
+      properties:
+        index:
+          type: string
+        balance:
+          type: string
+      required:
+      - index
+      - balance
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+    BeaconPoolAttestationsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BeaconPoolAttestationItem'
+    BeaconPoolVoluntaryExitItem:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/VoluntaryExit'
+        signature:
+          type: string
+      required:
+      - message
+      - signature
+    BeaconBlockHeader:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        proposer_index:
+          type: integer
+          format: int64
+        parent_root:
+          type: string
+        state_root:
+          type: string
+        body_root:
+          type: string
+      required:
+      - slot
+      - proposer_index
+      - parent_root
+      - state_root
+      - body_root
+    BeaconPoolAttestationItem:
+      type: object
+      properties:
+        aggregation_bits:
+          type: string
+        data:
+          $ref: '#/components/schemas/AttestationData'
+        signature:
+          type: string
+      required:
+      - aggregation_bits
+      - data
+      - signature
+    SignedBeaconBlockHeader:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/BeaconBlockHeader'
+        signature:
+          type: string
+      required:
+      - message
+      - signature
+    ValidatorBalances:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BalanceItem'
+      required:
+      - data
+    Checkpoint:
+      type: object
+      properties:
+        epoch:
+          type: integer
+          format: int64
+        root:
+          type: string
+      required:
+      - epoch
+      - root
+    BeaconPoolProposerSlashingItem:
+      type: object
+      properties:
+        signed_header_1:
+          $ref: '#/components/schemas/SignedBeaconBlockHeader'
+        signed_header_2:
+          $ref: '#/components/schemas/SignedBeaconBlockHeader'
+      required:
+      - signed_header_1
+      - signed_header_2
+    Validator:
+      type: object
+      properties:
+        data:
+          description: The validator's info.
+      required:
+      - index
+      - validator
+      - status
+    BeaconBlockAttestationsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BeaconBlockAttestationItem'
+    Block:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        parent_root:
+          type: string
+        state_root:
+          type: string
+        body:
+          type: object
+      required:
+      - slot
+      - parent_root
+      - state_root
+      - body
+    BeaconPoolAttesterSlashingItem:
+      type: object
+      properties:
+        attestation_1:
+          $ref: '#/components/schemas/IndexedAttestation'
+        attestation_2:
+          $ref: '#/components/schemas/IndexedAttestation'
+      required:
+      - attestation_1
+      - attestation_2
+    BeaconBlockAttestationItem:
+      type: object
+      properties:
+        aggregation_bits:
+          type: string
+        data:
+          $ref: '#/components/schemas/AttestationData'
+        signature:
+          type: string
+      required:
+      - aggregation_bits
+      - data
+      - signature
+    BeaconPoolProposerSlashingsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BeaconPoolProposerSlashingItem'
+    ProposerDuties:
+      type: array
+      items:
+        type: object
+        properties:
+          pubkey:
+            type: string
+          validator_index:
+            type: integer
+            format: int64
+          slot:
+            type: integer
+            format: int64
+        required:
+        - pubkey
+        - validator_index
+        - slot
+    BeaconPoolAttesterSlashingsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BeaconPoolAttesterSlashingItem'
+    IndexedAttestation:
+      type: object
+      properties:
+        attesting_indices:
+          type: array
+          items:
+            type: integer
+            format: int64
+        data:
+          $ref: '#/components/schemas/AttestationData'
+        signature:
+          type: string
+      required:
+      - attesting_indices
+      - data
+      - signature
+    BeaconPoolVoluntaryExitsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BeaconPoolVoluntaryExitItem'
+    ValidatorInformation:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: Validator index.
+        balance:
+          type: integer
+          description: Validator's balance.
+        status:
+          type: string
+          description: Validator status.
+        validator:
+          type: object
+          properties:
+            public_key:
+              type: string
+              format: byte
+              description: Validator public key.
+            effective_balance:
+              type: integer
+              description: Validator's effective balance.
+            slashed:
+              type: boolean
+              description: Flag indicating if the validator is slashed.

@@ -1,0 +1,2142 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info V3 API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: V3
+paths:
+  /getAccountInfo:
+    get:
+      summary: Get Account Information
+      description: Retrieves information about a specific account on the TON blockchain
+      operationId: getAccountInfo
+      tags:
+      - V3
+      parameters:
+      - name: address
+        in: query
+        description: The address of the account to retrieve information for
+        required: true
+        schema:
+          type: string
+          default: Ef-1JetbPF9ubc1ga-57oHoOyDA1IShJt-BVlJnA9rrVTfrB
+        example: Ef-1JetbPF9ubc1ga-57oHoOyDA1IShJt-BVlJnA9rrVTfrB
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    description: The account address
+                  balance:
+                    type: string
+                    description: The account balance in nanotons
+                  last_activity:
+                    type: integer
+                    description: The timestamp of the last account activity
+                  status:
+                    type: string
+                    description: The status of the account (e.g., active, frozen)
+                  code_hash:
+                    type: string
+                    description: The hash of the account's code
+                  data_hash:
+                    type: string
+                    description: The hash of the account's data
+  /getAccountStates:
+    get:
+      summary: Get Account States
+      description: Query account states with historical data
+      operationId: getAccountStates
+      tags:
+      - V3
+      parameters:
+      - name: account_address
+        in: query
+        description: Account address to query
+        schema:
+          type: string
+          default: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+      - name: include_boc
+        in: query
+        description: Include account state BoC in response
+        schema:
+          type: boolean
+          default: false
+      - name: limit
+        in: query
+        description: Maximum number of states to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of states to skip
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: Sort order
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account_states:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account:
+                          type: string
+                          description: Account address
+                        hash:
+                          type: string
+                          description: State hash
+                        balance:
+                          type: string
+                          description: Account balance in nanotons
+                        account_status:
+                          type: string
+                          description: Account status (active, uninit, frozen)
+                        last_trans_lt:
+                          type: integer
+                          description: Last transaction logical time
+                        last_trans_hash:
+                          type: string
+                          description: Last transaction hash
+                        frozen_hash:
+                          type: string
+                          description: Frozen hash if account is frozen
+                        code_hash:
+                          type: string
+                          description: Code cell hash
+                        data_hash:
+                          type: string
+                          description: Data cell hash
+                        code_boc:
+                          type: string
+                          description: Code BoC if include_boc is true
+                        data_boc:
+                          type: string
+                          description: Data BoC if include_boc is true
+                  address_book:
+                    type: object
+                    description: Address book mapping
+  /getActions:
+    get:
+      summary: Get Actions
+      description: Retrieves decoded actions from transactions
+      operationId: getActions
+      tags:
+      - V3
+      parameters:
+      - name: action_id
+        in: query
+        description: Action ID to filter by
+        schema:
+          type: string
+      - name: trace_id
+        in: query
+        description: Trace ID to get actions for
+        schema:
+          type: string
+      - name: tx_hash
+        in: query
+        description: Transaction hash to get actions for
+        schema:
+          type: string
+          default: BhLJTdV2R6Vr5c3BAOjH8nFpnMYOuPcJvRlagGSKU88=
+      - name: tx_lt
+        in: query
+        description: Transaction logical time
+        schema:
+          type: integer
+      - name: account
+        in: query
+        description: Filter by account address
+        schema:
+          type: string
+      - name: action_type
+        in: query
+        description: Filter by action type (e.g., JettonTransfer, NftItemTransfer)
+        schema:
+          type: string
+      - name: start_utime
+        in: query
+        description: Start of the time range (unix timestamp)
+        schema:
+          type: integer
+      - name: end_utime
+        in: query
+        description: End of the time range (unix timestamp)
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: Maximum number of actions to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of actions to skip
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: Sort order
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        action_id:
+                          type: string
+                          description: Unique identifier for the action
+                        trace_id:
+                          type: string
+                          description: Trace ID this action belongs to
+                        tx_hash:
+                          type: string
+                          description: Transaction hash
+                        type:
+                          type: string
+                          description: Type of action (e.g., JettonTransfer, TonTransfer)
+                        status:
+                          type: string
+                          description: Action status
+                        value:
+                          type: object
+                          description: Action-specific value data
+                        start_lt:
+                          type: integer
+                          description: Logical time at action start
+                        start_utime:
+                          type: integer
+                          description: Unix timestamp at action start
+                        end_lt:
+                          type: integer
+                          description: Logical time at action end
+                        end_utime:
+                          type: integer
+                          description: Unix timestamp at action end
+                  address_book:
+                    type: object
+                    description: Address book mapping addresses to user-friendly names
+  /getAddressBookInfo:
+    get:
+      summary: Get Address Book Information
+      description: Retrieves information about an address from the address book
+      operationId: getAddressBookInfo
+      tags:
+      - V3
+      parameters:
+      - name: address
+        in: query
+        description: The address to look up in the address book
+        required: true
+        schema:
+          type: string
+          default: 0:ed1691307050047117b998b561d8de82d31fbf84910ced6eb5fc92e7485ef8a7
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: The name associated with the address
+                  description:
+                    type: string
+                    description: A description of the address or associated entity
+                  icon:
+                    type: string
+                    description: URL of an icon associated with the address
+                  website:
+                    type: string
+                    description: Website associated with the address
+                  address:
+                    type: string
+                    description: The queried address
+  /getAdjacentTransactions:
+    get:
+      summary: Get Adjacent Transactions
+      description: Retrieves a list of transactions adjacent to a specific transaction
+      operationId: getAdjacentTransactions
+      tags:
+      - V3
+      parameters:
+      - name: hash
+        in: query
+        description: The hash of the reference transaction
+        required: true
+        schema:
+          type: string
+          default: a9d39a7f1e5f849835496b052885ed2ac07d54d5e0e11f2b17c3b00e3295a2b0
+      - name: direction
+        in: query
+        description: The direction of adjacent transactions to retrieve
+        required: true
+        schema:
+          type: string
+          enum:
+          - before
+          - after
+          - both
+          default: both
+      - name: limit
+        in: query
+        description: The maximum number of transactions to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of transactions to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: The sorting order of the transactions
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hash:
+                          type: string
+                          description: The transaction hash
+                        lt:
+                          type: string
+                          description: The logical time of the transaction
+                        account:
+                          type: string
+                          description: The account address involved in the transaction
+                        now:
+                          type: integer
+                          description: The timestamp of the transaction
+                        origStatus:
+                          type: string
+                          description: The original status of the account
+                        endStatus:
+                          type: string
+                          description: The end status of the account
+                        totalFees:
+                          type: string
+                          description: The total fees for the transaction
+  /getBlocks:
+    get:
+      summary: Get Blocks
+      description: Retrieves a list of blocks from the TON blockchain
+      operationId: getBlocks
+      tags:
+      - V3
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of blocks to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of blocks to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: The sorting order of the blocks
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  blocks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        seqno:
+                          type: integer
+                          description: The sequence number of the block
+                        shard:
+                          type: string
+                          description: The shard identifier of the block
+                        workchain:
+                          type: integer
+                          description: The workchain ID of the block
+                        fileHash:
+                          type: string
+                          description: The file hash of the block
+                        rootHash:
+                          type: string
+                          description: The root hash of the block
+                        timestamp:
+                          type: integer
+                          description: The timestamp of the block
+  /getEvents:
+    get:
+      summary: Get Events
+      description: Query blockchain events with decoded actions
+      operationId: getEvents
+      tags:
+      - V3
+      parameters:
+      - name: account
+        in: query
+        description: Filter by account address
+        schema:
+          type: string
+      - name: start_utime
+        in: query
+        description: Start of time range (unix timestamp)
+        schema:
+          type: integer
+      - name: end_utime
+        in: query
+        description: End of time range (unix timestamp)
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: Maximum number of events to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of events to skip
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: Sort order
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        trace_id:
+                          type: string
+                          description: Trace ID
+                        external_hash:
+                          type: string
+                          description: External message hash
+                        mc_seqno_start:
+                          type: string
+                          description: Start masterchain sequence number
+                        mc_seqno_end:
+                          type: string
+                          description: End masterchain sequence number
+                        start_lt:
+                          type: string
+                          description: Start logical time
+                        start_utime:
+                          type: integer
+                          description: Start unix timestamp
+                        end_lt:
+                          type: string
+                          description: End logical time
+                        end_utime:
+                          type: integer
+                          description: End unix timestamp
+                        trace_info:
+                          type: object
+                          description: Trace information
+                        actions:
+                          type: array
+                          description: Decoded actions
+                        is_incomplete:
+                          type: boolean
+                          description: Whether event is incomplete
+                  address_book:
+                    type: object
+                    description: Address book mapping
+  /getJettonBurns:
+    get:
+      summary: Get Jetton Burns
+      description: Retrieves a list of Jetton burn events for a specific Jetton address from the TON blockchain
+      operationId: getJettonBurns
+      tags:
+      - V3
+      parameters:
+      - name: address
+        in: query
+        description: The address of the Jetton master contract
+        required: true
+        schema:
+          type: string
+          default: EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS
+      - name: limit
+        in: query
+        description: The maximum number of burn events to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of burn events to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: The sorting order of the burn events
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  burns:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        jetton:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the Jetton master contract
+                            name:
+                              type: string
+                              description: The name of the Jetton
+                            symbol:
+                              type: string
+                              description: The symbol of the Jetton
+                        burner:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the account that burned the Jettons
+                        transaction:
+                          type: object
+                          properties:
+                            hash:
+                              type: string
+                              description: The hash of the transaction
+                            time:
+                              type: integer
+                              description: The timestamp of the transaction
+                        amount:
+                          type: string
+                          description: The amount of Jettons burned
+                        comment:
+                          type: string
+                          description: Any comment attached to the burn event
+  /getJettonMasters:
+    get:
+      summary: Get Jetton Masters
+      description: Retrieves a list of Jetton master contracts from the TON blockchain
+      operationId: getJettonMasters
+      tags:
+      - V3
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of Jetton masters to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of Jetton masters to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  masters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: The address of the Jetton master contract
+                        name:
+                          type: string
+                          description: The name of the Jetton
+                        symbol:
+                          type: string
+                          description: The symbol of the Jetton
+                        decimals:
+                          type: integer
+                          description: The number of decimal places for the Jetton
+                        totalSupply:
+                          type: string
+                          description: The total supply of the Jetton
+                        mintable:
+                          type: boolean
+                          description: Whether new tokens can be minted
+                        admin:
+                          type: string
+                          description: The address of the Jetton admin
+                        metadata:
+                          type: object
+                          description: Additional metadata of the Jetton
+                        contentUri:
+                          type: string
+                          description: The URI of the Jetton's content
+  /getJettonTransfers:
+    get:
+      summary: Get Jetton Transfers
+      description: Retrieves a list of Jetton transfers from the TON blockchain
+      operationId: getJettonTransfers
+      tags:
+      - V3
+      parameters:
+      - name: direction
+        in: query
+        description: The direction of transfers to retrieve
+        required: true
+        schema:
+          type: string
+          enum:
+          - in
+          - out
+          - both
+          default: both
+      - name: limit
+        in: query
+        description: The maximum number of transfers to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of transfers to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: The sorting order of the transfers
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transfers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        jetton:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the Jetton master contract
+                            name:
+                              type: string
+                              description: The name of the Jetton
+                            symbol:
+                              type: string
+                              description: The symbol of the Jetton
+                        from:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the sender
+                        to:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the recipient
+                        transaction:
+                          type: object
+                          properties:
+                            hash:
+                              type: string
+                              description: The hash of the transaction
+                            time:
+                              type: integer
+                              description: The timestamp of the transaction
+                        amount:
+                          type: string
+                          description: The amount of Jettons transferred
+                        comment:
+                          type: string
+                          description: Any comment attached to the transfer
+  /getJettonWallets:
+    get:
+      summary: Get Jetton Wallets
+      description: Retrieves a list of Jetton wallets from the TON blockchain
+      operationId: getJettonWallets
+      tags:
+      - V3
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of Jetton wallets to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of Jetton wallets to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wallets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: The address of the Jetton wallet
+                        balance:
+                          type: string
+                          description: The balance of the Jetton wallet
+                        owner:
+                          type: string
+                          description: The address of the wallet owner
+                        jetton:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the Jetton master contract
+                            name:
+                              type: string
+                              description: The name of the Jetton
+                            symbol:
+                              type: string
+                              description: The symbol of the Jetton
+                            decimals:
+                              type: integer
+                              description: The number of decimal places for the Jetton
+  /getMasterchainBlockShardState:
+    get:
+      summary: Get Masterchain Block Shard State
+      description: Retrieves the shard state of a specific masterchain block
+      operationId: getMasterchainBlockShardState
+      tags:
+      - V3
+      parameters:
+      - name: seqno
+        in: query
+        description: The sequence number of the masterchain block
+        required: true
+        schema:
+          type: integer
+          default: 40467413
+          example: 40467413
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        workchain:
+                          type: integer
+                          description: The workchain ID
+                        shard:
+                          type: string
+                          description: The shard identifier
+                        seqno:
+                          type: integer
+                          description: The sequence number of the shard block
+                        root_hash:
+                          type: string
+                          description: The root hash of the shard block
+                        file_hash:
+                          type: string
+                          description: The file hash of the shard block
+  /getMasterchainBlockShards:
+    get:
+      summary: Get Masterchain Block Shards
+      description: Retrieves the shards of a specific masterchain block
+      operationId: getMasterchainBlockShards
+      tags:
+      - V3
+      parameters:
+      - name: seqno
+        in: query
+        description: The sequence number of the masterchain block
+        required: true
+        schema:
+          type: integer
+          default: 40467413
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        workchain:
+                          type: integer
+                          description: The workchain ID
+                        shard:
+                          type: string
+                          description: The shard identifier
+                        seqno:
+                          type: integer
+                          description: The sequence number of the shard block
+                        rootHash:
+                          type: string
+                          description: The root hash of the shard block
+                        fileHash:
+                          type: string
+                          description: The file hash of the shard block
+  /getMessages:
+    get:
+      summary: Get Messages
+      description: Retrieves a list of messages from the TON blockchain
+      operationId: getMessages
+      tags:
+      - V3
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of messages to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of messages to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hash:
+                          type: string
+                          description: The message hash
+                        source:
+                          type: string
+                          description: The source address of the message
+                        destination:
+                          type: string
+                          description: The destination address of the message
+                        value:
+                          type: string
+                          description: The value transferred in the message
+                        fwd_fee:
+                          type: string
+                          description: The forward fee for the message
+                        ihr_fee:
+                          type: string
+                          description: The IHR (Instant Hypercube Routing) fee for the message
+                        created_lt:
+                          type: string
+                          description: The logical creation time of the message
+                        body_hash:
+                          type: string
+                          description: The hash of the message body
+  /getMetadata:
+    get:
+      summary: Get Metadata
+      description: Query address metadata including names and labels
+      operationId: getMetadata
+      tags:
+      - V3
+      parameters:
+      - name: address
+        in: query
+        description: Address to get metadata for
+        required: true
+        schema:
+          type: string
+          default: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  address:
+                    type: string
+                    description: The queried address
+                  name:
+                    type: string
+                    description: Human-readable name for the address
+                  is_scam:
+                    type: boolean
+                    description: Whether the address is flagged as scam
+                  icon:
+                    type: string
+                    description: URL to the address icon
+                  is_wallet:
+                    type: boolean
+                    description: Whether the address is a wallet contract
+  /getMultisigOrders:
+    get:
+      summary: Get Multisig Orders
+      description: Get pending orders for multisig wallets
+      operationId: getMultisigOrders
+      tags:
+      - V3
+      parameters:
+      - name: multisig_address
+        in: query
+        description: Filter by multisig wallet address
+        schema:
+          type: string
+      - name: order_address
+        in: query
+        description: Filter by order contract address
+        schema:
+          type: string
+      - name: is_executed
+        in: query
+        description: Filter by execution status
+        schema:
+          type: boolean
+      - name: limit
+        in: query
+        description: Maximum number of orders to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of orders to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  multisig_orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Order contract address
+                        multisig_address:
+                          type: string
+                          description: Parent multisig wallet address
+                        order_seqno:
+                          type: integer
+                          description: Order sequence number
+                        threshold:
+                          type: integer
+                          description: Required signatures
+                        signers_num:
+                          type: integer
+                          description: Total number of signers
+                        approvals_num:
+                          type: integer
+                          description: Current approvals count
+                        approvals:
+                          type: array
+                          items:
+                            type: string
+                          description: List of approving addresses
+                        expiration_date:
+                          type: integer
+                          description: Order expiration timestamp
+                        is_executed:
+                          type: boolean
+                          description: Whether order is executed
+                  address_book:
+                    type: object
+                    description: Address book mapping
+  /getMultisigWallets:
+    get:
+      summary: Get Multisig Wallets
+      description: Get multisig wallet contracts and their configuration
+      operationId: getMultisigWallets
+      tags:
+      - V3
+      parameters:
+      - name: address
+        in: query
+        description: Multisig wallet address
+        schema:
+          type: string
+      - name: proposer_address
+        in: query
+        description: Filter by proposer address
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of wallets to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of wallets to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  multisig_wallets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Multisig wallet address
+                        seqno:
+                          type: integer
+                          description: Current sequence number
+                        threshold:
+                          type: integer
+                          description: Required number of signatures
+                        signers:
+                          type: array
+                          items:
+                            type: string
+                          description: List of signer addresses
+                        proposers:
+                          type: array
+                          items:
+                            type: string
+                          description: List of proposer addresses
+                        orders_count:
+                          type: integer
+                          description: Number of pending orders
+                  address_book:
+                    type: object
+                    description: Address book mapping
+  /getNFTCollections:
+    get:
+      summary: Get NFT Collections
+      description: Retrieves a list of NFT collections from the TON blockchain
+      operationId: getNFTCollections
+      tags:
+      - V3
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of collections to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of collections to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: The address of the NFT collection
+                        name:
+                          type: string
+                          description: The name of the NFT collection
+                        description:
+                          type: string
+                          description: The description of the NFT collection
+                        metadata:
+                          type: object
+                          description: Additional metadata of the NFT collection
+                        owner:
+                          type: string
+                          description: The owner's address of the NFT collection
+                        raw_collection_content:
+                          type: string
+                          description: The raw content of the NFT collection
+                        next_item_index:
+                          type: integer
+                          description: The index of the next item in the collection
+                        icon:
+                          type: string
+                          description: The URL of the collection's icon
+  /getNFTItems:
+    get:
+      summary: Get NFT Items
+      description: Retrieves a list of NFT items from the TON blockchain
+      operationId: getNFTItems
+      tags:
+      - V3
+      parameters:
+      - name: address
+        in: query
+        description: 'NFT item address in any form. Max: 1000.'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: owner_address
+        in: query
+        description: 'Address of NFT item owner in any form. Max: 1000.'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: collection_address
+        in: query
+        description: Collection address in any form
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: index
+        in: query
+        description: 'Index of item for given collection. Max: 1000.'
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sort_by_last_transaction_lt
+        in: query
+        description: 'Sort NFT items by last transaction lt descending. Warning: results may be inconsistent during pagination with limit and offset.'
+        required: false
+        schema:
+          type: boolean
+      - name: limit
+        in: query
+        description: The maximum number of NFT items to return
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: The number of NFT items to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nft_items:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        auction_contract_address:
+                          type: string
+                        code_hash:
+                          type: string
+                        collection:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                            code_hash:
+                              type: string
+                            collection_content:
+                              type: object
+                              additionalProperties: {}
+                            data_hash:
+                              type: string
+                            last_transaction_lt:
+                              type: string
+                            next_item_index:
+                              type: string
+                            owner_address:
+                              type: string
+                        collection_address:
+                          type: string
+                        content:
+                          type: object
+                          additionalProperties: {}
+                        data_hash:
+                          type: string
+                        index:
+                          type: string
+                        init:
+                          type: boolean
+                        last_transaction_lt:
+                          type: string
+                        on_sale:
+                          type: boolean
+                        owner_address:
+                          type: string
+                        real_owner:
+                          type: string
+                        sale_contract_address:
+                          type: string
+                  address_book:
+                    type: object
+                    additionalProperties: {}
+                  metadata:
+                    type: object
+                    additionalProperties: {}
+  /getNFTTransfers:
+    get:
+      summary: Get NFT Transfers
+      description: Retrieves a list of NFT transfers from the TON blockchain
+      operationId: getNFTTransfers
+      tags:
+      - V3
+      parameters:
+      - name: direction
+        in: query
+        description: The direction of transfers to retrieve
+        required: true
+        schema:
+          type: string
+          enum:
+          - in
+          - out
+          - both
+          default: both
+      - name: limit
+        in: query
+        description: The maximum number of transfers to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of transfers to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: The sorting order of the transfers
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transfers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        nft:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the NFT item
+                            collection:
+                              type: object
+                              properties:
+                                address:
+                                  type: string
+                                  description: The address of the collection
+                        from:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the sender
+                        to:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the recipient
+                        transaction:
+                          type: object
+                          properties:
+                            hash:
+                              type: string
+                              description: The hash of the transaction
+                            time:
+                              type: integer
+                              description: The timestamp of the transaction
+                        value:
+                          type: string
+                          description: The value of the transfer (if any)
+  /getPendingTraces:
+    get:
+      summary: Get Pending Traces
+      description: Get traces that are pending completion
+      operationId: getPendingTraces
+      tags:
+      - V3
+      parameters:
+      - name: trace_id
+        in: query
+        description: Filter by trace ID
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of traces to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of traces to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  traces:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        trace_id:
+                          type: string
+                          description: Trace ID
+                        external_hash:
+                          type: string
+                          description: External message hash
+                        mc_seqno_start:
+                          type: integer
+                          description: Start masterchain sequence number
+                        start_lt:
+                          type: integer
+                          description: Start logical time
+                        start_utime:
+                          type: integer
+                          description: Start unix timestamp
+                        state:
+                          type: string
+                          description: Trace state (pending)
+                        pending_edges:
+                          type: integer
+                          description: Number of pending message edges
+                        edges:
+                          type: integer
+                          description: Total edges
+                        nodes:
+                          type: integer
+                          description: Total nodes
+                  address_book:
+                    type: object
+                    description: Address book mapping
+  /getPendingTransactions:
+    get:
+      summary: Get Pending Transactions
+      description: Get transactions that are pending finalization
+      operationId: getPendingTransactions
+      tags:
+      - V3
+      parameters:
+      - name: account
+        in: query
+        description: Filter by account address
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of transactions to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of transactions to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account:
+                          type: string
+                          description: Account address
+                        hash:
+                          type: string
+                          description: Transaction hash
+                        lt:
+                          type: integer
+                          description: Logical time
+                        now:
+                          type: integer
+                          description: Unix timestamp
+                        mc_block_seqno:
+                          type: integer
+                          description: Masterchain block sequence number
+                        trace_id:
+                          type: string
+                          description: Associated trace ID
+                  address_book:
+                    type: object
+                    description: Address book mapping
+  /getTopAccountsByBalance:
+    get:
+      summary: Get Top Accounts by Balance
+      description: Get accounts with the highest TON balances
+      operationId: getTopAccountsByBalance
+      tags:
+      - V3
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of accounts to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of accounts to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Account address
+                        balance:
+                          type: string
+                          description: Balance in nanotons
+                        account_status:
+                          type: string
+                          description: Account status
+                        last_activity:
+                          type: integer
+                          description: Last activity timestamp
+                  address_book:
+                    type: object
+                    description: Address book mapping
+  /getTraces:
+    get:
+      summary: Get Traces
+      description: Retrieves transaction traces by specified filters
+      operationId: getTraces
+      tags:
+      - V3
+      parameters:
+      - name: trace_id
+        in: query
+        description: Trace ID to filter by
+        schema:
+          type: string
+      - name: tx_hash
+        in: query
+        description: Transaction hash to get traces for
+        schema:
+          type: string
+          default: BhLJTdV2R6Vr5c3BAOjH8nFpnMYOuPcJvRlagGSKU88=
+      - name: tx_lt
+        in: query
+        description: Transaction logical time
+        schema:
+          type: integer
+      - name: limit
+        in: query
+        description: Maximum number of traces to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of traces to skip
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: Sort order
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  traces:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        trace_id:
+                          type: string
+                          description: Unique identifier for the trace
+                        external_hash:
+                          type: string
+                          description: Hash of the external message that initiated the trace
+                        mc_seqno_start:
+                          type: integer
+                          description: Masterchain sequence number at trace start
+                        mc_seqno_end:
+                          type: integer
+                          description: Masterchain sequence number at trace end
+                        start_lt:
+                          type: integer
+                          description: Logical time at trace start
+                        start_utime:
+                          type: integer
+                          description: Unix timestamp at trace start
+                        end_lt:
+                          type: integer
+                          description: Logical time at trace end
+                        end_utime:
+                          type: integer
+                          description: Unix timestamp at trace end
+                        state:
+                          type: string
+                          description: Current state of the trace
+                        pending_edges:
+                          type: integer
+                          description: Number of pending message edges
+                        edges:
+                          type: integer
+                          description: Total number of message edges
+                        nodes:
+                          type: integer
+                          description: Total number of transaction nodes
+                        classification_state:
+                          type: string
+                          description: Classification state of the trace
+                  address_book:
+                    type: object
+                    description: Address book mapping addresses to user-friendly names
+  /getTransactionsByMasterchainBlock:
+    get:
+      summary: Get Transactions by Masterchain Block
+      description: Retrieves a list of transactions for a specific masterchain block
+      operationId: getTransactionsByMasterchainBlock
+      tags:
+      - V3
+      parameters:
+      - name: seqno
+        in: query
+        description: The sequence number of the masterchain block
+        required: true
+        schema:
+          type: integer
+          default: 40467413
+      - name: limit
+        in: query
+        description: The maximum number of transactions to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of transactions to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: The sorting order of the transactions
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hash:
+                          type: string
+                          description: The transaction hash
+                        lt:
+                          type: string
+                          description: The logical time of the transaction
+                        account:
+                          type: string
+                          description: The account address involved in the transaction
+                        now:
+                          type: integer
+                          description: The timestamp of the transaction
+                        origStatus:
+                          type: string
+                          description: The original status of the account
+                        endStatus:
+                          type: string
+                          description: The end status of the account
+                        totalFees:
+                          type: string
+                          description: The total fees for the transaction
+  /getTransactionsByMessage:
+    get:
+      summary: Get Transactions by Message
+      description: Retrieves a list of transactions related to a specific message
+      operationId: getTransactionsByMessage
+      tags:
+      - V3
+      parameters:
+      - name: direction
+        in: query
+        description: The direction of the message (in or out)
+        required: true
+        schema:
+          type: string
+          enum:
+          - in
+          - out
+          default: out
+      - name: msg_hash
+        in: query
+        description: The hash of the message
+        required: true
+        schema:
+          type: string
+          default: po4/F9OgHrJGTUCtobScZrW/gOwVPj7s3f40HV32EII=
+      - name: limit
+        in: query
+        description: The maximum number of transactions to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of transactions to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hash:
+                          type: string
+                          description: The transaction hash
+                        lt:
+                          type: string
+                          description: The logical time of the transaction
+                        account:
+                          type: string
+                          description: The account address involved in the transaction
+                        now:
+                          type: integer
+                          description: The timestamp of the transaction
+                        origStatus:
+                          type: string
+                          description: The original status of the account
+                        endStatus:
+                          type: string
+                          description: The end status of the account
+                        totalFees:
+                          type: string
+                          description: The total fees for the transaction
+  /getWalletInfo:
+    get:
+      summary: Get Wallet Information
+      description: Retrieves information about a specific wallet on the TON blockchain
+      operationId: getWalletInfo
+      tags:
+      - V3
+      parameters:
+      - name: address
+        in: query
+        description: The address of the wallet to retrieve information for
+        required: true
+        schema:
+          type: string
+          default: 0QAvTjjA5ZBbHN3a-SYnO1qvzlgNx09OC2bhYBPAbfs3S6q7
+        example: 0QAvTjjA5ZBbHN3a-SYnO1qvzlgNx09OC2bhYBPAbfs3S6q7
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wallet:
+                    type: boolean
+                    description: Indicates if the address is a wallet
+                  balance:
+                    type: string
+                    description: The balance of the wallet in nanotons
+                  account_state:
+                    type: string
+                    description: The state of the account (e.g., active, uninitialized)
+                  wallet_type:
+                    type: string
+                    description: The type of the wallet contract
+                  seqno:
+                    type: integer
+                    description: The current sequence number of the wallet
+                  last_transaction_lt:
+                    type: string
+                    description: The logical time of the last transaction
+                  last_transaction_hash:
+                    type: string
+                    description: The hash of the last transaction
+  /getWalletStates:
+    get:
+      summary: Get Wallet States
+      description: Query wallet states for addresses
+      operationId: getWalletStates
+      tags:
+      - V3
+      parameters:
+      - name: address
+        in: query
+        description: Wallet address to query
+        required: true
+        schema:
+          type: string
+          default: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+      - name: limit
+        in: query
+        description: Maximum number of results
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of results to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wallets:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Wallet address
+                        is_wallet:
+                          type: boolean
+                          description: Whether address is a wallet contract
+                        balance:
+                          type: string
+                          description: Balance in nanotons
+                        status:
+                          type: string
+                          description: Account status
+                        code_hash:
+                          type: string
+                          description: Code cell hash
+                        last_transaction_hash:
+                          type: string
+                          description: Last transaction hash
+                        last_transaction_lt:
+                          type: string
+                          description: Last transaction logical time
+                  address_book:
+                    type: object
+                    description: Address book mapping
+  /sendMessage:
+    post:
+      summary: Send Message
+      description: Sends an external message to the TON network
+      operationId: sendMessage
+      tags:
+      - V3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                boc:
+                  type: string
+                  description: The serialized bag-of-cells in base64 format
+                  default: te6ccgEBAgEAqwAB4YgBVbC7Hu+g3htYXzst8L5ucV76NMzeBK3URJKebN2Y1kwADRfFu/r0HxgrOp/Iml8Li5x4gR10J5XYFS8z0fMWJ6JPeUF5xNSLrSDGFIqhJqkW1SEYQF8Dw5p4dI3oaFs4LCmpoxdkfKw0AAAAGAAcAQBoQgAwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL68=
+              required:
+              - boc
+            example:
+              boc: te6ccgEBAgEAqwAB4YgBVbC7Hu+g3htYXzst8L5ucV76NMzeBK3URJKebN2Y1kwADRfFu/r0HxgrOp/Iml8Li5x4gR10J5XYFS8z0fMWJ6JPeUF5xNSLrSDGFIqhJqkW1SEYQF8Dw5p4dI3oaFs4LCmpoxdkfKw0AAAAGAAcAQBoQgAwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL68=
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message_hash:
+                    type: string
+                    description: Hash of the sent message
+  /vesting:
+    get:
+      security:
+      - APIKeyHeader: []
+      - APIKeyQuery: []
+      description: Get vesting contracts by specified filters
+      tags:
+      - V3
+      summary: Get Vesting Contracts
+      operationId: api_v3_get_vesting_contracts
+      parameters:
+      - name: contract_address
+        in: query
+        description: 'Vesting contract address in any form. Max: 1000.'
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: wallet_address
+        in: query
+        description: 'Wallet address to filter by owner or sender. Max: 1000.'
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: check_whitelist
+        in: query
+        description: Check if wallet address is in whitelist.
+        schema:
+          type: boolean
+          default: false
+      - name: limit
+        in: query
+        description: Limit number of queried rows. Use with *offset* to batch read.
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          default: 10
+      - name: offset
+        in: query
+        description: Skip first N rows. Use with *limit* to batch read.
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VestingContractsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestError'
+components:
+  schemas:
+    index.VestingInfo:
+      type: object
+      properties:
+        address:
+          type: string
+        cliff_duration:
+          type: integer
+        owner_address:
+          type: string
+        sender_address:
+          type: string
+        start_time:
+          type: integer
+        total_amount:
+          type: string
+        total_duration:
+          type: integer
+        unlock_period:
+          type: integer
+        whitelist:
+          type: array
+          items:
+            type: string
+    AddressBook:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AddressBookRow'
+    VestingContractsResponse:
+      type: object
+      properties:
+        address_book:
+          $ref: '#/components/schemas/AddressBook'
+        vesting_contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/index.VestingInfo'
+    RequestError:
+      type: object
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+    AddressBookRow:
+      type: object
+      properties:
+        domain:
+          type: string
+        interfaces:
+          type: array
+          items:
+            type: string
+        user_friendly:
+          type: string

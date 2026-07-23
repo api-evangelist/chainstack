@@ -1,0 +1,183 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Deployment Options API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Deployment Options
+paths:
+  /v2/deployment-options/:
+    get:
+      operationId: listDeploymentOptions
+      summary: List deployment options
+      description: 'List all available deployment options for your organization.
+
+        Returns the deployable nodes matrix filtered to shared node types on global clouds.
+
+        Each option includes the blockchain ID, cloud ID, protocol, network, and available features.
+
+        '
+      tags:
+      - Deployment Options
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentOptionsResponse'
+              examples:
+                list:
+                  value:
+                    options:
+                    - blockchain: BC-000-000-008
+                      cloud: CC-0016
+                      region: us-east-1
+                      provider: aws
+                      protocol: ethereum
+                      network: ethereum-mainnet
+                      features:
+                      - full
+                    - blockchain: BC-000-000-017
+                      cloud: CC-0016
+                      region: us-east-1
+                      provider: aws
+                      protocol: ethereum
+                      network: ethereum-sepolia-testnet
+                      features:
+                      - full
+                    - blockchain: BC-000-000-015
+                      cloud: CC-0016
+                      region: us-east-1
+                      provider: aws
+                      protocol: solana
+                      network: solana-mainnet
+                      features:
+                      - full
+                    - blockchain: BC-000-000-006
+                      cloud: CC-0016
+                      region: us-east-1
+                      provider: aws
+                      protocol: bsc
+                      network: bsc-mainnet
+                      features:
+                      - full
+                    - blockchain: BC-000-000-010
+                      cloud: CC-0016
+                      region: us-east-1
+                      provider: aws
+                      protocol: polygon-pos
+                      network: polygon-pos-mainnet
+                      features:
+                      - full
+          description: ''
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
+components:
+  schemas:
+    DeploymentOption:
+      type: object
+      description: A single deployable node option.
+      properties:
+        blockchain:
+          type: string
+          description: The unique identifier of the blockchain configuration.
+          example: BC-000-000-008
+        cloud:
+          type: string
+          description: The unique identifier of the cloud provider.
+          example: CC-0016
+        region:
+          type: string
+          description: Cloud region identifier.
+          example: us-east-1
+        provider:
+          type: string
+          description: Cloud provider name.
+          example: aws
+        protocol:
+          type: string
+          description: The blockchain protocol name.
+          example: ethereum
+        network:
+          type: string
+          description: The network name.
+          example: ethereum-mainnet
+        features:
+          type: array
+          description: List of available features for this deployment option.
+          items:
+            type: string
+          example:
+          - full
+      required:
+      - blockchain
+      - cloud
+      - region
+      - provider
+      - protocol
+      - network
+      - features
+    DeploymentOptionsResponse:
+      type: object
+      description: Response containing the list of available deployment options.
+      properties:
+        options:
+          type: array
+          description: List of available deployment options.
+          items:
+            $ref: '#/components/schemas/DeploymentOption'
+      required:
+      - options
+  responses:
+    UnauthorizedError:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    ForbiddenError:
+      description: The request is not allowed with the current permissions.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.

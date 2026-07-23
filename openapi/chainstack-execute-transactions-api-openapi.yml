@@ -1,0 +1,388 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Execute Transactions API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Execute Transactions
+paths:
+  /eth_call:
+    post:
+      tags:
+      - Execute Transactions
+      summary: Eth_Call
+      operationId: ethCall
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_call
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    type: object
+                    title: Call object
+                    properties:
+                      to:
+                        type: string
+                        description: The address of the contract to call.
+                      data:
+                        type: string
+                        description: The data to send with the call.
+                  default:
+                  - to: '0x1F98431c8aD98523631AE4a59f267346ea31F984'
+                    data: '0x8da5cb5b'
+                  - latest
+      responses:
+        '200':
+          description: The result of the call.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_sendRawTransaction:
+    post:
+      tags:
+      - Execute Transactions
+      summary: eth_sendRawTransaction
+      operationId: sendRawTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_sendRawTransaction
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      description: The signed transaction.
+                  default:
+                  - '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675'
+      responses:
+        '200':
+          description: The transaction hash.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_sendRawTransactionSync:
+    post:
+      tags:
+      - Execute Transactions
+      summary: eth_sendRawTransactionSync
+      operationId: sendRawTransactionSync
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_sendRawTransactionSync
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0xf86c808504a817c80082520894ab5db0e98b8ea6b7f9d8ad8e8ed0bc8fba0d1a2f870de0b6b3a764000080821b9f'
+                  items:
+                    oneOf:
+                    - type: string
+                    - type: integer
+                  minItems: 1
+                  maxItems: 2
+            examples:
+              example1:
+                summary: Submit raw transaction with timeout
+                value:
+                  jsonrpc: '2.0'
+                  method: eth_sendRawTransactionSync
+                  params:
+                  - '0xf86c808504a817c80082520894ab5db0e98b8ea6b7f9d8ad8e8ed0bc8fba0d1a2f870de0b6b3a764000080821b9f'
+                  - 5000
+                  id: 1
+      responses:
+        '200':
+          description: Successful transaction submission with receipt
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                    example: '2.0'
+                  id:
+                    type: integer
+                    example: 1
+                  result:
+                    type: object
+                    properties:
+                      transactionHash:
+                        type: string
+                        example: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'
+                      blockHash:
+                        type: string
+                        example: '0xabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcd'
+                      blockNumber:
+                        type: string
+                        example: '0x12345'
+                      gasUsed:
+                        type: string
+                        example: '0x5208'
+                      status:
+                        type: string
+                        example: '0x1'
+  /eth_simulateV1:
+    post:
+      summary: eth_simulateV1
+      operationId: simulateV1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                id:
+                  type: integer
+                  default: 1
+                method:
+                  type: string
+                  default: eth_simulateV1
+                params:
+                  type: array
+                  default:
+                  - blockStateCalls:
+                    - blockOverrides:
+                        baseFeePerGas: '0x9'
+                      stateOverrides:
+                        '0xc000000000000000000000000000000000000000':
+                          balance: '0x4a817c800'
+                      calls:
+                      - from: '0xc000000000000000000000000000000000000000'
+                        to: '0xc000000000000000000000000000000000000001'
+                        maxFeePerGas: '0xf'
+                        value: '0x1'
+                      - from: '0xc000000000000000000000000000000000000000'
+                        to: '0xc000000000000000000000000000000000000002'
+                        maxFeePerGas: '0xf'
+                        value: '0x1'
+                    validation: true
+                    traceTransfers: true
+                  - latest
+                  items:
+                    oneOf:
+                    - type: object
+                      properties:
+                        blockStateCalls:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              blockOverrides:
+                                type: object
+                                properties:
+                                  baseFeePerGas:
+                                    type: string
+                              stateOverrides:
+                                type: object
+                                additionalProperties:
+                                  type: object
+                                  properties:
+                                    balance:
+                                      type: string
+                              calls:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    from:
+                                      type: string
+                                    to:
+                                      type: string
+                                    maxFeePerGas:
+                                      type: string
+                                    value:
+                                      type: string
+                        validation:
+                          type: boolean
+                        traceTransfers:
+                          type: boolean
+                    - type: string
+              required:
+              - jsonrpc
+              - id
+              - method
+              - params
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+      tags:
+      - Execute Transactions
+  /eth_createAccessList:
+    post:
+      tags:
+      - Execute Transactions
+      summary: eth_createAccessList
+      operationId: eth_createAccessList
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_createAccessList
+                params:
+                  type: array
+                  default:
+                  - to: '0x0000000000000000000000000000000000000000'
+                    data: 0x
+                  - latest
+      responses:
+        '200':
+          description: The access list and estimated gas.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_estimateGas:
+    post:
+      tags:
+      - Execute Transactions
+      summary: eth_estimateGas
+      operationId: estimateGas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_estimateGas
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      title: Transaction
+                      description: The transaction call object.
+                  default:
+                  - to: '0x0000000000000000000000000000000000000000'
+      responses:
+        '200':
+          description: Generates and returns an estimate of how much gas is necessary for the transaction to complete.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    nullable: true

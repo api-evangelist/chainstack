@@ -1,10 +1,8 @@
 openapi: 3.0.3
 info:
-  title: Chainstack Polygon zkEVM Node API
+  title: Chainstack Arbitrum Node Account Info Debug And Trace API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the Polygon zkEVM blockchain. Endpoints follow the canonical JSON-RPC over
-    HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>).
-    Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/polygon_zkevm_node_api.
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
@@ -22,15 +20,14 @@ servers:
       default: <api-key>
       description: Per-node access key
 tags:
-- name: General
-- name: Zkevm Methods
+- name: Debug And Trace
 paths:
-  /eth_blockNumber:
+  /arbtrace_block:
     post:
       tags:
-      - General
-      summary: eth_blockNumber
-      operationId: eth_blockNumber
+      - Debug And Trace
+      summary: Arbtrace_Block
+      operationId: arbtraceBlock
       requestBody:
         required: true
         content:
@@ -46,13 +43,17 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_blockNumber
+                  default: arbtrace_block
                 params:
                   type: array
-                  default: []
+                  items:
+                    type: string
+                    title: Block Identifier
+                  default:
+                  - '0xE4E1C0'
       responses:
         '200':
-          description: The latest block number.
+          description: The result of the arbtrace_block method.
           content:
             application/json:
               schema:
@@ -64,12 +65,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_call:
+  /arbtrace_call:
     post:
       tags:
-      - General
-      summary: Eth_Call
-      operationId: ethCall
+      - Debug And Trace
+      summary: Arbtrace_Call
+      operationId: arbtraceCall
       requestBody:
         required: true
         content:
@@ -77,34 +78,154 @@ paths:
             schema:
               type: object
               properties:
+                id:
+                  type: integer
+                  default: 1
                 jsonrpc:
                   type: string
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_call
+                  default: arbtrace_call
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      title: Transaction call Object
+                    - type: array
+                      items:
+                        type: string
+                      title: Options Array
+                    - type: string
+                      title: Block Identifier
+                  default:
+                  - from: '0xeff678bf68ca0da9dfdac0c88f431e8d0e2f7116'
+                    to: '0x1b02da8cb0d097eb8d57a175b88c7d8b47997506'
+                    gas: '0xfa4d9'
+                    gasPrice: '0x9c1e25d'
+                    data: '0x18cbafe5000000000000000000000000000000000000000000000000000000003038624200000000000000000000000000000000000000000000000006ff882fdeb13bd100000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000eff678bf68ca0da9dfdac0c88f431e8d0e2f711600000000000000000000000000000000000000000000000000000000630f76620000000000000000000000000000000000000000000000000000000000000002000000000000000000000000ff970a61a04b1ca14834a43f5de4533ebddb5cc800000000000000000000000082af49447d8a07e3bd95bd0d56f35241523fbab1'
+                  - - trace
+                  - '0xE4E1C0'
+      responses:
+        '200':
+          description: The call's trace.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /arbtrace_callMany:
+    post:
+      tags:
+      - Debug And Trace
+      summary: arbtrace_callMany
+      operationId: arbtraceCallMany
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
                 id:
                   type: integer
                   default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: arbtrace_callMany
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: array
+                      items:
+                        type: array
+                        items:
+                          anyOf:
+                          - type: object
+                            title: Transaction call Object
+                          - type: array
+                            items:
+                              type: string
+                            title: Options Array
+                    - type: string
+                      title: Block Identifier
+                  default:
+                  - - - from: '0xb8351B61Fa1Eb007A9f80144C489d513e6A76b14'
+                        to: '0x478fa4C971a077038B4Fc5C172c3Af5552224ccc'
+                        value: '0xb1a2bc2ec50000'
+                      - - trace
+                    - - from: '0xb8351B61Fa1Eb007A9f80144C489d513e6A76b14'
+                        to: '0x988aA44E12c7BCE07E449A4156b4A269d6642B3A'
+                        value: '0x6f05b59d3b20000'
+                      - - trace
+                  - latest
+      responses:
+        '200':
+          description: The calls' traces.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /arbtrace_filter:
+    post:
+      tags:
+      - Debug And Trace
+      summary: Arbtrace_Filter
+      operationId: arbtraceFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: arbtrace_filter
                 params:
                   type: array
                   items:
                     type: object
-                    title: Call object
                     properties:
-                      to:
+                      fromBlock:
                         type: string
-                        description: The address of the contract to call.
-                      data:
+                        title: From Block Identifier
+                      toBlock:
                         type: string
-                        description: The data to send with the call.
+                        title: To Block Identifier
+                    required:
+                    - fromBlock
+                    - toBlock
                   default:
-                  - to: '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9'
-                    data: '0x18160ddd'
-                  - latest
+                  - fromBlock: '0xE4E1C0'
+                    toBlock: '0xE4E1C2'
       responses:
         '200':
-          description: The result of the call.
+          description: The result of the arbtrace_filter method.
           content:
             application/json:
               schema:
@@ -115,104 +236,13 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: string
-  /eth_chainId:
-    post:
-      tags:
-      - General
-      summary: eth_chainId
-      operationId: getChainId
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_chainId
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The network Chain ID
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-  /eth_estimateGas:
-    post:
-      tags:
-      - General
-      summary: eth_estimateGas
-      operationId: estimateGas
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_estimateGas
-                params:
-                  type: array
-                  items:
                     type: object
-                    properties:
-                      from:
-                        type: string
-                        format: byte
-                      to:
-                        type: string
-                        format: byte
-                  default:
-                  - from: '0xb218C5D6aF1F979aC42BC68d98A5A0D796C6aB01'
-                    to: '0x2A39319dB98A3982F7C363380b72C66Ab1FFe228'
-                  - latest
-      responses:
-        '200':
-          description: The estimated gas amount
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-                    format: byte
-  /eth_gasPrice:
+  /arbtrace_get:
     post:
       tags:
-      - General
-      summary: eth_gasPrice
-      operationId: getGasPrice
+      - Debug And Trace
+      summary: Arbtrace_Get
+      operationId: arbtraceGet
       requestBody:
         required: true
         content:
@@ -228,62 +258,23 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_gasPrice
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The value of the current gas base fee in Wei.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-  /eth_getBalance:
-    post:
-      tags:
-      - General
-      summary: eth_getBalance
-      operationId: getBalance
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBalance
+                  default: arbtrace_get
                 params:
                   type: array
                   items:
                     anyOf:
                     - type: string
-                      title: Address
-                      description: The address identifier.
-                    - type: string
-                      title: Block identifier
-                      description: The block identifier.
+                      title: Transaction Hash
+                    - type: array
+                      items:
+                        type: string
+                      title: Index
                   default:
-                  - '0x3eb6347f6282E78F778C23c97E8657F5EE5378E0'
-                  - pending
+                  - '0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680'
+                  - - '0x0'
       responses:
         '200':
-          description: The account balance.
+          description: The transaction's trace.
           content:
             application/json:
               schema:
@@ -295,12 +286,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_getBlockByHash:
+  /arbtrace_replayBlockTransactions:
     post:
       tags:
-      - General
-      summary: eth_getBlockByHash
-      operationId: getBlockByHash
+      - Debug And Trace
+      summary: arbtrace_replayBlockTransactions
+      operationId: arbtraceReplayBlockTransactions
       requestBody:
         required: true
         content:
@@ -316,72 +307,185 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_getBlockByHash
+                  default: arbtrace_replayBlockTransactions
                 params:
                   type: array
                   items:
                     anyOf:
                     - type: string
-                      title: Block Hash
-                      description: The hash identifying the block.
+                      title: Block Identifier
+                    - type: array
+                      items:
+                        type: string
+                      title: Options Array
+                  default:
+                  - '0xE4E1C0'
+                  - - trace
+      responses:
+        '200':
+          description: The replayed block transactions' traces.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /arbtrace_replayTransaction:
+    post:
+      tags:
+      - Debug And Trace
+      summary: arbtrace_replayTransaction
+      operationId: arbtraceReplayTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: arbtrace_replayTransaction
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Transaction Hash
+                    - type: array
+                      items:
+                        type: string
+                      title: Options Array
+                  default:
+                  - '0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680'
+                  - - trace
+      responses:
+        '200':
+          description: The replayed transaction's trace.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /arbtrace_transaction:
+    post:
+      tags:
+      - Debug And Trace
+      summary: Arbtrace_Transaction
+      operationId: arbtraceTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: arbtrace_transaction
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Transaction Hash
+                    - type: array
+                      items:
+                        type: string
+                      title: Options Array
+                  default:
+                  - '0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680'
+      responses:
+        '200':
+          description: The transaction's trace.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /debug_accountRange:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_accountRange
+      operationId: debugAccountRange
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_accountRange
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending, safe, finalized).
+                    - type: string
+                      title: Start
+                      description: The start key hash for pagination, as hex bytes.
+                    - type: integer
+                      title: Max Results
+                      description: Maximum number of accounts to return (max 256).
                     - type: boolean
-                      title: Transaction selector
-                      description: True for the full transactions, false for only the transaction hashes.
+                      title: No Code
+                      description: If true, excludes contract code from the result.
+                    - type: boolean
+                      title: No Storage
+                      description: If true, excludes storage from the result.
+                    - type: boolean
+                      title: Incompletes
+                      description: If true, includes accounts without addresses.
                   default:
-                  - '0x2b10ad54fb64a69f0cf0395eda2b97d6dfb853a184a31cb6da53d5a360789331'
+                  - latest
+                  - '0x0000000000000000000000000000000000000000000000000000000000000000'
+                  - 10
                   - true
-      responses:
-        '200':
-          description: The block information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-  /eth_getBlockByNumber:
-    post:
-      tags:
-      - General
-      summary: eth_getBlockByNumber
-      operationId: getBlockByNumber
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBlockByNumber
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Block identifier
-                      description: The block number or tag.
-                    - type: boolean
-                      title: Transaction selector
-                      description: True for the full transactions, false for only the transaction hashes.
-                  default:
-                  - latest
+                  - true
                   - false
       responses:
         '200':
-          description: The block information
+          description: Returns the account range dump.
           content:
             application/json:
               schema:
@@ -393,12 +497,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_getBlockTransactionCountByHash:
+  /debug_dumpBlock:
     post:
       tags:
-      - General
-      summary: eth_getBlockTransactionCountByHash
-      operationId: getBlockTransactionCountByHash
+      - Debug And Trace
+      summary: debug_dumpBlock
+      operationId: debugDumpBlock
       requestBody:
         required: true
         content:
@@ -414,111 +518,18 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_getBlockTransactionCountByHash
+                  default: debug_dumpBlock
                 params:
                   type: array
                   items:
                     type: string
-                    title: Block hash
-                    description: The block hash identifier.
-                  default:
-                  - '0x2b10ad54fb64a69f0cf0395eda2b97d6dfb853a184a31cb6da53d5a360789331'
-      responses:
-        '200':
-          description: The block information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-  /eth_getBlockTransactionCountByNumber:
-    post:
-      tags:
-      - General
-      summary: eth_getBlockTransactionCountByNumber
-      operationId: getBlockTransactionCountByNumber
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBlockTransactionCountByNumber
-                params:
-                  type: array
-                  items:
-                    type: string
-                    title: Block identifier
-                    description: The block number or tag.
+                    title: Block Number
+                    description: Block number in hex format or tag (latest, earliest, pending, safe, finalized).
                   default:
                   - latest
       responses:
         '200':
-          description: The block transaction count information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-  /eth_getCode:
-    post:
-      tags:
-      - General
-      summary: eth_getCode
-      operationId: getCode
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getCode
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Smart contract address
-                      description: The address identifier.
-                    - type: string
-                      title: Block identifier
-                      description: The block identifier.
-                  default:
-                  - '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9'
-                  - latest
-      responses:
-        '200':
-          description: The smart contract code.
+          description: Returns the state dump at the given block.
           content:
             application/json:
               schema:
@@ -530,10 +541,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_getFilterChanges:
+  /debug_getAccessibleState:
     post:
-      summary: eth_getFilterChanges
-      operationId: getFilterChanges
+      tags:
+      - Debug And Trace
+      summary: debug_getAccessibleState
+      operationId: debugGetAccessibleState
       requestBody:
         required: true
         content:
@@ -541,25 +554,69 @@ paths:
             schema:
               type: object
               properties:
+                id:
+                  type: integer
+                  default: 1
                 jsonrpc:
                   type: string
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_getFilterChanges
+                  default: debug_getAccessibleState
                 params:
                   type: array
                   items:
                     type: string
-                    title: The filter ID
+                    title: Block Number
+                    description: Block number in hex format or tag.
                   default:
-                  - '0xbdc5b4b99ca699e1d734fc4202afee79'
+                  - '0x1C9C380'
+                  - latest
+      responses:
+        '200':
+          description: Returns the first block number in the range where state is accessible.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: integer
+  /debug_getModifiedAccountsByHash:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_getModifiedAccountsByHash
+      operationId: debugGetModifiedAccountsByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
                 id:
                   type: integer
                   default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_getModifiedAccountsByHash
+                params:
+                  type: array
+                  items:
+                    type: string
+                  default:
+                  - '0x5765eab677d93b81a1c29de804e115d0e4db8dd40e0deabcf187e4e0d047c758'
       responses:
         '200':
-          description: The filter changes.
+          description: Returns a list of accounts modified in the specified block.
           content:
             application/json:
               schema:
@@ -573,14 +630,13 @@ paths:
                     type: array
                     items:
                       type: string
-      tags:
-      - General
-  /eth_getLogs:
+                    description: The addresses of the modified accounts.
+  /debug_getModifiedAccountsByNumber:
     post:
       tags:
-      - General
-      summary: eth_getLogs
-      operationId: getLogs
+      - Debug And Trace
+      summary: debug_getModifiedAccountsByNumber
+      operationId: debugGetModifiedAccountsByNumber
       requestBody:
         required: true
         content:
@@ -588,43 +644,391 @@ paths:
             schema:
               type: object
               properties:
-                method:
-                  type: string
-                  default: eth_getLogs
-                params:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      fromBlock:
-                        type: string
-                        title: from block
-                        description: The block number or tag to start searching for logs from.
-                        default: latest
-                      address:
-                        type: string
-                        title: smart contract address
-                        description: The contract address to retrieve the logs for.
-                      topics:
-                        type: array
-                        title: topics
-                        items:
-                          type: string
-                        description: An array of 32-byte topics to filter for. Each topic is treated as an OR condition.
-                  default:
-                  - fromBlock: latest
-                    address: '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9'
-                    topics:
-                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
                 id:
                   type: integer
                   default: 1
                 jsonrpc:
                   type: string
                   default: '2.0'
+                method:
+                  type: string
+                  default: debug_getModifiedAccountsByNumber
+                params:
+                  type: array
+                  items:
+                    type: integer
+                  default:
+                  - 30000000
       responses:
         '200':
-          description: An array of log objects matching the specified filter.
+          description: Returns a list of accounts modified between the specified blocks.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: string
+                    description: The addresses of the modified accounts.
+  /debug_getRawBlock:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_getRawBlock
+      operationId: debugGetRawBlock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_getRawBlock
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Block
+                    description: Block number in hex format or tag (latest, earliest, pending, safe, finalized).
+                  default:
+                  - latest
+      responses:
+        '200':
+          description: Returns the RLP-encoded block.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /debug_getRawHeader:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_getRawHeader
+      operationId: debugGetRawHeader
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_getRawHeader
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Block
+                    description: Block number in hex format or tag (latest, earliest, pending, safe, finalized).
+                  default:
+                  - latest
+      responses:
+        '200':
+          description: Returns the RLP-encoded block header.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /debug_getRawReceipts:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_getRawReceipts
+      operationId: debugGetRawReceipts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_getRawReceipts
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Block
+                    description: Block number in hex format or tag (latest, earliest, pending, safe, finalized).
+                  default:
+                  - latest
+      responses:
+        '200':
+          description: Returns the binary-encoded receipts for the block.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: string
+  /debug_getRawTransaction:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_getRawTransaction
+      operationId: debugGetRawTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_getRawTransaction
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Transaction Hash
+                    description: The hash of the transaction.
+                  default:
+                  - '0x5765eab677d93b81a1c29de804e115d0e4db8dd40e0deabcf187e4e0d047c758'
+      responses:
+        '200':
+          description: Returns the binary-encoded transaction.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /debug_intermediateRoots:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_intermediateRoots
+      operationId: debugIntermediateRoots
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_intermediateRoots
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block Hash
+                      description: The hash of the block.
+                    - type: object
+                      title: Tracing options
+                  default:
+                  - '0x5765eab677d93b81a1c29de804e115d0e4db8dd40e0deabcf187e4e0d047c758'
+                  - {}
+      responses:
+        '200':
+          description: Returns intermediate state roots for each transaction in the block.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: string
+  /debug_preimage:
+    post:
+      tags:
+      - Debug And Trace
+      summary: Debug_Preimage
+      operationId: debugPreimage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_preimage
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Hash
+                    description: The Keccak-256 hash to look up the preimage for.
+                  default:
+                  - '0x0000000000000000000000000000000000000000000000000000000000000000'
+      responses:
+        '200':
+          description: Returns the preimage for the given hash.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /debug_printBlock:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_printBlock
+      operationId: debugPrintBlock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_printBlock
+                params:
+                  type: array
+                  items:
+                    type: integer
+                    title: Block Number
+                    description: The block number as a decimal integer.
+                  default:
+                  - 30000000
+      responses:
+        '200':
+          description: Returns a human-readable representation of the block.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /debug_traceBadBlock:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_traceBadBlock
+      operationId: debugTraceBadBlock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_traceBadBlock
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block Hash
+                      description: The hash of the bad block to trace.
+                    - type: object
+                      title: Tracing options
+                  default:
+                  - '0x0000000000000000000000000000000000000000000000000000000000000000'
+                  - tracer: callTracer
+      responses:
+        '200':
+          description: Returns trace results for each transaction in the bad block.
           content:
             application/json:
               schema:
@@ -638,12 +1042,12 @@ paths:
                     type: array
                     items:
                       type: object
-  /eth_getStorageAt:
+  /debug_traceBlockByHash:
     post:
       tags:
-      - General
-      summary: eth_getStorageAt
-      operationId: getStorageAt
+      - Debug And Trace
+      summary: debug_traceBlockByHash
+      operationId: arbitrumTraceBlockByHash
       requestBody:
         required: true
         content:
@@ -651,82 +1055,86 @@ paths:
             schema:
               type: object
               properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
                 method:
                   type: string
-                  default: eth_getStorageAt
+                  default: debug_traceBlockByHash
                 params:
                   type: array
                   items:
                     anyOf:
                     - type: string
-                      title: Smart contract address
-                      description: The address of the contract to query.
-                    - type: string
-                      title: Slot index
-                      description: The index of the storage position to query.
-                    - type: string
-                      title: Block ID
-                      description: The block number or tag to use as a reference.
+                      title: Block Hash
+                      description: The block hash.
+                    - type: object
+                      title: Tracer type
+                      properties:
+                        tracer:
+                          type: string
+                      description: The type of tracer.
                   default:
-                  - '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9'
-                  - '0x0'
+                  - '0xb3a662bef958318d25b80ba2ce6932d7e2f10262086247fa848f2d96de75fa18'
+                  - tracer: callTracer
+      responses:
+        '200':
+          description: The block traces.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /debug_traceBlockByNumber:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_traceBlockByNumber
+      operationId: arbitrumTraceBlockByNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_traceBlockByNumber
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block Number
+                      description: Block number in hex format or tag (latest, earliest, pending, safe, finalized).
+                    - type: object
+                      title: Tracer type
+                      properties:
+                        tracer:
+                          type: string
+                      description: The type of tracer.
+                  default:
                   - latest
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
+                  - tracer: callTracer
       responses:
         '200':
-          description: The value stored at the specified position.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-  /eth_getTransactionByBlockHashAndIndex:
-    post:
-      tags:
-      - General
-      summary: eth_getTransactionByBlockHashAndIndex
-      operationId: getTransactionByBlockHashAndIndex
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getTransactionByBlockHashAndIndex
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Block hash
-                    - type: string
-                      title: Transaction index
-                  default:
-                  - '0x903ed68911726435b5c48c46ffafaecd83ce2782ec9e0e34b9c5ab44ad9eb170'
-                  - '0x0'
-      responses:
-        '200':
-          description: The transaction information
+          description: The block traces.
           content:
             application/json:
               schema:
@@ -738,12 +1146,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_getTransactionByBlockNumberAndIndex:
+  /debug_traceCall:
     post:
       tags:
-      - General
-      summary: eth_getTransactionByBlockNumberAndIndex
-      operationId: getTransactionByBlockNumberAndIndex
+      - Debug And Trace
+      summary: debug_traceCall
+      operationId: arbitrumTraceCall
       requestBody:
         required: true
         content:
@@ -759,21 +1167,34 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_getTransactionByBlockNumberAndIndex
+                  default: debug_traceCall
                 params:
                   type: array
                   items:
                     anyOf:
+                    - type: object
+                      properties:
+                        to:
+                          type: string
+                          default: '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'
+                        data:
+                          type: string
+                          default: '0x70a08231000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045'
                     - type: string
-                      title: Block number
-                    - type: string
-                      title: Transaction index
+                      default: latest
+                    - type: object
+                      properties:
+                        tracer:
+                          type: string
+                          default: callTracer
                   default:
-                  - '0xacea6f'
-                  - '0x0'
+                  - to: '0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9'
+                    data: '0x70a08231000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045'
+                  - latest
+                  - tracer: callTracer
       responses:
         '200':
-          description: The transaction information
+          description: The result of the debug trace call.
           content:
             application/json:
               schema:
@@ -785,12 +1206,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_getTransactionByHash:
+  /debug_traceTransaction:
     post:
       tags:
-      - General
-      summary: eth_getTransactionByHash
-      operationId: getTransactionByHash
+      - Debug And Trace
+      summary: debug_traceTransaction
+      operationId: arbitrumTraceTransaction
       requestBody:
         required: true
         content:
@@ -806,17 +1227,22 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_getTransactionByHash
+                  default: debug_traceTransaction
                 params:
                   type: array
                   items:
-                    type: string
-                    title: Transaction hash
+                    anyOf:
+                    - type: string
+                      title: Transaction hash
+                      description: The hash of the transaction to trace.
+                    - type: object
+                      title: Tracing options
                   default:
-                  - '0x0171f86491724ccacd10e67f358a240c026c60b0d48305c2c8f7ff59b5831aeb'
+                  - '0x2cb57e963111cf4d231ec8f66f0eb7a964f10625c2749bf8571d35332fd326c0'
+                  - tracer: callTracer
       responses:
         '200':
-          description: The transaction information
+          description: The transaction's trace.
           content:
             application/json:
               schema:
@@ -828,12 +1254,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_getTransactionCount:
+  /custom_js_tracer:
     post:
       tags:
-      - General
-      summary: eth_getTransactionCount
-      operationId: getTransactionCount
+      - Debug And Trace
+      summary: Custom JS tracer
+      operationId: traceTransaction
       requestBody:
         required: true
         content:
@@ -849,23 +1275,67 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_getTransactionCount
+                  default: debug_traceTransaction
                 params:
                   type: array
                   items:
                     anyOf:
                     - type: string
-                      title: Address
-                      description: The address to check
+                      title: Transaction hash
+                      description: The hash of the transaction to trace.
+                    - type: object
+                      title: The JS custom tracer object
+                  default:
+                  - '0x1e60e4b78c1097d01226dca6dad808f1de05efd705670a28ae8d57171c91d4aa'
+                  - tracer: '{gasUsed: [], step: function(log) { this.gasUsed.push(log.getGas()); }, result: function() { return this.gasUsed; }, fault: function() {}}'
+      responses:
+        '200':
+          description: The transaction's trace
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /trace_block:
+    post:
+      tags:
+      - Debug And Trace
+      summary: Trace_Block
+      operationId: trace_block
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: trace_block
+                params:
+                  type: array
+                  items:
+                    anyOf:
                     - type: string
                       title: Block identifier
-                      description: The block identifier
+                      description: The block number or tag.
                   default:
-                  - '0x7BF729D443da412C001862a577fdC5B6EB6a4127'
                   - latest
       responses:
         '200':
-          description: The address nonce
+          description: The block's trace.
           content:
             application/json:
               schema:
@@ -877,12 +1347,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_getTransactionReceipt:
+  /trace_transaction:
     post:
       tags:
-      - General
-      summary: eth_getTransactionReceipt
-      operationId: getTransactionReceipt
+      - Debug And Trace
+      summary: Trace_Transaction
+      operationId: trace_transaction
       requestBody:
         required: true
         content:
@@ -898,204 +1368,19 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_getTransactionReceipt
-                params:
-                  type: array
-                  items:
-                    type: string
-                    title: Transaction hash
-                  default:
-                  - '0x0171f86491724ccacd10e67f358a240c026c60b0d48305c2c8f7ff59b5831aeb'
-      responses:
-        '200':
-          description: The transaction receipt
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-  /eth_newBlockFilter:
-    post:
-      summary: eth_newBlockFilter
-      operationId: newBlockFilter
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_newBlockFilter
-                params:
-                  type: array
-                  default: []
-                id:
-                  type: integer
-                  default: 1
-      responses:
-        '200':
-          description: The new filter ID.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: array
-                    items:
-                      type: string
-      tags:
-      - General
-  /eth_newFilter:
-    post:
-      tags:
-      - General
-      summary: eth_newFilter
-      operationId: newFilter
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                method:
-                  type: string
-                  default: eth_newFilter
-                params:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      fromBlock:
-                        type: string
-                        title: from block
-                        description: The block number or tag to start searching for logs from.
-                        default: latest
-                      address:
-                        type: string
-                        title: smart contract address
-                        description: The contract address to retrieve the logs for.
-                      topics:
-                        type: array
-                        title: topics
-                        items:
-                          type: string
-                        description: An array of 32-byte topics to filter for. Each topic is treated as an OR condition.
-                  default:
-                  - fromBlock: latest
-                    address: '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9'
-                    topics:
-                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-      responses:
-        '200':
-          description: The filter ID.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-  /eth_newPendingTransactionFilter:
-    post:
-      summary: eth_newPendingTransactionFilter
-      operationId: newPendingTransactionFilter
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_newPendingTransactionFilter
-                params:
-                  type: array
-                  default: []
-                id:
-                  type: integer
-                  default: 1
-      responses:
-        '200':
-          description: The new filter ID.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: array
-                    items:
-                      type: string
-      tags:
-      - General
-  /eth_sendRawTransaction:
-    post:
-      tags:
-      - General
-      summary: eth_sendRawTransaction
-      operationId: sendRawTransaction
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_sendRawTransaction
+                  default: trace_transaction
                 params:
                   type: array
                   items:
                     anyOf:
                     - type: string
-                      description: The signed transaction.
+                      title: Transaction hash
+                      description: The hash of the transaction to trace.
                   default:
-                  - '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675'
+                  - '0x4fc2005859dccab5d9c73c543f533899fe50e25e8d6365c9c335f267d6d12541'
       responses:
         '200':
-          description: The transaction hash.
+          description: The transaction's trace.
           content:
             application/json:
               schema:
@@ -1107,12 +1392,12 @@ paths:
                     type: integer
                   result:
                     type: object
-  /eth_syncing:
+  /trace_call:
     post:
       tags:
-      - General
-      summary: Eth_Syncing
-      operationId: syncing
+      - Debug And Trace
+      summary: Trace_Call
+      operationId: traceCall
       requestBody:
         required: true
         content:
@@ -1128,134 +1413,27 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: eth_syncing
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: Syncing information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-  /eth_uninstallFilter:
-    post:
-      summary: eth_uninstallFilter
-      operationId: uninstallFilter
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_uninstallFilter
+                  default: trace_call
                 params:
                   type: array
                   items:
-                    type: string
-                    title: Filter ID
+                    anyOf:
+                    - type: object
+                      title: Transaction
+                      description: The transaction call object.
+                    - type: array
+                      title: Trace types
+                      description: Array of trace types (trace, vmTrace, stateDiff).
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
                   default:
-                  - '0xbdc5b4b99ca699e1d734fc4202afee79'
-                id:
-                  type: integer
-                  default: 1
+                  - to: '0x0000000000000000000000000000000000000000'
+                  - - trace
+                  - latest
       responses:
         '200':
-          description: Boolean value indicating if the filter was removed or not.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: boolean
-      tags:
-      - General
-  /web3_clientVersion:
-    post:
-      tags:
-      - General
-      summary: web3_clientVersion
-      operationId: clientVersion
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: web3_clientVersion
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The client running on this node.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-  /zkevm_batchNumber:
-    post:
-      tags:
-      - Zkevm Methods
-      summary: zkevm_batchNumber
-      operationId: zkevm_batchNumber
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: zkevm_batchNumber
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: Returns the current batch number.
+          description: Executes the given call and returns execution traces.
           content:
             application/json:
               schema:
@@ -1267,12 +1445,13 @@ paths:
                     type: integer
                   result:
                     type: object
-  /zkevm_batchNumberByBlockNumber:
+                    nullable: true
+  /trace_callMany:
     post:
       tags:
-      - Zkevm Methods
-      summary: zkevm_batchNumberByBlockNumber
-      operationId: zkevm_batchNumberByBlockNumber
+      - Debug And Trace
+      summary: trace_callMany
+      operationId: traceCallMany
       requestBody:
         required: true
         content:
@@ -1288,16 +1467,24 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: zkevm_batchNumberByBlockNumber
+                  default: trace_callMany
                 params:
                   type: array
                   items:
-                    type: string
+                    anyOf:
+                    - type: array
+                      title: Calls
+                      description: Array of transaction call objects with trace types.
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
                   default:
-                  - '0xD65B'
+                  - - - to: '0x0000000000000000000000000000000000000000'
+                      - - trace
+                  - latest
       responses:
         '200':
-          description: Returns the batch number associated with the given block number.
+          description: Performs multiple call traces on top of the same block.
           content:
             application/json:
               schema:
@@ -1309,12 +1496,13 @@ paths:
                     type: integer
                   result:
                     type: object
-  /zkevm_consolidatedBlockNumber:
+                    nullable: true
+  /trace_get:
     post:
       tags:
-      - Zkevm Methods
-      summary: zkevm_consolidatedBlockNumber
-      operationId: zkevm_consolidatedBlockNumber
+      - Debug And Trace
+      summary: Trace_Get
+      operationId: traceGet
       requestBody:
         required: true
         content:
@@ -1330,55 +1518,23 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: zkevm_consolidatedBlockNumber
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The latest consolidated block number.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-  /zkevm_getBatchByNumber:
-    post:
-      tags:
-      - Zkevm Methods
-      summary: zkevm_getBatchByNumber
-      operationId: zkevm_getBatchByNumber
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: zkevm_getBatchByNumber
+                  default: trace_get
                 params:
                   type: array
                   items:
-                    type: string
+                    anyOf:
+                    - type: string
+                      title: Transaction hash
+                      description: Hash of the transaction.
+                    - type: array
+                      title: Indices
+                      description: Array of trace indices.
                   default:
-                  - '0x1FC0'
+                  - '0x0000000000000000000000000000000000000000000000000000000000000000'
+                  - - '0x0'
       responses:
         '200':
-          description: Returns information about a specific batch of transactions based on the batch number.
+          description: Returns trace at given position.
           content:
             application/json:
               schema:
@@ -1390,12 +1546,13 @@ paths:
                     type: integer
                   result:
                     type: object
-  /zkevm_isBlockConsolidated:
+                    nullable: true
+  /trace_replayBlockTransactions:
     post:
       tags:
-      - Zkevm Methods
-      summary: zkevm_isBlockConsolidated
-      operationId: zkevm_isBlockConsolidated
+      - Debug And Trace
+      summary: trace_replayBlockTransactions
+      operationId: traceReplayBlockTransactions
       requestBody:
         required: true
         content:
@@ -1411,16 +1568,23 @@ paths:
                   default: '2.0'
                 method:
                   type: string
-                  default: zkevm_isBlockConsolidated
+                  default: trace_replayBlockTransactions
                 params:
                   type: array
                   items:
-                    type: string
+                    anyOf:
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
+                    - type: array
+                      title: Trace types
+                      description: Array of trace types (trace, vmTrace, stateDiff).
                   default:
-                  - '0xd29e'
+                  - latest
+                  - - trace
       responses:
         '200':
-          description: Checks if the given block is consolidated.
+          description: Replays all transactions in a block and returns the requested traces.
           content:
             application/json:
               schema:
@@ -1432,12 +1596,13 @@ paths:
                     type: integer
                   result:
                     type: object
-  /zkevm_isBlockVirtualized:
+                    nullable: true
+  /debug_getBadBlocks:
     post:
       tags:
-      - Zkevm Methods
-      summary: zkevm_isBlockVirtualized
-      operationId: zkevm_isBlockVirtualized
+      - Debug And Trace
+      summary: debug_getBadBlocks
+      operationId: tempo-debug-getBadBlocks
       requestBody:
         required: true
         content:
@@ -1445,24 +1610,68 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
-                  default: 1
                 jsonrpc:
                   type: string
                   default: '2.0'
                 method:
                   type: string
-                  default: zkevm_isBlockVirtualized
+                  default: debug_getBadBlocks
                 params:
                   type: array
-                  items:
+                  items: {}
+                  default: []
+                  description: Method parameters
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
                     type: string
+                  id:
+                    type: integer
+                  result:
+                    description: Method result
+  /debug_traceCallMany:
+    post:
+      tags:
+      - Debug And Trace
+      summary: debug_traceCallMany
+      operationId: tempo-debug-traceCallMany
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: debug_traceCallMany
+                params:
+                  type: array
+                  items: {}
                   default:
-                  - '130000'
+                  - - - to: '0x20c0000000000000000000000000000000000000'
+                        data: '0x95d89b41'
+                      - - trace
+                  - latest
+                  description: Method parameters
+                id:
+                  type: integer
+                  default: 1
       responses:
         '200':
-          description: Checks if the given block is virtualized.
+          description: Successful response
           content:
             application/json:
               schema:
@@ -1473,13 +1682,13 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-  /zkevm_verifiedBatchNumber:
+                    description: Method result
+  /trace_filter:
     post:
       tags:
-      - Zkevm Methods
-      summary: zkevm_verifiedBatchNumber
-      operationId: zkevm_verifiedBatchNumber
+      - Debug And Trace
+      summary: Trace_Filter
+      operationId: tempo-trace-filter
       requestBody:
         required: true
         content:
@@ -1487,21 +1696,28 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
-                  default: 1
                 jsonrpc:
                   type: string
                   default: '2.0'
                 method:
                   type: string
-                  default: zkevm_verifiedBatchNumber
+                  default: trace_filter
                 params:
                   type: array
-                  default: []
+                  items: {}
+                  default:
+                  - fromBlock: '0x564000'
+                    toBlock: '0x565000'
+                    toAddress:
+                    - '0x20c0000000000000000000000000000000000000'
+                    count: 10
+                  description: Filter object with block range and address filters
+                id:
+                  type: integer
+                  default: 1
       responses:
         '200':
-          description: Returns the current verified batch number.
+          description: Array of matching traces
           content:
             application/json:
               schema:
@@ -1512,13 +1728,16 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-  /zkevm_virtualBatchNumber:
+                    type: array
+                    items:
+                      type: object
+                    description: Array of trace objects matching the filter
+  /trace_rawTransaction:
     post:
       tags:
-      - Zkevm Methods
-      summary: zkevm_virtualBatchNumber
-      operationId: zkevm_virtualBatchNumber
+      - Debug And Trace
+      summary: trace_rawTransaction
+      operationId: tempo-trace-rawTransaction
       requestBody:
         required: true
         content:
@@ -1526,21 +1745,68 @@ paths:
             schema:
               type: object
               properties:
-                id:
-                  type: integer
-                  default: 1
                 jsonrpc:
                   type: string
                   default: '2.0'
                 method:
                   type: string
-                  default: zkevm_virtualBatchNumber
+                  default: trace_rawTransaction
                 params:
                   type: array
-                  default: []
+                  items: {}
+                  default:
+                  - '0x00'
+                  - - trace
+                  description: Method parameters
+                id:
+                  type: integer
+                  default: 1
       responses:
         '200':
-          description: Returns the current virtual batch number.
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    description: Method result
+  /trace_replayTransaction:
+    post:
+      tags:
+      - Debug And Trace
+      summary: trace_replayTransaction
+      operationId: tempo-trace-replayTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: trace_replayTransaction
+                params:
+                  type: array
+                  items: {}
+                  default:
+                  - '0xb3e821e696897b02283b7b2d602941b1d3cb08448d3a204bab05955215fc2035'
+                  - - trace
+                  description: Transaction hash and trace types array
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Replayed transaction trace
           content:
             application/json:
               schema:
@@ -1552,3 +1818,4 @@ paths:
                     type: integer
                   result:
                     type: object
+                    description: Trace result object with output, trace, vmTrace, and stateDiff

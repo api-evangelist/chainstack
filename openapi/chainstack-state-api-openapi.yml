@@ -1,0 +1,635 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info State API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: State
+paths:
+  /getBeaconBlockRootByBlockId:
+    get:
+      summary: Get the root of the beacon block by block_id
+      operationId: getBeaconBlockRootByBlockId
+      parameters:
+      - name: block_id
+        in: path
+        description: Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root.
+        required: true
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Beacon block root successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconBlockRootItem'
+        '404':
+          description: Beacon block root not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - State
+  /getBeaconBlocksByBlockId:
+    get:
+      summary: Get beacon blocks by block_id
+      operationId: getBeaconBlocksByBlockId
+      parameters:
+      - name: block_id
+        in: path
+        description: Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root.
+        required: true
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Beacon block successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconBlockItem'
+        '404':
+          description: Beacon block not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - State
+  /getBeaconHeadersByBlockId:
+    get:
+      summary: Get beacon headers by block_id
+      operationId: getBeaconHeadersByBlockId
+      parameters:
+      - name: block_id
+        in: path
+        description: Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root.
+        required: true
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Beacon header successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconHeaderItem'
+        '404':
+          description: Beacon header not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - State
+  /getBeaconHeadersBySlotAndParentRoot:
+    get:
+      summary: Get beacon headers by slot and parent root
+      operationId: getBeaconHeadersBySlotAndParentRoot
+      parameters:
+      - name: slot
+        in: query
+        description: Slot number
+        required: false
+        schema:
+          type: integer
+          format: int64
+          default: 6215071
+      - name: parent_root
+        in: query
+        description: Parent root hash
+        required: false
+        schema:
+          type: string
+          format: byte
+      responses:
+        '200':
+          description: Beacon headers successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeaconHeaders'
+        '404':
+          description: Beacon headers not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - State
+  /getBlobsByBlockId:
+    get:
+      summary: Get blobs by block_id
+      operationId: getBlobsByBlockId
+      parameters:
+      - name: block_id
+        in: path
+        description: Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific slot number.
+        required: true
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Blobs successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlobsResponse'
+        '404':
+          description: Block not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - State
+  /getCommitteesByStateIdEpochIndexAndSlot:
+    get:
+      summary: Get committees by state, epoch, index, and slot
+      operationId: getCommitteesByStateIdEpochIndexAndSlot
+      parameters:
+      - name: state_id
+        in: path
+        description: State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number.
+        required: true
+        schema:
+          type: string
+          default: head
+      - name: epoch
+        in: query
+        description: Epoch number
+        required: false
+        schema:
+          type: integer
+          format: int64
+          example: 194213
+      - name: index
+        in: query
+        description: Committee index
+        required: false
+        schema:
+          type: integer
+          format: int64
+          example: 1
+      - name: slot
+        in: query
+        description: Slot number
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Committee data successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitteeData'
+        '404':
+          description: Committee data not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - State
+  /getFinalityCheckpoints:
+    get:
+      summary: Get finality checkpoints for a given state
+      operationId: getFinalityCheckpoints
+      tags:
+      - State
+      parameters:
+      - name: state_id
+        in: path
+        required: true
+        description: State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head').
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Successful response with finality checkpoints information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinalityCheckpoints'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /getStateRoot:
+    get:
+      summary: Get the root of a given state
+      operationId: getStateRoot
+      tags:
+      - State
+      parameters:
+      - name: state_id
+        in: path
+        required: true
+        description: State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head').
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Successful response with state root information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateRoot'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /getSyncCommitteeContribution:
+    get:
+      summary: Get sync committee contribution for a given slot, subcommittee index, and beacon block root
+      operationId: getSyncCommitteeContribution
+      parameters:
+      - name: slot
+        in: query
+        description: Slot for which to retrieve the sync committee contribution
+        required: true
+        schema:
+          type: integer
+          format: int64
+          default: 6244671
+      - name: subcommittee_index
+        in: query
+        description: Subcommittee index for which to retrieve the sync committee contribution
+        required: true
+        schema:
+          type: integer
+          format: int64
+          default: 1
+      - name: beacon_block_root
+        in: query
+        description: Beacon block root for which to retrieve the sync committee contribution
+        required: true
+        schema:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+          default: '0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544'
+      responses:
+        '200':
+          description: Sync committee contribution successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncCommitteeContribution'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - State
+  /getSyncCommitteesByStateIdAndEpoch:
+    get:
+      summary: Get sync committees by state and epoch
+      operationId: getSyncCommitteesByStateIdAndEpoch
+      parameters:
+      - name: state_id
+        in: path
+        description: State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number.
+        required: true
+        schema:
+          type: string
+          default: head
+      - name: epoch
+        in: query
+        description: Epoch number
+        required: false
+        schema:
+          type: integer
+          format: int64
+          example: 194213
+      responses:
+        '200':
+          description: Sync committee data successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncCommitteeData'
+        '404':
+          description: Sync committee data not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - State
+components:
+  schemas:
+    FinalityCheckpoints:
+      type: object
+      properties:
+        previous_justified:
+          type: object
+          properties:
+            epoch:
+              type: integer
+              description: Epoch number of the previous justified checkpoint.
+            root:
+              type: string
+              format: byte
+              description: Root of the previous justified checkpoint.
+        current_justified:
+          type: object
+          properties:
+            epoch:
+              type: integer
+              description: Epoch number of the current justified checkpoint.
+            root:
+              type: string
+              format: byte
+              description: Root of the current justified checkpoint.
+        finalized:
+          type: object
+          properties:
+            epoch:
+              type: integer
+              description: Epoch number of the finalized checkpoint.
+            root:
+              type: string
+              format: byte
+              description: Root of the finalized checkpoint.
+    Block:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        parent_root:
+          type: string
+        state_root:
+          type: string
+        body:
+          type: object
+      required:
+      - slot
+      - parent_root
+      - state_root
+      - body
+    SyncCommitteeContribution:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        beacon_block_root:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+        subcommittee_index:
+          type: integer
+          format: int64
+        aggregation_bits:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+        signature:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+      required:
+      - slot
+      - beacon_block_root
+      - subcommittee_index
+      - aggregation_bits
+      - signature
+    BeaconHeaders:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BeaconHeader'
+      required:
+      - data
+    BlobItem:
+      type: object
+      properties:
+        index:
+          type: string
+        blob:
+          type: string
+        kzg_commitment:
+          type: string
+        kzg_proof:
+          type: string
+        signed_block_header:
+          type: object
+      required:
+      - index
+      - blob
+      - kzg_commitment
+      - kzg_proof
+    CommitteeData:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommitteeItem'
+      required:
+      - data
+    BeaconBlockItem:
+      type: object
+      properties:
+        root:
+          type: string
+        block:
+          $ref: '#/components/schemas/Block'
+      required:
+      - root
+      - block
+    StateRoot:
+      type: object
+      properties:
+        root:
+          type: string
+          format: byte
+          description: The root of the specified state.
+    BeaconHeader:
+      type: object
+      properties:
+        root:
+          type: string
+        canonical:
+          type: boolean
+        header:
+          $ref: '#/components/schemas/Header'
+      required:
+      - root
+      - canonical
+      - header
+    BlobsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlobItem'
+      required:
+      - data
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+    SyncCommitteeData:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SyncCommittee'
+      required:
+      - data
+    Header:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        parent_root:
+          type: string
+        state_root:
+          type: string
+        body_root:
+          type: string
+      required:
+      - slot
+      - parent_root
+      - state_root
+      - body_root
+    SyncCommittee:
+      type: object
+      properties:
+        validators:
+          type: array
+          items:
+            type: integer
+            format: int64
+        validator_aggregates:
+          type: string
+      required:
+      - validators
+      - validator_aggregates
+    BeaconHeaderItem:
+      type: object
+      properties:
+        root:
+          type: string
+        canonical:
+          type: boolean
+        header:
+          $ref: '#/components/schemas/Header'
+      required:
+      - root
+      - canonical
+      - header
+    CommitteeItem:
+      type: object
+      properties:
+        index:
+          type: integer
+          format: int64
+        slot:
+          type: integer
+          format: int64
+        validators:
+          type: array
+          items:
+            type: integer
+            format: int64
+      required:
+      - index
+      - slot
+      - validators
+    BeaconBlockRootItem:
+      type: object
+      properties:
+        root:
+          type: string
+      required:
+      - root

@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Events API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Events
+paths:
+  /subscribe_to_events:
+    get:
+      summary: Subscribe to events
+      operationId: subscribeToBeaconEvents
+      parameters:
+      - name: topics
+        in: query
+        description: Topics to subscribe to, e.g., 'head'
+        required: true
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Successfully subscribed to events
+          content:
+            text/event-stream:
+              schema:
+                type: string
+                example: 'event: contribution_and_proof
+
+                  data: {"contribution": "...", "proof": "..."}
+
+
+                  '
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Events
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message

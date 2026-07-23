@@ -1,0 +1,217 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Arbitrum Node Account Info Configuration Info API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Configuration Info
+paths:
+  /deposit_contract:
+    get:
+      summary: Get the Ethereum deposit contract configuration
+      operationId: getConfigDepositContract
+      responses:
+        '200':
+          description: Deposit contract configuration successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DepositContractConfig'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Configuration Info
+  /fork_schedule:
+    get:
+      summary: Get the Ethereum fork schedule
+      operationId: getConfigForkSchedule
+      responses:
+        '200':
+          description: Fork schedule successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForkScheduleList'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Configuration Info
+  /fork_version_by_state_id:
+    get:
+      summary: Get fork information for a specific state
+      operationId: getForkInformation
+      tags:
+      - Configuration Info
+      parameters:
+      - name: state_id
+        in: path
+        required: true
+        description: State identifier which can be a slot number, an epoch number, a block root, or special values like  'genesis' or 'head'.
+        schema:
+          type: string
+          default: head
+      responses:
+        '200':
+          description: Successful response with fork information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForkInformation'
+        '400':
+          description: Invalid state identifier value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /genesis_data:
+    get:
+      summary: Genesis
+      operationId: getBeaconGenesis
+      parameters:
+      - name: apiKey
+        in: path
+        description: Your API key
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Beacon genesis information successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Genesis'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Configuration Info
+  /node_config:
+    get:
+      summary: Node configuration
+      operationId: getConfigSpec
+      responses:
+        '200':
+          description: Specification configuration successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpecConfig'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Configuration Info
+components:
+  schemas:
+    GenesisData:
+      type: object
+      properties:
+        genesis_time:
+          type: string
+          format: date-time
+          description: The genesis time as an ISO 8601 formatted string.
+        genesis_validators_root:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{64}$
+          description: The 32-byte genesis validators root as a hex string.
+        genesis_fork_version:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{8}$
+          description: The 4-byte genesis fork version as a hex string.
+      required:
+      - genesis_time
+      - genesis_validators_root
+      - genesis_fork_version
+    ForkScheduleList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ForkScheduleItem'
+    ForkScheduleItem:
+      type: object
+      properties:
+        epoch:
+          type: integer
+          format: int64
+        version:
+          type: string
+          pattern: ^[0-9a-fA-F]{8}$
+      required:
+      - epoch
+      - version
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+    DepositContractConfig:
+      type: object
+      properties:
+        chain_id:
+          type: integer
+          format: int64
+        address:
+          type: string
+          pattern: ^0x[0-9a-fA-F]{40}$
+      required:
+      - chain_id
+      - address
+    Genesis:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/GenesisData'
+      required:
+      - data
+    SpecConfig:
+      type: object
+      additionalProperties:
+        type: string
+    ForkInformation:
+      type: object
+      properties:
+        epoch:
+          type: string
+          description: The epoch number at which the current version was applied.
+        previous_version:
+          type: string
+          description: The previous fork version.
+        current_version:
+          type: string
+          description: The current fork version.
