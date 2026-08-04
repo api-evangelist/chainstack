@@ -1,0 +1,548 @@
+{
+  "info": {
+    "_postman_id": "ad5aa136-6a33-4d2e-9138-e61a707e64fa",
+    "name": "Chainstack Arbitrum Node Account Info Gas Data API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:11.000Z",
+    "updatedAt": "2026-07-28T01:19:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ad5aa136-6a33-4d2e-9138-e61a707e64fa"
+  },
+  "item": [
+    {
+      "name": "eth_estimateGas",
+      "item": [
+        {
+          "name": "eth_estimateGas",
+          "id": "7b9d6b25-32e2-446e-a908-21da05b0ea27",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_estimateGas\",\n  \"params\": [\n    {\n      \"from\": \"0x13867a801e352e219c2d2AC29288Bf086e5C81ef\",\n      \"to\": \"0xbe0eb53f46cd790cd13851d5eff43d12404d33e8\"\n    },\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_estimateGas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_estimateGas"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "45391e90-5a20-4470-8269-b595fa56afbd",
+              "name": "The estimated gas amount",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_estimateGas\",\n  \"params\": [\n    {\n      \"from\": \"0x13867a801e352e219c2d2AC29288Bf086e5C81ef\",\n      \"to\": \"0xbe0eb53f46cd790cd13851d5eff43d12404d33e8\"\n    },\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_estimateGas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_estimateGas"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:19:11.000Z",
+              "updatedAt": "2026-07-28T01:19:11.000Z",
+              "uid": "35240-45391e90-5a20-4470-8269-b595fa56afbd"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:11.000Z",
+          "updatedAt": "2026-07-28T01:19:11.000Z",
+          "uid": "35240-7b9d6b25-32e2-446e-a908-21da05b0ea27"
+        }
+      ],
+      "id": "ac70cd1b-dcbb-4d06-8ad6-d064e53401f6",
+      "createdAt": "2026-07-28T01:19:11.000Z",
+      "updatedAt": "2026-07-28T01:19:11.000Z",
+      "uid": "35240-ac70cd1b-dcbb-4d06-8ad6-d064e53401f6"
+    },
+    {
+      "name": "eth_gasPrice",
+      "item": [
+        {
+          "name": "eth_gasPrice",
+          "id": "baa203a7-011b-4e76-ba9d-dd6d2d1fd60b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_gasPrice\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_gasPrice",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_gasPrice"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e5e1385f-3b4f-4d72-a39d-be8e4e998dca",
+              "name": "The value of the current gas base fee in Wei.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_gasPrice\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_gasPrice",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_gasPrice"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:19:11.000Z",
+              "updatedAt": "2026-07-28T01:19:11.000Z",
+              "uid": "35240-e5e1385f-3b4f-4d72-a39d-be8e4e998dca"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:11.000Z",
+          "updatedAt": "2026-07-28T01:19:11.000Z",
+          "uid": "35240-baa203a7-011b-4e76-ba9d-dd6d2d1fd60b"
+        }
+      ],
+      "id": "674082ee-702c-4f9b-ac66-81acea582ad7",
+      "createdAt": "2026-07-28T01:19:11.000Z",
+      "updatedAt": "2026-07-28T01:19:11.000Z",
+      "uid": "35240-674082ee-702c-4f9b-ac66-81acea582ad7"
+    },
+    {
+      "name": "eth_maxPriorityFeePerGas",
+      "item": [
+        {
+          "name": "eth_maxPriorityFeePerGas",
+          "id": "568256de-6f4c-4629-86c5-4d23894725d4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_maxPriorityFeePerGas\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_maxPriorityFeePerGas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_maxPriorityFeePerGas"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6e5ba301-de9b-4f06-9a1d-94c235c75ba0",
+              "name": "The estimated max priority fee per gas",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_maxPriorityFeePerGas\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_maxPriorityFeePerGas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_maxPriorityFeePerGas"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:19:11.000Z",
+              "updatedAt": "2026-07-28T01:19:11.000Z",
+              "uid": "35240-6e5ba301-de9b-4f06-9a1d-94c235c75ba0"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:11.000Z",
+          "updatedAt": "2026-07-28T01:19:11.000Z",
+          "uid": "35240-568256de-6f4c-4629-86c5-4d23894725d4"
+        }
+      ],
+      "id": "67dd229c-566a-46e4-9601-87f6750de2a8",
+      "createdAt": "2026-07-28T01:19:11.000Z",
+      "updatedAt": "2026-07-28T01:19:11.000Z",
+      "uid": "35240-67dd229c-566a-46e4-9601-87f6750de2a8"
+    },
+    {
+      "name": "eth_feeHistory",
+      "item": [
+        {
+          "name": "eth_feeHistory",
+          "id": "195d9f55-4922-4ad6-8459-b5420cf51ac5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_feeHistory\",\n  \"params\": [\n    \"0x4\",\n    \"latest\",\n    [\n      25,\n      75\n    ]\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_feeHistory",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_feeHistory"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4067d996-e2f5-4620-a619-75d7d4cab0d8",
+              "name": "Fee history for the requested block range.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_feeHistory\",\n  \"params\": [\n    \"0x4\",\n    \"latest\",\n    [\n      25,\n      75\n    ]\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_feeHistory",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_feeHistory"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:11.000Z",
+              "updatedAt": "2026-07-28T01:19:11.000Z",
+              "uid": "35240-4067d996-e2f5-4620-a619-75d7d4cab0d8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:11.000Z",
+          "updatedAt": "2026-07-28T01:19:11.000Z",
+          "uid": "35240-195d9f55-4922-4ad6-8459-b5420cf51ac5"
+        }
+      ],
+      "id": "80f64968-a95d-4f7c-950c-73bb6ce905e3",
+      "createdAt": "2026-07-28T01:19:11.000Z",
+      "updatedAt": "2026-07-28T01:19:11.000Z",
+      "uid": "35240-80f64968-a95d-4f7c-950c-73bb6ce905e3"
+    },
+    {
+      "name": "eth_blobBaseFee",
+      "item": [
+        {
+          "name": "eth_blobBaseFee",
+          "id": "0195141d-ea20-4035-a7da-5cdbc8796749",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_blobBaseFee\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_blobBaseFee",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_blobBaseFee"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9b9e9a06-3d5f-40b2-ad99-23c4b3c103df",
+              "name": "Returns the base fee for blob gas in wei.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_blobBaseFee\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_blobBaseFee",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_blobBaseFee"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:11.000Z",
+              "updatedAt": "2026-07-28T01:19:11.000Z",
+              "uid": "35240-9b9e9a06-3d5f-40b2-ad99-23c4b3c103df"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:11.000Z",
+          "updatedAt": "2026-07-28T01:19:11.000Z",
+          "uid": "35240-0195141d-ea20-4035-a7da-5cdbc8796749"
+        }
+      ],
+      "id": "f2f5da29-833b-481e-95b6-35ec265e1022",
+      "createdAt": "2026-07-28T01:19:11.000Z",
+      "updatedAt": "2026-07-28T01:19:11.000Z",
+      "uid": "35240-f2f5da29-833b-481e-95b6-35ec265e1022"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

@@ -1,0 +1,851 @@
+{
+  "info": {
+    "_postman_id": "4d272508-c73f-4f5e-9ce0-4eccdef37c6c",
+    "name": "Chainstack Arbitrum Node Account Info Network API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:36.000Z",
+    "updatedAt": "2026-07-28T01:19:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4d272508-c73f-4f5e-9ce0-4eccdef37c6c"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "networks",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Retrieve Network",
+                  "id": "29a0f7fe-a0ee-4fc2-8380-3043a327fb90",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/networks/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "networks",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "89f15bb7-4277-466d-aacc-e151f40ffa82",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve network details."
+                  },
+                  "response": [
+                    {
+                      "id": "bd1648eb-32ee-4c3d-a28e-bb9eb773495b",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/networks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "networks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"protocol\": \"harmony\",\n  \"details\": {},\n  \"status\": \"stopping\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"network\": \"ethereum-ropsten-testnet\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:37.000Z",
+                      "updatedAt": "2026-07-28T01:19:37.000Z",
+                      "uid": "35240-bd1648eb-32ee-4c3d-a28e-bb9eb773495b"
+                    },
+                    {
+                      "id": "54e81640-9c0e-478c-9df8-d860f42083d5",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/networks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "networks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:37.000Z",
+                      "updatedAt": "2026-07-28T01:19:37.000Z",
+                      "uid": "35240-54e81640-9c0e-478c-9df8-d860f42083d5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:19:37.000Z",
+                  "updatedAt": "2026-07-28T01:19:37.000Z",
+                  "uid": "35240-29a0f7fe-a0ee-4fc2-8380-3043a327fb90"
+                },
+                {
+                  "name": "Update Network",
+                  "id": "b314ac71-fcf3-45e8-9dd8-806b08f894c8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"protocol\": \"ethereum\",\n  \"details\": {},\n  \"status\": \"pending\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/networks/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "networks",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "2c8638af-9d7a-4b5d-99c6-7d1213512843",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Change the network name. Only for `consortium` projects."
+                  },
+                  "response": [
+                    {
+                      "id": "66fa24d7-b197-44e6-9eb5-335b548ca1ae",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"protocol\": \"ethereum\",\n  \"details\": {},\n  \"status\": \"pending\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/networks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "networks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"protocol\": \"harmony\",\n  \"details\": {},\n  \"status\": \"stopping\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"network\": \"ethereum-ropsten-testnet\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:37.000Z",
+                      "updatedAt": "2026-07-28T01:19:37.000Z",
+                      "uid": "35240-66fa24d7-b197-44e6-9eb5-335b548ca1ae"
+                    },
+                    {
+                      "id": "5ac58341-6835-41a3-bff9-ffbba60e2113",
+                      "name": "Validation error.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"protocol\": \"ethereum\",\n  \"details\": {},\n  \"status\": \"pending\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/networks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "networks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"fields\": {\n      \"eu0\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:37.000Z",
+                      "updatedAt": "2026-07-28T01:19:37.000Z",
+                      "uid": "35240-5ac58341-6835-41a3-bff9-ffbba60e2113"
+                    },
+                    {
+                      "id": "09f1f7e2-1877-4c2b-9c00-5cef5f4f9b4e",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"protocol\": \"ethereum\",\n  \"details\": {},\n  \"status\": \"pending\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/networks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "networks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:37.000Z",
+                      "updatedAt": "2026-07-28T01:19:37.000Z",
+                      "uid": "35240-09f1f7e2-1877-4c2b-9c00-5cef5f4f9b4e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:19:37.000Z",
+                  "updatedAt": "2026-07-28T01:19:37.000Z",
+                  "uid": "35240-b314ac71-fcf3-45e8-9dd8-806b08f894c8"
+                },
+                {
+                  "name": "Delete Network",
+                  "id": "a72e793c-fde4-40d7-b0fc-0af1c76f3629",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/networks/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "networks",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "ea0218a4-55f1-493d-9364-911e401895d4",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Delete the network."
+                  },
+                  "response": [
+                    {
+                      "id": "8641019f-38b0-46f8-9953-1b8e41da96df",
+                      "name": "No response body",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/networks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "networks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:19:37.000Z",
+                      "updatedAt": "2026-07-28T01:19:37.000Z",
+                      "uid": "35240-8641019f-38b0-46f8-9953-1b8e41da96df"
+                    },
+                    {
+                      "id": "06fed0f9-dbc6-4aef-b922-f864371e0f39",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/networks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "networks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:37.000Z",
+                      "updatedAt": "2026-07-28T01:19:37.000Z",
+                      "uid": "35240-06fed0f9-dbc6-4aef-b922-f864371e0f39"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:19:37.000Z",
+                  "updatedAt": "2026-07-28T01:19:37.000Z",
+                  "uid": "35240-a72e793c-fde4-40d7-b0fc-0af1c76f3629"
+                }
+              ],
+              "id": "5cae105a-5575-4637-bac5-d323b9fdfc5a",
+              "createdAt": "2026-07-28T01:19:37.000Z",
+              "updatedAt": "2026-07-28T01:19:37.000Z",
+              "uid": "35240-5cae105a-5575-4637-bac5-d323b9fdfc5a"
+            },
+            {
+              "name": "List all Networks",
+              "id": "923b6083-5c61-4002-a4d1-8ee8d08fefc1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/networks/?order_by=created_at&page=<integer>&project=<string>&name=<string>&public_network=near-mainnet&status=pending&protocol=fantom&project_type=public",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "networks",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n",
+                      "key": "order_by",
+                      "value": "created_at"
+                    },
+                    {
+                      "description": "A page number within the paginated result set.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by project ID.",
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by public network.",
+                      "key": "public_network",
+                      "value": "near-mainnet"
+                    },
+                    {
+                      "description": "Filter by network status.",
+                      "key": "status",
+                      "value": "pending"
+                    },
+                    {
+                      "description": "Filter by protocol.",
+                      "key": "protocol",
+                      "value": "fantom"
+                    },
+                    {
+                      "description": "Filter by project type.",
+                      "key": "project_type",
+                      "value": "public"
+                    }
+                  ]
+                },
+                "description": "List all networks your organization is part of."
+              },
+              "response": [
+                {
+                  "id": "91f4692b-5890-46e3-9404-def7eeb88b3e",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/networks/?order_by=created_at&page=<integer>&project=<string>&name=<string>&public_network=near-mainnet&status=pending&protocol=fantom&project_type=public",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "networks",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n",
+                          "key": "order_by",
+                          "value": "created_at"
+                        },
+                        {
+                          "description": "A page number within the paginated result set.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by project ID.",
+                          "key": "project",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by public network.",
+                          "key": "public_network",
+                          "value": "near-mainnet"
+                        },
+                        {
+                          "description": "Filter by network status.",
+                          "key": "status",
+                          "value": "pending"
+                        },
+                        {
+                          "description": "Filter by protocol.",
+                          "key": "protocol",
+                          "value": "fantom"
+                        },
+                        {
+                          "description": "Filter by project type.",
+                          "key": "project_type",
+                          "value": "public"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"project\": \"<string>\",\n      \"protocol\": \"arbitrum\",\n      \"details\": {},\n      \"status\": \"warning\",\n      \"creator\": {\n        \"id\": \"<string>\",\n        \"email\": \"<email>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"organization\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      },\n      \"created_at\": \"<dateTime>\",\n      \"configuration\": {\n        \"network\": \"ethereum-rinkeby-testnet\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"project\": \"<string>\",\n      \"protocol\": \"tezos\",\n      \"details\": {},\n      \"status\": \"ok\",\n      \"creator\": {\n        \"id\": \"<string>\",\n        \"email\": \"<email>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"organization\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      },\n      \"created_at\": \"<dateTime>\",\n      \"configuration\": {\n        \"network\": \"ethereum-rinkeby-testnet\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:19:37.000Z",
+                  "updatedAt": "2026-07-28T01:19:37.000Z",
+                  "uid": "35240-91f4692b-5890-46e3-9404-def7eeb88b3e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:19:37.000Z",
+              "updatedAt": "2026-07-28T01:19:37.000Z",
+              "uid": "35240-923b6083-5c61-4002-a4d1-8ee8d08fefc1"
+            },
+            {
+              "name": "Create Network",
+              "id": "1abe7b31-c9c2-4546-8292-2b856549bda4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"<string>\",\n  \"protocol\": \"bitcoin\",\n  \"configuration\": {\n    \"network\": \"ethereum-ropsten-testnet\"\n  },\n  \"nodes\": [],\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"details\": {},\n  \"status\": \"failed\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/networks/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "networks",
+                    ""
+                  ]
+                },
+                "description": "Create a network."
+              },
+              "response": [
+                {
+                  "id": "f1c09a50-86a2-4aee-bfe9-406d640f2a73",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"project\": \"<string>\",\n  \"protocol\": \"bitcoin\",\n  \"configuration\": {\n    \"network\": \"ethereum-ropsten-testnet\"\n  },\n  \"nodes\": [],\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"details\": {},\n  \"status\": \"failed\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/networks/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "networks",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"protocol\": \"harmony\",\n  \"details\": {},\n  \"status\": \"stopping\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"network\": \"ethereum-ropsten-testnet\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:19:37.000Z",
+                  "updatedAt": "2026-07-28T01:19:37.000Z",
+                  "uid": "35240-f1c09a50-86a2-4aee-bfe9-406d640f2a73"
+                },
+                {
+                  "id": "a3dc7e3f-11b4-4c4d-bed8-7319b2ce6082",
+                  "name": "Validation error.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"project\": \"<string>\",\n  \"protocol\": \"bitcoin\",\n  \"configuration\": {\n    \"network\": \"ethereum-ropsten-testnet\"\n  },\n  \"nodes\": [],\n  \"name\": \"<string>\",\n  \"id\": \"<string>\",\n  \"details\": {},\n  \"status\": \"failed\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/networks/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "networks",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"fields\": {\n      \"eu0\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:19:37.000Z",
+                  "updatedAt": "2026-07-28T01:19:37.000Z",
+                  "uid": "35240-a3dc7e3f-11b4-4c4d-bed8-7319b2ce6082"
+                }
+              ],
+              "createdAt": "2026-07-28T01:19:37.000Z",
+              "updatedAt": "2026-07-28T01:19:37.000Z",
+              "uid": "35240-1abe7b31-c9c2-4546-8292-2b856549bda4"
+            }
+          ],
+          "id": "5e16c99a-5805-4d18-bd38-344be9ce7331",
+          "createdAt": "2026-07-28T01:19:37.000Z",
+          "updatedAt": "2026-07-28T01:19:37.000Z",
+          "uid": "35240-5e16c99a-5805-4d18-bd38-344be9ce7331"
+        }
+      ],
+      "id": "6e458001-025c-4062-8d48-b702c12f4ae8",
+      "createdAt": "2026-07-28T01:19:37.000Z",
+      "updatedAt": "2026-07-28T01:19:37.000Z",
+      "uid": "35240-6e458001-025c-4062-8d48-b702c12f4ae8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

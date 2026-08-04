@@ -1,0 +1,860 @@
+{
+  "info": {
+    "_postman_id": "5025d2be-f8a0-4d49-a735-f958569e0ff1",
+    "name": "Chainstack Arbitrum Node Account Info Zkevm Methods API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:59.000Z",
+    "updatedAt": "2026-07-28T01:20:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5025d2be-f8a0-4d49-a735-f958569e0ff1"
+  },
+  "item": [
+    {
+      "name": "zkevm_batchNumber",
+      "item": [
+        {
+          "name": "zkevm_batchNumber",
+          "id": "ac220eb3-c69b-4e37-8edc-7c5f1aa16d99",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_batchNumber\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zkevm_batchNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zkevm_batchNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "21f8b3a0-b24f-4185-9a04-8716c318c5b3",
+              "name": "Returns the current batch number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_batchNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zkevm_batchNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zkevm_batchNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:59.000Z",
+              "updatedAt": "2026-07-28T01:20:59.000Z",
+              "uid": "35240-21f8b3a0-b24f-4185-9a04-8716c318c5b3"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:59.000Z",
+          "updatedAt": "2026-07-28T01:20:59.000Z",
+          "uid": "35240-ac220eb3-c69b-4e37-8edc-7c5f1aa16d99"
+        }
+      ],
+      "id": "d3c02184-f792-43e5-ae50-26b7dcb8ca17",
+      "createdAt": "2026-07-28T01:20:59.000Z",
+      "updatedAt": "2026-07-28T01:20:59.000Z",
+      "uid": "35240-d3c02184-f792-43e5-ae50-26b7dcb8ca17"
+    },
+    {
+      "name": "zkevm_batchNumberByBlockNumber",
+      "item": [
+        {
+          "name": "zkevm_batchNumberByBlockNumber",
+          "id": "5607fd2d-7fa7-4965-b805-411db0b49cd5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_batchNumberByBlockNumber\",\n  \"params\": [\n    \"0xD65B\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zkevm_batchNumberByBlockNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zkevm_batchNumberByBlockNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "433ff13b-6bf4-4572-badd-8f65a4c298ee",
+              "name": "Returns the batch number associated with the given block number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_batchNumberByBlockNumber\",\n  \"params\": [\n    \"0xD65B\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zkevm_batchNumberByBlockNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zkevm_batchNumberByBlockNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:59.000Z",
+              "updatedAt": "2026-07-28T01:20:59.000Z",
+              "uid": "35240-433ff13b-6bf4-4572-badd-8f65a4c298ee"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:59.000Z",
+          "updatedAt": "2026-07-28T01:20:59.000Z",
+          "uid": "35240-5607fd2d-7fa7-4965-b805-411db0b49cd5"
+        }
+      ],
+      "id": "dad84830-ee09-439e-9242-2c6c256175d4",
+      "createdAt": "2026-07-28T01:20:59.000Z",
+      "updatedAt": "2026-07-28T01:20:59.000Z",
+      "uid": "35240-dad84830-ee09-439e-9242-2c6c256175d4"
+    },
+    {
+      "name": "zkevm_consolidatedBlockNumber",
+      "item": [
+        {
+          "name": "zkevm_consolidatedBlockNumber",
+          "id": "5e39f7fd-1dae-41fe-a0e8-bbeb41e83019",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_consolidatedBlockNumber\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zkevm_consolidatedBlockNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zkevm_consolidatedBlockNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3253e00f-e224-4b50-b443-c3423de5a5ae",
+              "name": "The latest consolidated block number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_consolidatedBlockNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zkevm_consolidatedBlockNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zkevm_consolidatedBlockNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:59.000Z",
+              "updatedAt": "2026-07-28T01:20:59.000Z",
+              "uid": "35240-3253e00f-e224-4b50-b443-c3423de5a5ae"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:59.000Z",
+          "updatedAt": "2026-07-28T01:20:59.000Z",
+          "uid": "35240-5e39f7fd-1dae-41fe-a0e8-bbeb41e83019"
+        }
+      ],
+      "id": "2a2c0a41-8caa-4e20-badb-e726dda92fd9",
+      "createdAt": "2026-07-28T01:20:59.000Z",
+      "updatedAt": "2026-07-28T01:20:59.000Z",
+      "uid": "35240-2a2c0a41-8caa-4e20-badb-e726dda92fd9"
+    },
+    {
+      "name": "zkevm_getBatchByNumber",
+      "item": [
+        {
+          "name": "zkevm_getBatchByNumber",
+          "id": "df8ee5ae-caa8-4ad6-9d69-803f8fb00582",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_getBatchByNumber\",\n  \"params\": [\n    \"0x1FC0\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zkevm_getBatchByNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zkevm_getBatchByNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ea62a5fd-e5e9-4e20-b7e3-44c5eac18ab3",
+              "name": "Returns information about a specific batch of transactions based on the batch number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_getBatchByNumber\",\n  \"params\": [\n    \"0x1FC0\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zkevm_getBatchByNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zkevm_getBatchByNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:59.000Z",
+              "updatedAt": "2026-07-28T01:20:59.000Z",
+              "uid": "35240-ea62a5fd-e5e9-4e20-b7e3-44c5eac18ab3"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:59.000Z",
+          "updatedAt": "2026-07-28T01:20:59.000Z",
+          "uid": "35240-df8ee5ae-caa8-4ad6-9d69-803f8fb00582"
+        }
+      ],
+      "id": "6428e25c-9eeb-4d95-aa7c-50e150fed20c",
+      "createdAt": "2026-07-28T01:20:59.000Z",
+      "updatedAt": "2026-07-28T01:20:59.000Z",
+      "uid": "35240-6428e25c-9eeb-4d95-aa7c-50e150fed20c"
+    },
+    {
+      "name": "zkevm_isBlockConsolidated",
+      "item": [
+        {
+          "name": "zkevm_isBlockConsolidated",
+          "id": "293a3bc5-1fb7-40b0-9f7d-28eaa8c4d812",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_isBlockConsolidated\",\n  \"params\": [\n    \"0xd29e\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zkevm_isBlockConsolidated",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zkevm_isBlockConsolidated"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c250bcdb-f473-4674-8869-7e5471f7b1f3",
+              "name": "Checks if the given block is consolidated.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_isBlockConsolidated\",\n  \"params\": [\n    \"0xd29e\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zkevm_isBlockConsolidated",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zkevm_isBlockConsolidated"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:59.000Z",
+              "updatedAt": "2026-07-28T01:20:59.000Z",
+              "uid": "35240-c250bcdb-f473-4674-8869-7e5471f7b1f3"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:59.000Z",
+          "updatedAt": "2026-07-28T01:20:59.000Z",
+          "uid": "35240-293a3bc5-1fb7-40b0-9f7d-28eaa8c4d812"
+        }
+      ],
+      "id": "5e3b9027-7aea-4dff-ab7e-65a5721ecca9",
+      "createdAt": "2026-07-28T01:20:59.000Z",
+      "updatedAt": "2026-07-28T01:20:59.000Z",
+      "uid": "35240-5e3b9027-7aea-4dff-ab7e-65a5721ecca9"
+    },
+    {
+      "name": "zkevm_isBlockVirtualized",
+      "item": [
+        {
+          "name": "zkevm_isBlockVirtualized",
+          "id": "383d1fa2-f389-4e7b-aa49-d0c664e4657e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_isBlockVirtualized\",\n  \"params\": [\n    \"130000\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zkevm_isBlockVirtualized",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zkevm_isBlockVirtualized"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71c330b0-0f30-4180-8f56-8795fbaf9deb",
+              "name": "Checks if the given block is virtualized.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_isBlockVirtualized\",\n  \"params\": [\n    \"130000\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zkevm_isBlockVirtualized",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zkevm_isBlockVirtualized"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:59.000Z",
+              "updatedAt": "2026-07-28T01:20:59.000Z",
+              "uid": "35240-71c330b0-0f30-4180-8f56-8795fbaf9deb"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:59.000Z",
+          "updatedAt": "2026-07-28T01:20:59.000Z",
+          "uid": "35240-383d1fa2-f389-4e7b-aa49-d0c664e4657e"
+        }
+      ],
+      "id": "8b2e040c-5176-4132-bcc0-e97e141ccd62",
+      "createdAt": "2026-07-28T01:20:59.000Z",
+      "updatedAt": "2026-07-28T01:20:59.000Z",
+      "uid": "35240-8b2e040c-5176-4132-bcc0-e97e141ccd62"
+    },
+    {
+      "name": "zkevm_verifiedBatchNumber",
+      "item": [
+        {
+          "name": "zkevm_verifiedBatchNumber",
+          "id": "46332060-5ecd-43e3-9a43-b63a853de84c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_verifiedBatchNumber\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zkevm_verifiedBatchNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zkevm_verifiedBatchNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "956b0c23-c771-4e2e-a748-1b924b72c19c",
+              "name": "Returns the current verified batch number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_verifiedBatchNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zkevm_verifiedBatchNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zkevm_verifiedBatchNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:59.000Z",
+              "updatedAt": "2026-07-28T01:20:59.000Z",
+              "uid": "35240-956b0c23-c771-4e2e-a748-1b924b72c19c"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:59.000Z",
+          "updatedAt": "2026-07-28T01:20:59.000Z",
+          "uid": "35240-46332060-5ecd-43e3-9a43-b63a853de84c"
+        }
+      ],
+      "id": "ffaa97b0-04ea-47a5-9260-6de1774b0321",
+      "createdAt": "2026-07-28T01:20:59.000Z",
+      "updatedAt": "2026-07-28T01:20:59.000Z",
+      "uid": "35240-ffaa97b0-04ea-47a5-9260-6de1774b0321"
+    },
+    {
+      "name": "zkevm_virtualBatchNumber",
+      "item": [
+        {
+          "name": "zkevm_virtualBatchNumber",
+          "id": "29465f4f-b3b6-4299-977e-c7f6b2616833",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_virtualBatchNumber\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zkevm_virtualBatchNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zkevm_virtualBatchNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "02e392d0-6ead-4007-96c6-0bc8f4171c66",
+              "name": "Returns the current virtual batch number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_virtualBatchNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zkevm_virtualBatchNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zkevm_virtualBatchNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:59.000Z",
+              "updatedAt": "2026-07-28T01:20:59.000Z",
+              "uid": "35240-02e392d0-6ead-4007-96c6-0bc8f4171c66"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:59.000Z",
+          "updatedAt": "2026-07-28T01:20:59.000Z",
+          "uid": "35240-29465f4f-b3b6-4299-977e-c7f6b2616833"
+        }
+      ],
+      "id": "6d81cc89-09c5-41be-b2e9-ed8f409206fc",
+      "createdAt": "2026-07-28T01:20:59.000Z",
+      "updatedAt": "2026-07-28T01:20:59.000Z",
+      "uid": "35240-6d81cc89-09c5-41be-b2e9-ed8f409206fc"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

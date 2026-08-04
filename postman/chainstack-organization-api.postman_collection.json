@@ -1,0 +1,271 @@
+{
+  "info": {
+    "_postman_id": "406ad855-6ce9-4927-af5a-31da057231b0",
+    "name": "Chainstack Arbitrum Node Account Info Organization API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:31.000Z",
+    "updatedAt": "2026-07-28T01:20:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-406ad855-6ce9-4927-af5a-31da057231b0"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "organization",
+          "item": [
+            {
+              "name": "Get Organization name and ID",
+              "id": "e684d22b-9c5b-44ed-80c7-18b8539fb50f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/organization/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "organization",
+                    ""
+                  ]
+                },
+                "description": "Get the name and ID of your organization."
+              },
+              "response": [
+                {
+                  "id": "1501e37d-a174-495f-846c-f27ac07b99e9",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/organization/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "organization",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:20:32.000Z",
+                  "updatedAt": "2026-07-28T01:20:32.000Z",
+                  "uid": "35240-1501e37d-a174-495f-846c-f27ac07b99e9"
+                }
+              ],
+              "createdAt": "2026-07-28T01:20:32.000Z",
+              "updatedAt": "2026-07-28T01:20:32.000Z",
+              "uid": "35240-e684d22b-9c5b-44ed-80c7-18b8539fb50f"
+            },
+            {
+              "name": "Update Organization name",
+              "id": "6d4fb55d-6604-458f-8aed-22945f713d3c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/organization/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "organization",
+                    ""
+                  ]
+                },
+                "description": "Change the name of your organization."
+              },
+              "response": [
+                {
+                  "id": "46cc270f-146b-46f6-a9e1-f0acbbe11acb",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/organization/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "organization",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:20:32.000Z",
+                  "updatedAt": "2026-07-28T01:20:32.000Z",
+                  "uid": "35240-46cc270f-146b-46f6-a9e1-f0acbbe11acb"
+                },
+                {
+                  "id": "d0e37710-d0fe-435b-b2c5-d30c18bbe6a1",
+                  "name": "Validation error.",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/organization/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "organization",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"fields\": {\n      \"in_ae\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"elit_\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:20:32.000Z",
+                  "updatedAt": "2026-07-28T01:20:32.000Z",
+                  "uid": "35240-d0e37710-d0fe-435b-b2c5-d30c18bbe6a1"
+                }
+              ],
+              "createdAt": "2026-07-28T01:20:32.000Z",
+              "updatedAt": "2026-07-28T01:20:32.000Z",
+              "uid": "35240-6d4fb55d-6604-458f-8aed-22945f713d3c"
+            }
+          ],
+          "id": "0c8e8d59-cc6e-454a-870b-862752e120af",
+          "createdAt": "2026-07-28T01:20:32.000Z",
+          "updatedAt": "2026-07-28T01:20:32.000Z",
+          "uid": "35240-0c8e8d59-cc6e-454a-870b-862752e120af"
+        }
+      ],
+      "id": "4befb57a-5aae-45aa-929c-7b67b99c8a3a",
+      "createdAt": "2026-07-28T01:20:32.000Z",
+      "updatedAt": "2026-07-28T01:20:32.000Z",
+      "uid": "35240-4befb57a-5aae-45aa-929c-7b67b99c8a3a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

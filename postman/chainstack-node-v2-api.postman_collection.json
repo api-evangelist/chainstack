@@ -1,0 +1,1297 @@
+{
+  "info": {
+    "_postman_id": "352a04ef-5e49-464d-9c3f-56edc70bb78e",
+    "name": "Chainstack Arbitrum Node Account Info Node V2 API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:20.000Z",
+    "updatedAt": "2026-07-28T01:20:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-352a04ef-5e49-464d-9c3f-56edc70bb78e"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "nodes",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Retrieve node",
+                  "id": "3d201423-1b79-4998-8a66-8edb88c40b61",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "00dcbd55-ee19-4b94-94bc-dc432a596aea",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve node details."
+                  },
+                  "response": [
+                    {
+                      "id": "feb3c76f-c8fc-4f8c-91a2-1e08273510b9",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"project\": \"<string>\",\n  \"cloud\": \"<string>\",\n  \"region\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"status\": \"<string>\",\n  \"details\": {},\n  \"blockchain\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-feb3c76f-c8fc-4f8c-91a2-1e08273510b9"
+                    },
+                    {
+                      "id": "615542e5-e2bc-4fd8-a980-699ed7bd6533",
+                      "name": "Authentication credentials were missing or incorrect.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-615542e5-e2bc-4fd8-a980-699ed7bd6533"
+                    },
+                    {
+                      "id": "6e8d821c-053e-4fb3-8849-20b041eb715b",
+                      "name": "The request is not allowed with the current permissions.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-6e8d821c-053e-4fb3-8849-20b041eb715b"
+                    },
+                    {
+                      "id": "8a831354-71f9-41db-a0f6-6ae7c509b3a5",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-8a831354-71f9-41db-a0f6-6ae7c509b3a5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-3d201423-1b79-4998-8a66-8edb88c40b61"
+                },
+                {
+                  "name": "Update node",
+                  "id": "d36967f4-5dc7-48d4-88a7-6aeaa34e66fc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "2d4dbec7-9b09-4fbb-a5ed-d6aad4768c65",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Change the node name."
+                  },
+                  "response": [
+                    {
+                      "id": "52e58fb3-aca9-48a1-aa36-0136a39082bf",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"project\": \"<string>\",\n  \"cloud\": \"<string>\",\n  \"region\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"status\": \"<string>\",\n  \"details\": {},\n  \"blockchain\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-52e58fb3-aca9-48a1-aa36-0136a39082bf"
+                    },
+                    {
+                      "id": "42eacc1c-805f-4718-a940-7eb49f799b02",
+                      "name": "Validation error.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"fields\": {\n      \"eiusmod5\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"incididunt_f64\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-42eacc1c-805f-4718-a940-7eb49f799b02"
+                    },
+                    {
+                      "id": "62526172-dc78-470d-82e6-d3653abc7bf6",
+                      "name": "Authentication credentials were missing or incorrect.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-62526172-dc78-470d-82e6-d3653abc7bf6"
+                    },
+                    {
+                      "id": "a75c790c-235d-4f98-a050-5cfdd69bf218",
+                      "name": "The request is not allowed with the current permissions.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-a75c790c-235d-4f98-a050-5cfdd69bf218"
+                    },
+                    {
+                      "id": "e9a0cf4b-d66b-4ebd-a4c0-aae390f21580",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-e9a0cf4b-d66b-4ebd-a4c0-aae390f21580"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-d36967f4-5dc7-48d4-88a7-6aeaa34e66fc"
+                },
+                {
+                  "name": "Delete node",
+                  "id": "264e29ce-f1bc-4c42-a420-7d81be0b6da9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "96b8e56e-eb95-42ee-b09a-f99ef8e01152",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Delete the node."
+                  },
+                  "response": [
+                    {
+                      "id": "d5332fd6-0c1b-4de9-b1e6-bec77986a0e8",
+                      "name": "No response body",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-d5332fd6-0c1b-4de9-b1e6-bec77986a0e8"
+                    },
+                    {
+                      "id": "c3126a6a-c23c-4362-a546-ad5ddf11097c",
+                      "name": "Authentication credentials were missing or incorrect.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-c3126a6a-c23c-4362-a546-ad5ddf11097c"
+                    },
+                    {
+                      "id": "5c314337-5e17-4dc0-b8af-055016fff567",
+                      "name": "The request is not allowed with the current permissions.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-5c314337-5e17-4dc0-b8af-055016fff567"
+                    },
+                    {
+                      "id": "2d0b2e41-109d-42ee-a413-979778a7dbf4",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:21.000Z",
+                      "updatedAt": "2026-07-28T01:20:21.000Z",
+                      "uid": "35240-2d0b2e41-109d-42ee-a413-979778a7dbf4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-264e29ce-f1bc-4c42-a420-7d81be0b6da9"
+                }
+              ],
+              "id": "95c250d6-0faf-42ed-8e66-5eda0a119c11",
+              "createdAt": "2026-07-28T01:20:21.000Z",
+              "updatedAt": "2026-07-28T01:20:21.000Z",
+              "uid": "35240-95c250d6-0faf-42ed-8e66-5eda0a119c11"
+            },
+            {
+              "name": "List all nodes",
+              "id": "38ec73c0-b9a1-47bb-8df8-0c94f2bc3418",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/nodes/?order_by=name&page=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "nodes",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n",
+                      "key": "order_by",
+                      "value": "name"
+                    },
+                    {
+                      "description": "A page number within the paginated result set.",
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "List all nodes in the networks your organization is part of."
+              },
+              "response": [
+                {
+                  "id": "681dd40e-4de3-401a-b187-09678c72c8db",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/?order_by=name&page=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n",
+                          "key": "order_by",
+                          "value": "name"
+                        },
+                        {
+                          "description": "A page number within the paginated result set.",
+                          "key": "page",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"network\": \"<string>\",\n      \"protocol\": \"<string>\",\n      \"project\": \"<string>\",\n      \"cloud\": \"<string>\",\n      \"region\": \"<string>\",\n      \"provider\": \"<string>\",\n      \"status\": \"<string>\",\n      \"details\": {},\n      \"blockchain\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"network\": \"<string>\",\n      \"protocol\": \"<string>\",\n      \"project\": \"<string>\",\n      \"cloud\": \"<string>\",\n      \"region\": \"<string>\",\n      \"provider\": \"<string>\",\n      \"status\": \"<string>\",\n      \"details\": {},\n      \"blockchain\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-681dd40e-4de3-401a-b187-09678c72c8db"
+                },
+                {
+                  "id": "7a7d2147-edc7-43af-ae75-d38d3d1868c4",
+                  "name": "Authentication credentials were missing or incorrect.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/?order_by=name&page=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n",
+                          "key": "order_by",
+                          "value": "name"
+                        },
+                        {
+                          "description": "A page number within the paginated result set.",
+                          "key": "page",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-7a7d2147-edc7-43af-ae75-d38d3d1868c4"
+                },
+                {
+                  "id": "8444d8a7-1e71-41e4-a8a9-d2db90ab3e2b",
+                  "name": "The request is not allowed with the current permissions.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/?order_by=name&page=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n",
+                          "key": "order_by",
+                          "value": "name"
+                        },
+                        {
+                          "description": "A page number within the paginated result set.",
+                          "key": "page",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-8444d8a7-1e71-41e4-a8a9-d2db90ab3e2b"
+                }
+              ],
+              "createdAt": "2026-07-28T01:20:21.000Z",
+              "updatedAt": "2026-07-28T01:20:21.000Z",
+              "uid": "35240-38ec73c0-b9a1-47bb-8df8-0c94f2bc3418"
+            },
+            {
+              "name": "Create node",
+              "id": "08053bcc-cc98-40b9-a3ae-5a31bd7c46f0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"cloud\": \"<string>\",\n  \"blockchain\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/nodes/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "nodes",
+                    ""
+                  ]
+                },
+                "description": "Create a new node in the specified project and blockchain."
+              },
+              "response": [
+                {
+                  "id": "0efa1c95-2249-40d8-a01e-2c8cd118c0cf",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"cloud\": \"<string>\",\n  \"blockchain\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"project\": \"<string>\",\n  \"cloud\": \"<string>\",\n  \"region\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"status\": \"<string>\",\n  \"details\": {},\n  \"blockchain\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-0efa1c95-2249-40d8-a01e-2c8cd118c0cf"
+                },
+                {
+                  "id": "bb5bec41-0a1e-4d33-b525-cc070f4f1c8a",
+                  "name": "Validation error.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"cloud\": \"<string>\",\n  \"blockchain\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"fields\": {\n      \"eiusmod5\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"incididunt_f64\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-bb5bec41-0a1e-4d33-b525-cc070f4f1c8a"
+                },
+                {
+                  "id": "c22a7923-bac0-466a-8965-c117b4f2aaad",
+                  "name": "Authentication credentials were missing or incorrect.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"cloud\": \"<string>\",\n  \"blockchain\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-c22a7923-bac0-466a-8965-c117b4f2aaad"
+                },
+                {
+                  "id": "28da5c65-597d-4119-8d98-2f1b80bcef98",
+                  "name": "The request is not allowed with the current permissions.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"cloud\": \"<string>\",\n  \"blockchain\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/nodes/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "nodes",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:20:21.000Z",
+                  "updatedAt": "2026-07-28T01:20:21.000Z",
+                  "uid": "35240-28da5c65-597d-4119-8d98-2f1b80bcef98"
+                }
+              ],
+              "createdAt": "2026-07-28T01:20:21.000Z",
+              "updatedAt": "2026-07-28T01:20:21.000Z",
+              "uid": "35240-08053bcc-cc98-40b9-a3ae-5a31bd7c46f0"
+            }
+          ],
+          "id": "8536a6f0-536d-4d76-a811-4d2b5477be31",
+          "createdAt": "2026-07-28T01:20:21.000Z",
+          "updatedAt": "2026-07-28T01:20:21.000Z",
+          "uid": "35240-8536a6f0-536d-4d76-a811-4d2b5477be31"
+        }
+      ],
+      "id": "17a93516-7bde-4dea-ad39-509dd7bca71c",
+      "createdAt": "2026-07-28T01:20:21.000Z",
+      "updatedAt": "2026-07-28T01:20:21.000Z",
+      "uid": "35240-17a93516-7bde-4dea-ad39-509dd7bca71c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

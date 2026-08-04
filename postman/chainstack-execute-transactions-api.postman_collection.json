@@ -1,0 +1,652 @@
+{
+  "info": {
+    "_postman_id": "307a04c3-b429-42b9-a23c-583199111749",
+    "name": "Chainstack Arbitrum Node Account Info Execute Transactions API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:02.000Z",
+    "updatedAt": "2026-07-28T01:19:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-307a04c3-b429-42b9-a23c-583199111749"
+  },
+  "item": [
+    {
+      "name": "eth_call",
+      "item": [
+        {
+          "name": "Eth_Call",
+          "id": "bbbbdbd4-d8ee-437f-bf92-f5391ac40794",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_call\",\n  \"id\": 1,\n  \"params\": [\n    {\n      \"to\": \"0x1F98431c8aD98523631AE4a59f267346ea31F984\",\n      \"data\": \"0x8da5cb5b\"\n    },\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_call",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_call"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6ee1eb7e-d980-48f7-87f5-cf52a94c5cb2",
+              "name": "The result of the call.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_call\",\n  \"id\": 1,\n  \"params\": [\n    {\n      \"to\": \"0x1F98431c8aD98523631AE4a59f267346ea31F984\",\n      \"data\": \"0x8da5cb5b\"\n    },\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_call",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_call"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:19:03.000Z",
+              "updatedAt": "2026-07-28T01:19:03.000Z",
+              "uid": "35240-6ee1eb7e-d980-48f7-87f5-cf52a94c5cb2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:03.000Z",
+          "updatedAt": "2026-07-28T01:19:03.000Z",
+          "uid": "35240-bbbbdbd4-d8ee-437f-bf92-f5391ac40794"
+        }
+      ],
+      "id": "da6a1348-11ab-4412-a57a-0c9abfb3fdfd",
+      "createdAt": "2026-07-28T01:19:03.000Z",
+      "updatedAt": "2026-07-28T01:19:03.000Z",
+      "uid": "35240-da6a1348-11ab-4412-a57a-0c9abfb3fdfd"
+    },
+    {
+      "name": "eth_sendRawTransaction",
+      "item": [
+        {
+          "name": "eth_sendRawTransaction",
+          "id": "377892d9-c750-4480-9451-15bf8b9b53b9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_sendRawTransaction\",\n  \"params\": [\n    \"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_sendRawTransaction",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_sendRawTransaction"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c70355e5-dc24-4a7c-bd32-79f1f3abb959",
+              "name": "The transaction hash.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_sendRawTransaction\",\n  \"params\": [\n    \"0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_sendRawTransaction",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_sendRawTransaction"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:03.000Z",
+              "updatedAt": "2026-07-28T01:19:03.000Z",
+              "uid": "35240-c70355e5-dc24-4a7c-bd32-79f1f3abb959"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:03.000Z",
+          "updatedAt": "2026-07-28T01:19:03.000Z",
+          "uid": "35240-377892d9-c750-4480-9451-15bf8b9b53b9"
+        }
+      ],
+      "id": "a9d251f9-e7f3-4b1c-aeef-055b16df1e30",
+      "createdAt": "2026-07-28T01:19:03.000Z",
+      "updatedAt": "2026-07-28T01:19:03.000Z",
+      "uid": "35240-a9d251f9-e7f3-4b1c-aeef-055b16df1e30"
+    },
+    {
+      "name": "eth_sendRawTransactionSync",
+      "item": [
+        {
+          "name": "eth_sendRawTransactionSync",
+          "id": "ab7635a0-a533-4cd3-bd78-c50df59dabd9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_sendRawTransactionSync\",\n  \"id\": 1,\n  \"params\": [\n    \"0xf86c808504a817c80082520894ab5db0e98b8ea6b7f9d8ad8e8ed0bc8fba0d1a2f870de0b6b3a764000080821b9f\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_sendRawTransactionSync",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_sendRawTransactionSync"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6f81cc3-796f-4e10-b380-4d3d4b38b677",
+              "name": "Successful transaction submission with receipt",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_sendRawTransactionSync\",\n  \"id\": 1,\n  \"params\": [\n    \"0xf86c808504a817c80082520894ab5db0e98b8ea6b7f9d8ad8e8ed0bc8fba0d1a2f870de0b6b3a764000080821b9f\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_sendRawTransactionSync",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_sendRawTransactionSync"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {\n    \"transactionHash\": \"<string>\",\n    \"blockHash\": \"<string>\",\n    \"blockNumber\": \"<string>\",\n    \"gasUsed\": \"<string>\",\n    \"status\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:19:03.000Z",
+              "updatedAt": "2026-07-28T01:19:03.000Z",
+              "uid": "35240-c6f81cc3-796f-4e10-b380-4d3d4b38b677"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:03.000Z",
+          "updatedAt": "2026-07-28T01:19:03.000Z",
+          "uid": "35240-ab7635a0-a533-4cd3-bd78-c50df59dabd9"
+        }
+      ],
+      "id": "e6c58fad-6178-4538-8789-145299c35e2a",
+      "createdAt": "2026-07-28T01:19:03.000Z",
+      "updatedAt": "2026-07-28T01:19:03.000Z",
+      "uid": "35240-e6c58fad-6178-4538-8789-145299c35e2a"
+    },
+    {
+      "name": "eth_simulateV1",
+      "item": [
+        {
+          "name": "eth_simulateV1",
+          "id": "2cde0251-80e0-4368-b63f-5d5803b023bf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"eth_simulateV1\",\n  \"params\": [\n    {\n      \"blockStateCalls\": [\n        {\n          \"blockOverrides\": {\n            \"baseFeePerGas\": \"0x9\"\n          },\n          \"stateOverrides\": {\n            \"0xc000000000000000000000000000000000000000\": {\n              \"balance\": \"0x4a817c800\"\n            }\n          },\n          \"calls\": [\n            {\n              \"from\": \"0xc000000000000000000000000000000000000000\",\n              \"to\": \"0xc000000000000000000000000000000000000001\",\n              \"maxFeePerGas\": \"0xf\",\n              \"value\": \"0x1\"\n            },\n            {\n              \"from\": \"0xc000000000000000000000000000000000000000\",\n              \"to\": \"0xc000000000000000000000000000000000000002\",\n              \"maxFeePerGas\": \"0xf\",\n              \"value\": \"0x1\"\n            }\n          ]\n        }\n      ],\n      \"validation\": true,\n      \"traceTransfers\": true\n    },\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_simulateV1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_simulateV1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2954a3de-8863-43d9-8506-feb60d624e39",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"eth_simulateV1\",\n  \"params\": [\n    {\n      \"blockStateCalls\": [\n        {\n          \"blockOverrides\": {\n            \"baseFeePerGas\": \"0x9\"\n          },\n          \"stateOverrides\": {\n            \"0xc000000000000000000000000000000000000000\": {\n              \"balance\": \"0x4a817c800\"\n            }\n          },\n          \"calls\": [\n            {\n              \"from\": \"0xc000000000000000000000000000000000000000\",\n              \"to\": \"0xc000000000000000000000000000000000000001\",\n              \"maxFeePerGas\": \"0xf\",\n              \"value\": \"0x1\"\n            },\n            {\n              \"from\": \"0xc000000000000000000000000000000000000000\",\n              \"to\": \"0xc000000000000000000000000000000000000002\",\n              \"maxFeePerGas\": \"0xf\",\n              \"value\": \"0x1\"\n            }\n          ]\n        }\n      ],\n      \"validation\": true,\n      \"traceTransfers\": true\n    },\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_simulateV1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_simulateV1"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:03.000Z",
+              "updatedAt": "2026-07-28T01:19:03.000Z",
+              "uid": "35240-2954a3de-8863-43d9-8506-feb60d624e39"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:03.000Z",
+          "updatedAt": "2026-07-28T01:19:03.000Z",
+          "uid": "35240-2cde0251-80e0-4368-b63f-5d5803b023bf"
+        }
+      ],
+      "id": "f32115d4-8365-474f-bfa9-0ac8a2c95b2a",
+      "createdAt": "2026-07-28T01:19:03.000Z",
+      "updatedAt": "2026-07-28T01:19:03.000Z",
+      "uid": "35240-f32115d4-8365-474f-bfa9-0ac8a2c95b2a"
+    },
+    {
+      "name": "eth_createAccessList",
+      "item": [
+        {
+          "name": "eth_createAccessList",
+          "id": "a3751922-f9af-4bb9-9c76-0770acc87a15",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_createAccessList\",\n  \"params\": [\n    {\n      \"to\": \"0x0000000000000000000000000000000000000000\",\n      \"data\": \"0x\"\n    },\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_createAccessList",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_createAccessList"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d960cd1c-02e4-4054-8421-8f4e82059b01",
+              "name": "The access list and estimated gas.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_createAccessList\",\n  \"params\": [\n    {\n      \"to\": \"0x0000000000000000000000000000000000000000\",\n      \"data\": \"0x\"\n    },\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_createAccessList",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_createAccessList"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:03.000Z",
+              "updatedAt": "2026-07-28T01:19:03.000Z",
+              "uid": "35240-d960cd1c-02e4-4054-8421-8f4e82059b01"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:03.000Z",
+          "updatedAt": "2026-07-28T01:19:03.000Z",
+          "uid": "35240-a3751922-f9af-4bb9-9c76-0770acc87a15"
+        }
+      ],
+      "id": "83e08b3b-251a-4c71-9caf-42fd08ba7db5",
+      "createdAt": "2026-07-28T01:19:03.000Z",
+      "updatedAt": "2026-07-28T01:19:03.000Z",
+      "uid": "35240-83e08b3b-251a-4c71-9caf-42fd08ba7db5"
+    },
+    {
+      "name": "eth_estimateGas",
+      "item": [
+        {
+          "name": "eth_estimateGas",
+          "id": "099b9602-c9d6-4597-bd44-d9c4a0651cd6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_estimateGas\",\n  \"params\": [\n    {\n      \"to\": \"0x0000000000000000000000000000000000000000\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_estimateGas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_estimateGas"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "464a8567-b9e5-45f2-9c10-3c6218dbc062",
+              "name": "Generates and returns an estimate of how much gas is necessary for the transaction to complete.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_estimateGas\",\n  \"params\": [\n    {\n      \"to\": \"0x0000000000000000000000000000000000000000\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_estimateGas",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_estimateGas"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:03.000Z",
+              "updatedAt": "2026-07-28T01:19:03.000Z",
+              "uid": "35240-464a8567-b9e5-45f2-9c10-3c6218dbc062"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:03.000Z",
+          "updatedAt": "2026-07-28T01:19:03.000Z",
+          "uid": "35240-099b9602-c9d6-4597-bd44-d9c4a0651cd6"
+        }
+      ],
+      "id": "aacf758a-dbe0-404f-8701-0525ae87d40e",
+      "createdAt": "2026-07-28T01:19:03.000Z",
+      "updatedAt": "2026-07-28T01:19:03.000Z",
+      "uid": "35240-aacf758a-dbe0-404f-8701-0525ae87d40e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

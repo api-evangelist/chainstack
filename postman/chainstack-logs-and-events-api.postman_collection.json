@@ -1,0 +1,340 @@
+{
+  "info": {
+    "_postman_id": "738c250e-a55c-474a-bb05-6ceb9122d3f1",
+    "name": "Chainstack Arbitrum Node Account Info Logs And Events API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:35.000Z",
+    "updatedAt": "2026-07-28T01:19:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-738c250e-a55c-474a-bb05-6ceb9122d3f1"
+  },
+  "item": [
+    {
+      "name": "eth_getLogs",
+      "item": [
+        {
+          "name": "eth_getLogs",
+          "id": "dd235c58-6013-4131-b6b5-1bce11786071",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"eth_getLogs\",\n  \"params\": [\n    {\n      \"fromBlock\": \"latest\",\n      \"address\": \"0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8\",\n      \"topics\": [\n        \"0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef\"\n      ]\n    }\n  ],\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getLogs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getLogs"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "af34e3ba-7625-49e7-8441-e083ef57576d",
+              "name": "An array of log objects matching the specified filter.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"eth_getLogs\",\n  \"params\": [\n    {\n      \"fromBlock\": \"latest\",\n      \"address\": \"0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8\",\n      \"topics\": [\n        \"0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef\"\n      ]\n    }\n  ],\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getLogs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getLogs"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:19:36.000Z",
+              "updatedAt": "2026-07-28T01:19:36.000Z",
+              "uid": "35240-af34e3ba-7625-49e7-8441-e083ef57576d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:36.000Z",
+          "updatedAt": "2026-07-28T01:19:36.000Z",
+          "uid": "35240-dd235c58-6013-4131-b6b5-1bce11786071"
+        }
+      ],
+      "id": "f7c82c2b-4f79-44b2-859b-bb869a134f44",
+      "createdAt": "2026-07-28T01:19:36.000Z",
+      "updatedAt": "2026-07-28T01:19:36.000Z",
+      "uid": "35240-f7c82c2b-4f79-44b2-859b-bb869a134f44"
+    },
+    {
+      "name": "eth_newFilter",
+      "item": [
+        {
+          "name": "eth_newFilter",
+          "id": "d09226c9-0a28-4ecb-adbb-bf978bd0900c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"eth_newFilter\",\n  \"params\": [\n    {\n      \"fromBlock\": \"latest\",\n      \"address\": \"0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8\",\n      \"topics\": [\n        \"0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef\"\n      ]\n    }\n  ],\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_newFilter",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_newFilter"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "744ea613-6234-4b84-b92c-2153b7460ec2",
+              "name": "The filter ID.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"eth_newFilter\",\n  \"params\": [\n    {\n      \"fromBlock\": \"latest\",\n      \"address\": \"0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8\",\n      \"topics\": [\n        \"0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef\"\n      ]\n    }\n  ],\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_newFilter",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_newFilter"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:19:36.000Z",
+              "updatedAt": "2026-07-28T01:19:36.000Z",
+              "uid": "35240-744ea613-6234-4b84-b92c-2153b7460ec2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:36.000Z",
+          "updatedAt": "2026-07-28T01:19:36.000Z",
+          "uid": "35240-d09226c9-0a28-4ecb-adbb-bf978bd0900c"
+        }
+      ],
+      "id": "394bf165-196b-4989-aeb8-f90e5d54d7ed",
+      "createdAt": "2026-07-28T01:19:36.000Z",
+      "updatedAt": "2026-07-28T01:19:36.000Z",
+      "uid": "35240-394bf165-196b-4989-aeb8-f90e5d54d7ed"
+    },
+    {
+      "name": "eth_getFilterLogs",
+      "item": [
+        {
+          "name": "eth_getFilterLogs",
+          "id": "b383a575-b6f7-4513-a56b-be99a782b998",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getFilterLogs\",\n  \"params\": [\n    \"0x1\"\n  ],\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getFilterLogs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getFilterLogs"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eca15d7a-c32c-4c3a-ae50-214416a37159",
+              "name": "Array of log objects",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getFilterLogs\",\n  \"params\": [\n    \"0x1\"\n  ],\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getFilterLogs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getFilterLogs"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:19:36.000Z",
+              "updatedAt": "2026-07-28T01:19:36.000Z",
+              "uid": "35240-eca15d7a-c32c-4c3a-ae50-214416a37159"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:36.000Z",
+          "updatedAt": "2026-07-28T01:19:36.000Z",
+          "uid": "35240-b383a575-b6f7-4513-a56b-be99a782b998"
+        }
+      ],
+      "id": "285bec32-2b7a-4095-af10-4a31862da0fa",
+      "createdAt": "2026-07-28T01:19:36.000Z",
+      "updatedAt": "2026-07-28T01:19:36.000Z",
+      "uid": "35240-285bec32-2b7a-4095-af10-4a31862da0fa"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

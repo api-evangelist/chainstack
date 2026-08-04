@@ -1,0 +1,609 @@
+{
+  "info": {
+    "_postman_id": "438e0709-bce1-4486-a0f0-109c0c14f959",
+    "name": "Chainstack Arbitrum Node Account Info Configuration Info API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:18:54.000Z",
+    "updatedAt": "2026-07-28T01:18:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-438e0709-bce1-4486-a0f0-109c0c14f959"
+  },
+  "item": [
+    {
+      "name": "deposit_contract",
+      "item": [
+        {
+          "name": "Get the Ethereum deposit contract configuration",
+          "id": "3efef70f-a725-45fc-8d10-a030f1a4ef04",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/deposit_contract",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "deposit_contract"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4c03c7e8-4818-46d1-89a9-0afe76b34830",
+              "name": "Deposit contract configuration successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deposit_contract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deposit_contract"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"chain_id\": \"<long>\",\n  \"address\": \"0x9D4de839d6EfAad262C7d2aCBEaF9bE75c3c4Ae9\"\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-4c03c7e8-4818-46d1-89a9-0afe76b34830"
+            },
+            {
+              "id": "2f3c12e1-164d-446a-a2de-2d6b51b709b9",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/deposit_contract",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "deposit_contract"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-2f3c12e1-164d-446a-a2de-2d6b51b709b9"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:54.000Z",
+          "updatedAt": "2026-07-28T01:18:54.000Z",
+          "uid": "35240-3efef70f-a725-45fc-8d10-a030f1a4ef04"
+        }
+      ],
+      "id": "87f8cddc-f547-4733-a711-0f1c37489dbd",
+      "createdAt": "2026-07-28T01:18:54.000Z",
+      "updatedAt": "2026-07-28T01:18:54.000Z",
+      "uid": "35240-87f8cddc-f547-4733-a711-0f1c37489dbd"
+    },
+    {
+      "name": "fork_schedule",
+      "item": [
+        {
+          "name": "Get the Ethereum fork schedule",
+          "id": "3d190b73-b420-4b07-b9cf-3aeba9f3b7ab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fork_schedule",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fork_schedule"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8e7db416-9fdd-4597-aac6-6bd8e545b549",
+              "name": "Fork schedule successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fork_schedule",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fork_schedule"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"epoch\": \"<long>\",\n    \"version\": \"5D8eaaC0\"\n  },\n  {\n    \"epoch\": \"<long>\",\n    \"version\": \"b468DFcc\"\n  }\n]",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-8e7db416-9fdd-4597-aac6-6bd8e545b549"
+            },
+            {
+              "id": "672bcf8f-e059-4b8c-920b-4c967c830e56",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fork_schedule",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fork_schedule"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-672bcf8f-e059-4b8c-920b-4c967c830e56"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:54.000Z",
+          "updatedAt": "2026-07-28T01:18:54.000Z",
+          "uid": "35240-3d190b73-b420-4b07-b9cf-3aeba9f3b7ab"
+        }
+      ],
+      "id": "c38e52e9-4c0e-4880-8d84-6710611af506",
+      "createdAt": "2026-07-28T01:18:54.000Z",
+      "updatedAt": "2026-07-28T01:18:54.000Z",
+      "uid": "35240-c38e52e9-4c0e-4880-8d84-6710611af506"
+    },
+    {
+      "name": "fork_version_by_state_id",
+      "item": [
+        {
+          "name": "Get fork information for a specific state",
+          "id": "7addf915-9245-4857-a289-88cc26c7672b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fork_version_by_state_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fork_version_by_state_id"
+              ],
+              "variable": [
+                {
+                  "id": "08815e11-885e-413b-97b3-e64614b86e33",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier which can be a slot number, an epoch number, a block root, or special values like  'genesis' or 'head'."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6f74b74c-28df-4e80-97f3-2c6d7ffe4ce3",
+              "name": "Successful response with fork information",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fork_version_by_state_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fork_version_by_state_id"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"epoch\": \"<string>\",\n  \"previous_version\": \"<string>\",\n  \"current_version\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-6f74b74c-28df-4e80-97f3-2c6d7ffe4ce3"
+            },
+            {
+              "id": "26ddf6eb-615b-470b-bccc-bc7de7e243c3",
+              "name": "Invalid state identifier value",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fork_version_by_state_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fork_version_by_state_id"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-26ddf6eb-615b-470b-bccc-bc7de7e243c3"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:54.000Z",
+          "updatedAt": "2026-07-28T01:18:54.000Z",
+          "uid": "35240-7addf915-9245-4857-a289-88cc26c7672b"
+        }
+      ],
+      "id": "6726a288-2a48-4de3-85f8-586c2b6f22f1",
+      "createdAt": "2026-07-28T01:18:54.000Z",
+      "updatedAt": "2026-07-28T01:18:54.000Z",
+      "uid": "35240-6726a288-2a48-4de3-85f8-586c2b6f22f1"
+    },
+    {
+      "name": "genesis_data",
+      "item": [
+        {
+          "name": "Genesis",
+          "id": "e09ff3a6-a5cf-433b-b0d9-ee41f21d9666",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/genesis_data",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "genesis_data"
+              ],
+              "variable": [
+                {
+                  "id": "42248c61-cf02-4b94-ba7f-66bec9814cef",
+                  "key": "apiKey",
+                  "value": "<string>",
+                  "description": "(Required) Your API key"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d9a5f6b0-8efa-4112-a691-453eae95e373",
+              "name": "Beacon genesis information successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/genesis_data",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "genesis_data"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"genesis_time\": \"<dateTime>\",\n    \"genesis_validators_root\": \"0xc74AcBEffbE87DBcce3E4f3Ce0bbFC534ce06Cf3AE7827eFebE3aDfFaC243C9b\",\n    \"genesis_fork_version\": \"0xFAcb6C6D\"\n  }\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-d9a5f6b0-8efa-4112-a691-453eae95e373"
+            },
+            {
+              "id": "e4f4e34b-87cd-4c60-a156-41e28f4acef5",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/genesis_data",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "genesis_data"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-e4f4e34b-87cd-4c60-a156-41e28f4acef5"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:54.000Z",
+          "updatedAt": "2026-07-28T01:18:54.000Z",
+          "uid": "35240-e09ff3a6-a5cf-433b-b0d9-ee41f21d9666"
+        }
+      ],
+      "id": "ee80f398-f18b-47d3-88bd-d5e66f518845",
+      "createdAt": "2026-07-28T01:18:54.000Z",
+      "updatedAt": "2026-07-28T01:18:54.000Z",
+      "uid": "35240-ee80f398-f18b-47d3-88bd-d5e66f518845"
+    },
+    {
+      "name": "node_config",
+      "item": [
+        {
+          "name": "Node configuration",
+          "id": "c697ca6c-fd62-47c0-b19f-6dce18e83655",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/node_config",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "node_config"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b8c10efc-b53d-4dd3-956f-89c1b713bb67",
+              "name": "Specification configuration successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/node_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "node_config"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"sunt1dd\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-b8c10efc-b53d-4dd3-956f-89c1b713bb67"
+            },
+            {
+              "id": "5ec05745-3c20-4c00-b3f4-230e756c0d23",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/node_config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "node_config"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:54.000Z",
+              "updatedAt": "2026-07-28T01:18:54.000Z",
+              "uid": "35240-5ec05745-3c20-4c00-b3f4-230e756c0d23"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:54.000Z",
+          "updatedAt": "2026-07-28T01:18:54.000Z",
+          "uid": "35240-c697ca6c-fd62-47c0-b19f-6dce18e83655"
+        }
+      ],
+      "id": "4fbc3b22-f435-4ecb-8606-28fdd93fb371",
+      "createdAt": "2026-07-28T01:18:54.000Z",
+      "updatedAt": "2026-07-28T01:18:54.000Z",
+      "uid": "35240-4fbc3b22-f435-4ecb-8606-28fdd93fb371"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

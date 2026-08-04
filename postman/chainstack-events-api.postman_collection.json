@@ -1,0 +1,162 @@
+{
+  "info": {
+    "_postman_id": "34c8b488-8ae8-45cd-92f2-cf60986f25d5",
+    "name": "Chainstack Arbitrum Node Account Info Events API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:01.000Z",
+    "updatedAt": "2026-07-28T01:19:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-34c8b488-8ae8-45cd-92f2-cf60986f25d5"
+  },
+  "item": [
+    {
+      "name": "subscribe_to_events",
+      "item": [
+        {
+          "name": "Subscribe to events",
+          "id": "3d17cc87-1acb-4aa5-a33d-94807692326f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/event-stream"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/subscribe_to_events?topics=head",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscribe_to_events"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Topics to subscribe to, e.g., 'head'",
+                  "key": "topics",
+                  "value": "head"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0eb5c77c-c9cd-4d39-a841-195d809cf736",
+              "name": "Successfully subscribed to events",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/event-stream"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscribe_to_events?topics=head",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscribe_to_events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Topics to subscribe to, e.g., 'head'",
+                      "key": "topics",
+                      "value": "head"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/event-stream"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:19:02.000Z",
+              "updatedAt": "2026-07-28T01:19:02.000Z",
+              "uid": "35240-0eb5c77c-c9cd-4d39-a841-195d809cf736"
+            },
+            {
+              "id": "2966879b-f584-4e3f-8dec-8c14fb985c14",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscribe_to_events?topics=head",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscribe_to_events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Topics to subscribe to, e.g., 'head'",
+                      "key": "topics",
+                      "value": "head"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:19:02.000Z",
+              "updatedAt": "2026-07-28T01:19:02.000Z",
+              "uid": "35240-2966879b-f584-4e3f-8dec-8c14fb985c14"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:02.000Z",
+          "updatedAt": "2026-07-28T01:19:02.000Z",
+          "uid": "35240-3d17cc87-1acb-4aa5-a33d-94807692326f"
+        }
+      ],
+      "id": "ab152ee5-7c25-42cc-8f2c-98b40726cec4",
+      "createdAt": "2026-07-28T01:19:02.000Z",
+      "updatedAt": "2026-07-28T01:19:02.000Z",
+      "uid": "35240-ab152ee5-7c25-42cc-8f2c-98b40726cec4"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

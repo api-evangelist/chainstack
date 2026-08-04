@@ -1,0 +1,1730 @@
+{
+  "info": {
+    "_postman_id": "143a2bd3-e617-4d4d-ad18-efe9e9617ec3",
+    "name": "Chainstack Arbitrum Node Account Info State API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:35.000Z",
+    "updatedAt": "2026-07-28T01:20:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-143a2bd3-e617-4d4d-ad18-efe9e9617ec3"
+  },
+  "item": [
+    {
+      "name": "getBeaconBlockRootByBlockId",
+      "item": [
+        {
+          "name": "Get the root of the beacon block by block_id",
+          "id": "0b968693-0013-4f10-9f78-c126ead054ee",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getBeaconBlockRootByBlockId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getBeaconBlockRootByBlockId"
+              ],
+              "variable": [
+                {
+                  "id": "b37f1bc8-e048-4b31-a098-a75f21e6f8a9",
+                  "key": "block_id",
+                  "value": "head",
+                  "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "181e1f07-7cbd-450e-8be3-35b063444ebd",
+              "name": "Beacon block root successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconBlockRootByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconBlockRootByBlockId"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"root\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-181e1f07-7cbd-450e-8be3-35b063444ebd"
+            },
+            {
+              "id": "0ee80597-d4ca-4338-bb9b-3503533a66a4",
+              "name": "Beacon block root not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconBlockRootByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconBlockRootByBlockId"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-0ee80597-d4ca-4338-bb9b-3503533a66a4"
+            },
+            {
+              "id": "ad0a564e-10e9-45d2-aa58-cffbf34ecf14",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconBlockRootByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconBlockRootByBlockId"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-ad0a564e-10e9-45d2-aa58-cffbf34ecf14"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-0b968693-0013-4f10-9f78-c126ead054ee"
+        }
+      ],
+      "id": "5b4fd24a-1ce4-40c6-9016-f674bc65c591",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-5b4fd24a-1ce4-40c6-9016-f674bc65c591"
+    },
+    {
+      "name": "getBeaconBlocksByBlockId",
+      "item": [
+        {
+          "name": "Get beacon blocks by block_id",
+          "id": "6be34b96-a7df-4b25-9396-86bc39d28493",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getBeaconBlocksByBlockId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getBeaconBlocksByBlockId"
+              ],
+              "variable": [
+                {
+                  "id": "52f89685-6ef7-4928-8a7e-e928dacea074",
+                  "key": "block_id",
+                  "value": "head",
+                  "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da7eb198-1472-4224-9083-477e5d9c9ef8",
+              "name": "Beacon block successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconBlocksByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconBlocksByBlockId"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"root\": \"<string>\",\n  \"block\": {\n    \"slot\": \"<long>\",\n    \"parent_root\": \"<string>\",\n    \"state_root\": \"<string>\",\n    \"body\": {}\n  }\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-da7eb198-1472-4224-9083-477e5d9c9ef8"
+            },
+            {
+              "id": "cdc937c1-0722-4523-99d4-513b13cce0d3",
+              "name": "Beacon block not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconBlocksByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconBlocksByBlockId"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-cdc937c1-0722-4523-99d4-513b13cce0d3"
+            },
+            {
+              "id": "666f0d8a-472a-47ee-8fa5-68a929ae93d2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconBlocksByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconBlocksByBlockId"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-666f0d8a-472a-47ee-8fa5-68a929ae93d2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-6be34b96-a7df-4b25-9396-86bc39d28493"
+        }
+      ],
+      "id": "bc9c214d-4eee-4584-9baa-88ac1ff68472",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-bc9c214d-4eee-4584-9baa-88ac1ff68472"
+    },
+    {
+      "name": "getBeaconHeadersByBlockId",
+      "item": [
+        {
+          "name": "Get beacon headers by block_id",
+          "id": "0acd93a4-1b7b-41ec-a171-911b4d2edcd1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getBeaconHeadersByBlockId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getBeaconHeadersByBlockId"
+              ],
+              "variable": [
+                {
+                  "id": "08f2f8fe-92eb-4bd7-b405-94e04ebf78ed",
+                  "key": "block_id",
+                  "value": "head",
+                  "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e89aa27c-bd1e-4f5f-b141-2986719a5c48",
+              "name": "Beacon header successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconHeadersByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconHeadersByBlockId"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"root\": \"<string>\",\n  \"canonical\": \"<boolean>\",\n  \"header\": {\n    \"slot\": \"<long>\",\n    \"parent_root\": \"<string>\",\n    \"state_root\": \"<string>\",\n    \"body_root\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-e89aa27c-bd1e-4f5f-b141-2986719a5c48"
+            },
+            {
+              "id": "4b6f9aaa-8f80-4ff7-a832-3964aab3b7de",
+              "name": "Beacon header not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconHeadersByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconHeadersByBlockId"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-4b6f9aaa-8f80-4ff7-a832-3964aab3b7de"
+            },
+            {
+              "id": "59dcf1aa-757d-4885-86a0-6c50267c35ab",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconHeadersByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconHeadersByBlockId"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-59dcf1aa-757d-4885-86a0-6c50267c35ab"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-0acd93a4-1b7b-41ec-a171-911b4d2edcd1"
+        }
+      ],
+      "id": "28fa7892-a3a4-48c1-bfe2-f6e4593cb45d",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-28fa7892-a3a4-48c1-bfe2-f6e4593cb45d"
+    },
+    {
+      "name": "getBeaconHeadersBySlotAndParentRoot",
+      "item": [
+        {
+          "name": "Get beacon headers by slot and parent root",
+          "id": "efca4857-65b5-4ccc-9266-2126a8c37068",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getBeaconHeadersBySlotAndParentRoot?slot=6215071&parent_root=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getBeaconHeadersBySlotAndParentRoot"
+              ],
+              "query": [
+                {
+                  "description": "Slot number",
+                  "key": "slot",
+                  "value": "6215071"
+                },
+                {
+                  "description": "Parent root hash",
+                  "key": "parent_root",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3d0abaab-91da-4b64-918f-b72913e34025",
+              "name": "Beacon headers successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconHeadersBySlotAndParentRoot?slot=6215071&parent_root=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconHeadersBySlotAndParentRoot"
+                  ],
+                  "query": [
+                    {
+                      "description": "Slot number",
+                      "key": "slot",
+                      "value": "6215071"
+                    },
+                    {
+                      "description": "Parent root hash",
+                      "key": "parent_root",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"root\": \"<string>\",\n      \"canonical\": \"<boolean>\",\n      \"header\": {\n        \"slot\": \"<long>\",\n        \"parent_root\": \"<string>\",\n        \"state_root\": \"<string>\",\n        \"body_root\": \"<string>\"\n      }\n    },\n    {\n      \"root\": \"<string>\",\n      \"canonical\": \"<boolean>\",\n      \"header\": {\n        \"slot\": \"<long>\",\n        \"parent_root\": \"<string>\",\n        \"state_root\": \"<string>\",\n        \"body_root\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-3d0abaab-91da-4b64-918f-b72913e34025"
+            },
+            {
+              "id": "54f6a696-3cb0-46fd-9c7a-6dde2aefb12c",
+              "name": "Beacon headers not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconHeadersBySlotAndParentRoot?slot=6215071&parent_root=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconHeadersBySlotAndParentRoot"
+                  ],
+                  "query": [
+                    {
+                      "description": "Slot number",
+                      "key": "slot",
+                      "value": "6215071"
+                    },
+                    {
+                      "description": "Parent root hash",
+                      "key": "parent_root",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-54f6a696-3cb0-46fd-9c7a-6dde2aefb12c"
+            },
+            {
+              "id": "a4eee2eb-0166-453c-a50b-2fa8d51b3145",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBeaconHeadersBySlotAndParentRoot?slot=6215071&parent_root=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBeaconHeadersBySlotAndParentRoot"
+                  ],
+                  "query": [
+                    {
+                      "description": "Slot number",
+                      "key": "slot",
+                      "value": "6215071"
+                    },
+                    {
+                      "description": "Parent root hash",
+                      "key": "parent_root",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-a4eee2eb-0166-453c-a50b-2fa8d51b3145"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-efca4857-65b5-4ccc-9266-2126a8c37068"
+        }
+      ],
+      "id": "a4021296-45da-45da-b091-97e2410fd9c7",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-a4021296-45da-45da-b091-97e2410fd9c7"
+    },
+    {
+      "name": "getBlobsByBlockId",
+      "item": [
+        {
+          "name": "Get blobs by block_id",
+          "id": "f9f980d3-0001-49bb-b92d-e6a68ce24e3e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getBlobsByBlockId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getBlobsByBlockId"
+              ],
+              "variable": [
+                {
+                  "id": "71272b6d-634b-4402-b54d-6bb0bb4e7d24",
+                  "key": "block_id",
+                  "value": "head",
+                  "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific slot number."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0609c90f-31ef-4c51-b4e5-c7ecb21909dc",
+              "name": "Blobs successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBlobsByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBlobsByBlockId"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"index\": \"<string>\",\n      \"blob\": \"<string>\",\n      \"kzg_commitment\": \"<string>\",\n      \"kzg_proof\": \"<string>\",\n      \"signed_block_header\": {}\n    },\n    {\n      \"index\": \"<string>\",\n      \"blob\": \"<string>\",\n      \"kzg_commitment\": \"<string>\",\n      \"kzg_proof\": \"<string>\",\n      \"signed_block_header\": {}\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-0609c90f-31ef-4c51-b4e5-c7ecb21909dc"
+            },
+            {
+              "id": "5c2a8c33-9927-41c0-a95e-97756142cdd8",
+              "name": "Block not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBlobsByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBlobsByBlockId"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-5c2a8c33-9927-41c0-a95e-97756142cdd8"
+            },
+            {
+              "id": "7adc08d6-ca1a-4384-935c-929b65ac115b",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getBlobsByBlockId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getBlobsByBlockId"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-7adc08d6-ca1a-4384-935c-929b65ac115b"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-f9f980d3-0001-49bb-b92d-e6a68ce24e3e"
+        }
+      ],
+      "id": "1ed2ccf6-0906-43f3-a572-55589c170b4e",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-1ed2ccf6-0906-43f3-a572-55589c170b4e"
+    },
+    {
+      "name": "getCommitteesByStateIdEpochIndexAndSlot",
+      "item": [
+        {
+          "name": "Get committees by state, epoch, index, and slot",
+          "id": "10d0d09f-6ae6-4452-851a-bb5a947121a9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getCommitteesByStateIdEpochIndexAndSlot?epoch=<long>&index=<long>&slot=<long>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getCommitteesByStateIdEpochIndexAndSlot"
+              ],
+              "query": [
+                {
+                  "description": "Epoch number",
+                  "key": "epoch",
+                  "value": "<long>"
+                },
+                {
+                  "description": "Committee index",
+                  "key": "index",
+                  "value": "<long>"
+                },
+                {
+                  "description": "Slot number",
+                  "key": "slot",
+                  "value": "<long>"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "2e8dd2a2-027e-49b7-833b-c828a5d551c6",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "90a3b75c-6a48-4f4a-b066-0a52707031a6",
+              "name": "Committee data successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getCommitteesByStateIdEpochIndexAndSlot?epoch=<long>&index=<long>&slot=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getCommitteesByStateIdEpochIndexAndSlot"
+                  ],
+                  "query": [
+                    {
+                      "description": "Epoch number",
+                      "key": "epoch",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Committee index",
+                      "key": "index",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Slot number",
+                      "key": "slot",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"index\": \"<long>\",\n      \"slot\": \"<long>\",\n      \"validators\": [\n        \"<long>\",\n        \"<long>\"\n      ]\n    },\n    {\n      \"index\": \"<long>\",\n      \"slot\": \"<long>\",\n      \"validators\": [\n        \"<long>\",\n        \"<long>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-90a3b75c-6a48-4f4a-b066-0a52707031a6"
+            },
+            {
+              "id": "2d2fa66f-163c-4bf8-a356-625b2f0b9f11",
+              "name": "Committee data not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getCommitteesByStateIdEpochIndexAndSlot?epoch=<long>&index=<long>&slot=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getCommitteesByStateIdEpochIndexAndSlot"
+                  ],
+                  "query": [
+                    {
+                      "description": "Epoch number",
+                      "key": "epoch",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Committee index",
+                      "key": "index",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Slot number",
+                      "key": "slot",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-2d2fa66f-163c-4bf8-a356-625b2f0b9f11"
+            },
+            {
+              "id": "1d6ba2d4-f9fd-43c8-b332-e00c53683a85",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getCommitteesByStateIdEpochIndexAndSlot?epoch=<long>&index=<long>&slot=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getCommitteesByStateIdEpochIndexAndSlot"
+                  ],
+                  "query": [
+                    {
+                      "description": "Epoch number",
+                      "key": "epoch",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Committee index",
+                      "key": "index",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Slot number",
+                      "key": "slot",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-1d6ba2d4-f9fd-43c8-b332-e00c53683a85"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-10d0d09f-6ae6-4452-851a-bb5a947121a9"
+        }
+      ],
+      "id": "80ba70e6-f77c-46c6-9de2-9bb584f2117e",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-80ba70e6-f77c-46c6-9de2-9bb584f2117e"
+    },
+    {
+      "name": "getFinalityCheckpoints",
+      "item": [
+        {
+          "name": "Get finality checkpoints for a given state",
+          "id": "8ae91bca-cf4a-4306-ab7f-76d909f93dbc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getFinalityCheckpoints",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getFinalityCheckpoints"
+              ],
+              "variable": [
+                {
+                  "id": "3dc94f57-8537-45ca-9e19-093d7e0b8372",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "95127a9a-4c0a-4e59-b3a0-6a6631b301b5",
+              "name": "Successful response with finality checkpoints information",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getFinalityCheckpoints",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getFinalityCheckpoints"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"previous_justified\": {\n    \"epoch\": \"<integer>\",\n    \"root\": \"<string>\"\n  },\n  \"current_justified\": {\n    \"epoch\": \"<integer>\",\n    \"root\": \"<string>\"\n  },\n  \"finalized\": {\n    \"epoch\": \"<integer>\",\n    \"root\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-95127a9a-4c0a-4e59-b3a0-6a6631b301b5"
+            },
+            {
+              "id": "209e8616-70b1-436e-9ac2-f92ce5bfdeb5",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getFinalityCheckpoints",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getFinalityCheckpoints"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-209e8616-70b1-436e-9ac2-f92ce5bfdeb5"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-8ae91bca-cf4a-4306-ab7f-76d909f93dbc"
+        }
+      ],
+      "id": "f3d2ef56-425e-40a4-bf4c-1344586de91a",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-f3d2ef56-425e-40a4-bf4c-1344586de91a"
+    },
+    {
+      "name": "getStateRoot",
+      "item": [
+        {
+          "name": "Get the root of a given state",
+          "id": "0b8e5552-267f-420f-b4bf-27b162acedfb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getStateRoot",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getStateRoot"
+              ],
+              "variable": [
+                {
+                  "id": "e50e1cc3-f69d-43f2-8af3-f5d5a8b0d080",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4bf88550-8b0f-459e-85dd-d9a205ba690d",
+              "name": "Successful response with state root information",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getStateRoot",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getStateRoot"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"root\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-4bf88550-8b0f-459e-85dd-d9a205ba690d"
+            },
+            {
+              "id": "227a46d4-8c63-41ab-bc6c-c11f7de154e7",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getStateRoot",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getStateRoot"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-227a46d4-8c63-41ab-bc6c-c11f7de154e7"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-0b8e5552-267f-420f-b4bf-27b162acedfb"
+        }
+      ],
+      "id": "88d65270-b08e-4bd7-98be-c2f3113766e8",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-88d65270-b08e-4bd7-98be-c2f3113766e8"
+    },
+    {
+      "name": "getSyncCommitteeContribution",
+      "item": [
+        {
+          "name": "Get sync committee contribution for a given slot, subcommittee index, and beacon block root",
+          "id": "07687c02-b7bb-4c77-a4aa-ff40809f16b9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getSyncCommitteeContribution?slot=6244671&subcommittee_index=1&beacon_block_root=0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getSyncCommitteeContribution"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Slot for which to retrieve the sync committee contribution",
+                  "key": "slot",
+                  "value": "6244671"
+                },
+                {
+                  "description": "(Required) Subcommittee index for which to retrieve the sync committee contribution",
+                  "key": "subcommittee_index",
+                  "value": "1"
+                },
+                {
+                  "description": "(Required) Beacon block root for which to retrieve the sync committee contribution",
+                  "key": "beacon_block_root",
+                  "value": "0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "509c4b33-c76f-4c16-ab15-96a166b761b5",
+              "name": "Sync committee contribution successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getSyncCommitteeContribution?slot=6244671&subcommittee_index=1&beacon_block_root=0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getSyncCommitteeContribution"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Slot for which to retrieve the sync committee contribution",
+                      "key": "slot",
+                      "value": "6244671"
+                    },
+                    {
+                      "description": "(Required) Subcommittee index for which to retrieve the sync committee contribution",
+                      "key": "subcommittee_index",
+                      "value": "1"
+                    },
+                    {
+                      "description": "(Required) Beacon block root for which to retrieve the sync committee contribution",
+                      "key": "beacon_block_root",
+                      "value": "0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"slot\": \"<long>\",\n  \"beacon_block_root\": \"0xbF\",\n  \"subcommittee_index\": \"<long>\",\n  \"aggregation_bits\": \"0xcA\",\n  \"signature\": \"0xAbdFAF0fceF\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-509c4b33-c76f-4c16-ab15-96a166b761b5"
+            },
+            {
+              "id": "13d63c71-b15b-4b6a-b0e6-1b9e34451021",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getSyncCommitteeContribution?slot=6244671&subcommittee_index=1&beacon_block_root=0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getSyncCommitteeContribution"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Slot for which to retrieve the sync committee contribution",
+                      "key": "slot",
+                      "value": "6244671"
+                    },
+                    {
+                      "description": "(Required) Subcommittee index for which to retrieve the sync committee contribution",
+                      "key": "subcommittee_index",
+                      "value": "1"
+                    },
+                    {
+                      "description": "(Required) Beacon block root for which to retrieve the sync committee contribution",
+                      "key": "beacon_block_root",
+                      "value": "0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-13d63c71-b15b-4b6a-b0e6-1b9e34451021"
+            },
+            {
+              "id": "ecbe661e-3e34-4c47-a0ad-d30d49071fce",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getSyncCommitteeContribution?slot=6244671&subcommittee_index=1&beacon_block_root=0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getSyncCommitteeContribution"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Slot for which to retrieve the sync committee contribution",
+                      "key": "slot",
+                      "value": "6244671"
+                    },
+                    {
+                      "description": "(Required) Subcommittee index for which to retrieve the sync committee contribution",
+                      "key": "subcommittee_index",
+                      "value": "1"
+                    },
+                    {
+                      "description": "(Required) Beacon block root for which to retrieve the sync committee contribution",
+                      "key": "beacon_block_root",
+                      "value": "0x19708d7b686e2654656690f3262ff3686b810966839117ae8affd0e757b17544"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-ecbe661e-3e34-4c47-a0ad-d30d49071fce"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-07687c02-b7bb-4c77-a4aa-ff40809f16b9"
+        }
+      ],
+      "id": "9863d3be-e559-45cb-922a-09df36f00267",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-9863d3be-e559-45cb-922a-09df36f00267"
+    },
+    {
+      "name": "getSyncCommitteesByStateIdAndEpoch",
+      "item": [
+        {
+          "name": "Get sync committees by state and epoch",
+          "id": "cbf7e04d-6f07-443e-a9de-fef1cb84cc6b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getSyncCommitteesByStateIdAndEpoch?epoch=<long>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getSyncCommitteesByStateIdAndEpoch"
+              ],
+              "query": [
+                {
+                  "description": "Epoch number",
+                  "key": "epoch",
+                  "value": "<long>"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "43764e48-0a79-435f-8e94-0a7c86199d2d",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "470dc049-e8a2-48ac-a734-8786e1b2cba1",
+              "name": "Sync committee data successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getSyncCommitteesByStateIdAndEpoch?epoch=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getSyncCommitteesByStateIdAndEpoch"
+                  ],
+                  "query": [
+                    {
+                      "description": "Epoch number",
+                      "key": "epoch",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"validators\": [\n      \"<long>\",\n      \"<long>\"\n    ],\n    \"validator_aggregates\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-470dc049-e8a2-48ac-a734-8786e1b2cba1"
+            },
+            {
+              "id": "083ea9fe-deea-4e75-a222-825e301da4e1",
+              "name": "Sync committee data not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getSyncCommitteesByStateIdAndEpoch?epoch=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getSyncCommitteesByStateIdAndEpoch"
+                  ],
+                  "query": [
+                    {
+                      "description": "Epoch number",
+                      "key": "epoch",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-083ea9fe-deea-4e75-a222-825e301da4e1"
+            },
+            {
+              "id": "f0374d80-be12-4259-88ea-6298a3929019",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getSyncCommitteesByStateIdAndEpoch?epoch=<long>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getSyncCommitteesByStateIdAndEpoch"
+                  ],
+                  "query": [
+                    {
+                      "description": "Epoch number",
+                      "key": "epoch",
+                      "value": "<long>"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-f0374d80-be12-4259-88ea-6298a3929019"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-cbf7e04d-6f07-443e-a9de-fef1cb84cc6b"
+        }
+      ],
+      "id": "81d9e605-6c1a-4c50-b2e0-930e1093313f",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-81d9e605-6c1a-4c50-b2e0-930e1093313f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

@@ -1,0 +1,921 @@
+{
+  "info": {
+    "_postman_id": "9ad093f2-b8f7-45a5-abd0-1101b0fad0ac",
+    "name": "Chainstack Arbitrum Account Info Node API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:37.000Z",
+    "updatedAt": "2026-07-28T01:19:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9ad093f2-b8f7-45a5-abd0-1101b0fad0ac"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "nodes",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Retrieve Node",
+                  "id": "247354dc-d580-4f7c-ba25-0698cbb6a907",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/nodes/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "nodes",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "b4ef2582-817a-412d-9e99-7f1c87880b30",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve node details."
+                  },
+                  "response": [
+                    {
+                      "id": "0d63e866-632f-46ad-83cc-77681f454e83",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"type\": \"dedicated\",\n  \"provider\": \"azure\",\n  \"region\": \"ap-southeast-1\",\n  \"details\": {\n    \"mode\": \"full\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"error\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"role\": \"peer\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:38.000Z",
+                      "updatedAt": "2026-07-28T01:19:38.000Z",
+                      "uid": "35240-0d63e866-632f-46ad-83cc-77681f454e83"
+                    },
+                    {
+                      "id": "5f29dcc8-175a-4808-8c13-decd8b57733f",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:38.000Z",
+                      "updatedAt": "2026-07-28T01:19:38.000Z",
+                      "uid": "35240-5f29dcc8-175a-4808-8c13-decd8b57733f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:19:38.000Z",
+                  "updatedAt": "2026-07-28T01:19:38.000Z",
+                  "uid": "35240-247354dc-d580-4f7c-ba25-0698cbb6a907"
+                },
+                {
+                  "name": "Update Node",
+                  "id": "3af7c152-c932-40b3-a593-d4cbd406e17e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"type\": \"shared\",\n  \"provider\": \"aws\",\n  \"region\": \"eu3\",\n  \"details\": {\n    \"mode\": \"archive\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"error\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  },\n  \"role\": \"peer\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/nodes/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "nodes",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "6faf57fa-8b41-49af-b98c-04181addca54",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Change the node name."
+                  },
+                  "response": [
+                    {
+                      "id": "f1b2bba6-908f-424b-b55a-4dae7697783f",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"type\": \"shared\",\n  \"provider\": \"aws\",\n  \"region\": \"eu3\",\n  \"details\": {\n    \"mode\": \"archive\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"error\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  },\n  \"role\": \"peer\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"type\": \"dedicated\",\n  \"provider\": \"azure\",\n  \"region\": \"ap-southeast-1\",\n  \"details\": {\n    \"mode\": \"full\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"error\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"role\": \"peer\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:38.000Z",
+                      "updatedAt": "2026-07-28T01:19:38.000Z",
+                      "uid": "35240-f1b2bba6-908f-424b-b55a-4dae7697783f"
+                    },
+                    {
+                      "id": "d0c2cfc2-3518-49aa-9f34-3e9fc38b88ab",
+                      "name": "Validation error.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"type\": \"shared\",\n  \"provider\": \"aws\",\n  \"region\": \"eu3\",\n  \"details\": {\n    \"mode\": \"archive\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"error\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  },\n  \"role\": \"peer\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"fields\": {\n      \"indb\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:38.000Z",
+                      "updatedAt": "2026-07-28T01:19:38.000Z",
+                      "uid": "35240-d0c2cfc2-3518-49aa-9f34-3e9fc38b88ab"
+                    },
+                    {
+                      "id": "05a5902c-6153-4e0e-bca2-6c5e0598e55c",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"type\": \"shared\",\n  \"provider\": \"aws\",\n  \"region\": \"eu3\",\n  \"details\": {\n    \"mode\": \"archive\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"error\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  },\n  \"role\": \"peer\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:38.000Z",
+                      "updatedAt": "2026-07-28T01:19:38.000Z",
+                      "uid": "35240-05a5902c-6153-4e0e-bca2-6c5e0598e55c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:19:38.000Z",
+                  "updatedAt": "2026-07-28T01:19:38.000Z",
+                  "uid": "35240-3af7c152-c932-40b3-a593-d4cbd406e17e"
+                },
+                {
+                  "name": "Delete Node",
+                  "id": "48af2e26-eeca-4b3f-bf84-2d04f75e767d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/nodes/:id/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "nodes",
+                        ":id",
+                        ""
+                      ],
+                      "variable": [
+                        {
+                          "id": "181be5d1-da91-4801-94fd-6eb6ee2f6892",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) A unique value identifying the Object."
+                        }
+                      ]
+                    },
+                    "description": "Delete the node."
+                  },
+                  "response": [
+                    {
+                      "id": "59a5bf90-1950-443b-9145-38dba5772303",
+                      "name": "No response body",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:19:38.000Z",
+                      "updatedAt": "2026-07-28T01:19:38.000Z",
+                      "uid": "35240-59a5bf90-1950-443b-9145-38dba5772303"
+                    },
+                    {
+                      "id": "201733f5-a361-48c7-b0b4-3f6a51b8186b",
+                      "name": "Object does not exist or caller has insufficient permissions to access it.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/nodes/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "nodes",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:19:38.000Z",
+                      "updatedAt": "2026-07-28T01:19:38.000Z",
+                      "uid": "35240-201733f5-a361-48c7-b0b4-3f6a51b8186b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:19:38.000Z",
+                  "updatedAt": "2026-07-28T01:19:38.000Z",
+                  "uid": "35240-48af2e26-eeca-4b3f-bf84-2d04f75e767d"
+                }
+              ],
+              "id": "fae7937b-d3f2-4ec6-aa9b-8948487df8c1",
+              "createdAt": "2026-07-28T01:19:38.000Z",
+              "updatedAt": "2026-07-28T01:19:38.000Z",
+              "uid": "35240-fae7937b-d3f2-4ec6-aa9b-8948487df8c1"
+            },
+            {
+              "name": "List all Nodes",
+              "id": "e4965e78-f20f-4dce-9a10-d4dca32f7016",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/nodes/?order_by=name&page=<integer>&project=<string>&organization=<string>&network=<string>&region=us-west-2&provider=azure&protocol=near&status=failed&role=peer&type=dedicated&archive=<boolean>&public_network=harmony-devnet&name=<string>&project_type=public",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "nodes",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n",
+                      "key": "order_by",
+                      "value": "name"
+                    },
+                    {
+                      "description": "A page number within the paginated result set.",
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by project ID.",
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by organization ID.",
+                      "key": "organization",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by network ID.",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the region the node is deployed to.",
+                      "key": "region",
+                      "value": "us-west-2"
+                    },
+                    {
+                      "description": "Filter by the cloud provider of the node.",
+                      "key": "provider",
+                      "value": "azure"
+                    },
+                    {
+                      "description": "Filter by protocol.",
+                      "key": "protocol",
+                      "value": "near"
+                    },
+                    {
+                      "description": "Filter by node status.",
+                      "key": "status",
+                      "value": "failed"
+                    },
+                    {
+                      "description": "Filter by node role.",
+                      "key": "role",
+                      "value": "peer"
+                    },
+                    {
+                      "description": "Filter by node type.",
+                      "key": "type",
+                      "value": "dedicated"
+                    },
+                    {
+                      "description": "Filter Ethereum, Polygon PoS, Binance Smart Chain, Avalanche, Fantom, and Tezos nodes by the archive mode flag.",
+                      "key": "archive",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Filter by public network.",
+                      "key": "public_network",
+                      "value": "harmony-devnet"
+                    },
+                    {
+                      "description": "Filter by name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by project type.",
+                      "key": "project_type",
+                      "value": "public"
+                    }
+                  ]
+                },
+                "description": "List all nodes in the networks your organization is part of."
+              },
+              "response": [
+                {
+                  "id": "693d3863-7d62-40ec-83f5-d41ebdbe045e",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/nodes/?order_by=name&page=<integer>&project=<string>&organization=<string>&network=<string>&region=us-west-2&provider=azure&protocol=near&status=failed&role=peer&type=dedicated&archive=<boolean>&public_network=harmony-devnet&name=<string>&project_type=public",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "nodes",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n",
+                          "key": "order_by",
+                          "value": "name"
+                        },
+                        {
+                          "description": "A page number within the paginated result set.",
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by project ID.",
+                          "key": "project",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by organization ID.",
+                          "key": "organization",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by network ID.",
+                          "key": "network",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by the region the node is deployed to.",
+                          "key": "region",
+                          "value": "us-west-2"
+                        },
+                        {
+                          "description": "Filter by the cloud provider of the node.",
+                          "key": "provider",
+                          "value": "azure"
+                        },
+                        {
+                          "description": "Filter by protocol.",
+                          "key": "protocol",
+                          "value": "near"
+                        },
+                        {
+                          "description": "Filter by node status.",
+                          "key": "status",
+                          "value": "failed"
+                        },
+                        {
+                          "description": "Filter by node role.",
+                          "key": "role",
+                          "value": "peer"
+                        },
+                        {
+                          "description": "Filter by node type.",
+                          "key": "type",
+                          "value": "dedicated"
+                        },
+                        {
+                          "description": "Filter Ethereum, Polygon PoS, Binance Smart Chain, Avalanche, Fantom, and Tezos nodes by the archive mode flag.",
+                          "key": "archive",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Filter by public network.",
+                          "key": "public_network",
+                          "value": "harmony-devnet"
+                        },
+                        {
+                          "description": "Filter by name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by project type.",
+                          "key": "project_type",
+                          "value": "public"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"network\": \"<string>\",\n      \"organization\": \"<string>\",\n      \"type\": \"dedicated\",\n      \"provider\": \"azure\",\n      \"region\": \"eu3\",\n      \"details\": {\n        \"mode\": \"full\",\n        \"version\": \"<string>\",\n        \"api_namespaces\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"https_endpoint\": \"<string>\",\n        \"wss_endpoint\": \"<string>\",\n        \"beacon_endpoint\": \"<string>\",\n        \"graphql_endpoint\": \"<string>\",\n        \"auth_username\": \"<string>\",\n        \"auth_password\": \"<string>\",\n        \"auth_key\": \"<string>\"\n      },\n      \"status\": \"failed\",\n      \"creator\": {\n        \"id\": \"<string>\",\n        \"email\": \"<email>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"organization\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      },\n      \"created_at\": \"<dateTime>\",\n      \"role\": \"peer\",\n      \"configuration\": {\n        \"archive\": \"<boolean>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"network\": \"<string>\",\n      \"organization\": \"<string>\",\n      \"type\": \"shared\",\n      \"provider\": \"aws\",\n      \"region\": \"us-east-1\",\n      \"details\": {\n        \"mode\": \"full\",\n        \"version\": \"<string>\",\n        \"api_namespaces\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"https_endpoint\": \"<string>\",\n        \"wss_endpoint\": \"<string>\",\n        \"beacon_endpoint\": \"<string>\",\n        \"graphql_endpoint\": \"<string>\",\n        \"auth_username\": \"<string>\",\n        \"auth_password\": \"<string>\",\n        \"auth_key\": \"<string>\"\n      },\n      \"status\": \"running\",\n      \"creator\": {\n        \"id\": \"<string>\",\n        \"email\": \"<email>\",\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\",\n        \"organization\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      },\n      \"created_at\": \"<dateTime>\",\n      \"role\": \"peer\",\n      \"configuration\": {\n        \"archive\": \"<boolean>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:19:38.000Z",
+                  "updatedAt": "2026-07-28T01:19:38.000Z",
+                  "uid": "35240-693d3863-7d62-40ec-83f5-d41ebdbe045e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:19:38.000Z",
+              "updatedAt": "2026-07-28T01:19:38.000Z",
+              "uid": "35240-e4965e78-f20f-4dce-9a10-d4dca32f7016"
+            },
+            {
+              "name": "Create Node",
+              "id": "f7777c97-fdd7-43da-9a13-614966ece5e3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"region\": \"asia-southeast1\",\n  \"provider\": \"gcloud\",\n  \"role\": \"peer\",\n  \"type\": \"shared\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  },\n  \"id\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"details\": {\n    \"mode\": \"archive\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"failed\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/nodes/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "nodes",
+                    ""
+                  ]
+                },
+                "description": "Create Node"
+              },
+              "response": [
+                {
+                  "id": "fadd37d8-7477-4656-8e1c-c1d1a36f6594",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"region\": \"asia-southeast1\",\n  \"provider\": \"gcloud\",\n  \"role\": \"peer\",\n  \"type\": \"shared\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  },\n  \"id\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"details\": {\n    \"mode\": \"archive\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"failed\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/nodes/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "nodes",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"type\": \"dedicated\",\n  \"provider\": \"azure\",\n  \"region\": \"ap-southeast-1\",\n  \"details\": {\n    \"mode\": \"full\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"error\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\",\n  \"role\": \"peer\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:19:38.000Z",
+                  "updatedAt": "2026-07-28T01:19:38.000Z",
+                  "uid": "35240-fadd37d8-7477-4656-8e1c-c1d1a36f6594"
+                },
+                {
+                  "id": "7d32fc64-1458-466d-afd8-aec96519ca71",
+                  "name": "Validation error.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"network\": \"<string>\",\n  \"region\": \"asia-southeast1\",\n  \"provider\": \"gcloud\",\n  \"role\": \"peer\",\n  \"type\": \"shared\",\n  \"configuration\": {\n    \"archive\": \"<boolean>\"\n  },\n  \"id\": \"<string>\",\n  \"organization\": \"<string>\",\n  \"details\": {\n    \"mode\": \"archive\",\n    \"version\": \"<string>\",\n    \"api_namespaces\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"https_endpoint\": \"<string>\",\n    \"wss_endpoint\": \"<string>\",\n    \"beacon_endpoint\": \"<string>\",\n    \"graphql_endpoint\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"auth_password\": \"<string>\",\n    \"auth_key\": \"<string>\"\n  },\n  \"status\": \"failed\",\n  \"creator\": {\n    \"id\": \"<string>\",\n    \"email\": \"<email>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"organization\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"created_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/nodes/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "nodes",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"fields\": {\n      \"indb\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T01:19:38.000Z",
+                  "updatedAt": "2026-07-28T01:19:38.000Z",
+                  "uid": "35240-7d32fc64-1458-466d-afd8-aec96519ca71"
+                }
+              ],
+              "createdAt": "2026-07-28T01:19:38.000Z",
+              "updatedAt": "2026-07-28T01:19:38.000Z",
+              "uid": "35240-f7777c97-fdd7-43da-9a13-614966ece5e3"
+            }
+          ],
+          "id": "ee721fab-1dbb-4373-976c-ec52c0973845",
+          "createdAt": "2026-07-28T01:19:38.000Z",
+          "updatedAt": "2026-07-28T01:19:38.000Z",
+          "uid": "35240-ee721fab-1dbb-4373-976c-ec52c0973845"
+        }
+      ],
+      "id": "dfa0d8bf-eaa1-4e9e-82c2-8bfd7a598448",
+      "createdAt": "2026-07-28T01:19:38.000Z",
+      "updatedAt": "2026-07-28T01:19:38.000Z",
+      "uid": "35240-dfa0d8bf-eaa1-4e9e-82c2-8bfd7a598448"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

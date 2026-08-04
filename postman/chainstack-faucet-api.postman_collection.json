@@ -1,0 +1,506 @@
+{
+  "info": {
+    "_postman_id": "f3edf356-ee05-482f-a560-f14f01c8e37a",
+    "name": "Chainstack Arbitrum Node Account Info faucet API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:18:48.000Z",
+    "updatedAt": "2026-07-28T01:18:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f3edf356-ee05-482f-a560-f14f01c8e37a"
+  },
+  "item": [
+    {
+      "name": "{chain}",
+      "item": [
+        {
+          "name": "Request funds",
+          "id": "bba58532-e859-44ba-83d0-96fc271aee5e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/:chain",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":chain"
+              ],
+              "variable": [
+                {
+                  "id": "3600a3a2-c849-4335-b4a4-cfa56d176ea7",
+                  "key": "chain",
+                  "value": "",
+                  "description": "(Required) Chainstack Faucet API."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4fa2cd69-cd0d-47e5-948f-b2386e261e74",
+              "name": "Funds successfully sent.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:chain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":chain"
+                  ],
+                  "variable": [
+                    {
+                      "key": "chain"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:18:49.000Z",
+              "updatedAt": "2026-07-28T01:18:49.000Z",
+              "uid": "35240-4fa2cd69-cd0d-47e5-948f-b2386e261e74"
+            },
+            {
+              "id": "c8baf670-32f8-43dd-89fa-6c469225e6f0",
+              "name": "Address is not valid.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:chain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":chain"
+                  ],
+                  "variable": [
+                    {
+                      "key": "chain"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:18:49.000Z",
+              "updatedAt": "2026-07-28T01:18:49.000Z",
+              "uid": "35240-c8baf670-32f8-43dd-89fa-6c469225e6f0"
+            },
+            {
+              "id": "a8ca0234-7fb8-4ccc-bf94-0d44ea5b3557",
+              "name": "Unauthorized access, invalid API key.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:chain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":chain"
+                  ],
+                  "variable": [
+                    {
+                      "key": "chain"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:18:49.000Z",
+              "updatedAt": "2026-07-28T01:18:49.000Z",
+              "uid": "35240-a8ca0234-7fb8-4ccc-bf94-0d44ea5b3557"
+            },
+            {
+              "id": "110d0b8a-c8de-4edb-895b-bac51ea6c3d8",
+              "name": "Too many requests or balance exceeded.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:chain",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":chain"
+                  ],
+                  "variable": [
+                    {
+                      "key": "chain"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:18:49.000Z",
+              "updatedAt": "2026-07-28T01:18:49.000Z",
+              "uid": "35240-110d0b8a-c8de-4edb-895b-bac51ea6c3d8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:49.000Z",
+          "updatedAt": "2026-07-28T01:18:49.000Z",
+          "uid": "35240-bba58532-e859-44ba-83d0-96fc271aee5e"
+        }
+      ],
+      "id": "f14d86d8-1cca-42d5-b1ad-69937f9d8f9b",
+      "createdAt": "2026-07-28T01:18:49.000Z",
+      "updatedAt": "2026-07-28T01:18:49.000Z",
+      "uid": "35240-f14d86d8-1cca-42d5-b1ad-69937f9d8f9b"
+    },
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "faucet",
+          "item": [
+            {
+              "name": "sepolia",
+              "item": [
+                {
+                  "name": "Sepolia Faucet",
+                  "id": "1a5dc95d-94ca-4df6-b26b-c5baa78cd81c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"address\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/faucet/sepolia",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "faucet",
+                        "sepolia"
+                      ]
+                    },
+                    "description": "Request test tokens."
+                  },
+                  "response": [
+                    {
+                      "id": "7f1d55cc-32fe-438d-9fdb-8e4e6e07872c",
+                      "name": "New Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/faucet/sepolia",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "faucet",
+                            "sepolia"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"amountSent\": \"<number>\",\n  \"transaction\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:18:49.000Z",
+                      "updatedAt": "2026-07-28T01:18:49.000Z",
+                      "uid": "35240-7f1d55cc-32fe-438d-9fdb-8e4e6e07872c"
+                    },
+                    {
+                      "id": "c73c0f8a-7bb6-4c43-bbf7-24fd38597df1",
+                      "name": "Validation error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/faucet/sepolia",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "faucet",
+                            "sepolia"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"fields\": {\n      \"qui_a\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:18:49.000Z",
+                      "updatedAt": "2026-07-28T01:18:49.000Z",
+                      "uid": "35240-c73c0f8a-7bb6-4c43-bbf7-24fd38597df1"
+                    },
+                    {
+                      "id": "62a4258d-3147-4bfb-a34c-20938a16d877",
+                      "name": "Validation error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/faucet/sepolia",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "faucet",
+                            "sepolia"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  },\n  \"nextFaucetAvailable\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:18:49.000Z",
+                      "updatedAt": "2026-07-28T01:18:49.000Z",
+                      "uid": "35240-62a4258d-3147-4bfb-a34c-20938a16d877"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:18:49.000Z",
+                  "updatedAt": "2026-07-28T01:18:49.000Z",
+                  "uid": "35240-1a5dc95d-94ca-4df6-b26b-c5baa78cd81c"
+                }
+              ],
+              "id": "8f63e349-69e1-450f-801a-425e323f8e40",
+              "createdAt": "2026-07-28T01:18:49.000Z",
+              "updatedAt": "2026-07-28T01:18:49.000Z",
+              "uid": "35240-8f63e349-69e1-450f-801a-425e323f8e40"
+            }
+          ],
+          "id": "f1123747-d919-4c82-980a-a013b4f87a7d",
+          "createdAt": "2026-07-28T01:18:49.000Z",
+          "updatedAt": "2026-07-28T01:18:49.000Z",
+          "uid": "35240-f1123747-d919-4c82-980a-a013b4f87a7d"
+        }
+      ],
+      "id": "a71b5b9a-9f4f-4f4e-b87d-5794c66f98d5",
+      "createdAt": "2026-07-28T01:18:49.000Z",
+      "updatedAt": "2026-07-28T01:18:49.000Z",
+      "uid": "35240-a71b5b9a-9f4f-4f4e-b87d-5794c66f98d5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

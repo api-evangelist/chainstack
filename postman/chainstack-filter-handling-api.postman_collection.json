@@ -1,0 +1,548 @@
+{
+  "info": {
+    "_postman_id": "794449a9-682f-4dda-8c90-c906a564add4",
+    "name": "Chainstack Arbitrum Node Account Info Filter Handling API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:03.000Z",
+    "updatedAt": "2026-07-28T01:19:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-794449a9-682f-4dda-8c90-c906a564add4"
+  },
+  "item": [
+    {
+      "name": "eth_getFilterChanges",
+      "item": [
+        {
+          "name": "eth_getFilterChanges",
+          "id": "74e96f6e-1d94-4de4-95b8-eef010366838",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getFilterChanges\",\n  \"params\": [\n    \"0x2d66dbc76b6ddff76ddcfbd081d03130\"\n  ],\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getFilterChanges",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getFilterChanges"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fad10ae2-8ccf-4d61-9f82-9b2e958a8b71",
+              "name": "The filter changes.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getFilterChanges\",\n  \"params\": [\n    \"0x2d66dbc76b6ddff76ddcfbd081d03130\"\n  ],\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getFilterChanges",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getFilterChanges"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T01:19:04.000Z",
+              "updatedAt": "2026-07-28T01:19:04.000Z",
+              "uid": "35240-fad10ae2-8ccf-4d61-9f82-9b2e958a8b71"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:04.000Z",
+          "updatedAt": "2026-07-28T01:19:04.000Z",
+          "uid": "35240-74e96f6e-1d94-4de4-95b8-eef010366838"
+        }
+      ],
+      "id": "48dcd02a-c22b-4ad9-800e-e2c8c27da0bd",
+      "createdAt": "2026-07-28T01:19:04.000Z",
+      "updatedAt": "2026-07-28T01:19:04.000Z",
+      "uid": "35240-48dcd02a-c22b-4ad9-800e-e2c8c27da0bd"
+    },
+    {
+      "name": "eth_uninstallFilter",
+      "item": [
+        {
+          "name": "eth_uninstallFilter",
+          "id": "24b60b55-02fa-4d79-ba02-39040d611323",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_uninstallFilter\",\n  \"params\": [\n    \"0xbdc5b4b99ca699e1d734fc4202afee79\"\n  ],\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_uninstallFilter",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_uninstallFilter"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bb4f8faf-1d01-4943-af1d-312630afcdb5",
+              "name": "Boolean value indicating if the filter was removed or not.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_uninstallFilter\",\n  \"params\": [\n    \"0xbdc5b4b99ca699e1d734fc4202afee79\"\n  ],\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_uninstallFilter",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_uninstallFilter"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T01:19:04.000Z",
+              "updatedAt": "2026-07-28T01:19:04.000Z",
+              "uid": "35240-bb4f8faf-1d01-4943-af1d-312630afcdb5"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:04.000Z",
+          "updatedAt": "2026-07-28T01:19:04.000Z",
+          "uid": "35240-24b60b55-02fa-4d79-ba02-39040d611323"
+        }
+      ],
+      "id": "a6785ed8-d8d7-4f24-82cb-60bad7a70ff0",
+      "createdAt": "2026-07-28T01:19:04.000Z",
+      "updatedAt": "2026-07-28T01:19:04.000Z",
+      "uid": "35240-a6785ed8-d8d7-4f24-82cb-60bad7a70ff0"
+    },
+    {
+      "name": "eth_newBlockFilter",
+      "item": [
+        {
+          "name": "eth_newBlockFilter",
+          "id": "a6b4e6a9-90a9-4154-84e8-bb5b0b57cdef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_newBlockFilter\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_newBlockFilter",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_newBlockFilter"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "372c5374-f9f1-4663-9340-157d1e022c3b",
+              "name": "Creates a filter in the node to notify when a new block arrives.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_newBlockFilter\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_newBlockFilter",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_newBlockFilter"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:04.000Z",
+              "updatedAt": "2026-07-28T01:19:04.000Z",
+              "uid": "35240-372c5374-f9f1-4663-9340-157d1e022c3b"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:04.000Z",
+          "updatedAt": "2026-07-28T01:19:04.000Z",
+          "uid": "35240-a6b4e6a9-90a9-4154-84e8-bb5b0b57cdef"
+        }
+      ],
+      "id": "362a5113-3112-48c4-a473-3e24cf9d68e8",
+      "createdAt": "2026-07-28T01:19:04.000Z",
+      "updatedAt": "2026-07-28T01:19:04.000Z",
+      "uid": "35240-362a5113-3112-48c4-a473-3e24cf9d68e8"
+    },
+    {
+      "name": "eth_newFilter",
+      "item": [
+        {
+          "name": "eth_newFilter",
+          "id": "3ff936d0-bd8f-4e01-b9d2-bcbf942994c9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_newFilter\",\n  \"params\": [\n    {\n      \"fromBlock\": \"latest\",\n      \"toBlock\": \"latest\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_newFilter",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_newFilter"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c5092bd5-e977-4c5f-8a54-7261b2a2272b",
+              "name": "Creates a filter object based on filter options to notify when the state changes (logs).",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_newFilter\",\n  \"params\": [\n    {\n      \"fromBlock\": \"latest\",\n      \"toBlock\": \"latest\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_newFilter",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_newFilter"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:04.000Z",
+              "updatedAt": "2026-07-28T01:19:04.000Z",
+              "uid": "35240-c5092bd5-e977-4c5f-8a54-7261b2a2272b"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:04.000Z",
+          "updatedAt": "2026-07-28T01:19:04.000Z",
+          "uid": "35240-3ff936d0-bd8f-4e01-b9d2-bcbf942994c9"
+        }
+      ],
+      "id": "46c389c7-2f15-41b6-bb41-e6282e403a17",
+      "createdAt": "2026-07-28T01:19:04.000Z",
+      "updatedAt": "2026-07-28T01:19:04.000Z",
+      "uid": "35240-46c389c7-2f15-41b6-bb41-e6282e403a17"
+    },
+    {
+      "name": "eth_newPendingTransactionFilter",
+      "item": [
+        {
+          "name": "eth_newPendingTransactionFilter",
+          "id": "04bc07e0-fd97-402e-941a-14e09926830e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_newPendingTransactionFilter\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_newPendingTransactionFilter",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_newPendingTransactionFilter"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "93b91042-9aac-4131-a47e-3e85adf5b110",
+              "name": "Creates a filter in the node to notify when new pending transactions arrive.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_newPendingTransactionFilter\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_newPendingTransactionFilter",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_newPendingTransactionFilter"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:19:04.000Z",
+              "updatedAt": "2026-07-28T01:19:04.000Z",
+              "uid": "35240-93b91042-9aac-4131-a47e-3e85adf5b110"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:04.000Z",
+          "updatedAt": "2026-07-28T01:19:04.000Z",
+          "uid": "35240-04bc07e0-fd97-402e-941a-14e09926830e"
+        }
+      ],
+      "id": "1fbc9341-8db0-4b14-8669-707350bdea46",
+      "createdAt": "2026-07-28T01:19:04.000Z",
+      "updatedAt": "2026-07-28T01:19:04.000Z",
+      "uid": "35240-1fbc9341-8db0-4b14-8669-707350bdea46"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

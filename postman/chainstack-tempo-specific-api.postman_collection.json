@@ -1,0 +1,237 @@
+{
+  "info": {
+    "_postman_id": "a9987689-6dd7-4ba4-934c-9eee298e69ea",
+    "name": "Chainstack Arbitrum Node Account Info Tempo Specific API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:36.000Z",
+    "updatedAt": "2026-07-28T01:20:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a9987689-6dd7-4ba4-934c-9eee298e69ea"
+  },
+  "item": [
+    {
+      "name": "eth_sendRawTransactionSync",
+      "item": [
+        {
+          "name": "eth_sendRawTransactionSync",
+          "id": "baa23e1f-9ea6-43a3-b40a-6ad9b102d786",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_sendRawTransactionSync\",\n  \"params\": [\n    \"0xf867808502540e841e825208949729187d9e8bbefa8295f39f5634ca454dd9d294808083014b9da00602a6c9850068ac6667c098f65cf061e5e90d7030a63d13396dc6d0522fe517a07a0f9c9455612fcacfce60fba7c6e305728148f3ec345661535d0230f872f224\"\n  ],\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_sendRawTransactionSync",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_sendRawTransactionSync"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0e05ae55-e34c-4787-a82f-030b1da9a8a4",
+              "name": "The transaction receipt",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_sendRawTransactionSync\",\n  \"params\": [\n    \"0xf867808502540e841e825208949729187d9e8bbefa8295f39f5634ca454dd9d294808083014b9da00602a6c9850068ac6667c098f65cf061e5e90d7030a63d13396dc6d0522fe517a07a0f9c9455612fcacfce60fba7c6e305728148f3ec345661535d0230f872f224\"\n  ],\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_sendRawTransactionSync",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_sendRawTransactionSync"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:20:37.000Z",
+              "updatedAt": "2026-07-28T01:20:37.000Z",
+              "uid": "35240-0e05ae55-e34c-4787-a82f-030b1da9a8a4"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:37.000Z",
+          "updatedAt": "2026-07-28T01:20:37.000Z",
+          "uid": "35240-baa23e1f-9ea6-43a3-b40a-6ad9b102d786"
+        }
+      ],
+      "id": "1f5f253b-2853-4b4b-ab45-4bc8024b6004",
+      "createdAt": "2026-07-28T01:20:37.000Z",
+      "updatedAt": "2026-07-28T01:20:37.000Z",
+      "uid": "35240-1f5f253b-2853-4b4b-ab45-4bc8024b6004"
+    },
+    {
+      "name": "tempo_fundAddress",
+      "item": [
+        {
+          "name": "tempo_fundAddress",
+          "id": "552d30fe-1b3d-4134-b231-1c8324cabe42",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"tempo_fundAddress\",\n  \"params\": [\n    \"0xc2F695613de0885dA3bdd18E8c317B9fAf7d4eba\"\n  ],\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tempo_fundAddress",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tempo_fundAddress"
+              ]
+            },
+            "description": "Funds an address with testnet stablecoins (pathUSD, AlphaUSD, BetaUSD, ThetaUSD). Testnet only."
+          },
+          "response": [
+            {
+              "id": "ff28a639-860c-42a8-b2ac-a5828e396c94",
+              "name": "Array of transaction hashes for each funded token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"tempo_fundAddress\",\n  \"params\": [\n    \"0xc2F695613de0885dA3bdd18E8c317B9fAf7d4eba\"\n  ],\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tempo_fundAddress",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tempo_fundAddress"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T01:20:37.000Z",
+              "updatedAt": "2026-07-28T01:20:37.000Z",
+              "uid": "35240-ff28a639-860c-42a8-b2ac-a5828e396c94"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:37.000Z",
+          "updatedAt": "2026-07-28T01:20:37.000Z",
+          "uid": "35240-552d30fe-1b3d-4134-b231-1c8324cabe42"
+        }
+      ],
+      "id": "ceb7a1d6-3c1b-4d61-b116-0ed5c44bb0af",
+      "createdAt": "2026-07-28T01:20:37.000Z",
+      "updatedAt": "2026-07-28T01:20:37.000Z",
+      "uid": "35240-ceb7a1d6-3c1b-4d61-b116-0ed5c44bb0af"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

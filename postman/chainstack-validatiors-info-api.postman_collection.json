@@ -1,0 +1,1968 @@
+{
+  "info": {
+    "_postman_id": "2597d6ab-1941-4b4a-87e7-3fd462396edd",
+    "name": "Chainstack Arbitrum Node Account Info Validatiors Info API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:58.000Z",
+    "updatedAt": "2026-07-28T01:20:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2597d6ab-1941-4b4a-87e7-3fd462396edd"
+  },
+  "item": [
+    {
+      "name": "attestation_data",
+      "item": [
+        {
+          "name": "Get attestation data",
+          "id": "1f622270-2c5a-4089-9e3d-5912f1f456bd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/attestation_data?slot=6244411&committee_index=5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "attestation_data"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Slot for which to retrieve attestation data",
+                  "key": "slot",
+                  "value": "6244411"
+                },
+                {
+                  "description": "(Required) Committee index for which to retrieve attestation data",
+                  "key": "committee_index",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d769ec3f-e781-4665-be2b-04a898175596",
+              "name": "Attestation data successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/attestation_data?slot=6244411&committee_index=5",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "attestation_data"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Slot for which to retrieve attestation data",
+                      "key": "slot",
+                      "value": "6244411"
+                    },
+                    {
+                      "description": "(Required) Committee index for which to retrieve attestation data",
+                      "key": "committee_index",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"slot\": \"<long>\",\n  \"index\": \"<long>\",\n  \"beacon_block_root\": \"<string>\",\n  \"source\": {\n    \"epoch\": \"<long>\",\n    \"root\": \"<string>\"\n  },\n  \"target\": {\n    \"epoch\": \"<long>\",\n    \"root\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-d769ec3f-e781-4665-be2b-04a898175596"
+            },
+            {
+              "id": "729fd42e-7889-4d5c-849c-86373eac55fe",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/attestation_data?slot=6244411&committee_index=5",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "attestation_data"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Slot for which to retrieve attestation data",
+                      "key": "slot",
+                      "value": "6244411"
+                    },
+                    {
+                      "description": "(Required) Committee index for which to retrieve attestation data",
+                      "key": "committee_index",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-729fd42e-7889-4d5c-849c-86373eac55fe"
+            },
+            {
+              "id": "c90f52b6-1e1a-4588-b4d2-c44d972fccfe",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/attestation_data?slot=6244411&committee_index=5",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "attestation_data"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Slot for which to retrieve attestation data",
+                      "key": "slot",
+                      "value": "6244411"
+                    },
+                    {
+                      "description": "(Required) Committee index for which to retrieve attestation data",
+                      "key": "committee_index",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-c90f52b6-1e1a-4588-b4d2-c44d972fccfe"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-1f622270-2c5a-4089-9e3d-5912f1f456bd"
+        }
+      ],
+      "id": "edcb5068-f5c7-40ca-8acd-7585fd7c92da",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-edcb5068-f5c7-40ca-8acd-7585fd7c92da"
+    },
+    {
+      "name": "attestation_of_beacon_block_by_block_id",
+      "item": [
+        {
+          "name": "Get attestations of the beacon block by block_id",
+          "id": "205b61d9-8b18-4758-903e-543e1d5f1609",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/attestation_of_beacon_block_by_block_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "attestation_of_beacon_block_by_block_id"
+              ],
+              "variable": [
+                {
+                  "id": "759b386c-78c8-4183-994a-84f71a44e8e9",
+                  "key": "block_id",
+                  "value": "head",
+                  "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ad60fe6e-621a-4da3-8290-a26a2a7c1352",
+              "name": "Beacon block attestations successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/attestation_of_beacon_block_by_block_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "attestation_of_beacon_block_by_block_id"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"aggregation_bits\": \"<string>\",\n    \"data\": {\n      \"slot\": \"<long>\",\n      \"index\": \"<long>\",\n      \"beacon_block_root\": \"<string>\",\n      \"source\": {\n        \"epoch\": \"<long>\",\n        \"root\": \"<string>\"\n      },\n      \"target\": {\n        \"epoch\": \"<long>\",\n        \"root\": \"<string>\"\n      }\n    },\n    \"signature\": \"<string>\"\n  },\n  {\n    \"aggregation_bits\": \"<string>\",\n    \"data\": {\n      \"slot\": \"<long>\",\n      \"index\": \"<long>\",\n      \"beacon_block_root\": \"<string>\",\n      \"source\": {\n        \"epoch\": \"<long>\",\n        \"root\": \"<string>\"\n      },\n      \"target\": {\n        \"epoch\": \"<long>\",\n        \"root\": \"<string>\"\n      }\n    },\n    \"signature\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-ad60fe6e-621a-4da3-8290-a26a2a7c1352"
+            },
+            {
+              "id": "6794ee76-5306-439f-ac71-365a08d36013",
+              "name": "Beacon block attestations not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/attestation_of_beacon_block_by_block_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "attestation_of_beacon_block_by_block_id"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-6794ee76-5306-439f-ac71-365a08d36013"
+            },
+            {
+              "id": "2cf98ac1-f6e9-4c5d-affc-541bdd3b4f31",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/attestation_of_beacon_block_by_block_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "attestation_of_beacon_block_by_block_id"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-2cf98ac1-f6e9-4c5d-affc-541bdd3b4f31"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-205b61d9-8b18-4758-903e-543e1d5f1609"
+        }
+      ],
+      "id": "51d95971-0c88-42f8-8ab9-bdea269e85e3",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-51d95971-0c88-42f8-8ab9-bdea269e85e3"
+    },
+    {
+      "name": "attester_slashings",
+      "item": [
+        {
+          "name": "Get attester slashings",
+          "id": "9939c624-692c-46e7-843f-4db5398d8e4d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/attester_slashings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "attester_slashings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da12b909-5645-4e87-8b32-9242daa3679d",
+              "name": "Beacon pool attester slashings successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/attester_slashings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "attester_slashings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"attestation_1\": {\n      \"attesting_indices\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"data\": {\n        \"slot\": \"<long>\",\n        \"index\": \"<long>\",\n        \"beacon_block_root\": \"<string>\",\n        \"source\": {\n          \"epoch\": \"<long>\",\n          \"root\": \"<string>\"\n        },\n        \"target\": {\n          \"epoch\": \"<long>\",\n          \"root\": \"<string>\"\n        }\n      },\n      \"signature\": \"<string>\"\n    },\n    \"attestation_2\": {\n      \"attesting_indices\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"data\": {\n        \"slot\": \"<long>\",\n        \"index\": \"<long>\",\n        \"beacon_block_root\": \"<string>\",\n        \"source\": {\n          \"epoch\": \"<long>\",\n          \"root\": \"<string>\"\n        },\n        \"target\": {\n          \"epoch\": \"<long>\",\n          \"root\": \"<string>\"\n        }\n      },\n      \"signature\": \"<string>\"\n    }\n  },\n  {\n    \"attestation_1\": {\n      \"attesting_indices\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"data\": {\n        \"slot\": \"<long>\",\n        \"index\": \"<long>\",\n        \"beacon_block_root\": \"<string>\",\n        \"source\": {\n          \"epoch\": \"<long>\",\n          \"root\": \"<string>\"\n        },\n        \"target\": {\n          \"epoch\": \"<long>\",\n          \"root\": \"<string>\"\n        }\n      },\n      \"signature\": \"<string>\"\n    },\n    \"attestation_2\": {\n      \"attesting_indices\": [\n        \"<long>\",\n        \"<long>\"\n      ],\n      \"data\": {\n        \"slot\": \"<long>\",\n        \"index\": \"<long>\",\n        \"beacon_block_root\": \"<string>\",\n        \"source\": {\n          \"epoch\": \"<long>\",\n          \"root\": \"<string>\"\n        },\n        \"target\": {\n          \"epoch\": \"<long>\",\n          \"root\": \"<string>\"\n        }\n      },\n      \"signature\": \"<string>\"\n    }\n  }\n]",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-da12b909-5645-4e87-8b32-9242daa3679d"
+            },
+            {
+              "id": "f5f71267-1d87-4307-9033-4fe82c394f1e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/attester_slashings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "attester_slashings"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-f5f71267-1d87-4307-9033-4fe82c394f1e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-9939c624-692c-46e7-843f-4db5398d8e4d"
+        }
+      ],
+      "id": "d0e5317d-2297-4270-ad5e-e38b8a3a4564",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-d0e5317d-2297-4270-ad5e-e38b8a3a4564"
+    },
+    {
+      "name": "beacon_pool_attestations",
+      "item": [
+        {
+          "name": "Get attestations from the beacon pool",
+          "id": "de7b7953-36e8-487e-b942-5ba8d850b29f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/beacon_pool_attestations?slot=6243475&committee_index=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "beacon_pool_attestations"
+              ],
+              "query": [
+                {
+                  "description": "The slot number to filter attestations",
+                  "key": "slot",
+                  "value": "6243475"
+                },
+                {
+                  "description": "The committee index to filter attestations",
+                  "key": "committee_index",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f0ebcf46-b0a8-4d0b-9fa7-65e7a2db514a",
+              "name": "Beacon pool attestations successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/beacon_pool_attestations?slot=6243475&committee_index=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "beacon_pool_attestations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The slot number to filter attestations",
+                      "key": "slot",
+                      "value": "6243475"
+                    },
+                    {
+                      "description": "The committee index to filter attestations",
+                      "key": "committee_index",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"aggregation_bits\": \"<string>\",\n    \"data\": {\n      \"slot\": \"<long>\",\n      \"index\": \"<long>\",\n      \"beacon_block_root\": \"<string>\",\n      \"source\": {\n        \"epoch\": \"<long>\",\n        \"root\": \"<string>\"\n      },\n      \"target\": {\n        \"epoch\": \"<long>\",\n        \"root\": \"<string>\"\n      }\n    },\n    \"signature\": \"<string>\"\n  },\n  {\n    \"aggregation_bits\": \"<string>\",\n    \"data\": {\n      \"slot\": \"<long>\",\n      \"index\": \"<long>\",\n      \"beacon_block_root\": \"<string>\",\n      \"source\": {\n        \"epoch\": \"<long>\",\n        \"root\": \"<string>\"\n      },\n      \"target\": {\n        \"epoch\": \"<long>\",\n        \"root\": \"<string>\"\n      }\n    },\n    \"signature\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-f0ebcf46-b0a8-4d0b-9fa7-65e7a2db514a"
+            },
+            {
+              "id": "f31f74d1-66a4-456e-b2f9-e4f86eeccfc8",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/beacon_pool_attestations?slot=6243475&committee_index=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "beacon_pool_attestations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The slot number to filter attestations",
+                      "key": "slot",
+                      "value": "6243475"
+                    },
+                    {
+                      "description": "The committee index to filter attestations",
+                      "key": "committee_index",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-f31f74d1-66a4-456e-b2f9-e4f86eeccfc8"
+            },
+            {
+              "id": "4599ed42-5c9a-4f41-b453-420a737318e4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/beacon_pool_attestations?slot=6243475&committee_index=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "beacon_pool_attestations"
+                  ],
+                  "query": [
+                    {
+                      "description": "The slot number to filter attestations",
+                      "key": "slot",
+                      "value": "6243475"
+                    },
+                    {
+                      "description": "The committee index to filter attestations",
+                      "key": "committee_index",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-4599ed42-5c9a-4f41-b453-420a737318e4"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-de7b7953-36e8-487e-b942-5ba8d850b29f"
+        }
+      ],
+      "id": "0231f1bb-7637-4780-850a-f4c460d6daad",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-0231f1bb-7637-4780-850a-f4c460d6daad"
+    },
+    {
+      "name": "produce_unsigned_blinded_block",
+      "item": [
+        {
+          "name": "Produce an unsigned blinded block",
+          "id": "63163fde-6706-4346-8636-1c442ec4793b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/produce_unsigned_blinded_block?randao_reveal=0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25&graffiti=0x0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produce_unsigned_blinded_block"
+              ],
+              "query": [
+                {
+                  "description": "(Required) RANDAO reveal for the block",
+                  "key": "randao_reveal",
+                  "value": "0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25"
+                },
+                {
+                  "description": "Graffiti for the block",
+                  "key": "graffiti",
+                  "value": "0x0"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "c58ffbd7-cd36-4883-817b-761576ed6a27",
+                  "key": "slot",
+                  "value": "6244411",
+                  "description": "(Required) Slot for which to produce a new blinded block"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9045285e-d739-4cb2-bff3-29dd8107c58c",
+              "name": "Successfully produced a new blinded block",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/produce_unsigned_blinded_block?randao_reveal=0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25&graffiti=0x0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "produce_unsigned_blinded_block"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RANDAO reveal for the block",
+                      "key": "randao_reveal",
+                      "value": "0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25"
+                    },
+                    {
+                      "description": "Graffiti for the block",
+                      "key": "graffiti",
+                      "value": "0x0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"slot\": \"<long>\",\n  \"parent_root\": \"<string>\",\n  \"state_root\": \"<string>\",\n  \"body\": {}\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-9045285e-d739-4cb2-bff3-29dd8107c58c"
+            },
+            {
+              "id": "76650ead-148d-4349-9ec2-bd92b758f0a4",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/produce_unsigned_blinded_block?randao_reveal=0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25&graffiti=0x0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "produce_unsigned_blinded_block"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RANDAO reveal for the block",
+                      "key": "randao_reveal",
+                      "value": "0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25"
+                    },
+                    {
+                      "description": "Graffiti for the block",
+                      "key": "graffiti",
+                      "value": "0x0"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-76650ead-148d-4349-9ec2-bd92b758f0a4"
+            },
+            {
+              "id": "3a8211d1-48e8-4bc7-98a6-650e230f9c16",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/produce_unsigned_blinded_block?randao_reveal=0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25&graffiti=0x0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "produce_unsigned_blinded_block"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RANDAO reveal for the block",
+                      "key": "randao_reveal",
+                      "value": "0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25"
+                    },
+                    {
+                      "description": "Graffiti for the block",
+                      "key": "graffiti",
+                      "value": "0x0"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-3a8211d1-48e8-4bc7-98a6-650e230f9c16"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-63163fde-6706-4346-8636-1c442ec4793b"
+        }
+      ],
+      "id": "60ea5b8a-b239-4a77-a898-abcb23f553ae",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-60ea5b8a-b239-4a77-a898-abcb23f553ae"
+    },
+    {
+      "name": "produce_unsigned_block",
+      "item": [
+        {
+          "name": "Produce a new block for the given slot",
+          "id": "4cde135a-0364-44a4-8a73-5ce67229755e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/produce_unsigned_block?randao_reveal=0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e&graffiti=0xFcCa8912",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "produce_unsigned_block"
+              ],
+              "query": [
+                {
+                  "description": "(Required) RANDAO reveal for the block",
+                  "key": "randao_reveal",
+                  "value": "0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e"
+                },
+                {
+                  "description": "Graffiti for the block",
+                  "key": "graffiti",
+                  "value": "0xFcCa8912"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "42392843-e15b-4709-891a-99be4c043bef",
+                  "key": "slot",
+                  "value": "6244478",
+                  "description": "(Required) Slot for which to produce a new block"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8fb295a1-1b8b-4a6d-890d-c4ec9fbb29e2",
+              "name": "Successfully produced a new block",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/produce_unsigned_block?randao_reveal=0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e&graffiti=0xFcCa8912",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "produce_unsigned_block"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RANDAO reveal for the block",
+                      "key": "randao_reveal",
+                      "value": "0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e"
+                    },
+                    {
+                      "description": "Graffiti for the block",
+                      "key": "graffiti",
+                      "value": "0xFcCa8912"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"slot\": \"<long>\",\n  \"parent_root\": \"<string>\",\n  \"state_root\": \"<string>\",\n  \"body\": {}\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-8fb295a1-1b8b-4a6d-890d-c4ec9fbb29e2"
+            },
+            {
+              "id": "29985dbe-c6bf-45e6-b4af-9eaec717bd26",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/produce_unsigned_block?randao_reveal=0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e&graffiti=0xFcCa8912",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "produce_unsigned_block"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RANDAO reveal for the block",
+                      "key": "randao_reveal",
+                      "value": "0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e"
+                    },
+                    {
+                      "description": "Graffiti for the block",
+                      "key": "graffiti",
+                      "value": "0xFcCa8912"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-29985dbe-c6bf-45e6-b4af-9eaec717bd26"
+            },
+            {
+              "id": "70cba273-f2bb-4e33-874d-5745042f3053",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/produce_unsigned_block?randao_reveal=0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e&graffiti=0xFcCa8912",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "produce_unsigned_block"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) RANDAO reveal for the block",
+                      "key": "randao_reveal",
+                      "value": "0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e"
+                    },
+                    {
+                      "description": "Graffiti for the block",
+                      "key": "graffiti",
+                      "value": "0xFcCa8912"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-70cba273-f2bb-4e33-874d-5745042f3053"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-4cde135a-0364-44a4-8a73-5ce67229755e"
+        }
+      ],
+      "id": "e7dd7ef3-dc58-44de-9c59-9ee6945adb0f",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-e7dd7ef3-dc58-44de-9c59-9ee6945adb0f"
+    },
+    {
+      "name": "proposer_duties",
+      "item": [
+        {
+          "name": "Get proposer duties",
+          "id": "0661d582-ebde-48ad-8980-a0fab90093ab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/proposer_duties",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "proposer_duties"
+              ],
+              "variable": [
+                {
+                  "id": "e7f1d62c-95a4-449a-b873-eec8cc55c759",
+                  "key": "epoch",
+                  "value": "1",
+                  "description": "(Required) Epoch for which to get the proposer duties"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "70f76d9b-04e5-4204-9013-23486b4d6bfd",
+              "name": "Successfully retrieved proposer duties",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/proposer_duties",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "proposer_duties"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"pubkey\": \"<string>\",\n    \"validator_index\": \"<long>\",\n    \"slot\": \"<long>\"\n  },\n  {\n    \"pubkey\": \"<string>\",\n    \"validator_index\": \"<long>\",\n    \"slot\": \"<long>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-70f76d9b-04e5-4204-9013-23486b4d6bfd"
+            },
+            {
+              "id": "4b2965ef-fbe7-4310-bc8b-185955d1da12",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/proposer_duties",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "proposer_duties"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-4b2965ef-fbe7-4310-bc8b-185955d1da12"
+            },
+            {
+              "id": "3b477250-92ec-473f-ae3e-7bc56a82e8ad",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/proposer_duties",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "proposer_duties"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-3b477250-92ec-473f-ae3e-7bc56a82e8ad"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-0661d582-ebde-48ad-8980-a0fab90093ab"
+        }
+      ],
+      "id": "0c05c83a-616d-45b4-892b-1870a7193dd3",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-0c05c83a-616d-45b4-892b-1870a7193dd3"
+    },
+    {
+      "name": "proposer_slashings",
+      "item": [
+        {
+          "name": "Get proposer slashings from the beacon pool",
+          "id": "b38cced5-395b-413a-bcb0-ba2e6bd029ff",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/proposer_slashings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "proposer_slashings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "987fe5e3-f47d-411a-ae2f-bd50ad3c7ebb",
+              "name": "Beacon pool proposer slashings successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/proposer_slashings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "proposer_slashings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"signed_header_1\": {\n      \"message\": {\n        \"slot\": \"<long>\",\n        \"proposer_index\": \"<long>\",\n        \"parent_root\": \"<string>\",\n        \"state_root\": \"<string>\",\n        \"body_root\": \"<string>\"\n      },\n      \"signature\": \"<string>\"\n    },\n    \"signed_header_2\": {\n      \"message\": {\n        \"slot\": \"<long>\",\n        \"proposer_index\": \"<long>\",\n        \"parent_root\": \"<string>\",\n        \"state_root\": \"<string>\",\n        \"body_root\": \"<string>\"\n      },\n      \"signature\": \"<string>\"\n    }\n  },\n  {\n    \"signed_header_1\": {\n      \"message\": {\n        \"slot\": \"<long>\",\n        \"proposer_index\": \"<long>\",\n        \"parent_root\": \"<string>\",\n        \"state_root\": \"<string>\",\n        \"body_root\": \"<string>\"\n      },\n      \"signature\": \"<string>\"\n    },\n    \"signed_header_2\": {\n      \"message\": {\n        \"slot\": \"<long>\",\n        \"proposer_index\": \"<long>\",\n        \"parent_root\": \"<string>\",\n        \"state_root\": \"<string>\",\n        \"body_root\": \"<string>\"\n      },\n      \"signature\": \"<string>\"\n    }\n  }\n]",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-987fe5e3-f47d-411a-ae2f-bd50ad3c7ebb"
+            },
+            {
+              "id": "3c1ee619-bf0c-4847-85f8-d76658520899",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/proposer_slashings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "proposer_slashings"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-3c1ee619-bf0c-4847-85f8-d76658520899"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-b38cced5-395b-413a-bcb0-ba2e6bd029ff"
+        }
+      ],
+      "id": "90f09190-e250-44af-b5ba-bf1104fec850",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-90f09190-e250-44af-b5ba-bf1104fec850"
+    },
+    {
+      "name": "validator_balances",
+      "item": [
+        {
+          "name": "Get validator balances by state and ID",
+          "id": "c61fd48a-94a5-4c24-b6c4-f0d894158f33",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/validator_balances?id=1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "validator_balances"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Validator ID",
+                  "key": "id",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "3dccf808-4a43-4669-9b03-5101e200780f",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9fd3261e-7418-4642-a354-69b6c6761819",
+              "name": "Validator balances successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validator_balances?id=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validator_balances"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Validator ID",
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"index\": \"<string>\",\n      \"balance\": \"<string>\"\n    },\n    {\n      \"index\": \"<string>\",\n      \"balance\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-9fd3261e-7418-4642-a354-69b6c6761819"
+            },
+            {
+              "id": "4bf47e77-4ed5-4c18-b5a2-eb275bee30fd",
+              "name": "Validator balances not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validator_balances?id=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validator_balances"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Validator ID",
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-4bf47e77-4ed5-4c18-b5a2-eb275bee30fd"
+            },
+            {
+              "id": "acf02b50-26a5-4762-9115-3eb4d99148ad",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validator_balances?id=1",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validator_balances"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Validator ID",
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-acf02b50-26a5-4762-9115-3eb4d99148ad"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-c61fd48a-94a5-4c24-b6c4-f0d894158f33"
+        }
+      ],
+      "id": "d666c511-b1a7-4129-8fb9-d51273cc4a34",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-d666c511-b1a7-4129-8fb9-d51273cc4a34"
+    },
+    {
+      "name": "validator_information_by_state_id",
+      "item": [
+        {
+          "name": "Get information about a specific validator in a given state",
+          "id": "abc6e251-2787-486b-a01a-b22f30f10c68",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/validator_information_by_state_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "validator_information_by_state_id"
+              ],
+              "variable": [
+                {
+                  "id": "1a13cd84-a431-489f-bbf8-b9f4f170a42f",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+                },
+                {
+                  "id": "dd67f82d-1519-401f-8e72-38a17d1d3519",
+                  "key": "validator_index",
+                  "value": "1",
+                  "description": "(Required) Index of the validator (default is '1')."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b545b275-7d7b-47fe-89a8-ace31b9b17ff",
+              "name": "Successful response with validator information",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validator_information_by_state_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validator_information_by_state_id"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"index\": \"<integer>\",\n  \"balance\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"validator\": {\n    \"public_key\": \"<string>\",\n    \"effective_balance\": \"<integer>\",\n    \"slashed\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-b545b275-7d7b-47fe-89a8-ace31b9b17ff"
+            },
+            {
+              "id": "352d7922-1344-4be3-8593-44247729514c",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validator_information_by_state_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validator_information_by_state_id"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-352d7922-1344-4be3-8593-44247729514c"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-abc6e251-2787-486b-a01a-b22f30f10c68"
+        }
+      ],
+      "id": "f3ce3b60-85b4-4451-8a92-7069d9851195",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-f3ce3b60-85b4-4451-8a92-7069d9851195"
+    },
+    {
+      "name": "validator_information_by_state_id_or_public_key",
+      "item": [
+        {
+          "name": "Get validator by state and ID",
+          "id": "587707db-b2e6-488d-ad2b-83c4c9253570",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/validator_information_by_state_id_or_public_key",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "validator_information_by_state_id_or_public_key"
+              ],
+              "variable": [
+                {
+                  "id": "1ec92b60-386d-4fc8-8ca5-84b3aebca817",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                },
+                {
+                  "id": "5dd90412-c6c7-42ec-9f32-e7c02414d3bb",
+                  "key": "index",
+                  "value": "1",
+                  "description": "(Required) Validator index"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "73289f04-756d-4e61-bdfd-64b7137a28c1",
+              "name": "Validator successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validator_information_by_state_id_or_public_key",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validator_information_by_state_id_or_public_key"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": {\n    \"description\": \"The validator's info.\"\n  },\n  \"index\": true,\n  \"validator\": \"exercitation cillum pariatur ut\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-73289f04-756d-4e61-bdfd-64b7137a28c1"
+            },
+            {
+              "id": "1afa5c2b-e226-4ac9-94cc-40ded089febc",
+              "name": "Validator not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validator_information_by_state_id_or_public_key",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validator_information_by_state_id_or_public_key"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-1afa5c2b-e226-4ac9-94cc-40ded089febc"
+            },
+            {
+              "id": "338fd119-b13f-439f-88d1-91f2f2347590",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/validator_information_by_state_id_or_public_key",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validator_information_by_state_id_or_public_key"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-338fd119-b13f-439f-88d1-91f2f2347590"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-587707db-b2e6-488d-ad2b-83c4c9253570"
+        }
+      ],
+      "id": "1c870a69-c44c-4b4c-8d07-b7688448c714",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-1c870a69-c44c-4b4c-8d07-b7688448c714"
+    },
+    {
+      "name": "voluntary_exits",
+      "item": [
+        {
+          "name": "Get voluntary exits from the beacon pool",
+          "id": "940ca87c-3362-4eac-ab65-4f234e49e5e2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/voluntary_exits",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "voluntary_exits"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c99b5f2a-aaf1-41d0-90ed-6e93bcdbd54e",
+              "name": "Beacon pool voluntary exits successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/voluntary_exits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voluntary_exits"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"message\": {\n      \"epoch\": \"<long>\",\n      \"validator_index\": \"<long>\"\n    },\n    \"signature\": \"<string>\"\n  },\n  {\n    \"message\": {\n      \"epoch\": \"<long>\",\n      \"validator_index\": \"<long>\"\n    },\n    \"signature\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-c99b5f2a-aaf1-41d0-90ed-6e93bcdbd54e"
+            },
+            {
+              "id": "bbbd5b96-9c57-453c-b43d-6fa64981bafc",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/voluntary_exits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "voluntary_exits"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:20:58.000Z",
+              "updatedAt": "2026-07-28T01:20:58.000Z",
+              "uid": "35240-bbbd5b96-9c57-453c-b43d-6fa64981bafc"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:58.000Z",
+          "updatedAt": "2026-07-28T01:20:58.000Z",
+          "uid": "35240-940ca87c-3362-4eac-ab65-4f234e49e5e2"
+        }
+      ],
+      "id": "61cc0fdc-4c18-45e8-b9e5-5c588ad2fea0",
+      "createdAt": "2026-07-28T01:20:58.000Z",
+      "updatedAt": "2026-07-28T01:20:58.000Z",
+      "uid": "35240-61cc0fdc-4c18-45e8-b9e5-5c588ad2fea0"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

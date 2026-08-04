@@ -1,0 +1,196 @@
+{
+  "info": {
+    "_postman_id": "6e7d42af-8a7c-4265-99ca-6e76db428ae5",
+    "name": "Chainstack Arbitrum Node Account Info Deployment Options API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:00.000Z",
+    "updatedAt": "2026-07-28T01:19:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e7d42af-8a7c-4265-99ca-6e76db428ae5"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "deployment-options",
+          "item": [
+            {
+              "name": "List deployment options",
+              "id": "596d6717-edc9-44b1-80b7-4951c5e37e83",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/deployment-options/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "deployment-options",
+                    ""
+                  ]
+                },
+                "description": "List all available deployment options for your organization.\nReturns the deployable nodes matrix filtered to shared node types on global clouds.\nEach option includes the blockchain ID, cloud ID, protocol, network, and available features.\n"
+              },
+              "response": [
+                {
+                  "id": "4a1f8a81-f26c-4775-a5f7-937b6b931b55",
+                  "name": "New Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/deployment-options/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "deployment-options",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"options\": [\n    {\n      \"blockchain\": \"<string>\",\n      \"cloud\": \"<string>\",\n      \"region\": \"<string>\",\n      \"provider\": \"<string>\",\n      \"protocol\": \"<string>\",\n      \"network\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"blockchain\": \"<string>\",\n      \"cloud\": \"<string>\",\n      \"region\": \"<string>\",\n      \"provider\": \"<string>\",\n      \"protocol\": \"<string>\",\n      \"network\": \"<string>\",\n      \"features\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:19:00.000Z",
+                  "updatedAt": "2026-07-28T01:19:00.000Z",
+                  "uid": "35240-4a1f8a81-f26c-4775-a5f7-937b6b931b55"
+                },
+                {
+                  "id": "603ad815-aaf5-49a2-a0a8-1407ea2c0e4c",
+                  "name": "Authentication credentials were missing or incorrect.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/deployment-options/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "deployment-options",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:19:00.000Z",
+                  "updatedAt": "2026-07-28T01:19:00.000Z",
+                  "uid": "35240-603ad815-aaf5-49a2-a0a8-1407ea2c0e4c"
+                },
+                {
+                  "id": "1c06668a-f1d5-4f59-bd00-66d98f6035d5",
+                  "name": "The request is not allowed with the current permissions.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/deployment-options/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "deployment-options",
+                        ""
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:19:00.000Z",
+                  "updatedAt": "2026-07-28T01:19:00.000Z",
+                  "uid": "35240-1c06668a-f1d5-4f59-bd00-66d98f6035d5"
+                }
+              ],
+              "createdAt": "2026-07-28T01:19:00.000Z",
+              "updatedAt": "2026-07-28T01:19:00.000Z",
+              "uid": "35240-596d6717-edc9-44b1-80b7-4951c5e37e83"
+            }
+          ],
+          "id": "1637c295-052a-4c58-b8f2-e2ededfabaf7",
+          "createdAt": "2026-07-28T01:19:00.000Z",
+          "updatedAt": "2026-07-28T01:19:00.000Z",
+          "uid": "35240-1637c295-052a-4c58-b8f2-e2ededfabaf7"
+        }
+      ],
+      "id": "e37883e8-79de-4a51-95d4-967873802552",
+      "createdAt": "2026-07-28T01:19:00.000Z",
+      "updatedAt": "2026-07-28T01:19:00.000Z",
+      "uid": "35240-e37883e8-79de-4a51-95d4-967873802552"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

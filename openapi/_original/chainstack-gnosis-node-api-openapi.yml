@@ -1,0 +1,1316 @@
+openapi: 3.0.3
+info:
+  title: Chainstack Gnosis Node API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the Gnosis blockchain. Endpoints follow the canonical JSON-RPC over HTTPS
+    interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>).
+    Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/gnosis_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Accounts Info
+- name: Blocks Info
+- name: Chain Info
+- name: Client Info
+- name: Execute Transactions
+- name: Filter Handling
+- name: Gas Data
+- name: Logs And Events
+- name: Transaction Info
+paths:
+  /eth_getBalance:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getBalance
+      operationId: getBalance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBalance
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Address
+                      description: The address identifier.
+                    - type: string
+                      title: Block identifier
+                      description: The block identifier.
+                  default:
+                  - '0x7584F3c08bF632EED687f45592EA9f5690fc1D41'
+                  - pending
+      responses:
+        '200':
+          description: The account balance.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getCode:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getCode
+      operationId: getCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getCode
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Smart contract address
+                      description: The address identifier.
+                    - type: string
+                      title: Block identifier
+                      description: The block identifier.
+                  default:
+                  - '0x4537e328Bf7e4eFA29D05CAeA260D7fE26af9D74'
+                  - latest
+      responses:
+        '200':
+          description: The smart contract code.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getStorageAt:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getStorageAt
+      operationId: getStorageAt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  default: eth_getStorageAt
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Smart contract address
+                      description: The address of the contract to query.
+                    - type: string
+                      title: Slot index
+                      description: The index of the storage position to query.
+                    - type: string
+                      title: Block ID
+                      description: The block number or tag to use as a reference.
+                  default:
+                  - '0xDDAfbb505ad214D7b80b1f830fcCc89B60fb7A83'
+                  - '0x7'
+                  - latest
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+      responses:
+        '200':
+          description: The value stored at the specified position.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_getTransactionCount:
+    post:
+      tags:
+      - Accounts Info
+      summary: eth_getTransactionCount
+      operationId: getTransactionCount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionCount
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Address
+                      description: The address to check
+                    - type: string
+                      title: Block identifier
+                      description: The block identifier
+                  default:
+                  - '0x7584F3c08bF632EED687f45592EA9f5690fc1D41'
+                  - latest
+      responses:
+        '200':
+          description: The address nonce
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_blockNumber:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_blockNumber
+      operationId: eth_blockNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_blockNumber
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The latest block number.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getBlockByHash:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockByHash
+      operationId: getBlockByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockByHash
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block Hash
+                      description: The hash identifying the block.
+                    - type: boolean
+                      title: Transaction selector
+                      description: True for the full transactions, false for only the transaction hashes.
+                  default:
+                  - '0x3e26eda87339a64bf1d8466eea142f7f141664900f07eb032a2d39986827a9ae'
+                  - false
+      responses:
+        '200':
+          description: The block information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getBlockByNumber:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockByNumber
+      operationId: getBlockByNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockByNumber
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block identifier
+                      description: The block number or tag.
+                    - type: boolean
+                      title: Transaction selector
+                      description: True for the full transactions, false for only the transaction hashes.
+                  default:
+                  - latest
+                  - false
+      responses:
+        '200':
+          description: The block information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getBlockTransactionCountByHash:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockTransactionCountByHash
+      operationId: getBlockTransactionCountByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockTransactionCountByHash
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Block hash
+                    description: The block hash identifier.
+                  default:
+                  - '0x5246f3918819d448ac4887f0c27ecdc4c143c3698dfb7c0cee937e7bf0c34de5'
+      responses:
+        '200':
+          description: The block information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_getBlockTransactionCountByNumber:
+    post:
+      tags:
+      - Blocks Info
+      summary: eth_getBlockTransactionCountByNumber
+      operationId: getBlockTransactionCountByNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockTransactionCountByNumber
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Block identifier
+                    description: The block number or tag.
+                  default:
+                  - latest
+      responses:
+        '200':
+          description: The block transaction count information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_newBlockFilter:
+    post:
+      summary: eth_newBlockFilter
+      operationId: newBlockFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_newBlockFilter
+                params:
+                  type: array
+                  default: []
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The new filter ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: string
+      tags:
+      - Blocks Info
+  /eth_chainId:
+    post:
+      tags:
+      - Chain Info
+      summary: eth_chainId
+      operationId: getChainId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_chainId
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The network Chain ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_syncing:
+    post:
+      tags:
+      - Chain Info
+      summary: Eth_Syncing
+      operationId: syncing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_syncing
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: Syncing information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /net_listening:
+    post:
+      tags:
+      - Client Info
+      summary: Net_Listening
+      operationId: listening
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: net_listening
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The boolean value that indicates whether or not a node is currently actively seeking peer connections.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /net_peerCount:
+    post:
+      tags:
+      - Client Info
+      summary: net_peerCount
+      operationId: peerCount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: net_peerCount
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The number of peers connected to the client.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /web3_clientVersion:
+    post:
+      tags:
+      - Client Info
+      summary: web3_clientVersion
+      operationId: clientVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: web3_clientVersion
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The client running on this node.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_call:
+    post:
+      tags:
+      - Execute Transactions
+      summary: Eth_Call
+      operationId: ethCall
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_call
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    type: object
+                    title: Call object
+                    properties:
+                      to:
+                        type: string
+                        description: The address of the contract to call.
+                      data:
+                        type: string
+                        description: The data to send with the call.
+                  default:
+                  - to: '0xdDCbf776dF3dE60163066A5ddDF2277cB445E0F3'
+                    data: '0x78ed5d1f0000000000000000000000000000000000000000000000000000000000000001'
+                  - latest
+      responses:
+        '200':
+          description: The result of the call.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_sendRawTransaction:
+    post:
+      tags:
+      - Execute Transactions
+      summary: eth_sendRawTransaction
+      operationId: sendRawTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_sendRawTransaction
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      description: The signed transaction.
+                  default:
+                  - '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675'
+      responses:
+        '200':
+          description: The transaction hash.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getFilterChanges:
+    post:
+      summary: eth_getFilterChanges
+      operationId: getFilterChanges
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getFilterChanges
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: The filter ID
+                  default:
+                  - '0x5'
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The filter changes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: string
+      tags:
+      - Filter Handling
+  /eth_uninstallFilter:
+    post:
+      summary: eth_uninstallFilter
+      operationId: uninstallFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_uninstallFilter
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Filter ID
+                  default:
+                  - '0x5'
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Boolean value indicating if the filter was removed or not.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: boolean
+      tags:
+      - Filter Handling
+  /eth_estimateGas:
+    post:
+      tags:
+      - Gas Data
+      summary: eth_estimateGas
+      operationId: estimateGas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_estimateGas
+                params:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      from:
+                        type: string
+                        format: byte
+                      to:
+                        type: string
+                        format: byte
+                  default:
+                  - from: '0x258197CEfAaACF343D390d7E04423B7F3c19D17E'
+                    to: '0xbe0eb53f46cd790cd13851d5eff43d12404d33e8'
+                  - latest
+      responses:
+        '200':
+          description: The estimated gas amount
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+                    format: byte
+  /eth_gasPrice:
+    post:
+      tags:
+      - Gas Data
+      summary: eth_gasPrice
+      operationId: getGasPrice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_gasPrice
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The value of the current gas base fee in Wei.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_getLogs:
+    post:
+      tags:
+      - Logs And Events
+      summary: eth_getLogs
+      operationId: getLogs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  default: eth_getLogs
+                params:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      fromBlock:
+                        type: string
+                        title: from block
+                        description: The block number or tag to start searching for logs from.
+                        default: latest
+                      address:
+                        type: string
+                        title: smart contract address
+                        description: The contract address to retrieve the logs for.
+                      topics:
+                        type: array
+                        title: topics
+                        items:
+                          type: string
+                        description: An array of 32-byte topics to filter for. Each topic is treated as an OR condition.
+                  default:
+                  - fromBlock: '0x19d9170'
+                    toBlock: '0x19d91a2'
+                    address: '0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d'
+                    topics:
+                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+      responses:
+        '200':
+          description: An array of log objects matching the specified filter.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: object
+  /eth_newFilter:
+    post:
+      tags:
+      - Logs And Events
+      summary: eth_newFilter
+      operationId: newFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  default: eth_newFilter
+                params:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      fromBlock:
+                        type: string
+                        title: from block
+                        description: The block number or tag to start searching for logs from.
+                        default: latest
+                      address:
+                        type: string
+                        title: smart contract address
+                        description: The contract address to retrieve the logs for.
+                      topics:
+                        type: array
+                        title: topics
+                        items:
+                          type: string
+                        description: An array of 32-byte topics to filter for. Each topic is treated as an OR condition.
+                  default:
+                  - fromBlock: latest
+                    address: '0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d'
+                    topics:
+                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+      responses:
+        '200':
+          description: The filter ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+  /eth_getTransactionByBlockHashAndIndex:
+    post:
+      tags:
+      - Transaction Info
+      summary: eth_getTransactionByBlockHashAndIndex
+      operationId: getTransactionByBlockHashAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByBlockHashAndIndex
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block hash
+                    - type: string
+                      title: Transaction index
+                  default:
+                  - '0x8639cd43957f2587087c96bbe0c37599d5ec1990e0830cbed2688b74405bbd70'
+                  - '0x1'
+      responses:
+        '200':
+          description: The transaction information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getTransactionByBlockNumberAndIndex:
+    post:
+      tags:
+      - Transaction Info
+      summary: eth_getTransactionByBlockNumberAndIndex
+      operationId: getTransactionByBlockNumberAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByBlockNumberAndIndex
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block number
+                    - type: string
+                      title: Transaction index
+                  default:
+                  - '0x19D504A'
+                  - '0x2'
+      responses:
+        '200':
+          description: The transaction information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getTransactionByHash:
+    post:
+      tags:
+      - Transaction Info
+      summary: eth_getTransactionByHash
+      operationId: getTransactionByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByHash
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Transaction hash
+                  default:
+                  - '0xd6fe5bec7731b0a16d392d019f83288e63ad105f4854c0dd207a5e0f8e8996ec'
+      responses:
+        '200':
+          description: The transaction information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_getTransactionReceipt:
+    post:
+      tags:
+      - Transaction Info
+      summary: eth_getTransactionReceipt
+      operationId: getTransactionReceipt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionReceipt
+                params:
+                  type: array
+                  items:
+                    type: string
+                    title: Transaction hash
+                  default:
+                  - '0xd6fe5bec7731b0a16d392d019f83288e63ad105f4854c0dd207a5e0f8e8996ec'
+      responses:
+        '200':
+          description: The transaction receipt
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+  /eth_newPendingTransactionFilter:
+    post:
+      summary: eth_newPendingTransactionFilter
+      operationId: newPendingTransactionFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_newPendingTransactionFilter
+                params:
+                  type: array
+                  default: []
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The new filter ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: string
+      tags:
+      - Transaction Info

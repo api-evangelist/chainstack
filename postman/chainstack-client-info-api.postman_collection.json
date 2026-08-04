@@ -1,0 +1,548 @@
+{
+  "info": {
+    "_postman_id": "6675399a-3a81-4fbe-9bd3-8ec47554ea51",
+    "name": "Chainstack Arbitrum Node Account Info Client Info API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:18:53.000Z",
+    "updatedAt": "2026-07-28T01:18:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6675399a-3a81-4fbe-9bd3-8ec47554ea51"
+  },
+  "item": [
+    {
+      "name": "web3_clientVersion",
+      "item": [
+        {
+          "name": "web3_clientVersion",
+          "id": "410e92da-3655-47cf-9bc5-692c7f3603f2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"web3_clientVersion\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/web3_clientVersion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "web3_clientVersion"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "534ecd96-8dc9-4fff-a54e-f379b41507d8",
+              "name": "The client running on this node.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"web3_clientVersion\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/web3_clientVersion",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "web3_clientVersion"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:53.000Z",
+              "updatedAt": "2026-07-28T01:18:53.000Z",
+              "uid": "35240-534ecd96-8dc9-4fff-a54e-f379b41507d8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:53.000Z",
+          "updatedAt": "2026-07-28T01:18:53.000Z",
+          "uid": "35240-410e92da-3655-47cf-9bc5-692c7f3603f2"
+        }
+      ],
+      "id": "1874e183-2503-48f4-845b-26c28a665799",
+      "createdAt": "2026-07-28T01:18:53.000Z",
+      "updatedAt": "2026-07-28T01:18:53.000Z",
+      "uid": "35240-1874e183-2503-48f4-845b-26c28a665799"
+    },
+    {
+      "name": "net_listening",
+      "item": [
+        {
+          "name": "Net_Listening",
+          "id": "671a40f7-a6e7-4246-8a0c-7b785a66710f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"net_listening\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/net_listening",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "net_listening"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c3f08bef-5ccb-4689-957a-094932c9cd02",
+              "name": "The boolean value that indicates whether or not a node is currently actively seeking peer connections.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"net_listening\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/net_listening",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "net_listening"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:53.000Z",
+              "updatedAt": "2026-07-28T01:18:53.000Z",
+              "uid": "35240-c3f08bef-5ccb-4689-957a-094932c9cd02"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:53.000Z",
+          "updatedAt": "2026-07-28T01:18:53.000Z",
+          "uid": "35240-671a40f7-a6e7-4246-8a0c-7b785a66710f"
+        }
+      ],
+      "id": "540bd2b4-7a52-484f-80f6-39d2716cdd9d",
+      "createdAt": "2026-07-28T01:18:53.000Z",
+      "updatedAt": "2026-07-28T01:18:53.000Z",
+      "uid": "35240-540bd2b4-7a52-484f-80f6-39d2716cdd9d"
+    },
+    {
+      "name": "net_peerCount",
+      "item": [
+        {
+          "name": "net_peerCount",
+          "id": "b7ca0817-ec59-47b0-8815-da08b5f0581d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"net_peerCount\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/net_peerCount",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "net_peerCount"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c7235243-4148-4242-b388-9e6ea91a0f51",
+              "name": "The number of peers connected to the client.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"net_peerCount\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/net_peerCount",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "net_peerCount"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:53.000Z",
+              "updatedAt": "2026-07-28T01:18:53.000Z",
+              "uid": "35240-c7235243-4148-4242-b388-9e6ea91a0f51"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:53.000Z",
+          "updatedAt": "2026-07-28T01:18:53.000Z",
+          "uid": "35240-b7ca0817-ec59-47b0-8815-da08b5f0581d"
+        }
+      ],
+      "id": "67f221ba-0728-4ee3-9e7a-4176aaa37e3e",
+      "createdAt": "2026-07-28T01:18:53.000Z",
+      "updatedAt": "2026-07-28T01:18:53.000Z",
+      "uid": "35240-67f221ba-0728-4ee3-9e7a-4176aaa37e3e"
+    },
+    {
+      "name": "net_version",
+      "item": [
+        {
+          "name": "Net_Version",
+          "id": "230c53a5-f885-49c5-934b-d749d4c6510d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"net_version\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/net_version",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "net_version"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e749890d-a0dd-4302-92ee-96a7f70f73f7",
+              "name": "The current network ID.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"net_version\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/net_version",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "net_version"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:53.000Z",
+              "updatedAt": "2026-07-28T01:18:53.000Z",
+              "uid": "35240-e749890d-a0dd-4302-92ee-96a7f70f73f7"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:53.000Z",
+          "updatedAt": "2026-07-28T01:18:53.000Z",
+          "uid": "35240-230c53a5-f885-49c5-934b-d749d4c6510d"
+        }
+      ],
+      "id": "9b6424f8-fe21-41c5-86e6-1ff3046821af",
+      "createdAt": "2026-07-28T01:18:53.000Z",
+      "updatedAt": "2026-07-28T01:18:53.000Z",
+      "uid": "35240-9b6424f8-fe21-41c5-86e6-1ff3046821af"
+    },
+    {
+      "name": "web3_sha3",
+      "item": [
+        {
+          "name": "Web3_Sha3",
+          "id": "de23a432-0ffd-4439-9154-259571963951",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"web3_sha3\",\n  \"params\": [\n    \"0x68656c6c6f20776f726c64\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/web3_sha3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "web3_sha3"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "00ea98a0-6900-4df1-978d-0ca60b847a21",
+              "name": "Returns Keccak-256 (not the standardized SHA3-256) of the given data.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"web3_sha3\",\n  \"params\": [\n    \"0x68656c6c6f20776f726c64\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/web3_sha3",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "web3_sha3"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:53.000Z",
+              "updatedAt": "2026-07-28T01:18:53.000Z",
+              "uid": "35240-00ea98a0-6900-4df1-978d-0ca60b847a21"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:53.000Z",
+          "updatedAt": "2026-07-28T01:18:53.000Z",
+          "uid": "35240-de23a432-0ffd-4439-9154-259571963951"
+        }
+      ],
+      "id": "d340c1fc-7abe-48d0-9e0c-a2f41dcd70cc",
+      "createdAt": "2026-07-28T01:18:53.000Z",
+      "updatedAt": "2026-07-28T01:18:53.000Z",
+      "uid": "35240-d340c1fc-7abe-48d0-9e0c-a2f41dcd70cc"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

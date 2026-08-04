@@ -1,0 +1,1380 @@
+{
+  "info": {
+    "_postman_id": "76efad6b-2ebc-4b5d-9e26-357f4366d223",
+    "name": "Chainstack Arbitrum Node Account Info Blocks Info API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:18:51.000Z",
+    "updatedAt": "2026-07-28T01:18:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-76efad6b-2ebc-4b5d-9e26-357f4366d223"
+  },
+  "item": [
+    {
+      "name": "eth_blockNumber",
+      "item": [
+        {
+          "name": "eth_blockNumber",
+          "id": "046f2c7c-8217-4cbe-b238-7158b007929e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_blockNumber\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_blockNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_blockNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "26fb61e4-0b0b-450a-9eda-3c219f57dc41",
+              "name": "The latest block number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_blockNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_blockNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_blockNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-26fb61e4-0b0b-450a-9eda-3c219f57dc41"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-046f2c7c-8217-4cbe-b238-7158b007929e"
+        }
+      ],
+      "id": "c8a59098-b853-4638-8289-9785928f3334",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-c8a59098-b853-4638-8289-9785928f3334"
+    },
+    {
+      "name": "eth_getBlockByHash",
+      "item": [
+        {
+          "name": "eth_getBlockByHash",
+          "id": "0db0ac43-9e75-4ec6-9602-4e8c68259e2f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockByHash\",\n  \"params\": [\n    \"0x7ccd0791880035667dfee8244ab96d9c091668859e9e72ded4890e6efde68b25\",\n    false\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getBlockByHash",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getBlockByHash"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "19b095db-b48e-467f-a77f-4c127666a2e7",
+              "name": "The block information",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockByHash\",\n  \"params\": [\n    \"0x7ccd0791880035667dfee8244ab96d9c091668859e9e72ded4890e6efde68b25\",\n    false\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getBlockByHash",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getBlockByHash"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-19b095db-b48e-467f-a77f-4c127666a2e7"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-0db0ac43-9e75-4ec6-9602-4e8c68259e2f"
+        }
+      ],
+      "id": "4bd2a44f-ce61-4c9d-853c-412f697cf7fa",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-4bd2a44f-ce61-4c9d-853c-412f697cf7fa"
+    },
+    {
+      "name": "eth_getBlockByNumber",
+      "item": [
+        {
+          "name": "eth_getBlockByNumber",
+          "id": "41616b48-db80-4d8e-a3c0-fb6c6f3e3b1a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockByNumber\",\n  \"params\": [\n    \"latest\",\n    false\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getBlockByNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getBlockByNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fa65be8d-b4d3-45e8-937e-e89e337ed6cf",
+              "name": "The block information",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockByNumber\",\n  \"params\": [\n    \"latest\",\n    false\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getBlockByNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getBlockByNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-fa65be8d-b4d3-45e8-937e-e89e337ed6cf"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-41616b48-db80-4d8e-a3c0-fb6c6f3e3b1a"
+        }
+      ],
+      "id": "8ed325e5-adac-4a3f-8c14-e36c85a43962",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-8ed325e5-adac-4a3f-8c14-e36c85a43962"
+    },
+    {
+      "name": "eth_getBlockTransactionCountByHash",
+      "item": [
+        {
+          "name": "eth_getBlockTransactionCountByHash",
+          "id": "ba9a6c0e-1209-4218-96bc-8e3a1197f660",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockTransactionCountByHash\",\n  \"params\": [\n    \"0x7ccd0791880035667dfee8244ab96d9c091668859e9e72ded4890e6efde68b25\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getBlockTransactionCountByHash",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getBlockTransactionCountByHash"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a5a50fb-7319-41a8-b612-3816876aebdf",
+              "name": "The block information",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockTransactionCountByHash\",\n  \"params\": [\n    \"0x7ccd0791880035667dfee8244ab96d9c091668859e9e72ded4890e6efde68b25\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getBlockTransactionCountByHash",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getBlockTransactionCountByHash"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-4a5a50fb-7319-41a8-b612-3816876aebdf"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-ba9a6c0e-1209-4218-96bc-8e3a1197f660"
+        }
+      ],
+      "id": "d7ea69e0-c8b0-4f64-a46b-a37c9ec2f810",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-d7ea69e0-c8b0-4f64-a46b-a37c9ec2f810"
+    },
+    {
+      "name": "eth_getBlockTransactionCountByNumber",
+      "item": [
+        {
+          "name": "eth_getBlockTransactionCountByNumber",
+          "id": "87ee29ec-8f6b-411e-8cfc-ec19b4aaa699",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockTransactionCountByNumber\",\n  \"params\": [\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getBlockTransactionCountByNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getBlockTransactionCountByNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b51f49c3-d3b2-490c-9dbe-e274d5d591d8",
+              "name": "The block transaction count information",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockTransactionCountByNumber\",\n  \"params\": [\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getBlockTransactionCountByNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getBlockTransactionCountByNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-b51f49c3-d3b2-490c-9dbe-e274d5d591d8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-87ee29ec-8f6b-411e-8cfc-ec19b4aaa699"
+        }
+      ],
+      "id": "16a8fcd4-c5af-4540-a140-d7c383a8b107",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-16a8fcd4-c5af-4540-a140-d7c383a8b107"
+    },
+    {
+      "name": "eth_newBlockFilter",
+      "item": [
+        {
+          "name": "eth_newBlockFilter",
+          "id": "0f9ca518-085f-4f4f-8851-70eca71dbaef",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_newBlockFilter\",\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_newBlockFilter",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_newBlockFilter"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44120210-cb61-4101-aa53-787252c8c83d",
+              "name": "The new filter ID.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_newBlockFilter\",\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_newBlockFilter",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_newBlockFilter"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-44120210-cb61-4101-aa53-787252c8c83d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-0f9ca518-085f-4f4f-8851-70eca71dbaef"
+        }
+      ],
+      "id": "b8c0742b-5384-4636-8fee-73f869de86bc",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-b8c0742b-5384-4636-8fee-73f869de86bc"
+    },
+    {
+      "name": "eth_getBlockReceipts",
+      "item": [
+        {
+          "name": "eth_getBlockReceipts",
+          "id": "3929a5c1-e5ee-410e-9c30-c6246bfd848a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockReceipts\",\n  \"params\": [\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getBlockReceipts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getBlockReceipts"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5412a0ad-6b8b-482d-b894-b90fdd19309d",
+              "name": "Returns all transaction receipts for a given block.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getBlockReceipts\",\n  \"params\": [\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getBlockReceipts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getBlockReceipts"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-5412a0ad-6b8b-482d-b894-b90fdd19309d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-3929a5c1-e5ee-410e-9c30-c6246bfd848a"
+        }
+      ],
+      "id": "aee3084d-e6ec-4655-929c-66ea5a0a73a9",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-aee3084d-e6ec-4655-929c-66ea5a0a73a9"
+    },
+    {
+      "name": "eth_getHeaderByHash",
+      "item": [
+        {
+          "name": "eth_getHeaderByHash",
+          "id": "f83c6cee-f7b1-4bb4-89d3-038a5c2b6bb6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getHeaderByHash\",\n  \"params\": [\n    \"0x0000000000000000000000000000000000000000000000000000000000000000\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getHeaderByHash",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getHeaderByHash"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "803d2005-8d75-4e36-89d9-7cee785dfd4e",
+              "name": "Returns the block header by block hash.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getHeaderByHash\",\n  \"params\": [\n    \"0x0000000000000000000000000000000000000000000000000000000000000000\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getHeaderByHash",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getHeaderByHash"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-803d2005-8d75-4e36-89d9-7cee785dfd4e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-f83c6cee-f7b1-4bb4-89d3-038a5c2b6bb6"
+        }
+      ],
+      "id": "9f8d2c75-00c2-42da-b078-31c80a047901",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-9f8d2c75-00c2-42da-b078-31c80a047901"
+    },
+    {
+      "name": "eth_getHeaderByNumber",
+      "item": [
+        {
+          "name": "eth_getHeaderByNumber",
+          "id": "6ced5003-bea1-46f8-a488-3503c7d2635e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getHeaderByNumber\",\n  \"params\": [\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getHeaderByNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getHeaderByNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b00ad483-da7b-4faa-8a25-fbdf600a8a1c",
+              "name": "Returns the block header by block number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getHeaderByNumber\",\n  \"params\": [\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getHeaderByNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getHeaderByNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-b00ad483-da7b-4faa-8a25-fbdf600a8a1c"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-6ced5003-bea1-46f8-a488-3503c7d2635e"
+        }
+      ],
+      "id": "a86b5c0c-f966-43d9-9803-ef2540ddbddb",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-a86b5c0c-f966-43d9-9803-ef2540ddbddb"
+    },
+    {
+      "name": "eth_getUncleByBlockHashAndIndex",
+      "item": [
+        {
+          "name": "eth_getUncleByBlockHashAndIndex",
+          "id": "432cd586-c41e-40b8-87f0-79a3e2fc7f0e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getUncleByBlockHashAndIndex\",\n  \"params\": [\n    \"0x0000000000000000000000000000000000000000000000000000000000000000\",\n    \"0x0\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getUncleByBlockHashAndIndex",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getUncleByBlockHashAndIndex"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ec4caff3-896d-4b83-89b6-97ebc7f0ddf4",
+              "name": "Returns information about an uncle by block hash and uncle index position.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getUncleByBlockHashAndIndex\",\n  \"params\": [\n    \"0x0000000000000000000000000000000000000000000000000000000000000000\",\n    \"0x0\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getUncleByBlockHashAndIndex",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getUncleByBlockHashAndIndex"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-ec4caff3-896d-4b83-89b6-97ebc7f0ddf4"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-432cd586-c41e-40b8-87f0-79a3e2fc7f0e"
+        }
+      ],
+      "id": "97a2a60a-9321-42dc-aaff-b923fee88a02",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-97a2a60a-9321-42dc-aaff-b923fee88a02"
+    },
+    {
+      "name": "eth_getUncleByBlockNumberAndIndex",
+      "item": [
+        {
+          "name": "eth_getUncleByBlockNumberAndIndex",
+          "id": "f69df7c9-418a-4191-a75b-72d691180fcb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getUncleByBlockNumberAndIndex\",\n  \"params\": [\n    \"latest\",\n    \"0x0\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getUncleByBlockNumberAndIndex",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getUncleByBlockNumberAndIndex"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "60bef3f9-17fc-4f5e-9200-41c08dc95d93",
+              "name": "Returns information about an uncle by block number and uncle index position.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getUncleByBlockNumberAndIndex\",\n  \"params\": [\n    \"latest\",\n    \"0x0\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getUncleByBlockNumberAndIndex",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getUncleByBlockNumberAndIndex"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-60bef3f9-17fc-4f5e-9200-41c08dc95d93"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-f69df7c9-418a-4191-a75b-72d691180fcb"
+        }
+      ],
+      "id": "e9ea71f5-ad09-456f-9587-deed456809c3",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-e9ea71f5-ad09-456f-9587-deed456809c3"
+    },
+    {
+      "name": "eth_getUncleCountByBlockHash",
+      "item": [
+        {
+          "name": "eth_getUncleCountByBlockHash",
+          "id": "2a5f4f2d-34e9-4581-b43f-769f1502f344",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getUncleCountByBlockHash\",\n  \"params\": [\n    \"0x0000000000000000000000000000000000000000000000000000000000000000\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getUncleCountByBlockHash",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getUncleCountByBlockHash"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9db4c14e-e46a-441d-9c37-6b9d1b15e1e7",
+              "name": "Returns the number of uncles in a block from a block matching the given block hash.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getUncleCountByBlockHash\",\n  \"params\": [\n    \"0x0000000000000000000000000000000000000000000000000000000000000000\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getUncleCountByBlockHash",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getUncleCountByBlockHash"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-9db4c14e-e46a-441d-9c37-6b9d1b15e1e7"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-2a5f4f2d-34e9-4581-b43f-769f1502f344"
+        }
+      ],
+      "id": "794d1707-7bf2-420b-9809-a0c8bd3dc208",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-794d1707-7bf2-420b-9809-a0c8bd3dc208"
+    },
+    {
+      "name": "eth_getUncleCountByBlockNumber",
+      "item": [
+        {
+          "name": "eth_getUncleCountByBlockNumber",
+          "id": "c4745665-0556-4348-8756-81df48b9a0e5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getUncleCountByBlockNumber\",\n  \"params\": [\n    \"latest\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/eth_getUncleCountByBlockNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "eth_getUncleCountByBlockNumber"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ec0b2673-083f-4c56-b8eb-b2e390548ea8",
+              "name": "Returns the number of uncles in a block from a block matching the given block number.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_getUncleCountByBlockNumber\",\n  \"params\": [\n    \"latest\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/eth_getUncleCountByBlockNumber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "eth_getUncleCountByBlockNumber"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {}\n}",
+              "createdAt": "2026-07-28T01:18:51.000Z",
+              "updatedAt": "2026-07-28T01:18:51.000Z",
+              "uid": "35240-ec0b2673-083f-4c56-b8eb-b2e390548ea8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:51.000Z",
+          "updatedAt": "2026-07-28T01:18:51.000Z",
+          "uid": "35240-c4745665-0556-4348-8756-81df48b9a0e5"
+        }
+      ],
+      "id": "2579bb8d-9d0e-42ed-a874-b4685bacde4a",
+      "createdAt": "2026-07-28T01:18:51.000Z",
+      "updatedAt": "2026-07-28T01:18:51.000Z",
+      "uid": "35240-2579bb8d-9d0e-42ed-a874-b4685bacde4a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

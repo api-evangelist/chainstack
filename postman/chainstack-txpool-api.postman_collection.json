@@ -1,0 +1,236 @@
+{
+  "info": {
+    "_postman_id": "abd8f94a-1034-4998-a573-d499f907979e",
+    "name": "Chainstack Arbitrum Node Account Info Txpool API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:40.000Z",
+    "updatedAt": "2026-07-28T01:20:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-abd8f94a-1034-4998-a573-d499f907979e"
+  },
+  "item": [
+    {
+      "name": "txpool_content",
+      "item": [
+        {
+          "name": "Txpool_Content",
+          "id": "7c20ef4f-760a-40d3-860a-70d90970e589",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"txpool_content\",\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/txpool_content",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "txpool_content"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "23cd8771-e847-4447-9fef-761ef15efe62",
+              "name": "Transaction pool content",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"txpool_content\",\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/txpool_content",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "txpool_content"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {\n    \"pending\": {},\n    \"queued\": {}\n  }\n}",
+              "createdAt": "2026-07-28T01:20:40.000Z",
+              "updatedAt": "2026-07-28T01:20:40.000Z",
+              "uid": "35240-23cd8771-e847-4447-9fef-761ef15efe62"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:40.000Z",
+          "updatedAt": "2026-07-28T01:20:40.000Z",
+          "uid": "35240-7c20ef4f-760a-40d3-860a-70d90970e589"
+        }
+      ],
+      "id": "9865027c-65e3-4bb8-b497-9d3e7a7adc7e",
+      "createdAt": "2026-07-28T01:20:40.000Z",
+      "updatedAt": "2026-07-28T01:20:40.000Z",
+      "uid": "35240-9865027c-65e3-4bb8-b497-9d3e7a7adc7e"
+    },
+    {
+      "name": "txpool_status",
+      "item": [
+        {
+          "name": "Txpool_Status",
+          "id": "9c771b6d-871b-49a5-a1d2-37bf004176a0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"txpool_status\",\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/txpool_status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "txpool_status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "994d0167-2de8-4e54-b959-32d93507236d",
+              "name": "Transaction pool status",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"txpool_status\",\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/txpool_status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "txpool_status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"result\": {\n    \"pending\": \"<string>\",\n    \"queued\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:40.000Z",
+              "updatedAt": "2026-07-28T01:20:40.000Z",
+              "uid": "35240-994d0167-2de8-4e54-b959-32d93507236d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:40.000Z",
+          "updatedAt": "2026-07-28T01:20:40.000Z",
+          "uid": "35240-9c771b6d-871b-49a5-a1d2-37bf004176a0"
+        }
+      ],
+      "id": "9dc9696f-a449-41c2-87dd-8975200cf439",
+      "createdAt": "2026-07-28T01:20:40.000Z",
+      "updatedAt": "2026-07-28T01:20:40.000Z",
+      "uid": "35240-9dc9696f-a449-41c2-87dd-8975200cf439"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

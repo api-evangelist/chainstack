@@ -1,0 +1,169 @@
+{
+  "info": {
+    "_postman_id": "647f8696-6968-427e-b48f-10e48ace8ae3",
+    "name": "Chainstack Arbitrum Node Account Info History API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:19:34.000Z",
+    "updatedAt": "2026-07-28T01:19:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-647f8696-6968-427e-b48f-10e48ace8ae3"
+  },
+  "item": [
+    {
+      "name": "transactions-history",
+      "item": [
+        {
+          "name": "Transaction History",
+          "id": "968f9714-8d89-4509-8109-56d8473427cd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transactions-history",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transactions-history"
+              ]
+            },
+            "description": "Retrieves the transaction history for a specified organization ID."
+          },
+          "response": [
+            {
+              "id": "b565caa9-59d3-40c2-b4ab-733e5bf6c865",
+              "name": "Transaction history retrieved successfully.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions-history",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions-history"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"protocol\": \"<string>\",\n    \"network\": \"<string>\",\n    \"amount\": {\n      \"$numberDecimal\": \"<string>\"\n    },\n    \"address\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"organizationId\": \"<string>\",\n    \"transactionHash\": \"<string>\",\n    \"timestamp\": \"<integer>\"\n  },\n  {\n    \"protocol\": \"<string>\",\n    \"network\": \"<string>\",\n    \"amount\": {\n      \"$numberDecimal\": \"<string>\"\n    },\n    \"address\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"organizationId\": \"<string>\",\n    \"transactionHash\": \"<string>\",\n    \"timestamp\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:19:35.000Z",
+              "updatedAt": "2026-07-28T01:19:35.000Z",
+              "uid": "35240-b565caa9-59d3-40c2-b4ab-733e5bf6c865"
+            },
+            {
+              "id": "6a564f0b-83d5-4b28-bf94-3dfec1a9970b",
+              "name": "Unauthorized access, invalid API key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions-history",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions-history"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:19:35.000Z",
+              "updatedAt": "2026-07-28T01:19:35.000Z",
+              "uid": "35240-6a564f0b-83d5-4b28-bf94-3dfec1a9970b"
+            },
+            {
+              "id": "779abb55-a13f-438f-a1b1-0431ebc06a84",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/transactions-history",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transactions-history"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:19:35.000Z",
+              "updatedAt": "2026-07-28T01:19:35.000Z",
+              "uid": "35240-779abb55-a13f-438f-a1b1-0431ebc06a84"
+            }
+          ],
+          "createdAt": "2026-07-28T01:19:35.000Z",
+          "updatedAt": "2026-07-28T01:19:35.000Z",
+          "uid": "35240-968f9714-8d89-4509-8109-56d8473427cd"
+        }
+      ],
+      "id": "eefcb9ea-9ad7-4188-860d-df5e58cba49a",
+      "createdAt": "2026-07-28T01:19:35.000Z",
+      "updatedAt": "2026-07-28T01:19:35.000Z",
+      "uid": "35240-eefcb9ea-9ad7-4188-860d-df5e58cba49a"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}

@@ -1,0 +1,461 @@
+{
+  "info": {
+    "_postman_id": "7e5141b0-9567-4065-9fad-a1d6ffdc5d2e",
+    "name": "Chainstack Arbitrum Node Account Info Debug API",
+    "description": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:18:57.000Z",
+    "updatedAt": "2026-07-28T01:18:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7e5141b0-9567-4065-9fad-a1d6ffdc5d2e"
+  },
+  "item": [
+    {
+      "name": "getDebugBeaconHeadsV2",
+      "item": [
+        {
+          "name": "Get fork choice leaves",
+          "id": "e097099a-b175-4aef-919a-04d9b57b1a21",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getDebugBeaconHeadsV2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getDebugBeaconHeadsV2"
+              ]
+            },
+            "description": "Retrieves all possible chain heads (leaves of fork choice tree). This endpoint provides insight into the current fork choice state by returning all potential chain heads that the beacon node is tracking."
+          },
+          "response": [
+            {
+              "id": "75cc9946-36e8-411c-902e-def5b7433bb0",
+              "name": "Success - Fork choice leaves retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getDebugBeaconHeadsV2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getDebugBeaconHeadsV2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"root\": \"0xfaE7dFdb156D8d50CCCc546bF92a76BdF514472A0a77B5dbe2debE8d8aE7eCa4\",\n      \"slot\": \"<string>\",\n      \"execution_optimistic\": \"<boolean>\"\n    },\n    {\n      \"root\": \"0xaAF5c2C8E2c7926Dba7a2ceB4d7c6beC6ffdBe8Bd3b1f9fAE0D2CbF9cdEda2De\",\n      \"slot\": \"<string>\",\n      \"execution_optimistic\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:18:57.000Z",
+              "updatedAt": "2026-07-28T01:18:57.000Z",
+              "uid": "35240-75cc9946-36e8-411c-902e-def5b7433bb0"
+            },
+            {
+              "id": "d30dd0cf-5bd2-4428-8625-59406237434d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getDebugBeaconHeadsV2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getDebugBeaconHeadsV2"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:57.000Z",
+              "updatedAt": "2026-07-28T01:18:57.000Z",
+              "uid": "35240-d30dd0cf-5bd2-4428-8625-59406237434d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:57.000Z",
+          "updatedAt": "2026-07-28T01:18:57.000Z",
+          "uid": "35240-e097099a-b175-4aef-919a-04d9b57b1a21"
+        }
+      ],
+      "id": "4b628f69-0549-4032-82eb-a5283d197e5f",
+      "createdAt": "2026-07-28T01:18:57.000Z",
+      "updatedAt": "2026-07-28T01:18:57.000Z",
+      "uid": "35240-4b628f69-0549-4032-82eb-a5283d197e5f"
+    },
+    {
+      "name": "getDebugBeaconStateV2",
+      "item": [
+        {
+          "name": "Get full BeaconState object",
+          "id": "0456d03c-6691-4468-9798-c454069cab5c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getDebugBeaconStateV2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getDebugBeaconStateV2"
+              ],
+              "variable": [
+                {
+                  "id": "36432699-f515-4199-a7fd-5c1bca34b395",
+                  "key": "state_id",
+                  "value": "head",
+                  "description": "(Required) State identifier. Can be one of: 'head' (canonical head in node's view), 'genesis', 'finalized', 'justified', <slot>, <hex encoded stateRoot with 0x prefix>."
+                }
+              ]
+            },
+            "description": "Returns full BeaconState object for given stateId. This is a comprehensive debug endpoint that provides the complete state of the beacon chain at a specific point, including all validator information, balances, and other state details. Depending on Accept header it can be returned either as JSON or as bytes serialized by SSZ."
+          },
+          "response": [
+            {
+              "id": "200f284f-1cb0-44ad-b79e-333c28246219",
+              "name": "Success - Full BeaconState object retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getDebugBeaconStateV2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getDebugBeaconStateV2"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "disabled": false,
+                  "description": {
+                    "content": "(Required) The active consensus version to which the data belongs. Required in response so client can deserialize returned JSON or SSZ data more effectively.",
+                    "type": "text/plain"
+                  },
+                  "key": "Eth-Consensus-Version",
+                  "value": "bellatrix"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"version\": \"electra\",\n  \"execution_optimistic\": \"<boolean>\",\n  \"finalized\": \"<boolean>\",\n  \"data\": {\n    \"genesis_time\": \"<string>\",\n    \"genesis_validators_root\": \"0xaCaadB0DDe5DC2AdD8B99bb1a9535cECAd7BA59CA77a82c6dD459a41f8D8BaD8\",\n    \"slot\": \"<string>\",\n    \"fork\": {\n      \"previous_version\": \"0xE085FBF1\",\n      \"current_version\": \"0xc5c3BEE0\",\n      \"epoch\": \"<string>\"\n    },\n    \"latest_block_header\": {},\n    \"block_roots\": [\n      \"0x27b82FcdC93e19aCEd17dc6dd8CDb4Fbb2D79929a281FF4ffabDBe49CF85bFDB\",\n      \"0x09afF90d8Adc5acfd96eD707aD5EA7b6Aa9b4Da4d0FAa8c6D70d9E40E82BB6AB\"\n    ],\n    \"state_roots\": [\n      \"0x6BC1bCF67A9b686f09d3Be3eefEE23df96badb30FA7e2C9ef19887027f5a7d0D\",\n      \"0x35defC0C5FF0c1d9909D05ca1fBfB9F0eDBF22c79e18E94925e8ba9DD4504EFB\"\n    ],\n    \"validators\": [\n      {\n        \"pubkey\": \"0xB42B70BcEBc7f0d503d36677DAC61Af56786acaF6e35e81C793c0ef7fB7Cb9bd650DA0E4992E3fCbA1B4a5dED09d0DCC\",\n        \"withdrawal_credentials\": \"0xE0A628DCDF1D7c2AF125D5dfd0ABb6dFddB8F102C8627C7a3C5b845EAD6Dcefb\",\n        \"effective_balance\": \"<string>\",\n        \"slashed\": \"<boolean>\",\n        \"activation_eligibility_epoch\": \"<string>\",\n        \"activation_epoch\": \"<string>\",\n        \"exit_epoch\": \"<string>\",\n        \"withdrawable_epoch\": \"<string>\"\n      },\n      {\n        \"pubkey\": \"0xf5c98fBcc8d8df4A0Dca045eCAB67E513202CcFdacF20579ed8BA59Cb3C0Eaa49b7F171fBdb367Da4bcE5070F24C2EFE\",\n        \"withdrawal_credentials\": \"0xb9b1E9ce7Fb59A7bDA5F2B9B00dd2aa3fE9Cc6c55C00BAcCBf3d3cB5Feddf95d\",\n        \"effective_balance\": \"<string>\",\n        \"slashed\": \"<boolean>\",\n        \"activation_eligibility_epoch\": \"<string>\",\n        \"activation_epoch\": \"<string>\",\n        \"exit_epoch\": \"<string>\",\n        \"withdrawable_epoch\": \"<string>\"\n      }\n    ],\n    \"balances\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"eth1_data\": {},\n    \"eth1_deposit_index\": \"<string>\",\n    \"previous_justified_checkpoint\": {},\n    \"current_justified_checkpoint\": {},\n    \"finalized_checkpoint\": {}\n  }\n}",
+              "createdAt": "2026-07-28T01:18:57.000Z",
+              "updatedAt": "2026-07-28T01:18:57.000Z",
+              "uid": "35240-200f284f-1cb0-44ad-b79e-333c28246219"
+            },
+            {
+              "id": "4448369f-0dcc-4531-b93f-a2ca63f7e747",
+              "name": "Invalid state ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getDebugBeaconStateV2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getDebugBeaconStateV2"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:57.000Z",
+              "updatedAt": "2026-07-28T01:18:57.000Z",
+              "uid": "35240-4448369f-0dcc-4531-b93f-a2ca63f7e747"
+            },
+            {
+              "id": "1d75386c-6726-4303-8ea0-ba7c6f3df323",
+              "name": "State not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getDebugBeaconStateV2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getDebugBeaconStateV2"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:57.000Z",
+              "updatedAt": "2026-07-28T01:18:57.000Z",
+              "uid": "35240-1d75386c-6726-4303-8ea0-ba7c6f3df323"
+            },
+            {
+              "id": "a3a3bc1e-3f7a-4eee-8be4-e79c629b4495",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getDebugBeaconStateV2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getDebugBeaconStateV2"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:57.000Z",
+              "updatedAt": "2026-07-28T01:18:57.000Z",
+              "uid": "35240-a3a3bc1e-3f7a-4eee-8be4-e79c629b4495"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:57.000Z",
+          "updatedAt": "2026-07-28T01:18:57.000Z",
+          "uid": "35240-0456d03c-6691-4468-9798-c454069cab5c"
+        }
+      ],
+      "id": "ffc90760-b8e4-482e-b8ec-ebdf4a558f42",
+      "createdAt": "2026-07-28T01:18:57.000Z",
+      "updatedAt": "2026-07-28T01:18:57.000Z",
+      "uid": "35240-ffc90760-b8e4-482e-b8ec-ebdf4a558f42"
+    },
+    {
+      "name": "getDebugForkChoice",
+      "item": [
+        {
+          "name": "Get fork choice array",
+          "id": "a4f6708c-4c4a-460e-a2d6-367271d2fd25",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/getDebugForkChoice",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "getDebugForkChoice"
+              ]
+            },
+            "description": "Retrieves all current fork choice context including justified and finalized checkpoints, and the complete fork choice tree with all nodes and their weights."
+          },
+          "response": [
+            {
+              "id": "a3bae11e-3b69-4394-9c77-fa9527e0aef4",
+              "name": "Success - Fork choice data retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getDebugForkChoice",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getDebugForkChoice"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"justified_checkpoint\": {\n    \"epoch\": \"<long>\",\n    \"root\": \"<string>\"\n  },\n  \"finalized_checkpoint\": {\n    \"epoch\": \"<long>\",\n    \"root\": \"<string>\"\n  },\n  \"fork_choice_nodes\": [\n    {\n      \"slot\": \"<string>\",\n      \"block_root\": \"0x8481fA85071246089BaAEEEddBbDcF5B8a062fefd81cCbFbEab32C6204877D71\",\n      \"parent_root\": \"0xae52A8BFEEdFD2EEA131Ead407f5aa5FBD9cb94ceb1f4C9e096A2E0b1d2988Ef\",\n      \"justified_epoch\": \"<string>\",\n      \"finalized_epoch\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"validity\": \"invalid\",\n      \"execution_block_hash\": \"0x9C06573198D5174Dad7A9c76eE13dE5EB4cc2eBFB17efcFBc1d20D5Bb4FdB53D\",\n      \"extra_data\": {}\n    }\n  ],\n  \"extra_data\": {}\n}",
+              "createdAt": "2026-07-28T01:18:57.000Z",
+              "updatedAt": "2026-07-28T01:18:57.000Z",
+              "uid": "35240-a3bae11e-3b69-4394-9c77-fa9527e0aef4"
+            },
+            {
+              "id": "4e2f41af-6fec-4268-9f51-5193b5c98fcd",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/getDebugForkChoice",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "getDebugForkChoice"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:18:57.000Z",
+              "updatedAt": "2026-07-28T01:18:57.000Z",
+              "uid": "35240-4e2f41af-6fec-4268-9f51-5193b5c98fcd"
+            }
+          ],
+          "createdAt": "2026-07-28T01:18:57.000Z",
+          "updatedAt": "2026-07-28T01:18:57.000Z",
+          "uid": "35240-a4f6708c-4c4a-460e-a2d6-367271d2fd25"
+        }
+      ],
+      "id": "6530805b-9f7a-4f4a-8225-40c9cc867fac",
+      "createdAt": "2026-07-28T01:18:57.000Z",
+      "updatedAt": "2026-07-28T01:18:57.000Z",
+      "uid": "35240-6530805b-9f7a-4f4a-8225-40c9cc867fac"
+    }
+  ],
+  "variable": [
+    {
+      "key": "node_id",
+      "value": "nd-000-000-000"
+    },
+    {
+      "key": "api_key",
+      "value": "<api-key>"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}"
+    }
+  ]
+}
