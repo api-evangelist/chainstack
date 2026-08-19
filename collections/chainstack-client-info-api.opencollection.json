@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Client Info API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Client Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "web3_clientVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/web3_clientVersion",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "web3_clientVersion"
+        },
+        {
+          "info": {
+            "name": "Net_Listening",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/net_listening",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Net_Listening"
+        },
+        {
+          "info": {
+            "name": "net_peerCount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/net_peerCount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "net_peerCount"
+        },
+        {
+          "info": {
+            "name": "Net_Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/net_version",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Net_Version"
+        },
+        {
+          "info": {
+            "name": "Web3_Sha3",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/web3_sha3",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Web3_Sha3"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

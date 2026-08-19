@@ -1,0 +1,278 @@
+{
+  "item": [
+    {
+      "id": "eb2300b1-e925-4e11-a9b0-5b96760ea8b5",
+      "name": "Txpool",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63c35fc4-1564-4644-a919-d3290f074ada",
+          "name": "Txpool_Content",
+          "request": {
+            "name": "Txpool_Content",
+            "description": {},
+            "url": {
+              "path": [
+                "txpool_content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"txpool_content\",\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fc5f85d2-deac-4c1b-9034-1a0abf86d48d",
+              "name": "Transaction pool content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "txpool_content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"txpool_content\",\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 7727,\n  \"result\": {\n    \"pending\": {},\n    \"queued\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0d1cac6-2c6b-4414-b40a-625726d31330",
+          "name": "Txpool_Status",
+          "request": {
+            "name": "Txpool_Status",
+            "description": {},
+            "url": {
+              "path": [
+                "txpool_status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"txpool_status\",\n  \"id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7a52d39-9ee7-4f4c-b3c9-fb4e8eed0f50",
+              "name": "Transaction pool status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "txpool_status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"txpool_status\",\n  \"id\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 8544,\n  \"result\": {\n    \"pending\": \"string\",\n    \"queued\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f9c301ab-3ed8-481a-8e48-2382eb44e65d",
+    "name": "Chainstack Arbitrum Node Account Info Txpool API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}

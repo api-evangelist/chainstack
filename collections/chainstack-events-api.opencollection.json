@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Events API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Subscribe to events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/subscribe_to_events",
+            "params": [
+              {
+                "name": "topics",
+                "value": "",
+                "type": "query",
+                "description": "Topics to subscribe to, e.g., 'head'"
+              }
+            ]
+          },
+          "docs": "Subscribe to events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

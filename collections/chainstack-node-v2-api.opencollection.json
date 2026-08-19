@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Node V2 API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Node V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v2/nodes/",
+            "params": [
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "List all nodes in the networks your organization is part of."
+        },
+        {
+          "info": {
+            "name": "Create node",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v2/nodes/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new node in the specified project and blockchain."
+        },
+        {
+          "info": {
+            "name": "Retrieve node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v2/nodes/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying the Object."
+              }
+            ]
+          },
+          "docs": "Retrieve node details."
+        },
+        {
+          "info": {
+            "name": "Update node",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v2/nodes/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying the Object."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change the node name."
+        },
+        {
+          "info": {
+            "name": "Delete node",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v2/nodes/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying the Object."
+              }
+            ]
+          },
+          "docs": "Delete the node."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

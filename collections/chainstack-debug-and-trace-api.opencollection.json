@@ -1,0 +1,573 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Debug And Trace API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Debug And Trace",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Arbtrace_Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/arbtrace_block",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Arbtrace_Block"
+        },
+        {
+          "info": {
+            "name": "Arbtrace_Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/arbtrace_call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Arbtrace_Call"
+        },
+        {
+          "info": {
+            "name": "arbtrace_callMany",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/arbtrace_callMany",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "arbtrace_callMany"
+        },
+        {
+          "info": {
+            "name": "Arbtrace_Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/arbtrace_filter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Arbtrace_Filter"
+        },
+        {
+          "info": {
+            "name": "Arbtrace_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/arbtrace_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Arbtrace_Get"
+        },
+        {
+          "info": {
+            "name": "arbtrace_replayBlockTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/arbtrace_replayBlockTransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "arbtrace_replayBlockTransactions"
+        },
+        {
+          "info": {
+            "name": "arbtrace_replayTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/arbtrace_replayTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "arbtrace_replayTransaction"
+        },
+        {
+          "info": {
+            "name": "Arbtrace_Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/arbtrace_transaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Arbtrace_Transaction"
+        },
+        {
+          "info": {
+            "name": "debug_accountRange",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_accountRange",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_accountRange"
+        },
+        {
+          "info": {
+            "name": "debug_dumpBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_dumpBlock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_dumpBlock"
+        },
+        {
+          "info": {
+            "name": "debug_getAccessibleState",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_getAccessibleState",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_getAccessibleState"
+        },
+        {
+          "info": {
+            "name": "debug_getModifiedAccountsByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_getModifiedAccountsByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_getModifiedAccountsByHash"
+        },
+        {
+          "info": {
+            "name": "debug_getModifiedAccountsByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_getModifiedAccountsByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_getModifiedAccountsByNumber"
+        },
+        {
+          "info": {
+            "name": "debug_getRawBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_getRawBlock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_getRawBlock"
+        },
+        {
+          "info": {
+            "name": "debug_getRawHeader",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_getRawHeader",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_getRawHeader"
+        },
+        {
+          "info": {
+            "name": "debug_getRawReceipts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_getRawReceipts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_getRawReceipts"
+        },
+        {
+          "info": {
+            "name": "debug_getRawTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_getRawTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_getRawTransaction"
+        },
+        {
+          "info": {
+            "name": "debug_intermediateRoots",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_intermediateRoots",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_intermediateRoots"
+        },
+        {
+          "info": {
+            "name": "Debug_Preimage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_preimage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Debug_Preimage"
+        },
+        {
+          "info": {
+            "name": "debug_printBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_printBlock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_printBlock"
+        },
+        {
+          "info": {
+            "name": "debug_traceBadBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceBadBlock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceBadBlock"
+        },
+        {
+          "info": {
+            "name": "debug_traceBlockByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceBlockByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceBlockByHash"
+        },
+        {
+          "info": {
+            "name": "debug_traceBlockByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceBlockByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceBlockByNumber"
+        },
+        {
+          "info": {
+            "name": "debug_traceCall",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceCall",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceCall"
+        },
+        {
+          "info": {
+            "name": "debug_traceTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceTransaction"
+        },
+        {
+          "info": {
+            "name": "Custom JS tracer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/custom_js_tracer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Custom JS tracer"
+        },
+        {
+          "info": {
+            "name": "Trace_Block",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_block",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trace_Block"
+        },
+        {
+          "info": {
+            "name": "Trace_Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_transaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trace_Transaction"
+        },
+        {
+          "info": {
+            "name": "Trace_Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trace_Call"
+        },
+        {
+          "info": {
+            "name": "trace_callMany",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_callMany",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "trace_callMany"
+        },
+        {
+          "info": {
+            "name": "Trace_Get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trace_Get"
+        },
+        {
+          "info": {
+            "name": "trace_replayBlockTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_replayBlockTransactions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "trace_replayBlockTransactions"
+        },
+        {
+          "info": {
+            "name": "debug_getBadBlocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_getBadBlocks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_getBadBlocks"
+        },
+        {
+          "info": {
+            "name": "debug_traceCallMany",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/debug_traceCallMany",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "debug_traceCallMany"
+        },
+        {
+          "info": {
+            "name": "Trace_Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_filter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trace_Filter"
+        },
+        {
+          "info": {
+            "name": "trace_rawTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_rawTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "trace_rawTransaction"
+        },
+        {
+          "info": {
+            "name": "trace_replayTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/trace_replayTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "trace_replayTransaction"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

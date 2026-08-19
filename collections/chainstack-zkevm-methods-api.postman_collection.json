@@ -1,0 +1,962 @@
+{
+  "item": [
+    {
+      "id": "9f95c631-c0b2-4e1d-b0c5-6cbd44db0eb7",
+      "name": "Zkevm Methods",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8bdef464-63b2-4f0c-a342-ff4b75a26662",
+          "name": "zkevm_batchNumber",
+          "request": {
+            "name": "zkevm_batchNumber",
+            "description": {},
+            "url": {
+              "path": [
+                "zkevm_batchNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_batchNumber\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0840fa9-f6b2-48ee-a400-3966c75251d7",
+              "name": "Returns the current batch number.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zkevm_batchNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_batchNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5030,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "464481cf-5f2a-4e2d-8c6e-f86dd50ea954",
+          "name": "zkevm_batchNumberByBlockNumber",
+          "request": {
+            "name": "zkevm_batchNumberByBlockNumber",
+            "description": {},
+            "url": {
+              "path": [
+                "zkevm_batchNumberByBlockNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_batchNumberByBlockNumber\",\n  \"params\": [\n    \"0xD65B\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c77b3c1c-1ad0-4f46-b960-ea93bd772611",
+              "name": "Returns the batch number associated with the given block number.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zkevm_batchNumberByBlockNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_batchNumberByBlockNumber\",\n  \"params\": [\n    \"0xD65B\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5030,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7448973-3ef2-4a0e-af05-62614989a1b8",
+          "name": "zkevm_consolidatedBlockNumber",
+          "request": {
+            "name": "zkevm_consolidatedBlockNumber",
+            "description": {},
+            "url": {
+              "path": [
+                "zkevm_consolidatedBlockNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_consolidatedBlockNumber\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1290c74f-6821-46ff-a6cb-6e1ee09d2a03",
+              "name": "The latest consolidated block number.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zkevm_consolidatedBlockNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_consolidatedBlockNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5030,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4dbb01d0-9637-4cd2-9e63-a95965c29e51",
+          "name": "zkevm_getBatchByNumber",
+          "request": {
+            "name": "zkevm_getBatchByNumber",
+            "description": {},
+            "url": {
+              "path": [
+                "zkevm_getBatchByNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_getBatchByNumber\",\n  \"params\": [\n    \"0x1FC0\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d351c21-252d-45d7-812d-f755b508ba43",
+              "name": "Returns information about a specific batch of transactions based on the batch number.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zkevm_getBatchByNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_getBatchByNumber\",\n  \"params\": [\n    \"0x1FC0\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5030,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82a7db3d-2a92-4497-9d0d-a8fe568dafc2",
+          "name": "zkevm_isBlockConsolidated",
+          "request": {
+            "name": "zkevm_isBlockConsolidated",
+            "description": {},
+            "url": {
+              "path": [
+                "zkevm_isBlockConsolidated"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_isBlockConsolidated\",\n  \"params\": [\n    \"0xd29e\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99489b3f-21b9-47f2-9835-816003e28c95",
+              "name": "Checks if the given block is consolidated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zkevm_isBlockConsolidated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_isBlockConsolidated\",\n  \"params\": [\n    \"0xd29e\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5030,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7119fe76-43e8-45e8-ae39-545e0b6bc37f",
+          "name": "zkevm_isBlockVirtualized",
+          "request": {
+            "name": "zkevm_isBlockVirtualized",
+            "description": {},
+            "url": {
+              "path": [
+                "zkevm_isBlockVirtualized"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_isBlockVirtualized\",\n  \"params\": [\n    \"130000\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "166090c1-a691-4a8f-bd71-68f1ab194dce",
+              "name": "Checks if the given block is virtualized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zkevm_isBlockVirtualized"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_isBlockVirtualized\",\n  \"params\": [\n    \"130000\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5030,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36b58f42-4f38-42b4-9e8e-aa3ce9dbe9a0",
+          "name": "zkevm_verifiedBatchNumber",
+          "request": {
+            "name": "zkevm_verifiedBatchNumber",
+            "description": {},
+            "url": {
+              "path": [
+                "zkevm_verifiedBatchNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_verifiedBatchNumber\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df92e31f-d809-4526-8c15-a45ebe03b263",
+              "name": "Returns the current verified batch number.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zkevm_verifiedBatchNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_verifiedBatchNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5030,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "553d9db2-ee76-4dc0-8f1a-b2fdd090ac85",
+          "name": "zkevm_virtualBatchNumber",
+          "request": {
+            "name": "zkevm_virtualBatchNumber",
+            "description": {},
+            "url": {
+              "path": [
+                "zkevm_virtualBatchNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_virtualBatchNumber\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "512bdb0f-7471-4efa-a1e6-4f6925cd3af6",
+              "name": "Returns the current virtual batch number.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zkevm_virtualBatchNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"zkevm_virtualBatchNumber\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5030,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f06b5d83-379e-4741-820d-331fee7e9d24",
+    "name": "Chainstack Arbitrum Node Account Info Zkevm Methods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}

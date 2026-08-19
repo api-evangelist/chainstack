@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "d7e16952-dc59-4088-a9e5-cbefdb7e57ab",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "edf5efad-4c1d-42ee-9dd2-5fe109987dde",
+          "name": "Subscribe to events",
+          "request": {
+            "name": "Subscribe to events",
+            "description": {},
+            "url": {
+              "path": [
+                "subscribe_to_events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "topics",
+                  "value": "head",
+                  "description": "(Required) Topics to subscribe to, e.g., 'head'"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/event-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05fe1259-d48c-4757-b9c1-51f1ee7de5cf",
+              "name": "Successfully subscribed to events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscribe_to_events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "topics",
+                      "value": "head"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/event-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/event-stream"
+                }
+              ],
+              "body": "event: contribution_and_proof\ndata: {\"contribution\": \"...\", \"proof\": \"...\"}\n\n",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cdc53a50-599d-451e-9983-863be457b8ad",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscribe_to_events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "topics",
+                      "value": "head"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7158,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c1cae643-3317-4b95-a308-217bc114aca3",
+    "name": "Chainstack Arbitrum Node Account Info Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}

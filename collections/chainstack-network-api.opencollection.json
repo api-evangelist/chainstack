@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Network API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Network",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all Networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v1/networks/",
+            "params": [
+              {
+                "name": "order_by",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Filter by project ID."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by name."
+              },
+              {
+                "name": "public_network",
+                "value": "",
+                "type": "query",
+                "description": "Filter by public network."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by network status."
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "query",
+                "description": "Filter by protocol."
+              },
+              {
+                "name": "project_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by project type."
+              }
+            ]
+          },
+          "docs": "List all networks your organization is part of."
+        },
+        {
+          "info": {
+            "name": "Create Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v1/networks/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a network."
+        },
+        {
+          "info": {
+            "name": "Retrieve Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v1/networks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying the Object."
+              }
+            ]
+          },
+          "docs": "Retrieve network details."
+        },
+        {
+          "info": {
+            "name": "Update Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v1/networks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying the Object."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change the network name. Only for `consortium` projects."
+        },
+        {
+          "info": {
+            "name": "Delete Network",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v1/networks/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying the Object."
+              }
+            ]
+          },
+          "docs": "Delete the network."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

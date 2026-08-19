@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Blocks Info API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blocks Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_blockNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_blockNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_blockNumber"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockByNumber"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockTransactionCountByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockTransactionCountByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockTransactionCountByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockTransactionCountByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockTransactionCountByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockTransactionCountByNumber"
+        },
+        {
+          "info": {
+            "name": "eth_newBlockFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_newBlockFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newBlockFilter"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockReceipts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockReceipts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockReceipts"
+        },
+        {
+          "info": {
+            "name": "eth_getHeaderByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getHeaderByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getHeaderByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getHeaderByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getHeaderByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getHeaderByNumber"
+        },
+        {
+          "info": {
+            "name": "eth_getUncleByBlockHashAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getUncleByBlockHashAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getUncleByBlockHashAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getUncleByBlockNumberAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getUncleByBlockNumberAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getUncleByBlockNumberAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getUncleCountByBlockHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getUncleCountByBlockHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getUncleCountByBlockHash"
+        },
+        {
+          "info": {
+            "name": "eth_getUncleCountByBlockNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getUncleCountByBlockNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getUncleCountByBlockNumber"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

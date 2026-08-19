@@ -1,0 +1,1013 @@
+{
+  "item": [
+    {
+      "id": "ad35059f-0919-4e08-925b-bdcd6bcdfa7c",
+      "name": "Network",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46d3b4ec-2beb-4468-a683-b8ef34363ab8",
+          "name": "List all Networks",
+          "request": {
+            "name": "List all Networks",
+            "description": {
+              "content": "List all networks your organization is part of.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "networks",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "order_by",
+                  "value": "<string>",
+                  "description": "Which field to use when ordering the results.\n<br> Use the `-` prefix to perform descending ordering (`-name`).\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<string>",
+                  "description": "Filter by project ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by name."
+                },
+                {
+                  "disabled": false,
+                  "key": "public_network",
+                  "value": "<string>",
+                  "description": "Filter by public network."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by network status."
+                },
+                {
+                  "disabled": false,
+                  "key": "protocol",
+                  "value": "<string>",
+                  "description": "Filter by protocol."
+                },
+                {
+                  "disabled": false,
+                  "key": "project_type",
+                  "value": "<string>",
+                  "description": "Filter by project type."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "98335baf-b39b-4c65-a9d8-1b12195c7f34",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "order_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "public_network",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "protocol",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "project_type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1,\n  \"next\": null,\n  \"previous\": null,\n  \"results\": [\n    {\n      \"id\": \"NW-123-456-7\",\n      \"name\": \"Mainnet\",\n      \"project\": \"PR-123-456\",\n      \"protocol\": \"polygon-pos\",\n      \"configuration\": {\n        \"network\": \"polygon-pos-mainnet\"\n      },\n      \"details\": {},\n      \"status\": \"ok\",\n      \"nodes\": [\n        {\n          \"id\": \"ND-123-456-789\",\n          \"name\": \"My Polygon PoS node\",\n          \"network\": \"NW-123-456-7\",\n          \"organization\": \"RG-123-456\",\n          \"type\": \"dedicated\",\n          \"role\": \"peer\",\n          \"provider\": \"gcloud\",\n          \"region\": \"asia-southeast1\",\n          \"status\": \"running\",\n          \"configuration\": {\n            \"archive\": true\n          },\n          \"details\": {\n            \"mode\": \"archive\",\n            \"version\": \"1.0.6\",\n            \"api_namespaces\": [\n              \"net\",\n              \"eth\",\n              \"web3\",\n              \"txpool\",\n              \"debug\",\n              \"parlia\"\n            ],\n            \"graphql_endpoint\": \"https://nd-123-456-789.p2pify.com/graphql\",\n            \"https_endpoint\": \"https://nd-123-456-789.p2pify.com\",\n            \"wss_endpoint\": \"wss://ws-nd-123-456-789.p2pify.com\",\n            \"auth_username\": \"user-name\",\n            \"auth_password\": \"pass-word-pass-word-pass-word\",\n            \"auth_key\": \"3c6e0b8a9c15224a8228b9a98ca1531d\"\n          },\n          \"created_at\": \"2020-06-15T07:38:00.747Z\",\n          \"creator\": {\n            \"id\": \"UR-111-111-111\",\n            \"email\": \"john.smith@example.com\",\n            \"first_name\": \"John\",\n            \"last_name\": \"Smith\",\n            \"organization\": {\n              \"id\": \"RG-123-456\",\n              \"name\": \"My organization\"\n            }\n          }\n        }\n      ],\n      \"created_at\": \"2020-06-15T07:38:00.747Z\",\n      \"creator\": {\n        \"id\": \"UR-111-111-111\",\n        \"email\": \"john.smith@example.com\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Smith\",\n        \"organization\": {\n          \"id\": \"RG-123-456\",\n          \"name\": \"My organization\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37d61bca-1295-480f-8094-4e3a0fa6ebe8",
+          "name": "Create Network",
+          "request": {
+            "name": "Create Network",
+            "description": {
+              "content": "Create a network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "networks",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"project\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"configuration\": \"<object>\",\n  \"nodes\": {},\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"creator\": {\n    \"organization\": {}\n  },\n  \"created_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2b4efd3-192a-45de-8cff-635858a5b505",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"PR-123-456\",\n  \"protocol\": \"ethereum\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  },\n  \"nodes\": [\n    {\n      \"name\": \"My Ethereum node\",\n      \"type\": \"dedicated\",\n      \"role\": \"peer\",\n      \"provider\": \"gcloud\",\n      \"region\": \"asia-southeast1\",\n      \"configuration\": {\n        \"archive\": true\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"NW-123-456-7\",\n  \"name\": \"Mainnet\",\n  \"project\": \"PR-123-456\",\n  \"protocol\": \"ethereum\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  },\n  \"details\": {},\n  \"status\": \"ok\",\n  \"nodes\": [\n    {\n      \"id\": \"ND-123-456-789\",\n      \"name\": \"My Ethereum node\",\n      \"network\": \"NW-123-456-7\",\n      \"organization\": \"RG-123-456\",\n      \"type\": \"dedicated\",\n      \"role\": \"peer\",\n      \"provider\": \"gcloud\",\n      \"region\": \"asia-southeast1\",\n      \"status\": \"running\",\n      \"configuration\": {\n        \"archive\": true\n      },\n      \"details\": {\n        \"mode\": \"archive\",\n        \"version\": \"1.9.9\",\n        \"api_namespaces\": [\n          \"net\",\n          \"eth\",\n          \"web3\",\n          \"txpool\",\n          \"debug\"\n        ],\n        \"graphql_endpoint\": \"https://nd-123-456-789.p2pify.com/graphql\",\n        \"https_endpoint\": \"https://nd-123-456-789.p2pify.com\",\n        \"wss_endpoint\": \"wss://ws-nd-123-456-789.p2pify.com\",\n        \"beacon_endpoint\": \"https://beacon-nd-123-456-789.p2pify.com\",\n        \"auth_username\": \"user-name\",\n        \"auth_password\": \"pass-word-pass-word-pass-word\",\n        \"auth_key\": \"3c6e0b8a9c15224a8228b9a98ca1531d\"\n      },\n      \"created_at\": \"2020-06-15T07:38:00.747Z\",\n      \"creator\": {\n        \"id\": \"UR-111-111-111\",\n        \"email\": \"john.smith@example.com\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Smith\",\n        \"organization\": {\n          \"id\": \"RG-123-456\",\n          \"name\": \"My organization\"\n        }\n      }\n    }\n  ],\n  \"created_at\": \"2020-06-15T07:38:00.747Z\",\n  \"creator\": {\n    \"id\": \"UR-111-111-111\",\n    \"email\": \"john.smith@example.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"organization\": {\n      \"id\": \"RG-123-456\",\n      \"name\": \"My organization\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2de1aac-3651-4943-bdcb-f32e7e9cd2bc",
+              "name": "Validation error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project\": \"PR-123-456\",\n  \"protocol\": \"ethereum\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  },\n  \"nodes\": [\n    {\n      \"name\": \"My Ethereum node\",\n      \"type\": \"dedicated\",\n      \"role\": \"peer\",\n      \"provider\": \"gcloud\",\n      \"region\": \"asia-southeast1\",\n      \"configuration\": {\n        \"archive\": true\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {\n      \"key_0\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df18816e-2964-4922-bb17-7fceaa12d85b",
+          "name": "Retrieve Network",
+          "request": {
+            "name": "Retrieve Network",
+            "description": {
+              "content": "Retrieve network details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "networks",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying the Object."
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "ddf11b14-4ede-4088-81b2-8824e5f7892d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying the Object."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"NW-123-456-7\",\n  \"name\": \"Mainnet\",\n  \"project\": \"PR-123-456\",\n  \"protocol\": \"ethereum\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  },\n  \"details\": {},\n  \"status\": \"ok\",\n  \"nodes\": [\n    {\n      \"id\": \"ND-123-456-789\",\n      \"name\": \"My Ethereum node\",\n      \"network\": \"NW-123-456-7\",\n      \"organization\": \"RG-123-456\",\n      \"type\": \"dedicated\",\n      \"role\": \"peer\",\n      \"provider\": \"gcloud\",\n      \"region\": \"asia-southeast1\",\n      \"status\": \"running\",\n      \"configuration\": {\n        \"archive\": true\n      },\n      \"details\": {\n        \"mode\": \"archive\",\n        \"version\": \"1.9.9\",\n        \"api_namespaces\": [\n          \"net\",\n          \"eth\",\n          \"web3\",\n          \"txpool\",\n          \"debug\"\n        ],\n        \"graphql_endpoint\": \"https://nd-123-456-789.p2pify.com/graphql\",\n        \"https_endpoint\": \"https://nd-123-456-789.p2pify.com\",\n        \"wss_endpoint\": \"wss://ws-nd-123-456-789.p2pify.com\",\n        \"beacon_endpoint\": \"https://beacon-nd-123-456-789.p2pify.com\",\n        \"auth_username\": \"user-name\",\n        \"auth_password\": \"pass-word-pass-word-pass-word\",\n        \"auth_key\": \"3c6e0b8a9c15224a8228b9a98ca1531d\"\n      },\n      \"created_at\": \"2020-06-15T07:38:00.747Z\",\n      \"creator\": {\n        \"id\": \"UR-111-111-111\",\n        \"email\": \"john.smith@example.com\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Smith\",\n        \"organization\": {\n          \"id\": \"RG-123-456\",\n          \"name\": \"My organization\"\n        }\n      }\n    }\n  ],\n  \"created_at\": \"2020-06-15T07:38:00.747Z\",\n  \"creator\": {\n    \"id\": \"UR-111-111-111\",\n    \"email\": \"john.smith@example.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"organization\": {\n      \"id\": \"RG-123-456\",\n      \"name\": \"My organization\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01e94dd7-815d-4b45-9207-99f79fea6ff1",
+              "name": "Object does not exist or caller has insufficient permissions to access it.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying the Object."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2868d6d-d1f4-444d-98ac-0b7b705bbe89",
+          "name": "Update Network",
+          "request": {
+            "name": "Update Network",
+            "description": {
+              "content": "Change the network name. Only for `consortium` projects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "networks",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying the Object."
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"project\": \"<string>\",\n  \"protocol\": \"<string>\",\n  \"status\": \"<string>\",\n  \"creator\": {\n    \"organization\": {}\n  },\n  \"created_at\": \"<dateTime>\",\n  \"configuration\": {\n    \"network\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4648e022-124c-405b-a502-dcfdb5632c4d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying the Object."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My new network name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"NW-123-456-7\",\n  \"name\": \"Mainnet\",\n  \"project\": \"PR-123-456\",\n  \"protocol\": \"ethereum\",\n  \"configuration\": {\n    \"network\": \"ethereum-mainnet\"\n  },\n  \"details\": {},\n  \"status\": \"ok\",\n  \"nodes\": [\n    {\n      \"id\": \"ND-123-456-789\",\n      \"name\": \"My Ethereum node\",\n      \"network\": \"NW-123-456-7\",\n      \"organization\": \"RG-123-456\",\n      \"type\": \"dedicated\",\n      \"role\": \"peer\",\n      \"provider\": \"gcloud\",\n      \"region\": \"asia-southeast1\",\n      \"status\": \"running\",\n      \"configuration\": {\n        \"archive\": true\n      },\n      \"details\": {\n        \"mode\": \"archive\",\n        \"version\": \"1.9.9\",\n        \"api_namespaces\": [\n          \"net\",\n          \"eth\",\n          \"web3\",\n          \"txpool\",\n          \"debug\"\n        ],\n        \"graphql_endpoint\": \"https://nd-123-456-789.p2pify.com/graphql\",\n        \"https_endpoint\": \"https://nd-123-456-789.p2pify.com\",\n        \"wss_endpoint\": \"wss://ws-nd-123-456-789.p2pify.com\",\n        \"beacon_endpoint\": \"https://beacon-nd-123-456-789.p2pify.com\",\n        \"auth_username\": \"user-name\",\n        \"auth_password\": \"pass-word-pass-word-pass-word\",\n        \"auth_key\": \"3c6e0b8a9c15224a8228b9a98ca1531d\"\n      },\n      \"created_at\": \"2020-06-15T07:38:00.747Z\",\n      \"creator\": {\n        \"id\": \"UR-111-111-111\",\n        \"email\": \"john.smith@example.com\",\n        \"first_name\": \"John\",\n        \"last_name\": \"Smith\",\n        \"organization\": {\n          \"id\": \"RG-123-456\",\n          \"name\": \"My organization\"\n        }\n      }\n    }\n  ],\n  \"created_at\": \"2020-06-15T07:38:00.747Z\",\n  \"creator\": {\n    \"id\": \"UR-111-111-111\",\n    \"email\": \"john.smith@example.com\",\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"organization\": {\n      \"id\": \"RG-123-456\",\n      \"name\": \"My organization\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a24cadb-6c06-4869-b7ec-b33a8b001bfb",
+              "name": "Validation error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying the Object."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My new network name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {\n      \"key_0\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f6630a6-e2e2-4290-b747-ed23b58ce884",
+              "name": "Object does not exist or caller has insufficient permissions to access it.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying the Object."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My new network name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7687f3a3-3347-4acb-852c-1b9b5581b65d",
+          "name": "Delete Network",
+          "request": {
+            "name": "Delete Network",
+            "description": {
+              "content": "Delete the network.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "networks",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) A unique value identifying the Object."
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE"
+          },
+          "response": [
+            {
+              "id": "a488368d-2782-4735-a236-838219d7fa87",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying the Object."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bc81a44-33cb-4be2-958c-b554661cd012",
+              "name": "Object does not exist or caller has insufficient permissions to access it.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "networks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) A unique value identifying the Object."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b1d562ca-778a-4962-9a97-48c909f7771b",
+    "name": "Chainstack Arbitrum Node Account Info Network API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,53 +1,45 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Chainstack Arbitrum Node Account Info faucet API",
+    "name": "Chainstack Arbitrum Node Account Info Tempo Specific API",
     "version": "1.0.0"
   },
   "items": [
     {
       "info": {
-        "name": "faucet",
+        "name": "Tempo Specific",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Request funds",
+            "name": "eth_sendRawTransactionSync",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://{node_id}.p2pify.com/{api_key}/:chain",
-            "params": [
-              {
-                "name": "chain",
-                "value": "",
-                "type": "path",
-                "description": "Chainstack Faucet API."
-              }
-            ],
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_sendRawTransactionSync",
             "body": {
               "type": "json",
               "data": "{}"
             }
           },
-          "docs": "Request funds"
+          "docs": "eth_sendRawTransactionSync"
         },
         {
           "info": {
-            "name": "Sepolia Faucet",
+            "name": "tempo_fundAddress",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://{node_id}.p2pify.com/{api_key}/v1/faucet/sepolia",
+            "url": "https://{node_id}.p2pify.com/{api_key}/tempo_fundAddress",
             "body": {
               "type": "json",
               "data": "{}"
             }
           },
-          "docs": "Request test tokens."
+          "docs": "Funds an address with testnet stablecoins (pathUSD, AlphaUSD, BetaUSD, ThetaUSD). Testnet only."
         }
       ]
     }

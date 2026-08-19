@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info State API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "State",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the root of the beacon block by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBeaconBlockRootByBlockId",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+              }
+            ]
+          },
+          "docs": "Get the root of the beacon block by block_id"
+        },
+        {
+          "info": {
+            "name": "Get beacon blocks by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBeaconBlocksByBlockId",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+              }
+            ]
+          },
+          "docs": "Get beacon blocks by block_id"
+        },
+        {
+          "info": {
+            "name": "Get beacon headers by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBeaconHeadersByBlockId",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+              }
+            ]
+          },
+          "docs": "Get beacon headers by block_id"
+        },
+        {
+          "info": {
+            "name": "Get beacon headers by slot and parent root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBeaconHeadersBySlotAndParentRoot",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "Slot number"
+              },
+              {
+                "name": "parent_root",
+                "value": "",
+                "type": "query",
+                "description": "Parent root hash"
+              }
+            ]
+          },
+          "docs": "Get beacon headers by slot and parent root"
+        },
+        {
+          "info": {
+            "name": "Get blobs by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlobsByBlockId",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific slot number."
+              }
+            ]
+          },
+          "docs": "Get blobs by block_id"
+        },
+        {
+          "info": {
+            "name": "Get committees by state, epoch, index, and slot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getCommitteesByStateIdEpochIndexAndSlot",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number"
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "query",
+                "description": "Committee index"
+              },
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "Slot number"
+              }
+            ]
+          },
+          "docs": "Get committees by state, epoch, index, and slot"
+        },
+        {
+          "info": {
+            "name": "Get finality checkpoints for a given state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getFinalityCheckpoints",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+              }
+            ]
+          },
+          "docs": "Get finality checkpoints for a given state"
+        },
+        {
+          "info": {
+            "name": "Get the root of a given state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getStateRoot",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+              }
+            ]
+          },
+          "docs": "Get the root of a given state"
+        },
+        {
+          "info": {
+            "name": "Get sync committee contribution for a given slot, subcommittee index, and beacon block root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSyncCommitteeContribution",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "Slot for which to retrieve the sync committee contribution"
+              },
+              {
+                "name": "subcommittee_index",
+                "value": "",
+                "type": "query",
+                "description": "Subcommittee index for which to retrieve the sync committee contribution"
+              },
+              {
+                "name": "beacon_block_root",
+                "value": "",
+                "type": "query",
+                "description": "Beacon block root for which to retrieve the sync committee contribution"
+              }
+            ]
+          },
+          "docs": "Get sync committee contribution for a given slot, subcommittee index, and beacon block root"
+        },
+        {
+          "info": {
+            "name": "Get sync committees by state and epoch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getSyncCommitteesByStateIdAndEpoch",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number"
+              }
+            ]
+          },
+          "docs": "Get sync committees by state and epoch"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

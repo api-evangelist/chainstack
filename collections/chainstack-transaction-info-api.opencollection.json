@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Transaction Info API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transaction Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_getTransactionByBlockHashAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionByBlockHashAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByBlockHashAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionByBlockNumberAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionByBlockNumberAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByBlockNumberAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionReceipt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionReceipt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionReceipt"
+        },
+        {
+          "info": {
+            "name": "eth_simulateV1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_simulateV1",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_simulateV1"
+        },
+        {
+          "info": {
+            "name": "eth_getBlockReceipts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBlockReceipts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBlockReceipts"
+        },
+        {
+          "info": {
+            "name": "eth_newPendingTransactionFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_newPendingTransactionFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newPendingTransactionFilter"
+        },
+        {
+          "info": {
+            "name": "eth_getRawTransactionByBlockHashAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getRawTransactionByBlockHashAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getRawTransactionByBlockHashAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getRawTransactionByBlockNumberAndIndex",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getRawTransactionByBlockNumberAndIndex",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getRawTransactionByBlockNumberAndIndex"
+        },
+        {
+          "info": {
+            "name": "eth_getRawTransactionByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getRawTransactionByHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getRawTransactionByHash"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionBySenderAndNonce",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionBySenderAndNonce",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionBySenderAndNonce"
+        },
+        {
+          "info": {
+            "name": "Eth_Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Eth_Call"
+        },
+        {
+          "info": {
+            "name": "eth_createAccessList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_createAccessList",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_createAccessList"
+        },
+        {
+          "info": {
+            "name": "eth_sendRawTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_sendRawTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_sendRawTransaction"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

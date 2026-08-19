@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Gas Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gas Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_estimateGas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_estimateGas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_estimateGas"
+        },
+        {
+          "info": {
+            "name": "eth_gasPrice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_gasPrice",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_gasPrice"
+        },
+        {
+          "info": {
+            "name": "eth_maxPriorityFeePerGas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_maxPriorityFeePerGas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_maxPriorityFeePerGas"
+        },
+        {
+          "info": {
+            "name": "eth_feeHistory",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_feeHistory",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_feeHistory"
+        },
+        {
+          "info": {
+            "name": "eth_blobBaseFee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_blobBaseFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_blobBaseFee"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

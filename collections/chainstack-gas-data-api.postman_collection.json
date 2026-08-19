@@ -1,315 +1,22 @@
 {
   "item": [
     {
-      "id": "9db42919-d029-47dd-b823-960aec25e746",
-      "name": "faucet",
+      "id": "0687f616-13fa-4746-a48d-ad677daa2998",
+      "name": "Gas Data",
       "description": {
         "content": "",
         "type": "text/plain"
       },
       "item": [
         {
-          "id": "134518a2-1f38-45f7-bde8-91a67d91c659",
-          "name": "Request funds",
+          "id": "68a211f0-2580-497b-b0ed-05d1871cfd47",
+          "name": "eth_estimateGas",
           "request": {
-            "name": "Request funds",
+            "name": "eth_estimateGas",
             "description": {},
             "url": {
               "path": [
-                ":chain"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "",
-                  "key": "chain",
-                  "description": "(Required) Chainstack Faucet API."
-                },
-                {
-                  "description": "Your Chainstack node identifier",
-                  "type": "any",
-                  "value": "{{node_id}}",
-                  "key": "node_id"
-                },
-                {
-                  "description": "Per-node access key",
-                  "type": "any",
-                  "value": "{{api_key}}",
-                  "key": "api_key"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"address\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "d68c6830-1da2-490b-9473-741d1f8578af",
-              "name": "Funds successfully sent.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":chain"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "chain",
-                      "description": "(Required) Chainstack Faucet API."
-                    },
-                    {
-                      "description": "Your Chainstack node identifier",
-                      "type": "any",
-                      "value": "{{node_id}}",
-                      "key": "node_id"
-                    },
-                    {
-                      "description": "Per-node access key",
-                      "type": "any",
-                      "value": "{{api_key}}",
-                      "key": "api_key"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"0x06f0aB63eD883C61b9e4447fCbD9603dfC189662\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "76404086-95b9-4e76-9c53-c896b1fc0f4c",
-              "name": "Address is not valid.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":chain"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "chain",
-                      "description": "(Required) Chainstack Faucet API."
-                    },
-                    {
-                      "description": "Your Chainstack node identifier",
-                      "type": "any",
-                      "value": "{{node_id}}",
-                      "key": "node_id"
-                    },
-                    {
-                      "description": "Per-node access key",
-                      "type": "any",
-                      "value": "{{api_key}}",
-                      "key": "api_key"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"0x06f0aB63eD883C61b9e4447fCbD9603dfC189662\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "32e18939-bd13-4456-ae29-7d41dc86856f",
-              "name": "Unauthorized access, invalid API key.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":chain"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "chain",
-                      "description": "(Required) Chainstack Faucet API."
-                    },
-                    {
-                      "description": "Your Chainstack node identifier",
-                      "type": "any",
-                      "value": "{{node_id}}",
-                      "key": "node_id"
-                    },
-                    {
-                      "description": "Per-node access key",
-                      "type": "any",
-                      "value": "{{api_key}}",
-                      "key": "api_key"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"0x06f0aB63eD883C61b9e4447fCbD9603dfC189662\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "782d8819-6a5a-47a4-b663-c7c7c6dd5c02",
-              "name": "Too many requests or balance exceeded.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    ":chain"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "",
-                      "key": "chain",
-                      "description": "(Required) Chainstack Faucet API."
-                    },
-                    {
-                      "description": "Your Chainstack node identifier",
-                      "type": "any",
-                      "value": "{{node_id}}",
-                      "key": "node_id"
-                    },
-                    {
-                      "description": "Per-node access key",
-                      "type": "any",
-                      "value": "{{api_key}}",
-                      "key": "api_key"
-                    }
-                  ]
-                },
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"0x06f0aB63eD883C61b9e4447fCbD9603dfC189662\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e492e42c-6cbc-4b57-947e-28988d056e37",
-          "name": "Sepolia Faucet",
-          "request": {
-            "name": "Sepolia Faucet",
-            "description": {
-              "content": "Request test tokens.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "faucet",
-                "sepolia"
+                "eth_estimateGas"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -341,9 +48,10 @@
               }
             ],
             "method": "POST",
+            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"address\": \"<string>\"\n}",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_estimateGas\",\n  \"params\": [\n    {\n      \"from\": \"0x13867a801e352e219c2d2AC29288Bf086e5C81ef\",\n      \"to\": \"0xbe0eb53f46cd790cd13851d5eff43d12404d33e8\"\n    },\n    \"latest\"\n  ]\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -353,13 +61,12 @@
           },
           "response": [
             {
-              "id": "735a9408-ca59-4ec0-9e97-18703855ffcb",
+              "id": "762a5bfb-443f-499b-8a95-6feaf4bbabfa",
+              "name": "The estimated gas amount",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "v1",
-                    "faucet",
-                    "sepolia"
+                    "eth_estimateGas"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -389,7 +96,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"address\": \"0x1111111111111111111111111111111111111111\"\n}",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_estimateGas\",\n  \"params\": [\n    {\n      \"from\": \"0x13867a801e352e219c2d2AC29288Bf086e5C81ef\",\n      \"to\": \"0xbe0eb53f46cd790cd13851d5eff43d12404d33e8\"\n    },\n    \"latest\"\n  ]\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -405,19 +112,75 @@
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"amountSent\": 500000000000000000,\n  \"transaction\": \"https://sepolia.etherscan.io/tx/0x1111111111111111111111111111111111111111111111111111111111111111\"\n}",
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 9320,\n  \"result\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17f7ee46-6c98-4902-8e5b-99ced945c134",
+          "name": "eth_gasPrice",
+          "request": {
+            "name": "eth_gasPrice",
+            "description": {},
+            "url": {
+              "path": [
+                "eth_gasPrice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
             },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_gasPrice\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
             {
-              "id": "6e2a7368-ce9b-40d8-99e7-abe3907725d7",
-              "name": "Validation error.",
+              "id": "93c23051-1ca9-4a4a-89aa-17fb32cbc58c",
+              "name": "The value of the current gas base fee in Wei.",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "v1",
-                    "faucet",
-                    "sepolia"
+                    "eth_gasPrice"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -447,7 +210,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"address\": \"0x1111111111111111111111111111111111111111\"\n}",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_gasPrice\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -455,27 +218,83 @@
                   }
                 }
               },
-              "status": "Bad Request",
-              "code": 400,
+              "status": "OK",
+              "code": 200,
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\",\n    \"fields\": {\n      \"key_0\": [\n        \"string\",\n        \"string\"\n      ],\n      \"key_1\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 9320,\n  \"result\": \"string\"\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d22615ed-6185-4e4c-a5c4-d6ac83840e6b",
+          "name": "eth_maxPriorityFeePerGas",
+          "request": {
+            "name": "eth_maxPriorityFeePerGas",
+            "description": {},
+            "url": {
+              "path": [
+                "eth_maxPriorityFeePerGas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
             },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_maxPriorityFeePerGas\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
             {
-              "id": "c5df8d68-c343-421f-92fc-1f4c595c34b3",
-              "name": "Validation error.",
+              "id": "7f49bcc8-530a-4adf-a62a-594296bddd1b",
+              "name": "The estimated max priority fee per gas",
               "originalRequest": {
                 "url": {
                   "path": [
-                    "v1",
-                    "faucet",
-                    "sepolia"
+                    "eth_maxPriorityFeePerGas"
                   ],
                   "host": [
                     "{{baseUrl}}"
@@ -505,7 +324,7 @@
                 "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"address\": \"0x1111111111111111111111111111111111111111\"\n}",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_maxPriorityFeePerGas\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -513,15 +332,243 @@
                   }
                 }
               },
-              "status": "Too Many Requests",
-              "code": 429,
+              "status": "OK",
+              "code": 200,
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  },\n  \"nextFaucetAvailable\": \"string\"\n}",
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 9320,\n  \"result\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "008a02d3-5099-4bcf-9fb1-1bf94d193d57",
+          "name": "eth_feeHistory",
+          "request": {
+            "name": "eth_feeHistory",
+            "description": {},
+            "url": {
+              "path": [
+                "eth_feeHistory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_feeHistory\",\n  \"params\": [\n    \"0x4\",\n    \"latest\",\n    [\n      25,\n      75\n    ]\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3f28b2fe-1608-4467-82e7-5430181935a9",
+              "name": "Fee history for the requested block range.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eth_feeHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_feeHistory\",\n  \"params\": [\n    \"0x4\",\n    \"latest\",\n    [\n      25,\n      75\n    ]\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 3776,\n  \"result\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07e1fd9a-29a6-4053-a6cc-782bdfb2a611",
+          "name": "eth_blobBaseFee",
+          "request": {
+            "name": "eth_blobBaseFee",
+            "description": {},
+            "url": {
+              "path": [
+                "eth_blobBaseFee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_blobBaseFee\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b6af4fc4-e3f8-47f8-a83f-c13f4a6f96f2",
+              "name": "Returns the base fee for blob gas in wei.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eth_blobBaseFee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": 1,\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"eth_blobBaseFee\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 7211,\n  \"result\": {}\n}",
               "cookie": [],
               "_postman_previewlanguage": "json"
             }
@@ -562,8 +609,8 @@
     }
   ],
   "info": {
-    "_postman_id": "69d99c7f-937f-44a4-affd-ef273a6fd732",
-    "name": "Chainstack Arbitrum Node Account Info faucet API",
+    "_postman_id": "7faf004e-3ca5-462f-acb4-7ea751a37ba8",
+    "name": "Chainstack Arbitrum Node Account Info Gas Data API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
       "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",

@@ -1,0 +1,276 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Validatiors Info API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validatiors Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get attestation data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/attestation_data",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "Slot for which to retrieve attestation data"
+              },
+              {
+                "name": "committee_index",
+                "value": "",
+                "type": "query",
+                "description": "Committee index for which to retrieve attestation data"
+              }
+            ]
+          },
+          "docs": "Get attestation data"
+        },
+        {
+          "info": {
+            "name": "Get attestations of the beacon block by block_id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/attestation_of_beacon_block_by_block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+              }
+            ]
+          },
+          "docs": "Get attestations of the beacon block by block_id"
+        },
+        {
+          "info": {
+            "name": "Get attester slashings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/attester_slashings"
+          },
+          "docs": "Get attester slashings"
+        },
+        {
+          "info": {
+            "name": "Get attestations from the beacon pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/beacon_pool_attestations",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "query",
+                "description": "The slot number to filter attestations"
+              },
+              {
+                "name": "committee_index",
+                "value": "",
+                "type": "query",
+                "description": "The committee index to filter attestations"
+              }
+            ]
+          },
+          "docs": "Get attestations from the beacon pool"
+        },
+        {
+          "info": {
+            "name": "Produce an unsigned blinded block",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/produce_unsigned_blinded_block",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "path",
+                "description": "Slot for which to produce a new blinded block"
+              },
+              {
+                "name": "randao_reveal",
+                "value": "",
+                "type": "query",
+                "description": "RANDAO reveal for the block"
+              },
+              {
+                "name": "graffiti",
+                "value": "",
+                "type": "query",
+                "description": "Graffiti for the block"
+              }
+            ]
+          },
+          "docs": "Produce an unsigned blinded block"
+        },
+        {
+          "info": {
+            "name": "Produce a new block for the given slot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/produce_unsigned_block",
+            "params": [
+              {
+                "name": "slot",
+                "value": "",
+                "type": "path",
+                "description": "Slot for which to produce a new block"
+              },
+              {
+                "name": "randao_reveal",
+                "value": "",
+                "type": "query",
+                "description": "RANDAO reveal for the block"
+              },
+              {
+                "name": "graffiti",
+                "value": "",
+                "type": "query",
+                "description": "Graffiti for the block"
+              }
+            ]
+          },
+          "docs": "Produce a new block for the given slot"
+        },
+        {
+          "info": {
+            "name": "Get proposer duties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/proposer_duties",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "path",
+                "description": "Epoch for which to get the proposer duties"
+              }
+            ]
+          },
+          "docs": "Get proposer duties"
+        },
+        {
+          "info": {
+            "name": "Get proposer slashings from the beacon pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/proposer_slashings"
+          },
+          "docs": "Get proposer slashings from the beacon pool"
+        },
+        {
+          "info": {
+            "name": "Get validator balances by state and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/validator_balances",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Validator ID"
+              }
+            ]
+          },
+          "docs": "Get validator balances by state and ID"
+        },
+        {
+          "info": {
+            "name": "Get information about a specific validator in a given state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/validator_information_by_state_id",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+              },
+              {
+                "name": "validator_index",
+                "value": "",
+                "type": "path",
+                "description": "Index of the validator (default is '1')."
+              }
+            ]
+          },
+          "docs": "Get information about a specific validator in a given state"
+        },
+        {
+          "info": {
+            "name": "Get validator by state and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/validator_information_by_state_id_or_public_key",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+              },
+              {
+                "name": "index",
+                "value": "",
+                "type": "path",
+                "description": "Validator index"
+              }
+            ]
+          },
+          "docs": "Get validator by state and ID"
+        },
+        {
+          "info": {
+            "name": "Get voluntary exits from the beacon pool",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/voluntary_exits"
+          },
+          "docs": "Get voluntary exits from the beacon pool"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

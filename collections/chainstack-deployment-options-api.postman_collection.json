@@ -1,0 +1,248 @@
+{
+  "item": [
+    {
+      "id": "8b8ed167-b0de-47b6-a0b3-063a1dbd662d",
+      "name": "Deployment Options",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e81c6df-9905-4cf2-9125-fc179a4495ea",
+          "name": "List deployment options",
+          "request": {
+            "name": "List deployment options",
+            "description": {
+              "content": "List all available deployment options for your organization.\nReturns the deployable nodes matrix filtered to shared node types on global clouds.\nEach option includes the blockchain ID, cloud ID, protocol, network, and available features.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "deployment-options",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "7f4eb507-dbdb-49a4-9f3c-a3d51ed02768",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "deployment-options",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"options\": [\n    {\n      \"blockchain\": \"BC-000-000-008\",\n      \"cloud\": \"CC-0016\",\n      \"region\": \"us-east-1\",\n      \"provider\": \"aws\",\n      \"protocol\": \"ethereum\",\n      \"network\": \"ethereum-mainnet\",\n      \"features\": [\n        \"full\"\n      ]\n    },\n    {\n      \"blockchain\": \"BC-000-000-017\",\n      \"cloud\": \"CC-0016\",\n      \"region\": \"us-east-1\",\n      \"provider\": \"aws\",\n      \"protocol\": \"ethereum\",\n      \"network\": \"ethereum-sepolia-testnet\",\n      \"features\": [\n        \"full\"\n      ]\n    },\n    {\n      \"blockchain\": \"BC-000-000-015\",\n      \"cloud\": \"CC-0016\",\n      \"region\": \"us-east-1\",\n      \"provider\": \"aws\",\n      \"protocol\": \"solana\",\n      \"network\": \"solana-mainnet\",\n      \"features\": [\n        \"full\"\n      ]\n    },\n    {\n      \"blockchain\": \"BC-000-000-006\",\n      \"cloud\": \"CC-0016\",\n      \"region\": \"us-east-1\",\n      \"provider\": \"aws\",\n      \"protocol\": \"bsc\",\n      \"network\": \"bsc-mainnet\",\n      \"features\": [\n        \"full\"\n      ]\n    },\n    {\n      \"blockchain\": \"BC-000-000-010\",\n      \"cloud\": \"CC-0016\",\n      \"region\": \"us-east-1\",\n      \"provider\": \"aws\",\n      \"protocol\": \"polygon-pos\",\n      \"network\": \"polygon-pos-mainnet\",\n      \"features\": [\n        \"full\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0be6d5d-92bd-47ef-b2a8-7802c66cfc76",
+              "name": "Authentication credentials were missing or incorrect.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "deployment-options",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c64a786f-f933-4e60-bc73-335f6a2837d8",
+              "name": "The request is not allowed with the current permissions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "deployment-options",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1ab103c1-e767-457c-84fd-54b234fef679",
+    "name": "Chainstack Arbitrum Node Account Info Deployment Options API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}

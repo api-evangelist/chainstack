@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Accounts Info API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_getBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getBalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getBalance"
+        },
+        {
+          "info": {
+            "name": "eth_getCode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getCode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getCode"
+        },
+        {
+          "info": {
+            "name": "eth_getStorageAt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getStorageAt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getStorageAt"
+        },
+        {
+          "info": {
+            "name": "eth_getTransactionCount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getTransactionCount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getTransactionCount"
+        },
+        {
+          "info": {
+            "name": "eth_getProof",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getProof",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getProof"
+        },
+        {
+          "info": {
+            "name": "eth_getAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getAccount",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getAccount"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

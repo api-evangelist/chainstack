@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Execute Transactions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Execute Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Eth_Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_call",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Eth_Call"
+        },
+        {
+          "info": {
+            "name": "eth_sendRawTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_sendRawTransaction",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_sendRawTransaction"
+        },
+        {
+          "info": {
+            "name": "eth_sendRawTransactionSync",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_sendRawTransactionSync",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_sendRawTransactionSync"
+        },
+        {
+          "info": {
+            "name": "eth_simulateV1",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_simulateV1",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_simulateV1"
+        },
+        {
+          "info": {
+            "name": "eth_createAccessList",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_createAccessList",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_createAccessList"
+        },
+        {
+          "info": {
+            "name": "eth_estimateGas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_estimateGas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_estimateGas"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

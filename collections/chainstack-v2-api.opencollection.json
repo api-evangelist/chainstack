@@ -1,0 +1,655 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info V2 API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "V2",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "detectAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/detectAddress",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to detect"
+              }
+            ]
+          },
+          "docs": "detectAddress"
+        },
+        {
+          "info": {
+            "name": "estimateFee",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/estimateFee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "estimateFee"
+        },
+        {
+          "info": {
+            "name": "getAddressBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAddressBalance",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get the balance for"
+              }
+            ]
+          },
+          "docs": "getAddressBalance"
+        },
+        {
+          "info": {
+            "name": "getAddressInformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAddressInformation",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get information for"
+              }
+            ]
+          },
+          "docs": "getAddressInformation"
+        },
+        {
+          "info": {
+            "name": "getAddressState",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getAddressState",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get the state for"
+              }
+            ]
+          },
+          "docs": "getAddressState"
+        },
+        {
+          "info": {
+            "name": "getBlockHeader",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockHeader",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              }
+            ]
+          },
+          "docs": "getBlockHeader"
+        },
+        {
+          "info": {
+            "name": "getBlockTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockTransactions",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              },
+              {
+                "name": "count",
+                "value": "40",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              }
+            ]
+          },
+          "docs": "getBlockTransactions"
+        },
+        {
+          "info": {
+            "name": "getBlockTransactionsExt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getBlockTransactionsExt",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              },
+              {
+                "name": "count",
+                "value": "40",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              }
+            ]
+          },
+          "docs": "getBlockTransactionsExt"
+        },
+        {
+          "info": {
+            "name": "getConfigParam",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getConfigParam",
+            "params": [
+              {
+                "name": "config_id",
+                "value": "5",
+                "type": "query",
+                "description": "The ID of the configuration parameter to retrieve"
+              }
+            ]
+          },
+          "docs": "getConfigParam"
+        },
+        {
+          "info": {
+            "name": "getConsensusBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getConsensusBlock"
+          },
+          "docs": "getConsensusBlock"
+        },
+        {
+          "info": {
+            "name": "getExtendedAddressInformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getExtendedAddressInformation",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get extended information for"
+              }
+            ]
+          },
+          "docs": "getExtendedAddressInformation"
+        },
+        {
+          "info": {
+            "name": "getMasterchainBlockSignatures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMasterchainBlockSignatures",
+            "params": [
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the masterchain block"
+              }
+            ]
+          },
+          "docs": "getMasterchainBlockSignatures"
+        },
+        {
+          "info": {
+            "name": "getMasterchainInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getMasterchainInfo"
+          },
+          "docs": "getMasterchainInfo"
+        },
+        {
+          "info": {
+            "name": "getShardBlockProof",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getShardBlockProof",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              }
+            ]
+          },
+          "docs": "getShardBlockProof"
+        },
+        {
+          "info": {
+            "name": "getTokenData",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTokenData",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
+                "type": "query",
+                "description": "The address of the token contract"
+              }
+            ]
+          },
+          "docs": "getTokenData"
+        },
+        {
+          "info": {
+            "name": "getTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getTransactions",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get transactions for"
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "The maximum number of transactions to return"
+              },
+              {
+                "name": "to_lt",
+                "value": "0",
+                "type": "query",
+                "description": "The logical time to start the search from (0 means from the latest)"
+              },
+              {
+                "name": "archival",
+                "value": "false",
+                "type": "query",
+                "description": "Whether to use archival node for the query"
+              }
+            ]
+          },
+          "docs": "getTransactions"
+        },
+        {
+          "info": {
+            "name": "getWalletInformation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getWalletInformation",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The address to get wallet information for"
+              }
+            ]
+          },
+          "docs": "getWalletInformation"
+        },
+        {
+          "info": {
+            "name": "Jsonrpc Handler",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/jsonRPC",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "All methods in the API are available through JSON-RPC protocol ([spec](https://www.jsonrpc.org/specification))."
+        },
+        {
+          "info": {
+            "name": "lookupBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/lookupBlock",
+            "params": [
+              {
+                "name": "workchain",
+                "value": "-1",
+                "type": "query",
+                "description": "The workchain ID"
+              },
+              {
+                "name": "shard",
+                "value": "-9223372036854775808",
+                "type": "query",
+                "description": "The shard ID"
+              },
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the block"
+              }
+            ]
+          },
+          "docs": "lookupBlock"
+        },
+        {
+          "info": {
+            "name": "packAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/packAddress",
+            "params": [
+              {
+                "name": "address",
+                "value": "0:ed1691307050047117b998b561d8de82d31fbf84910ced6eb5fc92e7485ef8a7",
+                "type": "query",
+                "description": "The raw address to pack"
+              }
+            ]
+          },
+          "docs": "packAddress"
+        },
+        {
+          "info": {
+            "name": "runGetMethod",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/runGetMethod",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "runGetMethod"
+        },
+        {
+          "info": {
+            "name": "sendBoc",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/sendBoc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "sendBoc"
+        },
+        {
+          "info": {
+            "name": "sendBocReturnHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/sendBocReturnHash",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "sendBocReturnHash"
+        },
+        {
+          "info": {
+            "name": "sendQuery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/sendQuery",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "sendQuery"
+        },
+        {
+          "info": {
+            "name": "Shards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/shards",
+            "params": [
+              {
+                "name": "seqno",
+                "value": "39064874",
+                "type": "query",
+                "description": "The sequence number of the masterchain block"
+              }
+            ]
+          },
+          "docs": "Shards"
+        },
+        {
+          "info": {
+            "name": "tryLocateResultTx",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/tryLocateResultTx",
+            "params": [
+              {
+                "name": "source",
+                "value": "UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1",
+                "type": "query",
+                "description": "The source address of the original transaction"
+              },
+              {
+                "name": "destination",
+                "value": "UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA",
+                "type": "query",
+                "description": "The destination address of the original transaction"
+              },
+              {
+                "name": "created_lt",
+                "value": "47597573000002",
+                "type": "query",
+                "description": "The logical time when the original transaction was created"
+              }
+            ]
+          },
+          "docs": "tryLocateResultTx"
+        },
+        {
+          "info": {
+            "name": "tryLocateSourceTx",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/tryLocateSourceTx",
+            "params": [
+              {
+                "name": "source",
+                "value": "UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1",
+                "type": "query",
+                "description": "The source address of the result transaction"
+              },
+              {
+                "name": "destination",
+                "value": "UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA",
+                "type": "query",
+                "description": "The destination address of the result transaction"
+              },
+              {
+                "name": "created_lt",
+                "value": "47597573000002",
+                "type": "query",
+                "description": "The logical time when the result transaction was created"
+              }
+            ]
+          },
+          "docs": "tryLocateSourceTx"
+        },
+        {
+          "info": {
+            "name": "tryLocateTx",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/tryLocateTx",
+            "params": [
+              {
+                "name": "source",
+                "value": "UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1",
+                "type": "query",
+                "description": "The source address of the transaction"
+              },
+              {
+                "name": "destination",
+                "value": "UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA",
+                "type": "query",
+                "description": "The destination address of the transaction"
+              },
+              {
+                "name": "created_lt",
+                "value": "47597573000002",
+                "type": "query",
+                "description": "The logical time when the transaction was created"
+              }
+            ]
+          },
+          "docs": "tryLocateTx"
+        },
+        {
+          "info": {
+            "name": "unpackAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/unpackAddress",
+            "params": [
+              {
+                "name": "address",
+                "value": "EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2",
+                "type": "query",
+                "description": "The user-friendly address to unpack"
+              }
+            ]
+          },
+          "docs": "unpackAddress"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

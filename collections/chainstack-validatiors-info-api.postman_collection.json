@@ -1,0 +1,2546 @@
+{
+  "item": [
+    {
+      "id": "daa3d46e-2991-48dc-980a-aa5c90f94183",
+      "name": "Validatiors Info",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2aca10f1-ea2a-49e7-8e90-f92367cac29a",
+          "name": "Get attestation data",
+          "request": {
+            "name": "Get attestation data",
+            "description": {},
+            "url": {
+              "path": [
+                "attestation_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "slot",
+                  "value": "6244411",
+                  "description": "(Required) Slot for which to retrieve attestation data"
+                },
+                {
+                  "disabled": false,
+                  "key": "committee_index",
+                  "value": "5",
+                  "description": "(Required) Committee index for which to retrieve attestation data"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eec254d6-064d-4410-8d2c-c1b257bb7e21",
+              "name": "Attestation data successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attestation_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "slot",
+                      "value": "6244411"
+                    },
+                    {
+                      "key": "committee_index",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"slot\": 816,\n  \"index\": 3618,\n  \"beacon_block_root\": \"string\",\n  \"source\": {\n    \"epoch\": 3646,\n    \"root\": \"string\"\n  },\n  \"target\": {\n    \"epoch\": 8308,\n    \"root\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25912edf-3de1-460e-b474-dec08ecbbc3b",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attestation_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "slot",
+                      "value": "6244411"
+                    },
+                    {
+                      "key": "committee_index",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a2399b9-1ff7-4520-b2fa-8dae07a6ed7b",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attestation_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "slot",
+                      "value": "6244411"
+                    },
+                    {
+                      "key": "committee_index",
+                      "value": "5"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f5b6233-5638-4dfb-a69e-99310e9502ec",
+          "name": "Get attestations of the beacon block by block_id",
+          "request": {
+            "name": "Get attestations of the beacon block by block_id",
+            "description": {},
+            "url": {
+              "path": [
+                "attestation_of_beacon_block_by_block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "head",
+                  "key": "block_id",
+                  "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42dba2b8-f2c5-4d4b-afa0-584e2b3cc0fe",
+              "name": "Beacon block attestations successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attestation_of_beacon_block_by_block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "block_id",
+                      "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"aggregation_bits\": \"string\",\n    \"data\": {\n      \"slot\": 9918,\n      \"index\": 3753,\n      \"beacon_block_root\": \"string\",\n      \"source\": {\n        \"epoch\": 1685,\n        \"root\": \"string\"\n      },\n      \"target\": {\n        \"epoch\": 5626,\n        \"root\": \"string\"\n      }\n    },\n    \"signature\": \"string\"\n  },\n  {\n    \"aggregation_bits\": \"string\",\n    \"data\": {\n      \"slot\": 9141,\n      \"index\": 6597,\n      \"beacon_block_root\": \"string\",\n      \"source\": {\n        \"epoch\": 6858,\n        \"root\": \"string\"\n      },\n      \"target\": {\n        \"epoch\": 4777,\n        \"root\": \"string\"\n      }\n    },\n    \"signature\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "460fd908-56c1-4540-b5cb-fe7b7e84f7d6",
+              "name": "Beacon block attestations not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attestation_of_beacon_block_by_block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "block_id",
+                      "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10329aff-1c2b-4cc4-80f7-4d33a91782f7",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attestation_of_beacon_block_by_block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "block_id",
+                      "description": "(Required) Block identifier, e.g., 'head', 'genesis', 'finalized', or a specific block root."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90e2a696-20ae-4edb-baa9-0c34c40631ef",
+          "name": "Get attester slashings",
+          "request": {
+            "name": "Get attester slashings",
+            "description": {},
+            "url": {
+              "path": [
+                "attester_slashings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee72110e-31da-4ca1-bcf0-9f2470514077",
+              "name": "Beacon pool attester slashings successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attester_slashings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"attestation_1\": {\n      \"attesting_indices\": [\n        5967,\n        1655\n      ],\n      \"data\": {\n        \"slot\": 6731,\n        \"index\": 4267,\n        \"beacon_block_root\": \"string\",\n        \"source\": {\n          \"epoch\": 545,\n          \"root\": \"string\"\n        },\n        \"target\": {\n          \"epoch\": 2432,\n          \"root\": \"string\"\n        }\n      },\n      \"signature\": \"string\"\n    },\n    \"attestation_2\": {\n      \"attesting_indices\": [\n        6632,\n        2291\n      ],\n      \"data\": {\n        \"slot\": 8962,\n        \"index\": 2739,\n        \"beacon_block_root\": \"string\",\n        \"source\": {\n          \"epoch\": 8599,\n          \"root\": \"string\"\n        },\n        \"target\": {\n          \"epoch\": 2749,\n          \"root\": \"string\"\n        }\n      },\n      \"signature\": \"string\"\n    }\n  },\n  {\n    \"attestation_1\": {\n      \"attesting_indices\": [\n        5685,\n        2303\n      ],\n      \"data\": {\n        \"slot\": 3404,\n        \"index\": 7781,\n        \"beacon_block_root\": \"string\",\n        \"source\": {\n          \"epoch\": 6839,\n          \"root\": \"string\"\n        },\n        \"target\": {\n          \"epoch\": 3394,\n          \"root\": \"string\"\n        }\n      },\n      \"signature\": \"string\"\n    },\n    \"attestation_2\": {\n      \"attesting_indices\": [\n        317,\n        8059\n      ],\n      \"data\": {\n        \"slot\": 8062,\n        \"index\": 867,\n        \"beacon_block_root\": \"string\",\n        \"source\": {\n          \"epoch\": 8394,\n          \"root\": \"string\"\n        },\n        \"target\": {\n          \"epoch\": 2009,\n          \"root\": \"string\"\n        }\n      },\n      \"signature\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "098c6ab8-cfcb-4ada-b7c8-f6d76cd7e484",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attester_slashings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7166ef43-de2b-4888-b8d5-df449aec7c77",
+          "name": "Get attestations from the beacon pool",
+          "request": {
+            "name": "Get attestations from the beacon pool",
+            "description": {},
+            "url": {
+              "path": [
+                "beacon_pool_attestations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "slot",
+                  "value": "6243475",
+                  "description": "The slot number to filter attestations"
+                },
+                {
+                  "disabled": false,
+                  "key": "committee_index",
+                  "value": "10",
+                  "description": "The committee index to filter attestations"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26db984c-f296-48e2-a829-32f402287a49",
+              "name": "Beacon pool attestations successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "beacon_pool_attestations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "slot",
+                      "value": "6243475"
+                    },
+                    {
+                      "key": "committee_index",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"aggregation_bits\": \"string\",\n    \"data\": {\n      \"slot\": 9918,\n      \"index\": 3753,\n      \"beacon_block_root\": \"string\",\n      \"source\": {\n        \"epoch\": 1685,\n        \"root\": \"string\"\n      },\n      \"target\": {\n        \"epoch\": 5626,\n        \"root\": \"string\"\n      }\n    },\n    \"signature\": \"string\"\n  },\n  {\n    \"aggregation_bits\": \"string\",\n    \"data\": {\n      \"slot\": 9141,\n      \"index\": 6597,\n      \"beacon_block_root\": \"string\",\n      \"source\": {\n        \"epoch\": 6858,\n        \"root\": \"string\"\n      },\n      \"target\": {\n        \"epoch\": 4777,\n        \"root\": \"string\"\n      }\n    },\n    \"signature\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5532b89-8cf3-43c8-9bc2-d5a97e8f0c6c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "beacon_pool_attestations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "slot",
+                      "value": "6243475"
+                    },
+                    {
+                      "key": "committee_index",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74e13859-b75f-45ff-844d-a903806516f5",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "beacon_pool_attestations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "slot",
+                      "value": "6243475"
+                    },
+                    {
+                      "key": "committee_index",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80784927-7153-4cf4-8c3e-f76175efca75",
+          "name": "Produce an unsigned blinded block",
+          "request": {
+            "name": "Produce an unsigned blinded block",
+            "description": {},
+            "url": {
+              "path": [
+                "produce_unsigned_blinded_block"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "randao_reveal",
+                  "value": "0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25",
+                  "description": "(Required) RANDAO reveal for the block"
+                },
+                {
+                  "disabled": false,
+                  "key": "graffiti",
+                  "value": "<string>",
+                  "description": "Graffiti for the block"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "6244411",
+                  "key": "slot",
+                  "description": "(Required) Slot for which to produce a new blinded block"
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26fdbce4-1443-4758-a6bb-626c9221cde9",
+              "name": "Successfully produced a new blinded block",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "produce_unsigned_blinded_block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "randao_reveal",
+                      "value": "0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25"
+                    },
+                    {
+                      "key": "graffiti",
+                      "value": "0x5374616b65576973650000000000000000000000000000000000000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "6244411",
+                      "key": "slot",
+                      "description": "(Required) Slot for which to produce a new blinded block"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"slot\": 7465,\n  \"parent_root\": \"string\",\n  \"state_root\": \"string\",\n  \"body\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8523669e-8ce7-43b4-b26d-e8b2132321d6",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "produce_unsigned_blinded_block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "randao_reveal",
+                      "value": "0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25"
+                    },
+                    {
+                      "key": "graffiti",
+                      "value": "0x5374616b65576973650000000000000000000000000000000000000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "6244411",
+                      "key": "slot",
+                      "description": "(Required) Slot for which to produce a new blinded block"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37f670c2-6571-43e0-94c7-f04b17ccfce2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "produce_unsigned_blinded_block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "randao_reveal",
+                      "value": "0x8363f30516d67556dae486c64535e2641293e794ddf21631fe06a32903648e70b606f5461c5f37c13c23f545c1d13e5401ea6a48526e01c9d94ea028e02fec5edc42034fc22b23f3a9dd90621173b2a1141a6ecf409d8bb61c82440e87a5bb25"
+                    },
+                    {
+                      "key": "graffiti",
+                      "value": "0x5374616b65576973650000000000000000000000000000000000000000000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "6244411",
+                      "key": "slot",
+                      "description": "(Required) Slot for which to produce a new blinded block"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a761479-8a04-41e0-bc06-6a3f8a349494",
+          "name": "Produce a new block for the given slot",
+          "request": {
+            "name": "Produce a new block for the given slot",
+            "description": {},
+            "url": {
+              "path": [
+                "produce_unsigned_block"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "randao_reveal",
+                  "value": "0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e",
+                  "description": "(Required) RANDAO reveal for the block"
+                },
+                {
+                  "disabled": false,
+                  "key": "graffiti",
+                  "value": "<string>",
+                  "description": "Graffiti for the block"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "6244478",
+                  "key": "slot",
+                  "description": "(Required) Slot for which to produce a new block"
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b89a1acc-2d8e-433c-9169-b9cbeebc581a",
+              "name": "Successfully produced a new block",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "produce_unsigned_block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "randao_reveal",
+                      "value": "0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e"
+                    },
+                    {
+                      "key": "graffiti",
+                      "value": "0x4c69676874686f7573652f76342e302e322d72632e302d333564386339380000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "6244478",
+                      "key": "slot",
+                      "description": "(Required) Slot for which to produce a new block"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"slot\": 7465,\n  \"parent_root\": \"string\",\n  \"state_root\": \"string\",\n  \"body\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9053f1d-05aa-48ee-8686-c1a69e82e0a1",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "produce_unsigned_block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "randao_reveal",
+                      "value": "0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e"
+                    },
+                    {
+                      "key": "graffiti",
+                      "value": "0x4c69676874686f7573652f76342e302e322d72632e302d333564386339380000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "6244478",
+                      "key": "slot",
+                      "description": "(Required) Slot for which to produce a new block"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "526976f8-2480-4216-a57c-bee875ece1fb",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "produce_unsigned_block"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "randao_reveal",
+                      "value": "0xb73a92a633356ed71c3ff8c6a687d6a7b9a10db930f92f3b41a18e2dfc0c41535c522006ae3db8b1cb6fe7b3a93962f413c127de4eba22cb0b2d0065dc120156012e53038c3e29477342f9fac2b4368c054aa0d18c246c1463da03161f902f8e"
+                    },
+                    {
+                      "key": "graffiti",
+                      "value": "0x4c69676874686f7573652f76342e302e322d72632e302d333564386339380000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "6244478",
+                      "key": "slot",
+                      "description": "(Required) Slot for which to produce a new block"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26e351d9-f884-4f68-9061-3d3f91a456b3",
+          "name": "Get proposer duties",
+          "request": {
+            "name": "Get proposer duties",
+            "description": {},
+            "url": {
+              "path": [
+                "proposer_duties"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "1",
+                  "key": "epoch",
+                  "description": "(Required) Epoch for which to get the proposer duties"
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc5e6d67-c41e-42ca-85db-adc6970888ea",
+              "name": "Successfully retrieved proposer duties",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposer_duties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1",
+                      "key": "epoch",
+                      "description": "(Required) Epoch for which to get the proposer duties"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"pubkey\": \"string\",\n    \"validator_index\": 4686,\n    \"slot\": 8599\n  },\n  {\n    \"pubkey\": \"string\",\n    \"validator_index\": 7649,\n    \"slot\": 191\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7bb6312-bd09-48c1-bc17-9316e249f219",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposer_duties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1",
+                      "key": "epoch",
+                      "description": "(Required) Epoch for which to get the proposer duties"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93783919-ff4b-442d-b1cd-1339cf35ede2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposer_duties"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1",
+                      "key": "epoch",
+                      "description": "(Required) Epoch for which to get the proposer duties"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d0d802f-79d3-4017-8014-8e03458bc735",
+          "name": "Get proposer slashings from the beacon pool",
+          "request": {
+            "name": "Get proposer slashings from the beacon pool",
+            "description": {},
+            "url": {
+              "path": [
+                "proposer_slashings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "567e42d9-740e-40ac-849e-e94d0ada4c0e",
+              "name": "Beacon pool proposer slashings successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposer_slashings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"signed_header_1\": {\n      \"message\": {\n        \"slot\": 9390,\n        \"proposer_index\": 2246,\n        \"parent_root\": \"string\",\n        \"state_root\": \"string\",\n        \"body_root\": \"string\"\n      },\n      \"signature\": \"string\"\n    },\n    \"signed_header_2\": {\n      \"message\": {\n        \"slot\": 9685,\n        \"proposer_index\": 911,\n        \"parent_root\": \"string\",\n        \"state_root\": \"string\",\n        \"body_root\": \"string\"\n      },\n      \"signature\": \"string\"\n    }\n  },\n  {\n    \"signed_header_1\": {\n      \"message\": {\n        \"slot\": 9163,\n        \"proposer_index\": 8375,\n        \"parent_root\": \"string\",\n        \"state_root\": \"string\",\n        \"body_root\": \"string\"\n      },\n      \"signature\": \"string\"\n    },\n    \"signed_header_2\": {\n      \"message\": {\n        \"slot\": 1184,\n        \"proposer_index\": 7354,\n        \"parent_root\": \"string\",\n        \"state_root\": \"string\",\n        \"body_root\": \"string\"\n      },\n      \"signature\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2e03ef6-1ce5-4793-9022-7f0dc800e64a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "proposer_slashings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62ceedd5-0112-4a2f-9c84-c1432721113b",
+          "name": "Get validator balances by state and ID",
+          "request": {
+            "name": "Get validator balances by state and ID",
+            "description": {},
+            "url": {
+              "path": [
+                "validator_balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "1",
+                  "description": "(Required) Validator ID"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "head",
+                  "key": "state_id",
+                  "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe80fb75-d883-4a9e-80a8-a82b0db0cae7",
+              "name": "Validator balances successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validator_balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"index\": \"string\",\n      \"balance\": \"string\"\n    },\n    {\n      \"index\": \"string\",\n      \"balance\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2431aa3-b1a8-4b07-b6de-43b27c077b18",
+              "name": "Validator balances not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validator_balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96e63c96-b875-4462-a791-686ee408d1c7",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validator_balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3114a3b5-71cb-43fc-b88b-945ca64ef4f9",
+          "name": "Get information about a specific validator in a given state",
+          "request": {
+            "name": "Get information about a specific validator in a given state",
+            "description": {},
+            "url": {
+              "path": [
+                "validator_information_by_state_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "head",
+                  "key": "state_id",
+                  "description": "(Required) State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "1",
+                  "key": "validator_index",
+                  "description": "(Required) Index of the validator (default is '1')."
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c60e7d28-b1f8-481f-81ed-447fa04bf86a",
+              "name": "Successful response with validator information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validator_information_by_state_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1",
+                      "key": "validator_index",
+                      "description": "(Required) Index of the validator (default is '1')."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"index\": 93,\n  \"balance\": 5131,\n  \"status\": \"string\",\n  \"validator\": {\n    \"public_key\": \"string\",\n    \"effective_balance\": 6652,\n    \"slashed\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "923d967f-9a32-453a-b8d5-ee2d68e5f891",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validator_information_by_state_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier which can be a slot number, an epoch number, a block root, or 'genesis', 'head'  (default is 'head')."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1",
+                      "key": "validator_index",
+                      "description": "(Required) Index of the validator (default is '1')."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "788c0b34-4237-4e3f-896c-acccf96df298",
+          "name": "Get validator by state and ID",
+          "request": {
+            "name": "Get validator by state and ID",
+            "description": {},
+            "url": {
+              "path": [
+                "validator_information_by_state_id_or_public_key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "head",
+                  "key": "state_id",
+                  "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "1",
+                  "key": "index",
+                  "description": "(Required) Validator index"
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85e7568b-ac4e-4ed1-aa1f-7a1b2cbe68d9",
+              "name": "Validator successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validator_information_by_state_id_or_public_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1",
+                      "key": "index",
+                      "description": "(Required) Validator index"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {},\n  \"index\": \"string\",\n  \"validator\": 7852.96984890225\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0e610a8-a5be-4e0b-b6b5-43cb282bcfdb",
+              "name": "Validator not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validator_information_by_state_id_or_public_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1",
+                      "key": "index",
+                      "description": "(Required) Validator index"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40ee7ee0-483e-417c-8b58-e534152cf65f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validator_information_by_state_id_or_public_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier, e.g., 'head', 'finalized', 'genesis', or a specific slot number."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "1",
+                      "key": "index",
+                      "description": "(Required) Validator index"
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75f63a9b-90eb-4571-909c-97bcc082a63f",
+          "name": "Get voluntary exits from the beacon pool",
+          "request": {
+            "name": "Get voluntary exits from the beacon pool",
+            "description": {},
+            "url": {
+              "path": [
+                "voluntary_exits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2e69e38-83df-4ab3-8667-7b7f1d03c7d9",
+              "name": "Beacon pool voluntary exits successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voluntary_exits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"message\": {\n      \"epoch\": 4600,\n      \"validator_index\": 8108\n    },\n    \"signature\": \"string\"\n  },\n  {\n    \"message\": {\n      \"epoch\": 8652,\n      \"validator_index\": 2927\n    },\n    \"signature\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2854f016-7972-4086-8472-f1b4dd3db064",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voluntary_exits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7879,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ae09570-65ec-4b0d-b425-2c7c75d784dd",
+    "name": "Chainstack Arbitrum Node Account Info Validatiors Info API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Zkevm Methods API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Zkevm Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "zkevm_batchNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zkevm_batchNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zkevm_batchNumber"
+        },
+        {
+          "info": {
+            "name": "zkevm_batchNumberByBlockNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zkevm_batchNumberByBlockNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zkevm_batchNumberByBlockNumber"
+        },
+        {
+          "info": {
+            "name": "zkevm_consolidatedBlockNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zkevm_consolidatedBlockNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zkevm_consolidatedBlockNumber"
+        },
+        {
+          "info": {
+            "name": "zkevm_getBatchByNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zkevm_getBatchByNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zkevm_getBatchByNumber"
+        },
+        {
+          "info": {
+            "name": "zkevm_isBlockConsolidated",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zkevm_isBlockConsolidated",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zkevm_isBlockConsolidated"
+        },
+        {
+          "info": {
+            "name": "zkevm_isBlockVirtualized",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zkevm_isBlockVirtualized",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zkevm_isBlockVirtualized"
+        },
+        {
+          "info": {
+            "name": "zkevm_verifiedBatchNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zkevm_verifiedBatchNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zkevm_verifiedBatchNumber"
+        },
+        {
+          "info": {
+            "name": "zkevm_virtualBatchNumber",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/zkevm_virtualBatchNumber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "zkevm_virtualBatchNumber"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

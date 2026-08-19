@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Filter Handling API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Filter Handling",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "eth_getFilterChanges",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_getFilterChanges",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_getFilterChanges"
+        },
+        {
+          "info": {
+            "name": "eth_uninstallFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_uninstallFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_uninstallFilter"
+        },
+        {
+          "info": {
+            "name": "eth_newBlockFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_newBlockFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newBlockFilter"
+        },
+        {
+          "info": {
+            "name": "eth_newFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_newFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newFilter"
+        },
+        {
+          "info": {
+            "name": "eth_newPendingTransactionFilter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{node_id}.p2pify.com/{api_key}/eth_newPendingTransactionFilter",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "eth_newPendingTransactionFilter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

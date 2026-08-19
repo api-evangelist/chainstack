@@ -1,0 +1,4165 @@
+{
+  "item": [
+    {
+      "id": "b7e37030-43c8-41a8-a374-1aa4c97d3742",
+      "name": "V3",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5755fbe3-168c-48bc-b74e-bbf195f8326e",
+          "name": "Get Account Information",
+          "request": {
+            "name": "Get Account Information",
+            "description": {
+              "content": "Retrieves information about a specific account on the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getAccountInfo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "Ef-1JetbPF9ubc1ga-57oHoOyDA1IShJt-BVlJnA9rrVTfrB",
+                  "description": "(Required) The address of the account to retrieve information for"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c715704f-6435-4d04-a0b7-e2b2d6741f5a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getAccountInfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "Ef-1JetbPF9ubc1ga-57oHoOyDA1IShJt-BVlJnA9rrVTfrB"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"string\",\n  \"balance\": \"string\",\n  \"last_activity\": 9211,\n  \"status\": \"string\",\n  \"code_hash\": \"string\",\n  \"data_hash\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7406490-78b4-49e6-8750-2da87db0aee6",
+          "name": "Get Account States",
+          "request": {
+            "name": "Get Account States",
+            "description": {
+              "content": "Query account states with historical data",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getAccountStates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account_address",
+                  "value": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
+                  "description": "Account address to query"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_boc",
+                  "value": "false",
+                  "description": "Include account state BoC in response"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of states to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of states to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4c86590-5032-4623-84ea-7c43c6207379",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getAccountStates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account_address",
+                      "value": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs"
+                    },
+                    {
+                      "key": "include_boc",
+                      "value": "false"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"account_states\": [\n    {\n      \"account\": \"string\",\n      \"hash\": \"string\",\n      \"balance\": \"string\",\n      \"account_status\": \"string\",\n      \"last_trans_lt\": 1861,\n      \"last_trans_hash\": \"string\",\n      \"frozen_hash\": \"string\",\n      \"code_hash\": \"string\",\n      \"data_hash\": \"string\",\n      \"code_boc\": \"string\",\n      \"data_boc\": \"string\"\n    },\n    {\n      \"account\": \"string\",\n      \"hash\": \"string\",\n      \"balance\": \"string\",\n      \"account_status\": \"string\",\n      \"last_trans_lt\": 9995,\n      \"last_trans_hash\": \"string\",\n      \"frozen_hash\": \"string\",\n      \"code_hash\": \"string\",\n      \"data_hash\": \"string\",\n      \"code_boc\": \"string\",\n      \"data_boc\": \"string\"\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16bfd2f6-3b98-4f82-9182-49586aa8fa75",
+          "name": "Get Actions",
+          "request": {
+            "name": "Get Actions",
+            "description": {
+              "content": "Retrieves decoded actions from transactions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getActions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "action_id",
+                  "value": "<string>",
+                  "description": "Action ID to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "trace_id",
+                  "value": "<string>",
+                  "description": "Trace ID to get actions for"
+                },
+                {
+                  "disabled": false,
+                  "key": "tx_hash",
+                  "value": "BhLJTdV2R6Vr5c3BAOjH8nFpnMYOuPcJvRlagGSKU88=",
+                  "description": "Transaction hash to get actions for"
+                },
+                {
+                  "disabled": false,
+                  "key": "tx_lt",
+                  "value": "<integer>",
+                  "description": "Transaction logical time"
+                },
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "Filter by account address"
+                },
+                {
+                  "disabled": false,
+                  "key": "action_type",
+                  "value": "<string>",
+                  "description": "Filter by action type (e.g., JettonTransfer, NftItemTransfer)"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_utime",
+                  "value": "<integer>",
+                  "description": "Start of the time range (unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_utime",
+                  "value": "<integer>",
+                  "description": "End of the time range (unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of actions to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of actions to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dbd2e89e-828c-44b3-80b6-b1c771da8d79",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getActions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "action_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trace_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tx_hash",
+                      "value": "BhLJTdV2R6Vr5c3BAOjH8nFpnMYOuPcJvRlagGSKU88="
+                    },
+                    {
+                      "key": "tx_lt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "action_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_utime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end_utime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": [\n    {\n      \"action_id\": \"string\",\n      \"trace_id\": \"string\",\n      \"tx_hash\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"string\",\n      \"value\": {},\n      \"start_lt\": 6565,\n      \"start_utime\": 7887,\n      \"end_lt\": 9049,\n      \"end_utime\": 1502\n    },\n    {\n      \"action_id\": \"string\",\n      \"trace_id\": \"string\",\n      \"tx_hash\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"string\",\n      \"value\": {},\n      \"start_lt\": 2760,\n      \"start_utime\": 7145,\n      \"end_lt\": 7379,\n      \"end_utime\": 2866\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "743097e6-7425-44bd-ab5a-ad03dcff6dd0",
+          "name": "Get Address Book Information",
+          "request": {
+            "name": "Get Address Book Information",
+            "description": {
+              "content": "Retrieves information about an address from the address book",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getAddressBookInfo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "0:ed1691307050047117b998b561d8de82d31fbf84910ced6eb5fc92e7485ef8a7",
+                  "description": "(Required) The address to look up in the address book"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f829372-c4d3-4e23-af6b-3fff29ff15e2",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getAddressBookInfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "0:ed1691307050047117b998b561d8de82d31fbf84910ced6eb5fc92e7485ef8a7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"icon\": \"string\",\n  \"website\": \"string\",\n  \"address\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b864214f-a4ee-44e0-ba4c-49d8a7ecbc98",
+          "name": "Get Adjacent Transactions",
+          "request": {
+            "name": "Get Adjacent Transactions",
+            "description": {
+              "content": "Retrieves a list of transactions adjacent to a specific transaction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getAdjacentTransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "hash",
+                  "value": "a9d39a7f1e5f849835496b052885ed2ac07d54d5e0e11f2b17c3b00e3295a2b0",
+                  "description": "(Required) The hash of the reference transaction"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "both",
+                  "description": "(Required) The direction of adjacent transactions to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of transactions to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of transactions to skip before starting to return results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "The sorting order of the transactions"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80c8cb56-0609-4de9-aeb5-e3cf6c0bbd24",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getAdjacentTransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "hash",
+                      "value": "a9d39a7f1e5f849835496b052885ed2ac07d54d5e0e11f2b17c3b00e3295a2b0"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "both"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactions\": [\n    {\n      \"hash\": \"string\",\n      \"lt\": \"string\",\n      \"account\": \"string\",\n      \"now\": 4260,\n      \"origStatus\": \"string\",\n      \"endStatus\": \"string\",\n      \"totalFees\": \"string\"\n    },\n    {\n      \"hash\": \"string\",\n      \"lt\": \"string\",\n      \"account\": \"string\",\n      \"now\": 8164,\n      \"origStatus\": \"string\",\n      \"endStatus\": \"string\",\n      \"totalFees\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73380759-9774-44ac-9a79-5c4db1b79854",
+          "name": "Get Blocks",
+          "request": {
+            "name": "Get Blocks",
+            "description": {
+              "content": "Retrieves a list of blocks from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getBlocks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of blocks to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of blocks to skip before starting to return results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "The sorting order of the blocks"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4688741-ca4a-4a07-864b-dd9aae5c8886",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getBlocks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"blocks\": [\n    {\n      \"seqno\": 2299,\n      \"shard\": \"string\",\n      \"workchain\": 7289,\n      \"fileHash\": \"string\",\n      \"rootHash\": \"string\",\n      \"timestamp\": 2570\n    },\n    {\n      \"seqno\": 2318,\n      \"shard\": \"string\",\n      \"workchain\": 9421,\n      \"fileHash\": \"string\",\n      \"rootHash\": \"string\",\n      \"timestamp\": 5570\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d689a7ba-4c0f-4fef-8020-55dd23a771ff",
+          "name": "Get Events",
+          "request": {
+            "name": "Get Events",
+            "description": {
+              "content": "Query blockchain events with decoded actions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getEvents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "Filter by account address"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_utime",
+                  "value": "<integer>",
+                  "description": "Start of time range (unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_utime",
+                  "value": "<integer>",
+                  "description": "End of time range (unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of events to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of events to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee54967b-6b38-411f-96cb-4aaea58e551c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getEvents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_utime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "end_utime",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"trace_id\": \"string\",\n      \"external_hash\": \"string\",\n      \"mc_seqno_start\": \"string\",\n      \"mc_seqno_end\": \"string\",\n      \"start_lt\": \"string\",\n      \"start_utime\": 2546,\n      \"end_lt\": \"string\",\n      \"end_utime\": 8066,\n      \"trace_info\": {},\n      \"is_incomplete\": false\n    },\n    {\n      \"trace_id\": \"string\",\n      \"external_hash\": \"string\",\n      \"mc_seqno_start\": \"string\",\n      \"mc_seqno_end\": \"string\",\n      \"start_lt\": \"string\",\n      \"start_utime\": 9669,\n      \"end_lt\": \"string\",\n      \"end_utime\": 4426,\n      \"trace_info\": {},\n      \"is_incomplete\": true\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e979945-255d-47a9-b5cc-dd28fd605d0b",
+          "name": "Get Jetton Burns",
+          "request": {
+            "name": "Get Jetton Burns",
+            "description": {
+              "content": "Retrieves a list of Jetton burn events for a specific Jetton address from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getJettonBurns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS",
+                  "description": "(Required) The address of the Jetton master contract"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of burn events to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of burn events to skip before starting to return results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "The sorting order of the burn events"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ee0db52-84ff-4792-9673-ff7c1c18ee3f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getJettonBurns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "EQCvxJy4eG8hyHBFsZ7eePxrRsUQSFE_jpptRAYBmcG_DOGS"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"burns\": [\n    {\n      \"jetton\": {\n        \"address\": \"string\",\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"burner\": {\n        \"address\": \"string\"\n      },\n      \"transaction\": {\n        \"hash\": \"string\",\n        \"time\": 2508\n      },\n      \"amount\": \"string\",\n      \"comment\": \"string\"\n    },\n    {\n      \"jetton\": {\n        \"address\": \"string\",\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"burner\": {\n        \"address\": \"string\"\n      },\n      \"transaction\": {\n        \"hash\": \"string\",\n        \"time\": 9840\n      },\n      \"amount\": \"string\",\n      \"comment\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47058f6d-e472-41cf-9706-342fc39c0a12",
+          "name": "Get Jetton Masters",
+          "request": {
+            "name": "Get Jetton Masters",
+            "description": {
+              "content": "Retrieves a list of Jetton master contracts from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getJettonMasters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of Jetton masters to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of Jetton masters to skip before starting to return results"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b50ebe6-6630-464a-90ca-011ddde06277",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getJettonMasters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"masters\": [\n    {\n      \"address\": \"string\",\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"decimals\": 7251,\n      \"totalSupply\": \"string\",\n      \"mintable\": true,\n      \"admin\": \"string\",\n      \"metadata\": {},\n      \"contentUri\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"name\": \"string\",\n      \"symbol\": \"string\",\n      \"decimals\": 578,\n      \"totalSupply\": \"string\",\n      \"mintable\": false,\n      \"admin\": \"string\",\n      \"metadata\": {},\n      \"contentUri\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b43191d1-6e3f-4011-b03c-f3dcad14ef7e",
+          "name": "Get Jetton Transfers",
+          "request": {
+            "name": "Get Jetton Transfers",
+            "description": {
+              "content": "Retrieves a list of Jetton transfers from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getJettonTransfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "both",
+                  "description": "(Required) The direction of transfers to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of transfers to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of transfers to skip before starting to return results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "The sorting order of the transfers"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1afdfe38-f945-45e7-af26-b410c4046026",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getJettonTransfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "both"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transfers\": [\n    {\n      \"jetton\": {\n        \"address\": \"string\",\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"from\": {\n        \"address\": \"string\"\n      },\n      \"to\": {\n        \"address\": \"string\"\n      },\n      \"transaction\": {\n        \"hash\": \"string\",\n        \"time\": 7687\n      },\n      \"amount\": \"string\",\n      \"comment\": \"string\"\n    },\n    {\n      \"jetton\": {\n        \"address\": \"string\",\n        \"name\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"from\": {\n        \"address\": \"string\"\n      },\n      \"to\": {\n        \"address\": \"string\"\n      },\n      \"transaction\": {\n        \"hash\": \"string\",\n        \"time\": 3848\n      },\n      \"amount\": \"string\",\n      \"comment\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91f9f843-436b-4018-b279-dfa997c0c611",
+          "name": "Get Jetton Wallets",
+          "request": {
+            "name": "Get Jetton Wallets",
+            "description": {
+              "content": "Retrieves a list of Jetton wallets from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getJettonWallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of Jetton wallets to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of Jetton wallets to skip before starting to return results"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46cae609-93ee-4ec4-bc98-80dc1a4d3a2d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getJettonWallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wallets\": [\n    {\n      \"address\": \"string\",\n      \"balance\": \"string\",\n      \"owner\": \"string\",\n      \"jetton\": {\n        \"address\": \"string\",\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 6336\n      }\n    },\n    {\n      \"address\": \"string\",\n      \"balance\": \"string\",\n      \"owner\": \"string\",\n      \"jetton\": {\n        \"address\": \"string\",\n        \"name\": \"string\",\n        \"symbol\": \"string\",\n        \"decimals\": 2071\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d22fa8bd-ed3a-4aa0-adfd-d89f96b59c07",
+          "name": "Get Masterchain Block Shard State",
+          "request": {
+            "name": "Get Masterchain Block Shard State",
+            "description": {
+              "content": "Retrieves the shard state of a specific masterchain block",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getMasterchainBlockShardState"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "seqno",
+                  "value": "40467413",
+                  "description": "(Required) The sequence number of the masterchain block"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e89ae719-792c-44de-b1f7-192c5a1223a9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getMasterchainBlockShardState"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seqno",
+                      "value": "40467413"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shards\": [\n    {\n      \"workchain\": 7264,\n      \"shard\": \"string\",\n      \"seqno\": 5242,\n      \"root_hash\": \"string\",\n      \"file_hash\": \"string\"\n    },\n    {\n      \"workchain\": 1411,\n      \"shard\": \"string\",\n      \"seqno\": 6964,\n      \"root_hash\": \"string\",\n      \"file_hash\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "146b3bfc-7635-4169-bca1-9c0eadd36748",
+          "name": "Get Masterchain Block Shards",
+          "request": {
+            "name": "Get Masterchain Block Shards",
+            "description": {
+              "content": "Retrieves the shards of a specific masterchain block",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getMasterchainBlockShards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "seqno",
+                  "value": "40467413",
+                  "description": "(Required) The sequence number of the masterchain block"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "889e58eb-5b6e-47af-aea0-bc35a90aa4e0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getMasterchainBlockShards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seqno",
+                      "value": "40467413"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"shards\": [\n    {\n      \"workchain\": 5785,\n      \"shard\": \"string\",\n      \"seqno\": 882,\n      \"rootHash\": \"string\",\n      \"fileHash\": \"string\"\n    },\n    {\n      \"workchain\": 6766,\n      \"shard\": \"string\",\n      \"seqno\": 8262,\n      \"rootHash\": \"string\",\n      \"fileHash\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "203e34a8-b77f-494a-8774-2b8beadfce18",
+          "name": "Get Messages",
+          "request": {
+            "name": "Get Messages",
+            "description": {
+              "content": "Retrieves a list of messages from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getMessages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of messages to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of messages to skip before starting to return results"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00230119-4269-4ae8-997d-2f0ce4837566",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getMessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"hash\": \"string\",\n      \"source\": \"string\",\n      \"destination\": \"string\",\n      \"value\": \"string\",\n      \"fwd_fee\": \"string\",\n      \"ihr_fee\": \"string\",\n      \"created_lt\": \"string\",\n      \"body_hash\": \"string\"\n    },\n    {\n      \"hash\": \"string\",\n      \"source\": \"string\",\n      \"destination\": \"string\",\n      \"value\": \"string\",\n      \"fwd_fee\": \"string\",\n      \"ihr_fee\": \"string\",\n      \"created_lt\": \"string\",\n      \"body_hash\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "989410e7-6a06-4570-8bd3-a2b8d9af7ba9",
+          "name": "Get Metadata",
+          "request": {
+            "name": "Get Metadata",
+            "description": {
+              "content": "Query address metadata including names and labels",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getMetadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
+                  "description": "(Required) Address to get metadata for"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e364e09-eb41-49db-ae14-7b4cef77808c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getMetadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"string\",\n  \"name\": \"string\",\n  \"is_scam\": true,\n  \"icon\": \"string\",\n  \"is_wallet\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "493f2a9f-b4de-4e6c-b2ef-4ead719ba394",
+          "name": "Get Multisig Orders",
+          "request": {
+            "name": "Get Multisig Orders",
+            "description": {
+              "content": "Get pending orders for multisig wallets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getMultisigOrders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "multisig_address",
+                  "value": "<string>",
+                  "description": "Filter by multisig wallet address"
+                },
+                {
+                  "disabled": false,
+                  "key": "order_address",
+                  "value": "<string>",
+                  "description": "Filter by order contract address"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_executed",
+                  "value": "<boolean>",
+                  "description": "Filter by execution status"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of orders to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of orders to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4fe2cf9-ce48-42a8-adda-0783af076f42",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getMultisigOrders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "multisig_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_executed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"multisig_orders\": [\n    {\n      \"address\": \"string\",\n      \"multisig_address\": \"string\",\n      \"order_seqno\": 5420,\n      \"threshold\": 8414,\n      \"signers_num\": 5250,\n      \"approvals_num\": 858,\n      \"approvals\": [\n        \"string\",\n        \"string\"\n      ],\n      \"expiration_date\": 1668,\n      \"is_executed\": false\n    },\n    {\n      \"address\": \"string\",\n      \"multisig_address\": \"string\",\n      \"order_seqno\": 1578,\n      \"threshold\": 3292,\n      \"signers_num\": 4787,\n      \"approvals_num\": 8098,\n      \"approvals\": [\n        \"string\",\n        \"string\"\n      ],\n      \"expiration_date\": 9781,\n      \"is_executed\": true\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0f75399-103c-4007-b617-048160e48050",
+          "name": "Get Multisig Wallets",
+          "request": {
+            "name": "Get Multisig Wallets",
+            "description": {
+              "content": "Get multisig wallet contracts and their configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getMultisigWallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Multisig wallet address"
+                },
+                {
+                  "disabled": false,
+                  "key": "proposer_address",
+                  "value": "<string>",
+                  "description": "Filter by proposer address"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of wallets to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of wallets to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29652e70-9f76-4a98-ae38-655825f0f3be",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getMultisigWallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proposer_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"multisig_wallets\": [\n    {\n      \"address\": \"string\",\n      \"seqno\": 4879,\n      \"threshold\": 5139,\n      \"signers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"proposers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orders_count\": 6573\n    },\n    {\n      \"address\": \"string\",\n      \"seqno\": 2164,\n      \"threshold\": 9284,\n      \"signers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"proposers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"orders_count\": 9530\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1c19938-4495-4eed-b9ec-918474b509a0",
+          "name": "Get NFT Collections",
+          "request": {
+            "name": "Get NFT Collections",
+            "description": {
+              "content": "Retrieves a list of NFT collections from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getNFTCollections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of collections to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of collections to skip before starting to return results"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2adc7134-919a-47fc-9d15-fc58ef79324f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getNFTCollections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"collections\": [\n    {\n      \"address\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"metadata\": {},\n      \"owner\": \"string\",\n      \"raw_collection_content\": \"string\",\n      \"next_item_index\": 7167,\n      \"icon\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"metadata\": {},\n      \"owner\": \"string\",\n      \"raw_collection_content\": \"string\",\n      \"next_item_index\": 1008,\n      \"icon\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "657bae68-8a10-48b9-b1a6-58bda438f494",
+          "name": "Get NFT Items",
+          "request": {
+            "name": "Get NFT Items",
+            "description": {
+              "content": "Retrieves a list of NFT items from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getNFTItems"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "NFT item address in any form. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "NFT item address in any form. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_address",
+                  "value": "<string>",
+                  "description": "Address of NFT item owner in any form. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_address",
+                  "value": "<string>",
+                  "description": "Address of NFT item owner in any form. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_address",
+                  "value": "<string>",
+                  "description": "Collection address in any form"
+                },
+                {
+                  "disabled": false,
+                  "key": "collection_address",
+                  "value": "<string>",
+                  "description": "Collection address in any form"
+                },
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<string>",
+                  "description": "Index of item for given collection. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "index",
+                  "value": "<string>",
+                  "description": "Index of item for given collection. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by_last_transaction_lt",
+                  "value": "<boolean>",
+                  "description": "Sort NFT items by last transaction lt descending. Warning: results may be inconsistent during pagination with limit and offset."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "The maximum number of NFT items to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of NFT items to skip before starting to return results"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65b97d43-1962-4870-9b17-b1e41a5aef01",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getNFTItems"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "owner_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collection_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collection_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "index",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_by_last_transaction_lt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nft_items\": [\n    {\n      \"address\": \"string\",\n      \"auction_contract_address\": \"string\",\n      \"code_hash\": \"string\",\n      \"collection\": {\n        \"address\": \"string\",\n        \"code_hash\": \"string\",\n        \"collection_content\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"data_hash\": \"string\",\n        \"last_transaction_lt\": \"string\",\n        \"next_item_index\": \"string\",\n        \"owner_address\": \"string\"\n      },\n      \"collection_address\": \"string\",\n      \"content\": {\n        \"key_0\": {}\n      },\n      \"data_hash\": \"string\",\n      \"index\": \"string\",\n      \"init\": true,\n      \"last_transaction_lt\": \"string\",\n      \"on_sale\": false,\n      \"owner_address\": \"string\",\n      \"real_owner\": \"string\",\n      \"sale_contract_address\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"auction_contract_address\": \"string\",\n      \"code_hash\": \"string\",\n      \"collection\": {\n        \"address\": \"string\",\n        \"code_hash\": \"string\",\n        \"collection_content\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"data_hash\": \"string\",\n        \"last_transaction_lt\": \"string\",\n        \"next_item_index\": \"string\",\n        \"owner_address\": \"string\"\n      },\n      \"collection_address\": \"string\",\n      \"content\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {},\n        \"key_4\": {}\n      },\n      \"data_hash\": \"string\",\n      \"index\": \"string\",\n      \"init\": true,\n      \"last_transaction_lt\": \"string\",\n      \"on_sale\": false,\n      \"owner_address\": \"string\",\n      \"real_owner\": \"string\",\n      \"sale_contract_address\": \"string\"\n    }\n  ],\n  \"address_book\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"metadata\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cc86f1f-f3c5-41c4-b82a-b191a95b9c18",
+          "name": "Get NFT Transfers",
+          "request": {
+            "name": "Get NFT Transfers",
+            "description": {
+              "content": "Retrieves a list of NFT transfers from the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getNFTTransfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "both",
+                  "description": "(Required) The direction of transfers to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of transfers to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of transfers to skip before starting to return results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "The sorting order of the transfers"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8524044d-8ba2-422f-91c3-2be2c9ec71e0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getNFTTransfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "both"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transfers\": [\n    {\n      \"nft\": {\n        \"address\": \"string\",\n        \"collection\": {\n          \"address\": \"string\"\n        }\n      },\n      \"from\": {\n        \"address\": \"string\"\n      },\n      \"to\": {\n        \"address\": \"string\"\n      },\n      \"transaction\": {\n        \"hash\": \"string\",\n        \"time\": 5060\n      },\n      \"value\": \"string\"\n    },\n    {\n      \"nft\": {\n        \"address\": \"string\",\n        \"collection\": {\n          \"address\": \"string\"\n        }\n      },\n      \"from\": {\n        \"address\": \"string\"\n      },\n      \"to\": {\n        \"address\": \"string\"\n      },\n      \"transaction\": {\n        \"hash\": \"string\",\n        \"time\": 1668\n      },\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5ecae0d-d137-456f-9ca7-7f94e1c2d3d4",
+          "name": "Get Pending Traces",
+          "request": {
+            "name": "Get Pending Traces",
+            "description": {
+              "content": "Get traces that are pending completion",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getPendingTraces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "trace_id",
+                  "value": "<string>",
+                  "description": "Filter by trace ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of traces to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of traces to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce6e5f4f-9f72-4b85-855d-a612c86e400c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getPendingTraces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "trace_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traces\": [\n    {\n      \"trace_id\": \"string\",\n      \"external_hash\": \"string\",\n      \"mc_seqno_start\": 7064,\n      \"start_lt\": 7417,\n      \"start_utime\": 3295,\n      \"state\": \"string\",\n      \"pending_edges\": 767,\n      \"edges\": 85,\n      \"nodes\": 6746\n    },\n    {\n      \"trace_id\": \"string\",\n      \"external_hash\": \"string\",\n      \"mc_seqno_start\": 3063,\n      \"start_lt\": 7046,\n      \"start_utime\": 3826,\n      \"state\": \"string\",\n      \"pending_edges\": 3439,\n      \"edges\": 7730,\n      \"nodes\": 3545\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dabfd4db-36d5-4ee3-a7e1-f35508e3fe3a",
+          "name": "Get Pending Transactions",
+          "request": {
+            "name": "Get Pending Transactions",
+            "description": {
+              "content": "Get transactions that are pending finalization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getPendingTransactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "<string>",
+                  "description": "Filter by account address"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of transactions to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of transactions to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5fb07b7-87c5-4322-a7c0-4361715d4edb",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getPendingTransactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactions\": [\n    {\n      \"account\": \"string\",\n      \"hash\": \"string\",\n      \"lt\": 3174,\n      \"now\": 1847,\n      \"mc_block_seqno\": 6143,\n      \"trace_id\": \"string\"\n    },\n    {\n      \"account\": \"string\",\n      \"hash\": \"string\",\n      \"lt\": 8700,\n      \"now\": 7647,\n      \"mc_block_seqno\": 2872,\n      \"trace_id\": \"string\"\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0690a1da-c016-4899-a60e-a5be27b1dd69",
+          "name": "Get Top Accounts by Balance",
+          "request": {
+            "name": "Get Top Accounts by Balance",
+            "description": {
+              "content": "Get accounts with the highest TON balances",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getTopAccountsByBalance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of accounts to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of accounts to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2830de6f-1085-4f81-af1b-79281f3364f6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getTopAccountsByBalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"address\": \"string\",\n      \"balance\": \"string\",\n      \"account_status\": \"string\",\n      \"last_activity\": 7609\n    },\n    {\n      \"address\": \"string\",\n      \"balance\": \"string\",\n      \"account_status\": \"string\",\n      \"last_activity\": 5600\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06fd282d-68f4-41b9-a32c-8f696dec796b",
+          "name": "Get Traces",
+          "request": {
+            "name": "Get Traces",
+            "description": {
+              "content": "Retrieves transaction traces by specified filters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getTraces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "trace_id",
+                  "value": "<string>",
+                  "description": "Trace ID to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "tx_hash",
+                  "value": "BhLJTdV2R6Vr5c3BAOjH8nFpnMYOuPcJvRlagGSKU88=",
+                  "description": "Transaction hash to get traces for"
+                },
+                {
+                  "disabled": false,
+                  "key": "tx_lt",
+                  "value": "<integer>",
+                  "description": "Transaction logical time"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of traces to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of traces to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3890b347-b02d-4305-b564-1633e28e22c9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getTraces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "trace_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tx_hash",
+                      "value": "BhLJTdV2R6Vr5c3BAOjH8nFpnMYOuPcJvRlagGSKU88="
+                    },
+                    {
+                      "key": "tx_lt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traces\": [\n    {\n      \"trace_id\": \"string\",\n      \"external_hash\": \"string\",\n      \"mc_seqno_start\": 6306,\n      \"mc_seqno_end\": 1756,\n      \"start_lt\": 3840,\n      \"start_utime\": 6362,\n      \"end_lt\": 516,\n      \"end_utime\": 2530,\n      \"state\": \"string\",\n      \"pending_edges\": 4618,\n      \"edges\": 9408,\n      \"nodes\": 4369,\n      \"classification_state\": \"string\"\n    },\n    {\n      \"trace_id\": \"string\",\n      \"external_hash\": \"string\",\n      \"mc_seqno_start\": 2256,\n      \"mc_seqno_end\": 4986,\n      \"start_lt\": 3608,\n      \"start_utime\": 3101,\n      \"end_lt\": 5722,\n      \"end_utime\": 6328,\n      \"state\": \"string\",\n      \"pending_edges\": 2335,\n      \"edges\": 6663,\n      \"nodes\": 9179,\n      \"classification_state\": \"string\"\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "684e9606-9b60-45cc-9861-806b6e916d68",
+          "name": "Get Transactions by Masterchain Block",
+          "request": {
+            "name": "Get Transactions by Masterchain Block",
+            "description": {
+              "content": "Retrieves a list of transactions for a specific masterchain block",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getTransactionsByMasterchainBlock"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "seqno",
+                  "value": "40467413",
+                  "description": "(Required) The sequence number of the masterchain block"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of transactions to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of transactions to skip before starting to return results"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "desc",
+                  "description": "The sorting order of the transactions"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ab31d79-e567-43c8-b672-b4c1a21480e5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getTransactionsByMasterchainBlock"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seqno",
+                      "value": "40467413"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactions\": [\n    {\n      \"hash\": \"string\",\n      \"lt\": \"string\",\n      \"account\": \"string\",\n      \"now\": 4260,\n      \"origStatus\": \"string\",\n      \"endStatus\": \"string\",\n      \"totalFees\": \"string\"\n    },\n    {\n      \"hash\": \"string\",\n      \"lt\": \"string\",\n      \"account\": \"string\",\n      \"now\": 8164,\n      \"origStatus\": \"string\",\n      \"endStatus\": \"string\",\n      \"totalFees\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b2e9609-9da6-4685-a82d-34047199cf3c",
+          "name": "Get Transactions by Message",
+          "request": {
+            "name": "Get Transactions by Message",
+            "description": {
+              "content": "Retrieves a list of transactions related to a specific message",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getTransactionsByMessage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "out",
+                  "description": "(Required) The direction of the message (in or out)"
+                },
+                {
+                  "disabled": false,
+                  "key": "msg_hash",
+                  "value": "po4/F9OgHrJGTUCtobScZrW/gOwVPj7s3f40HV32EII=",
+                  "description": "(Required) The hash of the message"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "128",
+                  "description": "The maximum number of transactions to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The number of transactions to skip before starting to return results"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2472ebc2-1669-45d8-8c61-123d4ed83db9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getTransactionsByMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "out"
+                    },
+                    {
+                      "key": "msg_hash",
+                      "value": "po4/F9OgHrJGTUCtobScZrW/gOwVPj7s3f40HV32EII="
+                    },
+                    {
+                      "key": "limit",
+                      "value": "128"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transactions\": [\n    {\n      \"hash\": \"string\",\n      \"lt\": \"string\",\n      \"account\": \"string\",\n      \"now\": 4260,\n      \"origStatus\": \"string\",\n      \"endStatus\": \"string\",\n      \"totalFees\": \"string\"\n    },\n    {\n      \"hash\": \"string\",\n      \"lt\": \"string\",\n      \"account\": \"string\",\n      \"now\": 8164,\n      \"origStatus\": \"string\",\n      \"endStatus\": \"string\",\n      \"totalFees\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2bee82d-2a95-4bc3-a5d8-07b7b97fd851",
+          "name": "Get Wallet Information",
+          "request": {
+            "name": "Get Wallet Information",
+            "description": {
+              "content": "Retrieves information about a specific wallet on the TON blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getWalletInfo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "0QAvTjjA5ZBbHN3a-SYnO1qvzlgNx09OC2bhYBPAbfs3S6q7",
+                  "description": "(Required) The address of the wallet to retrieve information for"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7c4989a-7c1c-4ea9-ad2e-28393f42c7c6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getWalletInfo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "0QAvTjjA5ZBbHN3a-SYnO1qvzlgNx09OC2bhYBPAbfs3S6q7"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wallet\": true,\n  \"balance\": \"string\",\n  \"account_state\": \"string\",\n  \"wallet_type\": \"string\",\n  \"seqno\": 3709,\n  \"last_transaction_lt\": \"string\",\n  \"last_transaction_hash\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e127ec08-122c-493c-b716-71eee600b71f",
+          "name": "Get Wallet States",
+          "request": {
+            "name": "Get Wallet States",
+            "description": {
+              "content": "Query wallet states for addresses",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getWalletStates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
+                  "description": "(Required) Wallet address to query"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of results"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Number of results to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f79d17b-aaec-4e06-bee8-d0367427ae7f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getWalletStates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wallets\": [\n    {\n      \"address\": \"string\",\n      \"is_wallet\": false,\n      \"balance\": \"string\",\n      \"status\": \"string\",\n      \"code_hash\": \"string\",\n      \"last_transaction_hash\": \"string\",\n      \"last_transaction_lt\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"is_wallet\": false,\n      \"balance\": \"string\",\n      \"status\": \"string\",\n      \"code_hash\": \"string\",\n      \"last_transaction_hash\": \"string\",\n      \"last_transaction_lt\": \"string\"\n    }\n  ],\n  \"address_book\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f15346ee-b004-406f-a2ed-26345fa23829",
+          "name": "Send Message",
+          "request": {
+            "name": "Send Message",
+            "description": {
+              "content": "Sends an external message to the TON network",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sendMessage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"boc\": \"te6ccgEBAgEAqwAB4YgBVbC7Hu+g3htYXzst8L5ucV76NMzeBK3URJKebN2Y1kwADRfFu/r0HxgrOp/Iml8Li5x4gR10J5XYFS8z0fMWJ6JPeUF5xNSLrSDGFIqhJqkW1SEYQF8Dw5p4dI3oaFs4LCmpoxdkfKw0AAAAGAAcAQBoQgAwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL68=\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc575faf-8838-4a94-93f5-6d9bf23c7f04",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sendMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"boc\": \"te6ccgEBAgEAqwAB4YgBVbC7Hu+g3htYXzst8L5ucV76NMzeBK3URJKebN2Y1kwADRfFu/r0HxgrOp/Iml8Li5x4gR10J5XYFS8z0fMWJ6JPeUF5xNSLrSDGFIqhJqkW1SEYQF8Dw5p4dI3oaFs4LCmpoxdkfKw0AAAAGAAcAQBoQgAwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL68=\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message_hash\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13f66f6c-e1b4-4aee-b8db-ac06848fb649",
+          "name": "Get Vesting Contracts",
+          "request": {
+            "name": "Get Vesting Contracts",
+            "description": {
+              "content": "Get vesting contracts by specified filters",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "vesting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contract_address",
+                  "value": "<string>",
+                  "description": "Vesting contract address in any form. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "contract_address",
+                  "value": "<string>",
+                  "description": "Vesting contract address in any form. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "wallet_address",
+                  "value": "<string>",
+                  "description": "Wallet address to filter by owner or sender. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "wallet_address",
+                  "value": "<string>",
+                  "description": "Wallet address to filter by owner or sender. Max: 1000."
+                },
+                {
+                  "disabled": false,
+                  "key": "check_whitelist",
+                  "value": "false",
+                  "description": "Check if wallet address is in whitelist."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Limit number of queried rows. Use with *offset* to batch read."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Skip first N rows. Use with *limit* to batch read."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "f482a010-d88c-44a4-945b-bd687a97fc1c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vesting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contract_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contract_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "wallet_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "wallet_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "check_whitelist",
+                      "value": "false"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address_book\": {\n    \"key_0\": {\n      \"domain\": \"string\",\n      \"interfaces\": [\n        \"string\",\n        \"string\"\n      ],\n      \"user_friendly\": \"string\"\n    }\n  },\n  \"vesting_contracts\": [\n    {\n      \"address\": \"string\",\n      \"cliff_duration\": 6556,\n      \"owner_address\": \"string\",\n      \"sender_address\": \"string\",\n      \"start_time\": 8033,\n      \"total_amount\": \"string\",\n      \"total_duration\": 7475,\n      \"unlock_period\": 2960,\n      \"whitelist\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"address\": \"string\",\n      \"cliff_duration\": 7840,\n      \"owner_address\": \"string\",\n      \"sender_address\": \"string\",\n      \"start_time\": 6437,\n      \"total_amount\": \"string\",\n      \"total_duration\": 822,\n      \"unlock_period\": 5174,\n      \"whitelist\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "916ec632-d10f-4f06-8aed-107c2a1d7ff1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vesting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contract_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contract_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "wallet_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "wallet_address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "check_whitelist",
+                      "value": "false"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6652,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0c4ab065-389f-40d9-a488-826cde7c19ee",
+    "name": "Chainstack Arbitrum Node Account Info V3 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}

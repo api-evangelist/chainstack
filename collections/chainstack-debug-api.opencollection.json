@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Debug API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Debug",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get fork choice leaves",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getDebugBeaconHeadsV2"
+          },
+          "docs": "Retrieves all possible chain heads (leaves of fork choice tree). This endpoint provides insight into the current fork choice state by returning all potential chain heads that the beacon node is tracking."
+        },
+        {
+          "info": {
+            "name": "Get full BeaconState object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getDebugBeaconStateV2",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier. Can be one of: 'head' (canonical head in node's view), 'genesis', 'finalized', 'justified', <slot>, <hex encoded stateRoot with 0x prefix>."
+              }
+            ]
+          },
+          "docs": "Returns full BeaconState object for given stateId. This is a comprehensive debug endpoint that provides the complete state of the beacon chain at a specific point, including all validator information, balances, and other state details. Depending on Accept header it can be returned either as JSON or as bytes serialized by SSZ."
+        },
+        {
+          "info": {
+            "name": "Get fork choice array",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/getDebugForkChoice"
+          },
+          "docs": "Retrieves all current fork choice context including justified and finalized checkpoints, and the complete fork choice tree with all nodes and their weights."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

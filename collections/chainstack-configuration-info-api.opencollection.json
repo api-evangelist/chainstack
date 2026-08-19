@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Configuration Info API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the Ethereum deposit contract configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/deposit_contract"
+          },
+          "docs": "Get the Ethereum deposit contract configuration"
+        },
+        {
+          "info": {
+            "name": "Get the Ethereum fork schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/fork_schedule"
+          },
+          "docs": "Get the Ethereum fork schedule"
+        },
+        {
+          "info": {
+            "name": "Get fork information for a specific state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/fork_version_by_state_id",
+            "params": [
+              {
+                "name": "state_id",
+                "value": "",
+                "type": "path",
+                "description": "State identifier which can be a slot number, an epoch number, a block root, or special values like  'genesis' or 'head'."
+              }
+            ]
+          },
+          "docs": "Get fork information for a specific state"
+        },
+        {
+          "info": {
+            "name": "Genesis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/genesis_data",
+            "params": [
+              {
+                "name": "apiKey",
+                "value": "",
+                "type": "path",
+                "description": "Your API key"
+              }
+            ]
+          },
+          "docs": "Genesis"
+        },
+        {
+          "info": {
+            "name": "Node configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/node_config"
+          },
+          "docs": "Node configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

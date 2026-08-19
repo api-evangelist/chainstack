@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Organization API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Organization name and ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v1/organization/"
+          },
+          "docs": "Get the name and ID of your organization."
+        },
+        {
+          "info": {
+            "name": "Update Organization name",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v1/organization/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change the name of your organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

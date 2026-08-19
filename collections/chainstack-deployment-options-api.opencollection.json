@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Chainstack Arbitrum Node Account Info Deployment Options API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deployment Options",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List deployment options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{node_id}.p2pify.com/{api_key}/v2/deployment-options/"
+          },
+          "docs": "List all available deployment options for your organization.\nReturns the deployable nodes matrix filtered to shared node types on global clouds.\nEach option includes the blockchain ID, cloud ID, protocol, network, and available features.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

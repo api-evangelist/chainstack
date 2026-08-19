@@ -1,53 +1,45 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Chainstack Arbitrum Node Account Info faucet API",
+    "name": "Chainstack Arbitrum Node Account Info Txpool API",
     "version": "1.0.0"
   },
   "items": [
     {
       "info": {
-        "name": "faucet",
+        "name": "Txpool",
         "type": "folder"
       },
       "items": [
         {
           "info": {
-            "name": "Request funds",
+            "name": "Txpool_Content",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://{node_id}.p2pify.com/{api_key}/:chain",
-            "params": [
-              {
-                "name": "chain",
-                "value": "",
-                "type": "path",
-                "description": "Chainstack Faucet API."
-              }
-            ],
+            "url": "https://{node_id}.p2pify.com/{api_key}/txpool_content",
             "body": {
               "type": "json",
               "data": "{}"
             }
           },
-          "docs": "Request funds"
+          "docs": "Txpool_Content"
         },
         {
           "info": {
-            "name": "Sepolia Faucet",
+            "name": "Txpool_Status",
             "type": "http"
           },
           "http": {
             "method": "POST",
-            "url": "https://{node_id}.p2pify.com/{api_key}/v1/faucet/sepolia",
+            "url": "https://{node_id}.p2pify.com/{api_key}/txpool_status",
             "body": {
               "type": "json",
               "data": "{}"
             }
           },
-          "docs": "Request test tokens."
+          "docs": "Txpool_Status"
         }
       ]
     }

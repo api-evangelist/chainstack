@@ -1,0 +1,619 @@
+{
+  "item": [
+    {
+      "id": "ebcce4a0-2211-4771-be80-43ff1e303fe2",
+      "name": "Debug",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7ae1f15f-0415-4808-8d55-e0944045cbc7",
+          "name": "Get fork choice leaves",
+          "request": {
+            "name": "Get fork choice leaves",
+            "description": {
+              "content": "Retrieves all possible chain heads (leaves of fork choice tree). This endpoint provides insight into the current fork choice state by returning all potential chain heads that the beacon node is tracking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getDebugBeaconHeadsV2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03bae747-c5c8-40d9-a28f-cd029bdf5644",
+              "name": "Success - Fork choice leaves retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getDebugBeaconHeadsV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"root\": \"0xcf8e0d4e9587369b2301d0790347320302cc0943d5a1884560367e8208d920f2\",\n      \"slot\": \"1\",\n      \"execution_optimistic\": false\n    },\n    {\n      \"root\": \"0xcf8e0d4e9587369b2301d0790347320302cc0943d5a1884560367e8208d920f2\",\n      \"slot\": \"1\",\n      \"execution_optimistic\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4162664d-ab13-4a58-8745-fe266b9a50e8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getDebugBeaconHeadsV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6941,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d332d2a-8512-4d39-84c9-4fa6020eac5e",
+          "name": "Get full BeaconState object",
+          "request": {
+            "name": "Get full BeaconState object",
+            "description": {
+              "content": "Returns full BeaconState object for given stateId. This is a comprehensive debug endpoint that provides the complete state of the beacon chain at a specific point, including all validator information, balances, and other state details. Depending on Accept header it can be returned either as JSON or as bytes serialized by SSZ.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getDebugBeaconStateV2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "head",
+                  "key": "state_id",
+                  "description": "(Required) State identifier. Can be one of: 'head' (canonical head in node's view), 'genesis', 'finalized', 'justified', <slot>, <hex encoded stateRoot with 0x prefix>."
+                },
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7b67ad6-6a23-41f1-8ef0-650ecbc5e995",
+              "name": "Success - Full BeaconState object retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getDebugBeaconStateV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier. Can be one of: 'head' (canonical head in node's view), 'genesis', 'finalized', 'justified', <slot>, <hex encoded stateRoot with 0x prefix>."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "(Required) The active consensus version to which the data belongs. Required in response so client can deserialize returned JSON or SSZ data more effectively.",
+                  "key": "Eth-Consensus-Version",
+                  "value": "deneb"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"deneb\",\n  \"execution_optimistic\": false,\n  \"finalized\": false,\n  \"data\": {\n    \"genesis_time\": \"1606824023\",\n    \"genesis_validators_root\": \"0x4b363db94e286120d76eb905340fdd4e54bfe9f06bf33ff6cf5ad27f511bfe95\",\n    \"slot\": \"1\",\n    \"fork\": {\n      \"previous_version\": \"0xcDFA2CB4\",\n      \"current_version\": \"0xae51Ed35\",\n      \"epoch\": \"1\"\n    },\n    \"latest_block_header\": {},\n    \"block_roots\": [\n      \"0x9fEd8CDf0Ecf9F9AE3271E7aaB214F3eBaeBeeebAAa7Deaf0EC24Acf5D33D59C\",\n      \"0x1c6C464ac1c5bcdB71b647DD59F1Bef9Ac4523BaDa04dD6FcAD843f9faD5Ae60\"\n    ],\n    \"state_roots\": [\n      \"0x03cE558602DfCeCb5E447ACcF1AfeabDCCDB38e5a4C0Fba74C08cCdFBf650A89\",\n      \"0x3e16d5c75CB8beCE06DFd7faFd9cC1b024b0F5F645b6FBb97AFcDF24ba21B99E\"\n    ],\n    \"validators\": [\n      {\n        \"pubkey\": \"0x0beE84BfEeeAd96e2A2f07Ee3f5Bad7207a5bc5191aEef9ca73c9dFaE7378201358ED857263bEbEdc813CF84a0c790f6\",\n        \"withdrawal_credentials\": \"0xd2aff3df18be0aeEf9DBCa25aAae9E001652E30ed2e1A79D56BCFc5AeF6AAFf4\",\n        \"effective_balance\": \"string\",\n        \"slashed\": true,\n        \"activation_eligibility_epoch\": \"string\",\n        \"activation_epoch\": \"string\",\n        \"exit_epoch\": \"string\",\n        \"withdrawable_epoch\": \"string\"\n      },\n      {\n        \"pubkey\": \"0xe742f8b55C56F0CDaEdA25B9A215Ba7D4f5DdeCe0B6A3199a9578E612fb2fbc884eeaD7D3B3F6eec67Be1188F83A8bd5\",\n        \"withdrawal_credentials\": \"0x80fFDdFaC66710A41Cf7b691CED49328fAef95DbBD9a4e8E8DC6aD6bcbBD2f41\",\n        \"effective_balance\": \"string\",\n        \"slashed\": true,\n        \"activation_eligibility_epoch\": \"string\",\n        \"activation_epoch\": \"string\",\n        \"exit_epoch\": \"string\",\n        \"withdrawable_epoch\": \"string\"\n      }\n    ],\n    \"balances\": [\n      \"string\",\n      \"string\"\n    ],\n    \"eth1_data\": {},\n    \"eth1_deposit_index\": \"string\",\n    \"previous_justified_checkpoint\": {},\n    \"current_justified_checkpoint\": {},\n    \"finalized_checkpoint\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f31cda5-8353-427a-80c2-098ebf564297",
+              "name": "Invalid state ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getDebugBeaconStateV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier. Can be one of: 'head' (canonical head in node's view), 'genesis', 'finalized', 'justified', <slot>, <hex encoded stateRoot with 0x prefix>."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6941,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11060d60-b1f9-4c9e-a938-0911411b3f69",
+              "name": "State not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getDebugBeaconStateV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier. Can be one of: 'head' (canonical head in node's view), 'genesis', 'finalized', 'justified', <slot>, <hex encoded stateRoot with 0x prefix>."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6941,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2576f683-e51e-4cec-93c2-79c4f59b8c98",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getDebugBeaconStateV2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "head",
+                      "key": "state_id",
+                      "description": "(Required) State identifier. Can be one of: 'head' (canonical head in node's view), 'genesis', 'finalized', 'justified', <slot>, <hex encoded stateRoot with 0x prefix>."
+                    },
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6941,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ca8603f-e0ff-4e9c-a800-c4364753bbf1",
+          "name": "Get fork choice array",
+          "request": {
+            "name": "Get fork choice array",
+            "description": {
+              "content": "Retrieves all current fork choice context including justified and finalized checkpoints, and the complete fork choice tree with all nodes and their weights.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "getDebugForkChoice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Chainstack node identifier",
+                  "type": "any",
+                  "value": "{{node_id}}",
+                  "key": "node_id"
+                },
+                {
+                  "description": "Per-node access key",
+                  "type": "any",
+                  "value": "{{api_key}}",
+                  "key": "api_key"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32f1863c-72ba-4f36-9800-e90714c10ef7",
+              "name": "Success - Fork choice data retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getDebugForkChoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"justified_checkpoint\": {\n    \"epoch\": 1300,\n    \"root\": \"string\"\n  },\n  \"finalized_checkpoint\": {\n    \"epoch\": 3314,\n    \"root\": \"string\"\n  },\n  \"fork_choice_nodes\": [\n    {\n      \"slot\": \"1\",\n      \"block_root\": \"0xcf8e0d4e9587369b2301d0790347320302cc0943d5a1884560367e8208d920f2\",\n      \"parent_root\": \"0xcf8e0d4e9587369b2301d0790347320302cc0943d5a1884560367e8208d920f2\",\n      \"justified_epoch\": \"1\",\n      \"finalized_epoch\": \"1\",\n      \"weight\": \"1\",\n      \"validity\": \"invalid\",\n      \"execution_block_hash\": \"0xcf8e0d4e9587369b2301d0790347320302cc0943d5a1884560367e8208d920f2\",\n      \"extra_data\": {}\n    }\n  ],\n  \"extra_data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa627766-b40e-410d-b624-23580526b054",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "getDebugForkChoice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Chainstack node identifier",
+                      "type": "any",
+                      "value": "{{node_id}}",
+                      "key": "node_id"
+                    },
+                    {
+                      "description": "Per-node access key",
+                      "type": "any",
+                      "value": "{{api_key}}",
+                      "key": "api_key"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6941,\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Chainstack node identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "nd-000-000-000",
+      "key": "node_id"
+    },
+    {
+      "description": {
+        "content": "Per-node access key",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<api-key>",
+      "key": "api_key"
+    },
+    {
+      "type": "string",
+      "value": "https://{{node_id}}.p2pify.com/{{api_key}}",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea5af399-bfc4-4a8c-8c88-168761ebabf1",
+    "name": "Chainstack Arbitrum Node Account Info Debug API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.\n\nContact Support:\n Name: Chainstack API Support\n Email: support@chainstack.com",
+      "type": "text/plain"
+    }
+  }
+}
