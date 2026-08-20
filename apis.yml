@@ -667,6 +667,8 @@ apis:
   description: The Events API from Chainstack — 1 operation(s) for events.
   humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -934,7 +936,8 @@ apis:
   name: Chainstack General API
   description: The General API from Chainstack — 520 operation(s) for general.
   humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
-  tags:
+  tags: []
+  tags_raw:
   - General
   properties:
   - type: OpenAPI
@@ -1538,6 +1541,8 @@ apis:
   description: The State API from Chainstack — 10 operation(s) for state.
   humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
   tags:
+  - States
+  tags_raw:
   - State
   properties:
   - type: OpenAPI
