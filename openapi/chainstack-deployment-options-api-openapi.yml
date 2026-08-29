@@ -1,24 +1,22 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Chainstack Arbitrum Node Account Info Deployment Options API
-  version: 1.0.0
-  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  x-logo:
+    url: https://chainstack.com/assets/docs/api-docs-logo.svg
+    backgroundColor: '#F5F8FC'
+    altText: Chainstack
+  title: 💙 CHAINSTACK PLATFORM Deployment Options API
+  version: v2
   contact:
-    name: Chainstack API Support
+    name: API Support
     email: support@chainstack.com
-  license:
-    name: Chainstack Terms
-    url: https://chainstack.com/terms-of-service/
+  description: 'A set of API endpoints to operate and manage the platform resources.<br>
+
+    See also a [quick API tutorial](https://docs.chainstack.com/reference/quick-tutorial).
+
+    '
 servers:
-- url: https://{node_id}.p2pify.com/{api_key}
-  description: Chainstack-managed node endpoint
-  variables:
-    node_id:
-      default: nd-000-000-000
-      description: Your Chainstack node identifier
-    api_key:
-      default: <api-key>
-      description: Per-node access key
+- url: https://api.chainstack.com
+  description: API endpoint
 tags:
 - name: Deployment Options
 paths:
@@ -93,7 +91,51 @@ paths:
         '403':
           $ref: '#/components/responses/ForbiddenError'
 components:
+  responses:
+    ForbiddenError:
+      description: The request is not allowed with the current permissions.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    UnauthorizedError:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
   schemas:
+    DeploymentOptionsResponse:
+      type: object
+      description: Response containing the list of available deployment options.
+      properties:
+        options:
+          type: array
+          description: List of available deployment options.
+          items:
+            $ref: '#/components/schemas/DeploymentOption'
+      required:
+      - options
     DeploymentOption:
       type: object
       description: A single deployable node option.
@@ -137,47 +179,26 @@ components:
       - protocol
       - network
       - features
-    DeploymentOptionsResponse:
-      type: object
-      description: Response containing the list of available deployment options.
-      properties:
-        options:
-          type: array
-          description: List of available deployment options.
-          items:
-            $ref: '#/components/schemas/DeploymentOption'
-      required:
-      - options
-  responses:
-    UnauthorizedError:
-      description: Authentication credentials were missing or incorrect.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-    ForbiddenError:
-      description: The request is not allowed with the current permissions.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
+  securitySchemes:
+    APIKeyAuthentication:
+      type: http
+      scheme: bearer
+      description: 'Chainstack API uses [API keys](https://docs.chainstack.com/reference/platform-api-getting-started) to authenticate requests. You can view and manage your API keys in the platform UI.
+
+        Your API keys carry many privileges, so be sure to keep them secure!
+
+        Provide your API key as the `Authorization` header. The value of the header consists of `Bearer` prefix and secret key generated through the platform UI.
+
+
+        ```bash
+
+        curl -X GET ''https://api.chainstack.com/v1/organization/'' \
+
+        --header ''Authorization: Bearer FX7CWlLg.FMpAO8cgCX2N7s41EncRru2nb5CmTZUt''
+
+        ```
+
+
+        All API requests must be made over HTTPS.
+
+        '

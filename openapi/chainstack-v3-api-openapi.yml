@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Chainstack Arbitrum Node Account Info V3 API
+  title: Chainstack TON Node V3 API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
@@ -2122,13 +2122,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/index.VestingInfo'
-    RequestError:
-      type: object
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
     AddressBookRow:
       type: object
       properties:
@@ -2140,3 +2133,19 @@ components:
             type: string
         user_friendly:
           type: string
+    RequestError:
+      type: object
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

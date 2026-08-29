@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Chainstack Arbitrum Node Account Info Filter Handling API
+  title: Chainstack Filter Handling API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
   license:
     name: Chainstack Terms
     url: https://chainstack.com/terms-of-service/
+  description: 'Operations tagged Filter Handling across 7 of this provider''s published API definitions: chainstack-arbitrum-node-api-openapi.yml, chainstack-avalanche-node-api-openapi.yml, chainstack-ethereum-node-api-openapi.yml, chainstack-gnosis-node-api-openapi.yml, chainstack-plasma-node-api-openapi.yml, chainstack-polygon-node-api-openapi.yml, chainstack-tempo-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{node_id}.p2pify.com/{api_key}
   description: Chainstack-managed node endpoint
@@ -67,6 +67,16 @@ paths:
                       type: string
       tags:
       - Filter Handling
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_uninstallFilter:
     post:
       summary: eth_uninstallFilter
@@ -110,6 +120,16 @@ paths:
                     type: boolean
       tags:
       - Filter Handling
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_newBlockFilter:
     post:
       tags:
@@ -149,8 +169,19 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_newFilter:
     post:
       tags:
@@ -196,8 +227,19 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_newPendingTransactionFilter:
     post:
       tags:
@@ -237,5 +279,24 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+x-refined-from:
+- chainstack-arbitrum-node-api-openapi.yml
+- chainstack-avalanche-node-api-openapi.yml
+- chainstack-ethereum-node-api-openapi.yml
+- chainstack-gnosis-node-api-openapi.yml
+- chainstack-plasma-node-api-openapi.yml
+- chainstack-polygon-node-api-openapi.yml
+- chainstack-tempo-node-api-openapi.yml

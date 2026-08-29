@@ -1,14 +1,14 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Chainstack Arbitrum Node Account Info Blocks Info API
+  title: Chainstack Blocks Info API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
   license:
     name: Chainstack Terms
     url: https://chainstack.com/terms-of-service/
+  description: 'Operations tagged Blocks Info across 8 of this provider''s published API definitions: chainstack-arbitrum-node-api-openapi.yml, chainstack-avalanche-node-api-openapi.yml, chainstack-ethereum-node-api-openapi.yml, chainstack-gnosis-node-api-openapi.yml, chainstack-monad-node-api-openapi.yml, chainstack-plasma-node-api-openapi.yml, chainstack-polygon-node-api-openapi.yml, chainstack-tempo-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{node_id}.p2pify.com/{api_key}
   description: Chainstack-managed node endpoint
@@ -61,6 +61,16 @@ paths:
                     type: integer
                   result:
                     type: object
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getBlockByHash:
     post:
       tags:
@@ -110,6 +120,16 @@ paths:
                     type: integer
                   result:
                     type: object
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getBlockByNumber:
     post:
       tags:
@@ -159,6 +179,16 @@ paths:
                     type: integer
                   result:
                     type: object
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getBlockTransactionCountByHash:
     post:
       tags:
@@ -203,6 +233,16 @@ paths:
                     type: integer
                   result:
                     type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getBlockTransactionCountByNumber:
     post:
       tags:
@@ -247,6 +287,16 @@ paths:
                     type: integer
                   result:
                     type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_newBlockFilter:
     post:
       summary: eth_newBlockFilter
@@ -288,6 +338,16 @@ paths:
                       type: string
       tags:
       - Blocks Info
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getBlockReceipts:
     post:
       tags:
@@ -332,8 +392,19 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getHeaderByHash:
     post:
       tags:
@@ -378,8 +449,19 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getHeaderByNumber:
     post:
       tags:
@@ -424,8 +506,19 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getUncleByBlockHashAndIndex:
     post:
       tags:
@@ -474,8 +567,19 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getUncleByBlockNumberAndIndex:
     post:
       tags:
@@ -524,8 +628,19 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getUncleCountByBlockHash:
     post:
       tags:
@@ -570,8 +685,19 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getUncleCountByBlockNumber:
     post:
       tags:
@@ -616,5 +742,25 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+x-refined-from:
+- chainstack-arbitrum-node-api-openapi.yml
+- chainstack-avalanche-node-api-openapi.yml
+- chainstack-ethereum-node-api-openapi.yml
+- chainstack-gnosis-node-api-openapi.yml
+- chainstack-monad-node-api-openapi.yml
+- chainstack-plasma-node-api-openapi.yml
+- chainstack-polygon-node-api-openapi.yml
+- chainstack-tempo-node-api-openapi.yml

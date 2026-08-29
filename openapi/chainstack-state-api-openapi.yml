@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Chainstack Arbitrum Node Account Info State API
+  title: Chainstack Ethereum Beacon Chain State API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  description: Chainstack-managed RPC node API for the Ethereum Beacon Chain API blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ethereum_beacon_chain_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
@@ -398,6 +398,72 @@ paths:
       - State
 components:
   schemas:
+    SyncCommitteeContribution:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        beacon_block_root:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+        subcommittee_index:
+          type: integer
+          format: int64
+        aggregation_bits:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+        signature:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+      required:
+      - slot
+      - beacon_block_root
+      - subcommittee_index
+      - aggregation_bits
+      - signature
+    SyncCommittee:
+      type: object
+      properties:
+        validators:
+          type: array
+          items:
+            type: integer
+            format: int64
+        validator_aggregates:
+          type: string
+      required:
+      - validators
+      - validator_aggregates
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+    BlobItem:
+      type: object
+      properties:
+        index:
+          type: string
+        blob:
+          type: string
+        kzg_commitment:
+          type: string
+        kzg_proof:
+          type: string
+        signed_block_header:
+          type: object
+      required:
+      - index
+      - blob
+      - kzg_commitment
+      - kzg_proof
     FinalityCheckpoints:
       type: object
       properties:
@@ -431,83 +497,13 @@ components:
               type: string
               format: byte
               description: Root of the finalized checkpoint.
-    Block:
+    StateRoot:
       type: object
       properties:
-        slot:
-          type: integer
-          format: int64
-        parent_root:
+        root:
           type: string
-        state_root:
-          type: string
-        body:
-          type: object
-      required:
-      - slot
-      - parent_root
-      - state_root
-      - body
-    SyncCommitteeContribution:
-      type: object
-      properties:
-        slot:
-          type: integer
-          format: int64
-        beacon_block_root:
-          type: string
-          pattern: ^0x[0-9a-fA-F]+$
-        subcommittee_index:
-          type: integer
-          format: int64
-        aggregation_bits:
-          type: string
-          pattern: ^0x[0-9a-fA-F]+$
-        signature:
-          type: string
-          pattern: ^0x[0-9a-fA-F]+$
-      required:
-      - slot
-      - beacon_block_root
-      - subcommittee_index
-      - aggregation_bits
-      - signature
-    BeaconHeaders:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BeaconHeader'
-      required:
-      - data
-    BlobItem:
-      type: object
-      properties:
-        index:
-          type: string
-        blob:
-          type: string
-        kzg_commitment:
-          type: string
-        kzg_proof:
-          type: string
-        signed_block_header:
-          type: object
-      required:
-      - index
-      - blob
-      - kzg_commitment
-      - kzg_proof
-    CommitteeData:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/CommitteeItem'
-      required:
-      - data
+          format: byte
+          description: The root of the specified state.
     BeaconBlockItem:
       type: object
       properties:
@@ -518,14 +514,7 @@ components:
       required:
       - root
       - block
-    StateRoot:
-      type: object
-      properties:
-        root:
-          type: string
-          format: byte
-          description: The root of the specified state.
-    BeaconHeader:
+    BeaconHeaderItem:
       type: object
       properties:
         root:
@@ -538,33 +527,13 @@ components:
       - root
       - canonical
       - header
-    BlobsResponse:
+    BeaconBlockRootItem:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BlobItem'
-      required:
-      - data
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
+        root:
           type: string
       required:
-      - code
-      - message
-    SyncCommitteeData:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/SyncCommittee'
-      required:
-      - data
+      - root
     Header:
       type: object
       properties:
@@ -582,20 +551,7 @@ components:
       - parent_root
       - state_root
       - body_root
-    SyncCommittee:
-      type: object
-      properties:
-        validators:
-          type: array
-          items:
-            type: integer
-            format: int64
-        validator_aggregates:
-          type: string
-      required:
-      - validators
-      - validator_aggregates
-    BeaconHeaderItem:
+    BeaconHeader:
       type: object
       properties:
         root:
@@ -608,6 +564,30 @@ components:
       - root
       - canonical
       - header
+    SyncCommitteeData:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SyncCommittee'
+      required:
+      - data
+    Block:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        parent_root:
+          type: string
+        state_root:
+          type: string
+        body:
+          type: object
+      required:
+      - slot
+      - parent_root
+      - state_root
+      - body
     CommitteeItem:
       type: object
       properties:
@@ -626,10 +606,30 @@ components:
       - index
       - slot
       - validators
-    BeaconBlockRootItem:
+    BlobsResponse:
       type: object
       properties:
-        root:
-          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlobItem'
       required:
-      - root
+      - data
+    CommitteeData:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommitteeItem'
+      required:
+      - data
+    BeaconHeaders:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BeaconHeader'
+      required:
+      - data

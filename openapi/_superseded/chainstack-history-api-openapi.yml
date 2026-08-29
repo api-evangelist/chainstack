@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Chainstack Arbitrum Node Account Info History API
   version: 1.0.0
@@ -62,8 +62,9 @@ paths:
                       type: string
                       description: Organization ID associated with the transaction.
                     transactionHash:
-                      type: string
-                      nullable: true
+                      type:
+                      - string
+                      - 'null'
                       description: Transaction hash, nullable if not available.
                     timestamp:
                       type: integer

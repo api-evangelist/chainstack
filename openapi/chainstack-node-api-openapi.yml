@@ -1,24 +1,22 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Chainstack Arbitrum Account Info Node API
-  version: 1.0.0
-  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  x-logo:
+    url: https://chainstack.com/assets/docs/api-docs-logo.svg
+    backgroundColor: '#F5F8FC'
+    altText: Chainstack
+  title: 💙 CHAINSTACK PLATFORM Node API
+  version: v2
   contact:
-    name: Chainstack API Support
+    name: API Support
     email: support@chainstack.com
-  license:
-    name: Chainstack Terms
-    url: https://chainstack.com/terms-of-service/
+  description: 'A set of API endpoints to operate and manage the platform resources.<br>
+
+    See also a [quick API tutorial](https://docs.chainstack.com/reference/quick-tutorial).
+
+    '
 servers:
-- url: https://{node_id}.p2pify.com/{api_key}
-  description: Chainstack-managed node endpoint
-  variables:
-    node_id:
-      default: nd-000-000-000
-      description: Your Chainstack node identifier
-    api_key:
-      default: <api-key>
-      description: Per-node access key
+- url: https://api.chainstack.com
+  description: API endpoint
 tags:
 - name: Node
 paths:
@@ -274,12 +272,230 @@ paths:
           $ref: '#/components/responses/NotFoundError'
 components:
   schemas:
+    PolygonPoSNodeConfiguration:
+      type: object
+      description: Polygon PoS node configuration.
+      properties:
+        archive:
+          type: boolean
+          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
+
+            <br>See more about [archive nodes](https://docs.chainstack.com/operations/polygon/modes).
+
+            '
+    NodeCreate:
+      allOf:
+      - $ref: '#/components/schemas/BaseNode'
+      - type: object
+        properties:
+          role:
+            $ref: '#/components/schemas/NodeRoleCreateEnum'
+          configuration:
+            allOf:
+            - $ref: '#/components/schemas/NodeCreateConfiguration'
+            description: 'Protocol-specific parameters.
+
+              <br>Pass `{}` if there are no specific parameters for the selected protocol.
+
+              '
+        required:
+        - name
+        - network
+        - region
+        - provider
+        - role
+        - type
+        - configuration
+    Object:
+      type: object
+      description: Common object representation.
+      readOnly: true
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+    NodeUpdate:
+      allOf:
+      - $ref: '#/components/schemas/BaseNode'
+      - type: object
+        properties:
+          configuration:
+            $ref: '#/components/schemas/NodeConfiguration'
+          type:
+            readOnly: true
+          role:
+            allOf:
+            - $ref: '#/components/schemas/NodeRoleEnum'
+            readOnly: true
+          provider:
+            readOnly: true
+          region:
+            readOnly: true
+          network:
+            readOnly: true
     FantomNodeCreateConfiguration:
       allOf:
       - $ref: '#/components/schemas/FantomNodeConfiguration'
       - type: object
         required:
         - archive
+    NodeConfiguration:
+      oneOf:
+      - $ref: '#/components/schemas/EthereumNodeConfiguration'
+      - $ref: '#/components/schemas/PolygonPoSNodeConfiguration'
+      - $ref: '#/components/schemas/BinanceSmartChainNodeConfiguration'
+      - $ref: '#/components/schemas/AvalancheNodeConfiguration'
+      - $ref: '#/components/schemas/FantomNodeConfiguration'
+      - $ref: '#/components/schemas/TezosNodeConfiguration'
+      - $ref: '#/components/schemas/SolanaNodeConfiguration'
+      - $ref: '#/components/schemas/StarknetNodeConfiguration'
+      - $ref: '#/components/schemas/HarmonyNodeConfiguration'
+      readOnly: true
+    StarknetNodeCreateConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/StarknetNodeConfiguration'
+      - type: object
+    NodeStatusEnum:
+      type: string
+      description: 'See more about [statuses](https://docs.chainstack.com/platform/view-node-and-network-status).
+
+        '
+      readOnly: true
+      enum:
+      - pending
+      - running
+      - maintenance
+      - failed
+      - error
+      - stopping
+      - stopped
+      - starting
+    TezosNodeCreateConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/TezosNodeConfiguration'
+      - type: object
+        required:
+        - archive
+        - tezos_node_type
+    TezosNodeConfiguration:
+      type: object
+      description: Tezos node configuration.
+      properties:
+        archive:
+          type: boolean
+          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
+
+            <br>See more about [archive nodes](https://docs.chainstack.com/operations/tezos/modes).
+
+            '
+        tezos_node_type:
+          type: string
+          description: 'Currently ''regular'' is the only supported type.
+
+            '
+    BinanceSmartChainNodeDetails:
+      type: object
+      description: Binance Smart Chain node details.
+      properties:
+        mode:
+          type: string
+          description: See also [Binance Smart Chain node modes](https://docs.chainstack.com/operations/bsc/modes)
+          readOnly: true
+          enum:
+          - full
+          - archive
+        version:
+          type: string
+          readOnly: true
+        api_namespaces:
+          type: array
+          readOnly: true
+          items:
+            type: string
+        https_endpoint:
+          type: string
+          readOnly: true
+          description: Only for the owner of the node.
+        wss_endpoint:
+          type: string
+          readOnly: true
+          description: Only for the owner of the node.
+        graphql_endpoint:
+          type: string
+          readOnly: true
+          description: Only for the owner of the node.
+        auth_username:
+          type: string
+          readOnly: true
+          description: 'Basic authentication username to access the node endpoints.
+
+            <br>Only for the owner of the node.
+
+            '
+        auth_password:
+          type: string
+          format: password
+          readOnly: true
+          description: 'Basic authentication password to access the node endpoints.
+
+            <br>Only for the owner of the node.
+
+            '
+        auth_key:
+          type: string
+          format: password
+          readOnly: true
+          description: 'Authentication key to access the node endpoints.
+
+            <br>Only for the owner of the node.
+
+            '
+    BinanceSmartChainNodeConfiguration:
+      type: object
+      description: Binance Smart Chain node configuration.
+      properties:
+        archive:
+          type: boolean
+          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
+
+            <br>See more about [archive nodes](https://docs.chainstack.com/operations/bsc/modes).
+
+            '
+    NodeRoleCreateEnum:
+      type: string
+      description: Role of the node.
+      enum:
+      - peer
+    ProjectTypeEnum:
+      type: string
+      description: 'Type of the project.
+
+        <br>
+
+        * `public` for public chain project
+
+        '
+      enum:
+      - public
+    NodeRoleEnum:
+      type: string
+      description: 'Role of the node.
+
+        <br>Available roles:
+
+        * `peer` — peer node
+
+        '
+      enum:
+      - peer
+    CreatedAt:
+      type: string
+      format: date-time
+      readOnly: true
+      description: When the object was created.
     StarknetNodeDetails:
       type: object
       description: StarkNet node details.
@@ -317,157 +533,49 @@ components:
             <br>Only for the owner of the node.
 
             '
-    PolygonPoSNodeConfiguration:
+    BitcoinNodeDetails:
       type: object
-      description: Polygon PoS node configuration.
+      description: Bitcoin node details.
       properties:
-        archive:
-          type: boolean
-          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
+        version:
+          type: string
+          readOnly: true
+        https_endpoint:
+          type: string
+          readOnly: true
+          description: Only for the owner of the node.
+        auth_username:
+          type: string
+          readOnly: true
+          description: 'Basic authentication username to access the node endpoint.
 
-            <br>See more about [archive nodes](https://docs.chainstack.com/operations/polygon/modes).
+            <br>Only for the owner of the node.
 
             '
-    Provider:
-      type: string
-      enum:
-      - aws
-      - azure
-      - gcloud
-      - vzo
-      description: 'Cloud provider.
+        auth_password:
+          type: string
+          format: password
+          readOnly: true
+          description: 'Basic authentication password to access the node endpoint.
 
-        <br>See also [Supported cloud providers](https://docs.chainstack.com/platform/supported-cloud-hosting-providers).
-
-        '
-    EthereumNodeConfiguration:
-      type: object
-      description: Ethereum node configuration.
-      properties:
-        archive:
-          type: boolean
-          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
-
-            <br>See more about [archive nodes](https://docs.chainstack.com/operations/ethereum/modes).
+            <br>Only for the owner of the node.
 
             '
-    SolanaNodeCreateConfiguration:
+        auth_key:
+          type: string
+          format: password
+          readOnly: true
+          description: 'Authentication key to access the node endpoint.
+
+            <br>Only for the owner of the node.
+
+            '
+    EthereumNodeCreateConfiguration:
       allOf:
-      - $ref: '#/components/schemas/SolanaNodeConfiguration'
-      - type: object
-    NodeRoleCreateEnum:
-      type: string
-      description: Role of the node.
-      enum:
-      - peer
-    Node:
-      allOf:
-      - $ref: '#/components/schemas/BaseNode'
-      - type: object
-        properties:
-          role:
-            $ref: '#/components/schemas/NodeRoleEnum'
-          configuration:
-            $ref: '#/components/schemas/NodeConfiguration'
-    PolygonPoSNodeCreateConfiguration:
-      allOf:
-      - $ref: '#/components/schemas/PolygonPoSNodeConfiguration'
+      - $ref: '#/components/schemas/EthereumNodeConfiguration'
       - type: object
         required:
         - archive
-    NodeDetails:
-      oneOf:
-      - $ref: '#/components/schemas/EthereumNodeDetails'
-      - $ref: '#/components/schemas/BinanceSmartChainNodeDetails'
-      - $ref: '#/components/schemas/AvalancheNodeDetails'
-      - $ref: '#/components/schemas/FantomNodeDetails'
-      - $ref: '#/components/schemas/TezosNodeDetails'
-      - $ref: '#/components/schemas/SolanaNodeDetails'
-      - $ref: '#/components/schemas/StarknetNodeDetails'
-      - $ref: '#/components/schemas/BitcoinNodeDetails'
-      - $ref: '#/components/schemas/HarmonyNodeDetails'
-      readOnly: true
-    AvalancheNodeConfiguration:
-      type: object
-      description: Avalanche node configuration.
-      properties:
-        archive:
-          type: boolean
-          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
-
-            <br>See more about [archive nodes](https://docs.chainstack.com/operations/avalanche/modes).
-
-            '
-    Region:
-      type: string
-      enum:
-      - asia-southeast1
-      - ap-southeast-1
-      - us-west-2
-      - us-east-1
-      - uksouth
-      - eu3
-      description: 'Regions the nodes are deployed to.
-
-
-        Available for `gcloud`:
-
-        * `asia-southeast1`
-
-
-        Available for `aws`:
-
-        * `ap-southeast-1`
-
-        * `us-west-2`
-
-        * `us-east-1`
-
-
-        Available for `azure`:
-
-        * `uksouth`
-
-
-        Available for `vzo`:
-
-        * `eu3`
-
-        '
-    NodeCreateConfiguration:
-      oneOf:
-      - $ref: '#/components/schemas/EthereumNodeCreateConfiguration'
-      - $ref: '#/components/schemas/PolygonPoSNodeCreateConfiguration'
-      - $ref: '#/components/schemas/BinanceSmartChainNodeCreateConfiguration'
-      - $ref: '#/components/schemas/AvalancheNodeCreateConfiguration'
-      - $ref: '#/components/schemas/FantomNodeCreateConfiguration'
-      - $ref: '#/components/schemas/TezosNodeCreateConfiguration'
-      - $ref: '#/components/schemas/SolanaNodeCreateConfiguration'
-      - $ref: '#/components/schemas/StarknetNodeCreateConfiguration'
-      - $ref: '#/components/schemas/HarmonyNodeCreateConfiguration'
-    Protocol:
-      type: string
-      enum:
-      - ethereum
-      - polygon-pos
-      - bsc
-      - avalanche
-      - arbitrum
-      - near
-      - aurora
-      - gnosis
-      - cronos
-      - fantom
-      - starknet
-      - harmony
-      - tezos
-      - fuse
-      - bitcoin
-      description: 'Protocol.
-
-        <br>See also [Supported protocols](https://docs.chainstack.com/platform/supported-protocols).
-
-        '
     FantomNodeDetails:
       type: object
       description: Fantom node details.
@@ -518,56 +626,60 @@ components:
             <br>Only for the owner of the node.
 
             '
-    EthereumNodeCreateConfiguration:
+    PolygonPoSNodeCreateConfiguration:
       allOf:
-      - $ref: '#/components/schemas/EthereumNodeConfiguration'
+      - $ref: '#/components/schemas/PolygonPoSNodeConfiguration'
       - type: object
         required:
         - archive
-    TezosNodeCreateConfiguration:
-      allOf:
-      - $ref: '#/components/schemas/TezosNodeConfiguration'
-      - type: object
-        required:
-        - archive
-        - tezos_node_type
-    BitcoinNodeDetails:
+    Creator:
       type: object
-      description: Bitcoin node details.
+      description: Creator of the object.
+      readOnly: true
       properties:
-        version:
+        id:
           type: string
           readOnly: true
-        https_endpoint:
+        email:
+          type: string
+          format: email
+          readOnly: true
+        first_name:
           type: string
           readOnly: true
-          description: Only for the owner of the node.
-        auth_username:
+        last_name:
           type: string
           readOnly: true
-          description: 'Basic authentication username to access the node endpoint.
+        organization:
+          allOf:
+          - $ref: '#/components/schemas/Object'
+          description: Creator's organization.
+    NodeDetails:
+      oneOf:
+      - $ref: '#/components/schemas/EthereumNodeDetails'
+      - $ref: '#/components/schemas/BinanceSmartChainNodeDetails'
+      - $ref: '#/components/schemas/AvalancheNodeDetails'
+      - $ref: '#/components/schemas/FantomNodeDetails'
+      - $ref: '#/components/schemas/TezosNodeDetails'
+      - $ref: '#/components/schemas/SolanaNodeDetails'
+      - $ref: '#/components/schemas/StarknetNodeDetails'
+      - $ref: '#/components/schemas/BitcoinNodeDetails'
+      - $ref: '#/components/schemas/HarmonyNodeDetails'
+      readOnly: true
+    EthereumNodeConfiguration:
+      type: object
+      description: Ethereum node configuration.
+      properties:
+        archive:
+          type: boolean
+          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
 
-            <br>Only for the owner of the node.
+            <br>See more about [archive nodes](https://docs.chainstack.com/operations/ethereum/modes).
 
             '
-        auth_password:
-          type: string
-          format: password
-          readOnly: true
-          description: 'Basic authentication password to access the node endpoint.
-
-            <br>Only for the owner of the node.
-
-            '
-        auth_key:
-          type: string
-          format: password
-          readOnly: true
-          description: 'Authentication key to access the node endpoint.
-
-            <br>Only for the owner of the node.
-
-            '
+    StarknetNodeConfiguration:
+      type: object
+      description: StarkNet node configuration.
     EthereumNodeDetails:
       type: object
       description: Ethereum node details.
@@ -629,6 +741,183 @@ components:
             <br>Only for the owner of the node.
 
             '
+    SolanaNodeDetails:
+      type: object
+      description: Solana node details.
+      properties:
+        version:
+          type: string
+          readOnly: true
+        https_endpoint:
+          type: string
+          readOnly: true
+          description: Only for the owner of the node.
+        wss_endpoint:
+          type: string
+          readOnly: true
+          description: Only for the owner of the node.
+        auth_username:
+          type: string
+          readOnly: true
+          description: 'Basic authentication username to access the node endpoints.
+
+            <br>Only for the owner of the node.
+
+            '
+        auth_password:
+          type: string
+          format: password
+          readOnly: true
+          description: 'Basic authentication password to access the node endpoints.
+
+            <br>Only for the owner of the node.
+
+            '
+        auth_key:
+          type: string
+          format: password
+          readOnly: true
+          description: 'Authentication key to access the node endpoints.
+
+            <br>Only for the owner of the node.
+
+            '
+    BinanceSmartChainNodeCreateConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/BinanceSmartChainNodeConfiguration'
+      - type: object
+        required:
+        - archive
+    HarmonyNodeCreateConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/HarmonyNodeConfiguration'
+      - type: object
+        required:
+        - archive
+    FantomNodeConfiguration:
+      type: object
+      description: Fantom node configuration.
+      properties:
+        archive:
+          type: boolean
+          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
+
+            <br>See more about [archive nodes](https://docs.chainstack.com/operations/fantom/modes).
+
+            '
+    Region:
+      type: string
+      enum:
+      - asia-southeast1
+      - ap-southeast-1
+      - us-west-2
+      - us-east-1
+      - uksouth
+      - eu3
+      description: 'Regions the nodes are deployed to.
+
+
+        Available for `gcloud`:
+
+        * `asia-southeast1`
+
+
+        Available for `aws`:
+
+        * `ap-southeast-1`
+
+        * `us-west-2`
+
+        * `us-east-1`
+
+
+        Available for `azure`:
+
+        * `uksouth`
+
+
+        Available for `vzo`:
+
+        * `eu3`
+
+        '
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+          description: Number of the objects in the paginated results.
+        next:
+          type:
+          - string
+          - 'null'
+          description: Link to the next page.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: Link to the previous page.
+        results:
+          type: array
+          items:
+            type: object
+    Node:
+      allOf:
+      - $ref: '#/components/schemas/BaseNode'
+      - type: object
+        properties:
+          role:
+            $ref: '#/components/schemas/NodeRoleEnum'
+          configuration:
+            $ref: '#/components/schemas/NodeConfiguration'
+    NodeCreateConfiguration:
+      oneOf:
+      - $ref: '#/components/schemas/EthereumNodeCreateConfiguration'
+      - $ref: '#/components/schemas/PolygonPoSNodeCreateConfiguration'
+      - $ref: '#/components/schemas/BinanceSmartChainNodeCreateConfiguration'
+      - $ref: '#/components/schemas/AvalancheNodeCreateConfiguration'
+      - $ref: '#/components/schemas/FantomNodeCreateConfiguration'
+      - $ref: '#/components/schemas/TezosNodeCreateConfiguration'
+      - $ref: '#/components/schemas/SolanaNodeCreateConfiguration'
+      - $ref: '#/components/schemas/StarknetNodeCreateConfiguration'
+      - $ref: '#/components/schemas/HarmonyNodeCreateConfiguration'
+    BaseNode:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Name of the node.
+        network:
+          type: string
+          description: ID of the network.
+        organization:
+          type: string
+          readOnly: true
+          description: ID of the organization that owns this node.
+        type:
+          $ref: '#/components/schemas/NodeTypeEnum'
+        provider:
+          $ref: '#/components/schemas/Provider'
+        region:
+          $ref: '#/components/schemas/Region'
+        details:
+          allOf:
+          - $ref: '#/components/schemas/NodeDetails'
+          description: Protocol-specific attributes.
+        status:
+          $ref: '#/components/schemas/NodeStatusEnum'
+        creator:
+          allOf:
+          - $ref: '#/components/schemas/Creator'
+          description: Creator of the network.
+        created_at:
+          allOf:
+          - $ref: '#/components/schemas/CreatedAt'
+          description: When the node was created.
     AvalancheNodeDetails:
       type: object
       description: Avalanche node details.
@@ -675,118 +964,32 @@ components:
             <br>Only for the owner of the node.
 
             '
-    NodeStatusEnum:
+    Provider:
       type: string
-      description: 'See more about [statuses](https://docs.chainstack.com/platform/view-node-and-network-status).
+      enum:
+      - aws
+      - azure
+      - gcloud
+      - vzo
+      description: 'Cloud provider.
+
+        <br>See also [Supported cloud providers](https://docs.chainstack.com/platform/supported-cloud-hosting-providers).
 
         '
-      readOnly: true
-      enum:
-      - pending
-      - running
-      - maintenance
-      - failed
-      - error
-      - stopping
-      - stopped
-      - starting
-    NodeRoleEnum:
-      type: string
-      description: 'Role of the node.
-
-        <br>Available roles:
-
-        * `peer` — peer node
-
-        '
-      enum:
-      - peer
-    BinanceSmartChainNodeCreateConfiguration:
-      allOf:
-      - $ref: '#/components/schemas/BinanceSmartChainNodeConfiguration'
-      - type: object
-        required:
-        - archive
-    NodeUpdate:
-      allOf:
-      - $ref: '#/components/schemas/BaseNode'
-      - type: object
-        properties:
-          configuration:
-            $ref: '#/components/schemas/NodeConfiguration'
-          type:
-            readOnly: true
-          role:
-            allOf:
-            - $ref: '#/components/schemas/NodeRoleEnum'
-            readOnly: true
-          provider:
-            readOnly: true
-          region:
-            readOnly: true
-          network:
-            readOnly: true
-    StarknetNodeConfiguration:
+    HarmonyNodeConfiguration:
       type: object
-      description: StarkNet node configuration.
-    ProjectTypeEnum:
-      type: string
-      description: 'Type of the project.
-
-        <br>
-
-        * `public` for public chain project
-
-        '
-      enum:
-      - public
-    TezosNodeConfiguration:
-      type: object
-      description: Tezos node configuration.
+      description: Harmony node configuration.
       properties:
         archive:
           type: boolean
-          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
-
-            <br>See more about [archive nodes](https://docs.chainstack.com/operations/tezos/modes).
+          description: 'Only `false` (full mode) is currently supported.
 
             '
-        tezos_node_type:
-          type: string
-          description: 'Currently ''regular'' is the only supported type.
-
-            '
-    Creator:
-      type: object
-      description: Creator of the object.
-      readOnly: true
-      properties:
-        id:
-          type: string
-          readOnly: true
-        email:
-          type: string
-          format: email
-          readOnly: true
-        first_name:
-          type: string
-          readOnly: true
-        last_name:
-          type: string
-          readOnly: true
-        organization:
-          allOf:
-          - $ref: '#/components/schemas/Object'
-          description: Creator's organization.
-    FantomNodeConfiguration:
-      type: object
-      description: Fantom node configuration.
-      properties:
-        archive:
-          type: boolean
-          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
-
-            <br>See more about [archive nodes](https://docs.chainstack.com/operations/fantom/modes).
+        shard:
+          type: integer
+          minimum: 0
+          maximum: 0
+          description: 'Only Shard 0 is currently supported.
 
             '
     NodeTypeEnum:
@@ -803,23 +1006,53 @@ components:
       enum:
       - shared
       - dedicated
-    Object:
+    Protocol:
+      type: string
+      enum:
+      - ethereum
+      - polygon-pos
+      - bsc
+      - avalanche
+      - arbitrum
+      - near
+      - aurora
+      - gnosis
+      - cronos
+      - fantom
+      - starknet
+      - harmony
+      - tezos
+      - fuse
+      - bitcoin
+      description: 'Protocol.
+
+        <br>See also [Supported protocols](https://docs.chainstack.com/platform/supported-protocols).
+
+        '
+    SolanaNodeCreateConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/SolanaNodeConfiguration'
+      - type: object
+    SolanaNodeConfiguration:
       type: object
-      description: Common object representation.
-      readOnly: true
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
+      description: Solana node configuration.
     AvalancheNodeCreateConfiguration:
       allOf:
       - $ref: '#/components/schemas/AvalancheNodeConfiguration'
       - type: object
         required:
         - archive
+    AvalancheNodeConfiguration:
+      type: object
+      description: Avalanche node configuration.
+      properties:
+        archive:
+          type: boolean
+          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
+
+            <br>See more about [archive nodes](https://docs.chainstack.com/operations/avalanche/modes).
+
+            '
     TezosNodeDetails:
       type: object
       description: Tezos node details.
@@ -857,29 +1090,6 @@ components:
             <br>Only for the owner of the node.
 
             '
-    NodeCreate:
-      allOf:
-      - $ref: '#/components/schemas/BaseNode'
-      - type: object
-        properties:
-          role:
-            $ref: '#/components/schemas/NodeRoleCreateEnum'
-          configuration:
-            allOf:
-            - $ref: '#/components/schemas/NodeCreateConfiguration'
-            description: 'Protocol-specific parameters.
-
-              <br>Pass `{}` if there are no specific parameters for the selected protocol.
-
-              '
-        required:
-        - name
-        - network
-        - region
-        - provider
-        - role
-        - type
-        - configuration
     HarmonyNodeDetails:
       type: object
       description: Harmony node details.
@@ -926,245 +1136,21 @@ components:
             <br>Only for the owner of the node.
 
             '
-    BinanceSmartChainNodeDetails:
-      type: object
-      description: Binance Smart Chain node details.
-      properties:
-        mode:
-          type: string
-          description: See also [Binance Smart Chain node modes](https://docs.chainstack.com/operations/bsc/modes)
-          readOnly: true
-          enum:
-          - full
-          - archive
-        version:
-          type: string
-          readOnly: true
-        api_namespaces:
-          type: array
-          readOnly: true
-          items:
-            type: string
-        https_endpoint:
-          type: string
-          readOnly: true
-          description: Only for the owner of the node.
-        wss_endpoint:
-          type: string
-          readOnly: true
-          description: Only for the owner of the node.
-        graphql_endpoint:
-          type: string
-          readOnly: true
-          description: Only for the owner of the node.
-        auth_username:
-          type: string
-          readOnly: true
-          description: 'Basic authentication username to access the node endpoints.
-
-            <br>Only for the owner of the node.
-
-            '
-        auth_password:
-          type: string
-          format: password
-          readOnly: true
-          description: 'Basic authentication password to access the node endpoints.
-
-            <br>Only for the owner of the node.
-
-            '
-        auth_key:
-          type: string
-          format: password
-          readOnly: true
-          description: 'Authentication key to access the node endpoints.
-
-            <br>Only for the owner of the node.
-
-            '
-    SolanaNodeConfiguration:
-      type: object
-      description: Solana node configuration.
-    HarmonyNodeCreateConfiguration:
-      allOf:
-      - $ref: '#/components/schemas/HarmonyNodeConfiguration'
-      - type: object
-        required:
-        - archive
-    NodeConfiguration:
-      oneOf:
-      - $ref: '#/components/schemas/EthereumNodeConfiguration'
-      - $ref: '#/components/schemas/PolygonPoSNodeConfiguration'
-      - $ref: '#/components/schemas/BinanceSmartChainNodeConfiguration'
-      - $ref: '#/components/schemas/AvalancheNodeConfiguration'
-      - $ref: '#/components/schemas/FantomNodeConfiguration'
-      - $ref: '#/components/schemas/TezosNodeConfiguration'
-      - $ref: '#/components/schemas/SolanaNodeConfiguration'
-      - $ref: '#/components/schemas/StarknetNodeConfiguration'
-      - $ref: '#/components/schemas/HarmonyNodeConfiguration'
-      readOnly: true
-    SolanaNodeDetails:
-      type: object
-      description: Solana node details.
-      properties:
-        version:
-          type: string
-          readOnly: true
-        https_endpoint:
-          type: string
-          readOnly: true
-          description: Only for the owner of the node.
-        wss_endpoint:
-          type: string
-          readOnly: true
-          description: Only for the owner of the node.
-        auth_username:
-          type: string
-          readOnly: true
-          description: 'Basic authentication username to access the node endpoints.
-
-            <br>Only for the owner of the node.
-
-            '
-        auth_password:
-          type: string
-          format: password
-          readOnly: true
-          description: 'Basic authentication password to access the node endpoints.
-
-            <br>Only for the owner of the node.
-
-            '
-        auth_key:
-          type: string
-          format: password
-          readOnly: true
-          description: 'Authentication key to access the node endpoints.
-
-            <br>Only for the owner of the node.
-
-            '
-    BinanceSmartChainNodeConfiguration:
-      type: object
-      description: Binance Smart Chain node configuration.
-      properties:
-        archive:
-          type: boolean
-          description: 'Pass `true` if you want to access full blockchain data and an archive of historical states.
-
-            <br>See more about [archive nodes](https://docs.chainstack.com/operations/bsc/modes).
-
-            '
-    BaseNode:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          description: Name of the node.
-        network:
-          type: string
-          description: ID of the network.
-        organization:
-          type: string
-          readOnly: true
-          description: ID of the organization that owns this node.
-        type:
-          $ref: '#/components/schemas/NodeTypeEnum'
-        provider:
-          $ref: '#/components/schemas/Provider'
-        region:
-          $ref: '#/components/schemas/Region'
-        details:
-          allOf:
-          - $ref: '#/components/schemas/NodeDetails'
-          description: Protocol-specific attributes.
-        status:
-          $ref: '#/components/schemas/NodeStatusEnum'
-        creator:
-          allOf:
-          - $ref: '#/components/schemas/Creator'
-          description: Creator of the network.
-        created_at:
-          allOf:
-          - $ref: '#/components/schemas/CreatedAt'
-          description: When the node was created.
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 123
-          description: Number of the objects in the paginated results.
-        next:
-          type: string
-          nullable: true
-          description: Link to the next page.
-        previous:
-          type: string
-          nullable: true
-          description: Link to the previous page.
-        results:
-          type: array
-          items:
-            type: object
-    CreatedAt:
-      type: string
-      format: date-time
-      readOnly: true
-      description: When the object was created.
-    HarmonyNodeConfiguration:
-      type: object
-      description: Harmony node configuration.
-      properties:
-        archive:
-          type: boolean
-          description: 'Only `false` (full mode) is currently supported.
-
-            '
-        shard:
-          type: integer
-          minimum: 0
-          maximum: 0
-          description: 'Only Shard 0 is currently supported.
-
-            '
-    StarknetNodeCreateConfiguration:
-      allOf:
-      - $ref: '#/components/schemas/StarknetNodeConfiguration'
-      - type: object
   parameters:
-    NetworkIdFilter:
-      name: network
+    NodeOrdering:
+      name: order_by
       required: false
       in: query
-      description: Filter by network ID.
+      description: 'Which field to use when ordering the results.
+
+        <br> Use the `-` prefix to perform descending ordering (`-name`).
+
+        '
       schema:
         type: string
-    NodeStatusFilter:
-      name: status
-      required: false
-      in: query
-      description: Filter by node status.
-      schema:
-        $ref: '#/components/schemas/NodeStatusEnum'
-    ArchiveFilter:
-      name: archive
-      required: false
-      in: query
-      description: Filter Ethereum, Polygon PoS, Binance Smart Chain, Avalanche, Fantom, and Tezos nodes by the archive mode flag.
-      schema:
-        type: boolean
-    Pagination:
-      name: page
-      required: false
-      in: query
-      description: A page number within the paginated result set.
-      schema:
-        type: integer
+        enum:
+        - name
+        - created_at
     PublicNetworkNameFilter:
       name: public_network
       required: false
@@ -1205,76 +1191,6 @@ components:
         - fuse-testnet
         - bitcoin-mainnet
         - bitcoin-testnet
-    ProjectIdFilter:
-      name: project
-      required: false
-      in: query
-      description: Filter by project ID.
-      schema:
-        type: string
-    NodeOrdering:
-      name: order_by
-      required: false
-      in: query
-      description: 'Which field to use when ordering the results.
-
-        <br> Use the `-` prefix to perform descending ordering (`-name`).
-
-        '
-      schema:
-        type: string
-        enum:
-        - name
-        - created_at
-    Id:
-      name: id
-      in: path
-      required: true
-      description: A unique value identifying the Object.
-      schema:
-        type: string
-    NameFilter:
-      name: name
-      required: false
-      in: query
-      description: Filter by name.
-      schema:
-        type: string
-    ProviderFilter:
-      name: provider
-      required: false
-      in: query
-      description: Filter by the cloud provider of the node.
-      schema:
-        $ref: '#/components/schemas/Provider'
-    OrganizationIdFilter:
-      name: organization
-      required: false
-      in: query
-      description: Filter by organization ID.
-      schema:
-        type: string
-    NodeTypeFilter:
-      name: type
-      required: false
-      in: query
-      description: Filter by node type.
-      schema:
-        $ref: '#/components/schemas/NodeTypeEnum'
-    ProtocolFilter:
-      name: protocol
-      required: false
-      in: query
-      description: Filter by protocol.
-      schema:
-        $ref: '#/components/schemas/Protocol'
-    NetworkProjectTypeFilter:
-      name: project_type
-      required: false
-      in: query
-      description: Filter by project type.
-      schema:
-        $ref: '#/components/schemas/ProjectTypeEnum'
     RegionFilter:
       name: region
       required: false
@@ -1289,159 +1205,91 @@ components:
       description: Filter by node role.
       schema:
         $ref: '#/components/schemas/NodeRoleEnum'
-  responses:
-    NotFoundError:
-      description: Object does not exist or caller has insufficient permissions to access it.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-    ValidationError:
-      description: Validation error.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-                  fields:
-                    type: object
-                    additionalProperties:
-                      type: array
-                      items:
-                        type: string
-                    description: Optional. Field-level validation errors.
+    NetworkIdFilter:
+      name: network
+      required: false
+      in: query
+      description: Filter by network ID.
+      schema:
+        type: string
+    NodeStatusFilter:
+      name: status
+      required: false
+      in: query
+      description: Filter by node status.
+      schema:
+        $ref: '#/components/schemas/NodeStatusEnum'
+    NetworkProjectTypeFilter:
+      name: project_type
+      required: false
+      in: query
+      description: Filter by project type.
+      schema:
+        $ref: '#/components/schemas/ProjectTypeEnum'
+    ProviderFilter:
+      name: provider
+      required: false
+      in: query
+      description: Filter by the cloud provider of the node.
+      schema:
+        $ref: '#/components/schemas/Provider'
+    NameFilter:
+      name: name
+      required: false
+      in: query
+      description: Filter by name.
+      schema:
+        type: string
+    OrganizationIdFilter:
+      name: organization
+      required: false
+      in: query
+      description: Filter by organization ID.
+      schema:
+        type: string
+    Pagination:
+      name: page
+      required: false
+      in: query
+      description: A page number within the paginated result set.
+      schema:
+        type: integer
+    ArchiveFilter:
+      name: archive
+      required: false
+      in: query
+      description: Filter Ethereum, Polygon PoS, Binance Smart Chain, Avalanche, Fantom, and Tezos nodes by the archive mode flag.
+      schema:
+        type: boolean
+    ProjectIdFilter:
+      name: project
+      required: false
+      in: query
+      description: Filter by project ID.
+      schema:
+        type: string
+    ProtocolFilter:
+      name: protocol
+      required: false
+      in: query
+      description: Filter by protocol.
+      schema:
+        $ref: '#/components/schemas/Protocol'
+    Id:
+      name: id
+      in: path
+      required: true
+      description: A unique value identifying the Object.
+      schema:
+        type: string
+    NodeTypeFilter:
+      name: type
+      required: false
+      in: query
+      description: Filter by node type.
+      schema:
+        $ref: '#/components/schemas/NodeTypeEnum'
   examples:
-    EthereumNode:
-      value:
-        id: ND-123-456-789
-        name: My Ethereum archive node
-        network: NW-123-456-7
-        organization: RG-123-456
-        type: dedicated
-        role: peer
-        provider: gcloud
-        region: asia-southeast1
-        status: running
-        configuration:
-          archive: true
-        details:
-          mode: archive
-          version: 1.9.9
-          api_namespaces:
-          - net
-          - eth
-          - web3
-          - txpool
-          - debug
-          graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
-          https_endpoint: https://nd-123-456-789.p2pify.com
-          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
-          beacon_endpoint: https://beacon-nd-123-456-789.p2pify.com
-          auth_username: user-name
-          auth_password: pass-word-pass-word-pass-word
-          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
-    TezosNodeCreate:
-      value:
-        name: My Tezos node
-        network: NW-123-456-7
-        type: dedicated
-        role: peer
-        provider: gcloud
-        region: asia-southeast1
-        configuration:
-          archive: true
-          tezos_node_type: regular
-    BinanceSmartChainNodeCreate:
-      value:
-        name: My Binance Smart Chain node
-        network: NW-123-456-7
-        type: dedicated
-        role: peer
-        provider: gcloud
-        region: asia-southeast1
-        configuration:
-          archive: true
-    StarknetNodeCreate:
-      value:
-        name: My StarkNet node
-        network: NW-123-456-7
-        type: shared
-        role: peer
-        provider: aws
-        region: us-east-1
-        configuration: {}
-    FantomNodeCreate:
-      value:
-        name: My Fantom node
-        network: NW-123-456-7
-        type: dedicated
-        role: peer
-        provider: vzo
-        region: eu1
-        configuration:
-          archive: true
-    FantomNode:
-      value:
-        id: ND-123-456-789
-        name: My Fantom node
-        network: NW-123-456-7
-        organization: RG-123-456
-        type: dedicated
-        role: peer
-        provider: vzo
-        region: eu1
-        status: running
-        configuration:
-          archive: false
-        details:
-          version: 1.0.2
-          api_namespaces:
-          - net
-          - eth
-          - web3
-          graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
-          https_endpoint: https://nd-123-456-789.p2pify.com
-          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
-          auth_username: user-name
-          auth_password: pass-word-pass-word-pass-word
-          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
     BinanceSmartChainNode:
       value:
         id: ND-123-456-789
@@ -1480,6 +1328,16 @@ components:
           organization:
             id: RG-123-456
             name: My organization
+    FantomNodeCreate:
+      value:
+        name: My Fantom node
+        network: NW-123-456-7
+        type: dedicated
+        role: peer
+        provider: vzo
+        region: eu1
+        configuration:
+          archive: true
     HarmonyNodeCreate:
       value:
         name: My Harmony node
@@ -1490,192 +1348,6 @@ components:
         region: eu1
         configuration:
           archive: false
-    EthereumNodeCreate:
-      value:
-        name: My Ethereum node
-        network: NW-123-456-7
-        type: dedicated
-        role: peer
-        provider: gcloud
-        region: asia-southeast1
-        configuration:
-          archive: true
-    SolanaNode:
-      value:
-        id: ND-123-456-789
-        name: My Solana node
-        network: NW-123-456-7
-        organization: RG-123-456
-        type: shared
-        role: peer
-        provider: aws
-        region: us-east-1
-        status: running
-        configuration: {}
-        details:
-          version: 1.8.8
-          https_endpoint: https://nd-123-456-789.p2pify.com
-          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
-          auth_username: user-name
-          auth_password: pass-word-pass-word-pass-word
-          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
-    SolanaNodeCreate:
-      value:
-        name: My Solana node
-        network: NW-123-456-7
-        type: shared
-        role: peer
-        provider: aws
-        region: us-east-1
-        configuration: {}
-    BitcoinNodeCreate:
-      value:
-        name: My Bitcoin node
-        network: NW-123-456-7
-        type: shared
-        role: peer
-        provider: gcloud
-        region: asia-southeast1
-        configuration: {}
-    BitcoinNode:
-      value:
-        id: ND-123-456-789
-        name: My Bitcoin node
-        network: NW-123-456-7
-        organization: RG-123-456
-        type: shared
-        role: peer
-        provider: gcloud
-        region: asia-southeast1
-        status: running
-        configuration: {}
-        details:
-          version: 0.19.0.1
-          https_endpoint: https://nd-123-456-789.p2pify.com
-          auth_username: user-name
-          auth_password: pass-word-pass-word-pass-word
-          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
-    HarmonyNode:
-      value:
-        id: ND-123-456-789
-        name: My Harmony node
-        network: NW-123-456-7
-        organization: RG-123-456
-        type: dedicated
-        role: peer
-        provider: vzo
-        region: eu1
-        status: running
-        configuration:
-          archive: false
-          shard: 0
-        details:
-          version: 4.3.9
-          api_namespaces:
-          - hmy
-          - hmyv2
-          - net
-          - eth
-          - web3
-          https_endpoint: https://nd-123-456-789.p2pify.com
-          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
-          auth_username: user-name
-          auth_password: pass-word-pass-word-pass-word
-          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
-    PolygonPoSNode:
-      value:
-        id: ND-123-456-789
-        name: My Polygon PoS archive node
-        network: NW-123-456-7
-        organization: RG-123-456
-        type: dedicated
-        role: peer
-        provider: gcloud
-        region: asia-southeast1
-        status: running
-        configuration:
-          archive: true
-        details:
-          mode: archive
-          version: 1.0.6
-          api_namespaces:
-          - net
-          - eth
-          - web3
-          - txpool
-          - debug
-          - parlia
-          graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
-          https_endpoint: https://nd-123-456-789.p2pify.com
-          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
-          auth_username: user-name
-          auth_password: pass-word-pass-word-pass-word
-          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
-    TezosNode:
-      value:
-        id: ND-123-456-789
-        name: My Tezos node
-        network: NW-123-456-7
-        organization: RG-123-456
-        type: dedicated
-        role: peer
-        provider: gcloud
-        region: asia-southeast1
-        status: running
-        configuration:
-          archive: false
-          tezos_node_type: regular
-        details:
-          version: 9.2.0
-          https_endpoint: https://nd-123-456-789.p2pify.com
-          auth_username: user-name
-          auth_password: pass-word-pass-word-pass-word
-          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
     AvalancheNodeCreate:
       value:
         name: My Avalanche node
@@ -1686,6 +1358,17 @@ components:
         region: eu1
         configuration:
           archive: true
+    TezosNodeCreate:
+      value:
+        name: My Tezos node
+        network: NW-123-456-7
+        type: dedicated
+        role: peer
+        provider: gcloud
+        region: asia-southeast1
+        configuration:
+          archive: true
+          tezos_node_type: regular
     PolygonPoSNodeCreate:
       value:
         name: My Polygon PoS node
@@ -1729,6 +1412,26 @@ components:
           organization:
             id: RG-123-456
             name: My organization
+    BinanceSmartChainNodeCreate:
+      value:
+        name: My Binance Smart Chain node
+        network: NW-123-456-7
+        type: dedicated
+        role: peer
+        provider: gcloud
+        region: asia-southeast1
+        configuration:
+          archive: true
+    EthereumNodeCreate:
+      value:
+        name: My Ethereum node
+        network: NW-123-456-7
+        type: dedicated
+        role: peer
+        provider: gcloud
+        region: asia-southeast1
+        configuration:
+          archive: true
     StarknetNode:
       value:
         id: ND-123-456-789
@@ -1756,3 +1459,323 @@ components:
           organization:
             id: RG-123-456
             name: My organization
+    BitcoinNode:
+      value:
+        id: ND-123-456-789
+        name: My Bitcoin node
+        network: NW-123-456-7
+        organization: RG-123-456
+        type: shared
+        role: peer
+        provider: gcloud
+        region: asia-southeast1
+        status: running
+        configuration: {}
+        details:
+          version: 0.19.0.1
+          https_endpoint: https://nd-123-456-789.p2pify.com
+          auth_username: user-name
+          auth_password: pass-word-pass-word-pass-word
+          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    BitcoinNodeCreate:
+      value:
+        name: My Bitcoin node
+        network: NW-123-456-7
+        type: shared
+        role: peer
+        provider: gcloud
+        region: asia-southeast1
+        configuration: {}
+    HarmonyNode:
+      value:
+        id: ND-123-456-789
+        name: My Harmony node
+        network: NW-123-456-7
+        organization: RG-123-456
+        type: dedicated
+        role: peer
+        provider: vzo
+        region: eu1
+        status: running
+        configuration:
+          archive: false
+          shard: 0
+        details:
+          version: 4.3.9
+          api_namespaces:
+          - hmy
+          - hmyv2
+          - net
+          - eth
+          - web3
+          https_endpoint: https://nd-123-456-789.p2pify.com
+          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+          auth_username: user-name
+          auth_password: pass-word-pass-word-pass-word
+          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    TezosNode:
+      value:
+        id: ND-123-456-789
+        name: My Tezos node
+        network: NW-123-456-7
+        organization: RG-123-456
+        type: dedicated
+        role: peer
+        provider: gcloud
+        region: asia-southeast1
+        status: running
+        configuration:
+          archive: false
+          tezos_node_type: regular
+        details:
+          version: 9.2.0
+          https_endpoint: https://nd-123-456-789.p2pify.com
+          auth_username: user-name
+          auth_password: pass-word-pass-word-pass-word
+          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    FantomNode:
+      value:
+        id: ND-123-456-789
+        name: My Fantom node
+        network: NW-123-456-7
+        organization: RG-123-456
+        type: dedicated
+        role: peer
+        provider: vzo
+        region: eu1
+        status: running
+        configuration:
+          archive: false
+        details:
+          version: 1.0.2
+          api_namespaces:
+          - net
+          - eth
+          - web3
+          graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
+          https_endpoint: https://nd-123-456-789.p2pify.com
+          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+          auth_username: user-name
+          auth_password: pass-word-pass-word-pass-word
+          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    EthereumNode:
+      value:
+        id: ND-123-456-789
+        name: My Ethereum archive node
+        network: NW-123-456-7
+        organization: RG-123-456
+        type: dedicated
+        role: peer
+        provider: gcloud
+        region: asia-southeast1
+        status: running
+        configuration:
+          archive: true
+        details:
+          mode: archive
+          version: 1.9.9
+          api_namespaces:
+          - net
+          - eth
+          - web3
+          - txpool
+          - debug
+          graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
+          https_endpoint: https://nd-123-456-789.p2pify.com
+          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+          beacon_endpoint: https://beacon-nd-123-456-789.p2pify.com
+          auth_username: user-name
+          auth_password: pass-word-pass-word-pass-word
+          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    SolanaNode:
+      value:
+        id: ND-123-456-789
+        name: My Solana node
+        network: NW-123-456-7
+        organization: RG-123-456
+        type: shared
+        role: peer
+        provider: aws
+        region: us-east-1
+        status: running
+        configuration: {}
+        details:
+          version: 1.8.8
+          https_endpoint: https://nd-123-456-789.p2pify.com
+          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+          auth_username: user-name
+          auth_password: pass-word-pass-word-pass-word
+          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    SolanaNodeCreate:
+      value:
+        name: My Solana node
+        network: NW-123-456-7
+        type: shared
+        role: peer
+        provider: aws
+        region: us-east-1
+        configuration: {}
+    PolygonPoSNode:
+      value:
+        id: ND-123-456-789
+        name: My Polygon PoS archive node
+        network: NW-123-456-7
+        organization: RG-123-456
+        type: dedicated
+        role: peer
+        provider: gcloud
+        region: asia-southeast1
+        status: running
+        configuration:
+          archive: true
+        details:
+          mode: archive
+          version: 1.0.6
+          api_namespaces:
+          - net
+          - eth
+          - web3
+          - txpool
+          - debug
+          - parlia
+          graphql_endpoint: https://nd-123-456-789.p2pify.com/graphql
+          https_endpoint: https://nd-123-456-789.p2pify.com
+          wss_endpoint: wss://ws-nd-123-456-789.p2pify.com
+          auth_username: user-name
+          auth_password: pass-word-pass-word-pass-word
+          auth_key: 3c6e0b8a9c15224a8228b9a98ca1531d
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    StarknetNodeCreate:
+      value:
+        name: My StarkNet node
+        network: NW-123-456-7
+        type: shared
+        role: peer
+        provider: aws
+        region: us-east-1
+        configuration: {}
+  responses:
+    NotFoundError:
+      description: Object does not exist or caller has insufficient permissions to access it.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    ValidationError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                  fields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    description: Optional. Field-level validation errors.
+  securitySchemes:
+    APIKeyAuthentication:
+      type: http
+      scheme: bearer
+      description: 'Chainstack API uses [API keys](https://docs.chainstack.com/reference/platform-api-getting-started) to authenticate requests. You can view and manage your API keys in the platform UI.
+
+        Your API keys carry many privileges, so be sure to keep them secure!
+
+        Provide your API key as the `Authorization` header. The value of the header consists of `Bearer` prefix and secret key generated through the platform UI.
+
+
+        ```bash
+
+        curl -X GET ''https://api.chainstack.com/v1/organization/'' \
+
+        --header ''Authorization: Bearer FX7CWlLg.FMpAO8cgCX2N7s41EncRru2nb5CmTZUt''
+
+        ```
+
+
+        All API requests must be made over HTTPS.
+
+        '

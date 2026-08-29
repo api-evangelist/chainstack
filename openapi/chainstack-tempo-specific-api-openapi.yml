@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Chainstack Arbitrum Node Account Info Tempo Specific API
+  title: Chainstack Tempo Node Tempo Specific API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the Arbitrum blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/arbitrum_node_api.
+  description: Chainstack-managed RPC node API for the Tempo blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/tempo_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
@@ -63,8 +63,9 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
-                    nullable: true
+                    type:
+                    - object
+                    - 'null'
                     description: The transaction receipt object, returned once the transaction is included in a block
   /tempo_fundAddress:
     post:
