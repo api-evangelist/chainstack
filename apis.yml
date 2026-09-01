@@ -1823,6 +1823,8 @@ apis:
   description: The V2 API from Chainstack — 29 operation(s) for v2.
   humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
   tags:
+  - v2
+  tags_raw:
   - V2
   properties:
   - type: OpenAPI
@@ -1890,6 +1892,8 @@ apis:
   description: The V3 API from Chainstack — 30 operation(s) for v3.
   humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
   tags:
+  - v3
+  tags_raw:
   - V3
   properties:
   - type: OpenAPI
