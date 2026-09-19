@@ -1085,6 +1085,8 @@ apis:
   description: The Network API from Chainstack — 2 operation(s) for network.
   humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
   tags:
+  - Networks
+  tags_raw:
   - Network
   properties:
   - type: OpenAPI
@@ -1219,6 +1221,8 @@ apis:
   description: The Node V2 API from Chainstack — 2 operation(s) for node v2.
   humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
   tags:
+  - NODE_v2
+  tags_raw:
   - Node V2
   properties:
   - type: OpenAPI
