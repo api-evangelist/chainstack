@@ -8,7 +8,7 @@ info:
   license:
     name: Chainstack Terms
     url: https://chainstack.com/terms-of-service/
-  description: 'Operations tagged Gas Data across 8 of this provider''s published API definitions: chainstack-arbitrum-node-api-openapi.yml, chainstack-avalanche-node-api-openapi.yml, chainstack-ethereum-node-api-openapi.yml, chainstack-gnosis-node-api-openapi.yml, chainstack-monad-node-api-openapi.yml, chainstack-plasma-node-api-openapi.yml, chainstack-polygon-node-api-openapi.yml, chainstack-tempo-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Gas Data across 4 of this provider''s published API definitions: chainstack-arbitrum-node-api-openapi.yml, chainstack-ethereum-node-api-openapi.yml, chainstack-plasma-node-api-openapi.yml, chainstack-tempo-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{node_id}.p2pify.com/{api_key}
   description: Chainstack-managed node endpoint
@@ -183,59 +183,6 @@ paths:
         api_key:
           default: <api-key>
           description: Per-node access key
-  /eth_feeHistory:
-    post:
-      tags:
-      - Gas Data
-      summary: eth_feeHistory
-      operationId: eth_feeHistory
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_feeHistory
-                params:
-                  type: array
-                  default:
-                  - '0x4'
-                  - latest
-                  - - 25
-                    - 75
-      responses:
-        '200':
-          description: Fee history for the requested block range.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
   /eth_blobBaseFee:
     post:
       tags:
@@ -288,12 +235,75 @@ paths:
         api_key:
           default: <api-key>
           description: Per-node access key
+  /eth_feeHistory:
+    post:
+      tags:
+      - Gas Data
+      summary: eth_feeHistory
+      operationId: feeHistory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_feeHistory
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      title: Block count
+                      description: Number of blocks in the requested range.
+                    - type: string
+                      title: Newest block
+                      description: Block number or tag (latest, earliest, pending).
+                    - type: array
+                      title: Reward percentiles
+                      description: Array of percentiles to sample from each block.
+                  default:
+                  - '0x4'
+                  - latest
+                  - - 25
+                    - 50
+                    - 75
+      responses:
+        '200':
+          description: Returns historical gas information for a range of blocks.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type:
+                    - object
+                    - 'null'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
 x-refined-from:
 - chainstack-arbitrum-node-api-openapi.yml
-- chainstack-avalanche-node-api-openapi.yml
 - chainstack-ethereum-node-api-openapi.yml
-- chainstack-gnosis-node-api-openapi.yml
-- chainstack-monad-node-api-openapi.yml
 - chainstack-plasma-node-api-openapi.yml
-- chainstack-polygon-node-api-openapi.yml
 - chainstack-tempo-node-api-openapi.yml

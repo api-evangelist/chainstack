@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Chainstack Ethereum Beacon Chain Configuration Info API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the Ethereum Beacon Chain API blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ethereum_beacon_chain_api.
+  description: Chainstack-managed RPC node API for the Ethereum Beacon Chain API blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ethereum_beacon_chain_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
@@ -134,17 +134,6 @@ paths:
       - Configuration Info
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-      required:
-      - code
-      - message
     GenesisData:
       type: object
       properties:
@@ -164,45 +153,6 @@ components:
       - genesis_time
       - genesis_validators_root
       - genesis_fork_version
-    Genesis:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/GenesisData'
-      required:
-      - data
-    ForkScheduleList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ForkScheduleItem'
-    ForkInformation:
-      type: object
-      properties:
-        epoch:
-          type: string
-          description: The epoch number at which the current version was applied.
-        previous_version:
-          type: string
-          description: The previous fork version.
-        current_version:
-          type: string
-          description: The current fork version.
-    ForkScheduleItem:
-      type: object
-      properties:
-        epoch:
-          type: integer
-          format: int64
-        version:
-          type: string
-          pattern: ^[0-9a-fA-F]{8}$
-      required:
-      - epoch
-      - version
-    SpecConfig:
-      type: object
-      additionalProperties:
-        type: string
     DepositContractConfig:
       type: object
       properties:
@@ -215,3 +165,53 @@ components:
       required:
       - chain_id
       - address
+    ForkInformation:
+      type: object
+      properties:
+        epoch:
+          type: string
+          description: The epoch number at which the current version was applied.
+        previous_version:
+          type: string
+          description: The previous fork version.
+        current_version:
+          type: string
+          description: The current fork version.
+    SpecConfig:
+      type: object
+      additionalProperties:
+        type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
+    Genesis:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/GenesisData'
+      required:
+      - data
+    ForkScheduleList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ForkScheduleItem'
+    ForkScheduleItem:
+      type: object
+      properties:
+        epoch:
+          type: integer
+          format: int64
+        version:
+          type: string
+          pattern: ^[0-9a-fA-F]{8}$
+      required:
+      - epoch
+      - version

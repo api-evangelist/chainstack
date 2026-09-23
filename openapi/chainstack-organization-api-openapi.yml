@@ -9,11 +9,10 @@ info:
   contact:
     name: API Support
     email: support@chainstack.com
-  description: 'A set of API endpoints to operate and manage the platform resources.<br>
+  description: 'A set of API endpoints to operate and manage the platform resources.
 
-    See also a [quick API tutorial](https://docs.chainstack.com/reference/quick-tutorial).
 
-    '
+    See also a quick API tutorial.'
 servers:
 - url: https://api.chainstack.com
   description: API endpoint
@@ -74,6 +73,22 @@ paths:
         '400':
           $ref: '#/components/responses/ValidationError'
 components:
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Name of the organization.
+    OrganizationUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the organization.
   responses:
     ValidationError:
       description: Validation error.
@@ -98,22 +113,6 @@ components:
                       items:
                         type: string
                     description: Optional. Field-level validation errors.
-  schemas:
-    OrganizationUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the organization.
-    Organization:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          description: Name of the organization.
   securitySchemes:
     APIKeyAuthentication:
       type: http

@@ -9,11 +9,10 @@ info:
   contact:
     name: API Support
     email: support@chainstack.com
-  description: 'A set of API endpoints to operate and manage the platform resources.<br>
+  description: 'A set of API endpoints to operate and manage the platform resources.
 
-    See also a [quick API tutorial](https://docs.chainstack.com/reference/quick-tutorial).
 
-    '
+    See also a quick API tutorial.'
 servers:
 - url: https://api.chainstack.com
   description: API endpoint
@@ -56,26 +55,23 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequestsError'
 components:
+  schemas:
+    FaucetSepoliaResponse:
+      type: object
+      properties:
+        amountSent:
+          type: number
+          description: Amount of tokens sent.
+        transaction:
+          type: string
+          description: Transaction details URL.
+    FaucetSepoliaRequest:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address to send tokens to.
   responses:
-    TooManyRequestsError:
-      description: Validation error.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-              nextFaucetAvailable:
-                type: string
-                description: The date when tokens can be requested next time.
     ValidationError:
       description: Validation error.
       content:
@@ -99,22 +95,25 @@ components:
                       items:
                         type: string
                     description: Optional. Field-level validation errors.
-  schemas:
-    FaucetSepoliaRequest:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Address to send tokens to.
-    FaucetSepoliaResponse:
-      type: object
-      properties:
-        amountSent:
-          type: number
-          description: Amount of tokens sent.
-        transaction:
-          type: string
-          description: Transaction details URL.
+    TooManyRequestsError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+              nextFaucetAvailable:
+                type: string
+                description: The date when tokens can be requested next time.
   securitySchemes:
     APIKeyAuthentication:
       type: http

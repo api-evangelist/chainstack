@@ -8,7 +8,7 @@ info:
   license:
     name: Chainstack Terms
     url: https://chainstack.com/terms-of-service/
-  description: 'Operations tagged Client Info across 8 of this provider''s published API definitions: chainstack-arbitrum-node-api-openapi.yml, chainstack-avalanche-node-api-openapi.yml, chainstack-ethereum-node-api-openapi.yml, chainstack-gnosis-node-api-openapi.yml, chainstack-monad-node-api-openapi.yml, chainstack-plasma-node-api-openapi.yml, chainstack-polygon-node-api-openapi.yml, chainstack-tempo-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Client Info across 4 of this provider''s published API definitions: chainstack-arbitrum-node-api-openapi.yml, chainstack-ethereum-node-api-openapi.yml, chainstack-plasma-node-api-openapi.yml, chainstack-tempo-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{node_id}.p2pify.com/{api_key}
   description: Chainstack-managed node endpoint
@@ -174,7 +174,7 @@ paths:
       tags:
       - Client Info
       summary: Net_Version
-      operationId: net_version
+      operationId: netVersion
       requestBody:
         required: true
         content:
@@ -193,10 +193,11 @@ paths:
                   default: net_version
                 params:
                   type: array
+                  items: {}
                   default: []
       responses:
         '200':
-          description: The current network ID.
+          description: Returns the current network ID.
           content:
             application/json:
               schema:
@@ -207,7 +208,9 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: string
+                    type:
+                    - object
+                    - 'null'
     servers:
     - url: https://{node_id}.p2pify.com/{api_key}
       description: Chainstack-managed node endpoint
@@ -277,10 +280,6 @@ paths:
           description: Per-node access key
 x-refined-from:
 - chainstack-arbitrum-node-api-openapi.yml
-- chainstack-avalanche-node-api-openapi.yml
 - chainstack-ethereum-node-api-openapi.yml
-- chainstack-gnosis-node-api-openapi.yml
-- chainstack-monad-node-api-openapi.yml
 - chainstack-plasma-node-api-openapi.yml
-- chainstack-polygon-node-api-openapi.yml
 - chainstack-tempo-node-api-openapi.yml

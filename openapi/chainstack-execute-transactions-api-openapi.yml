@@ -8,7 +8,7 @@ info:
   license:
     name: Chainstack Terms
     url: https://chainstack.com/terms-of-service/
-  description: 'Operations tagged Execute Transactions across 7 of this provider''s published API definitions: chainstack-arbitrum-node-api-openapi.yml, chainstack-avalanche-node-api-openapi.yml, chainstack-ethereum-node-api-openapi.yml, chainstack-gnosis-node-api-openapi.yml, chainstack-monad-node-api-openapi.yml, chainstack-plasma-node-api-openapi.yml, chainstack-polygon-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Execute Transactions across 3 of this provider''s published API definitions: chainstack-arbitrum-node-api-openapi.yml, chainstack-ethereum-node-api-openapi.yml, chainstack-plasma-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{node_id}.p2pify.com/{api_key}
   description: Chainstack-managed node endpoint
@@ -343,7 +343,7 @@ paths:
       tags:
       - Execute Transactions
       summary: eth_createAccessList
-      operationId: eth_createAccessList
+      operationId: createAccessList
       requestBody:
         required: true
         content:
@@ -362,13 +362,20 @@ paths:
                   default: eth_createAccessList
                 params:
                   type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      title: Transaction
+                      description: The transaction call object.
+                    - type: string
+                      title: Block
+                      description: Block number or tag (latest, earliest, pending).
                   default:
                   - to: '0x0000000000000000000000000000000000000000'
-                    data: 0x
                   - latest
       responses:
         '200':
-          description: The access list and estimated gas.
+          description: Creates an access list for a transaction.
           content:
             application/json:
               schema:
@@ -379,7 +386,9 @@ paths:
                   id:
                     type: integer
                   result:
-                    type: object
+                    type:
+                    - object
+                    - 'null'
     servers:
     - url: https://{node_id}.p2pify.com/{api_key}
       description: Chainstack-managed node endpoint
@@ -449,9 +458,5 @@ paths:
           description: Per-node access key
 x-refined-from:
 - chainstack-arbitrum-node-api-openapi.yml
-- chainstack-avalanche-node-api-openapi.yml
 - chainstack-ethereum-node-api-openapi.yml
-- chainstack-gnosis-node-api-openapi.yml
-- chainstack-monad-node-api-openapi.yml
 - chainstack-plasma-node-api-openapi.yml
-- chainstack-polygon-node-api-openapi.yml

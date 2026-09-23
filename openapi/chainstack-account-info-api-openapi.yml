@@ -1,14 +1,14 @@
 openapi: 3.2.0
 info:
-  title: Chainstack Account Info API
+  title: Chainstack Tempo Node Account Info API
   version: 1.0.0
+  description: Chainstack-managed RPC node API for the Tempo blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/tempo_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
   license:
     name: Chainstack Terms
     url: https://chainstack.com/terms-of-service/
-  description: 'Operations tagged Account Info across 2 of this provider''s published API definitions: chainstack-polygon-node-api-openapi.yml, chainstack-tempo-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{node_id}.p2pify.com/{api_key}
   description: Chainstack-managed node endpoint
@@ -22,231 +22,6 @@ servers:
 tags:
 - name: Account Info
 paths:
-  /eth_getBalance:
-    post:
-      tags:
-      - Account Info
-      summary: eth_getBalance
-      operationId: getBalance
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBalance
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      default: '0xA507fF8a59De851134BC44063840A334A243a99E'
-                    - type: string
-                      default: latest
-                  default:
-                  - '0xA507fF8a59De851134BC44063840A334A243a99E'
-                  - latest
-      responses:
-        '200':
-          description: The balance information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getCode:
-    post:
-      tags:
-      - Account Info
-      summary: eth_getCode
-      operationId: getCode
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getCode
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      default: '0xb0897686c545045aFc77CF20eC7A532E3120E0F1'
-                    - type: string
-                      default: latest
-                  default:
-                  - '0xb0897686c545045aFc77CF20eC7A532E3120E0F1'
-                  - latest
-      responses:
-        '200':
-          description: The code information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getStorageAt:
-    post:
-      tags:
-      - Account Info
-      summary: eth_getStorageAt
-      operationId: getStorageAt
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                method:
-                  type: string
-                  default: eth_getStorageAt
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      default: '0xAE975071Be8F8eE67addBC1A82488F1C24858067'
-                    - type: string
-                      default: '0x0'
-                    - type: string
-                      default: latest
-                  default:
-                  - '0xAE975071Be8F8eE67addBC1A82488F1C24858067'
-                  - '0x0'
-                  - latest
-      responses:
-        '200':
-          description: The storage information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getTransactionCount:
-    post:
-      tags:
-      - Account Info
-      summary: eth_getTransactionCount
-      operationId: getTransactionCount
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getTransactionCount
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      default: '0xe341b2f448eb190495ed4a89c01f20078b26b0f6'
-                    - type: string
-                      default: latest
-                  default:
-                  - '0xe341b2f448eb190495ed4a89c01f20078b26b0f6'
-                  - latest
-      responses:
-        '200':
-          description: The transaction count information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
   /eth_accounts:
     post:
       tags:
@@ -288,16 +63,95 @@ paths:
                     type: integer
                   result:
                     description: Method result
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
+  /eth_getBalance:
+    post:
+      tags:
+      - Account Info
+      summary: eth_getBalance
+      operationId: tempo-eth-getBalance
+      description: Returns a placeholder value on Tempo since there is no native token. To check balances, query TIP-20 token contracts using balanceOf.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBalance
+                params:
+                  type: array
+                  items: {}
+                  default:
+                  - '0x9729187D9E8Bbefa8295F39f5634cA454dd9d294'
+                  - latest
+                  description: Address and block parameter
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Placeholder balance value (Tempo has no native token)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+                    description: Returns placeholder value 0x5e5de0bada3a8d... since Tempo has no native token
+  /eth_getCode:
+    post:
+      tags:
+      - Account Info
+      summary: eth_getCode
+      operationId: tempo-eth-getCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getCode
+                params:
+                  type: array
+                  items: {}
+                  default:
+                  - '0x20c0000000000000000000000000000000000000'
+                  - latest
+                  description: Contract address and block parameter
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The contract bytecode
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+                    description: The bytecode at the given address, or 0x if no code exists
   /eth_getProof:
     post:
       tags:
@@ -343,16 +197,92 @@ paths:
                   result:
                     type: object
                     description: Proof object with account proof and storage proofs
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-x-refined-from:
-- chainstack-polygon-node-api-openapi.yml
-- chainstack-tempo-node-api-openapi.yml
+  /eth_getStorageAt:
+    post:
+      tags:
+      - Account Info
+      summary: eth_getStorageAt
+      operationId: tempo-eth-getStorageAt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getStorageAt
+                params:
+                  type: array
+                  items: {}
+                  default:
+                  - '0x20c0000000000000000000000000000000000000'
+                  - '0x0'
+                  - latest
+                  description: Address, storage position, and block parameter
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The storage value
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+                    description: The value at the given storage position
+  /eth_getTransactionCount:
+    post:
+      tags:
+      - Account Info
+      summary: eth_getTransactionCount
+      operationId: tempo-eth-getTransactionCount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionCount
+                params:
+                  type: array
+                  items: {}
+                  default:
+                  - '0x9729187D9E8Bbefa8295F39f5634cA454dd9d294'
+                  - latest
+                  description: Address and block parameter
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The transaction count (nonce)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+                    description: The number of transactions sent from the address encoded as hexadecimal

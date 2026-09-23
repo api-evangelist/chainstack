@@ -9,11 +9,10 @@ info:
   contact:
     name: API Support
     email: support@chainstack.com
-  description: 'A set of API endpoints to operate and manage the platform resources.<br>
+  description: 'A set of API endpoints to operate and manage the platform resources.
 
-    See also a [quick API tutorial](https://docs.chainstack.com/reference/quick-tutorial).
 
-    '
+    See also a quick API tutorial.'
 servers:
 - url: https://api.chainstack.com
   description: API endpoint
@@ -258,79 +257,42 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 components:
-  responses:
-    ForbiddenError:
-      description: The request is not allowed with the current permissions.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-    ValidationError:
-      description: Validation error.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-                  fields:
-                    type: object
-                    additionalProperties:
-                      type: array
-                      items:
-                        type: string
-                    description: Optional. Field-level validation errors.
-    NotFoundError:
-      description: Object does not exist or caller has insufficient permissions to access it.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-    UnauthorizedError:
-      description: Authentication credentials were missing or incorrect.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: A unique value identifying the Object.
+      schema:
+        type: string
+    Pagination:
+      name: page
+      required: false
+      in: query
+      description: A page number within the paginated result set.
+      schema:
+        type: integer
+    NodeOrdering:
+      name: order_by
+      required: false
+      in: query
+      description: 'Which field to use when ordering the results.
+
+        <br> Use the `-` prefix to perform descending ordering (`-name`).
+
+        '
+      schema:
+        type: string
+        enum:
+        - name
+        - created_at
   schemas:
+    NodeUpdateV2:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the node.
     NodeCreateV2:
       type: object
       properties:
@@ -430,41 +392,78 @@ components:
           type: array
           items:
             type: object
-    NodeUpdateV2:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the node.
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: A unique value identifying the Object.
-      schema:
-        type: string
-    NodeOrdering:
-      name: order_by
-      required: false
-      in: query
-      description: 'Which field to use when ordering the results.
-
-        <br> Use the `-` prefix to perform descending ordering (`-name`).
-
-        '
-      schema:
-        type: string
-        enum:
-        - name
-        - created_at
-    Pagination:
-      name: page
-      required: false
-      in: query
-      description: A page number within the paginated result set.
-      schema:
-        type: integer
+  responses:
+    ValidationError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                  fields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    description: Optional. Field-level validation errors.
+    NotFoundError:
+      description: Object does not exist or caller has insufficient permissions to access it.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    ForbiddenError:
+      description: The request is not allowed with the current permissions.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    UnauthorizedError:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
   securitySchemes:
     APIKeyAuthentication:
       type: http

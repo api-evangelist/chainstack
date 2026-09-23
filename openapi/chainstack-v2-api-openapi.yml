@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Chainstack TON Node V2 API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
@@ -20,12 +20,12 @@ servers:
       default: <api-key>
       description: Per-node access key
 tags:
-- name: V2
+- name: v2
 paths:
   /detectAddress:
     get:
       tags:
-      - V2
+      - v2
       summary: detectAddress
       operationId: detectAddress
       parameters:
@@ -75,7 +75,7 @@ paths:
   /estimateFee:
     post:
       tags:
-      - V2
+      - v2
       summary: estimateFee
       operationId: estimateFee
       requestBody:
@@ -151,7 +151,7 @@ paths:
   /getAddressBalance:
     get:
       tags:
-      - V2
+      - v2
       summary: getAddressBalance
       operationId: getAddressBalance
       parameters:
@@ -177,7 +177,7 @@ paths:
   /getAddressInformation:
     get:
       tags:
-      - V2
+      - v2
       summary: getAddressInformation
       operationId: getAddressInformation
       parameters:
@@ -225,7 +225,7 @@ paths:
   /getAddressState:
     get:
       tags:
-      - V2
+      - v2
       summary: getAddressState
       operationId: getAddressState
       parameters:
@@ -255,7 +255,7 @@ paths:
   /getBlockHeader:
     get:
       tags:
-      - V2
+      - v2
       summary: getBlockHeader
       operationId: getBlockHeader
       parameters:
@@ -360,7 +360,7 @@ paths:
   /getBlockTransactions:
     get:
       tags:
-      - V2
+      - v2
       summary: getBlockTransactions
       operationId: getBlockTransactions
       parameters:
@@ -442,7 +442,7 @@ paths:
   /getBlockTransactionsExt:
     get:
       tags:
-      - V2
+      - v2
       summary: getBlockTransactionsExt
       operationId: getBlockTransactionsExt
       parameters:
@@ -527,7 +527,7 @@ paths:
   /getConfigParam:
     get:
       tags:
-      - V2
+      - v2
       summary: getConfigParam
       operationId: getConfigParam
       parameters:
@@ -557,7 +557,7 @@ paths:
   /getConsensusBlock:
     get:
       tags:
-      - V2
+      - v2
       summary: getConsensusBlock
       operationId: getConsensusBlock
       responses:
@@ -580,7 +580,7 @@ paths:
   /getExtendedAddressInformation:
     get:
       tags:
-      - V2
+      - v2
       summary: getExtendedAddressInformation
       operationId: getExtendedAddressInformation
       parameters:
@@ -645,7 +645,7 @@ paths:
   /getMasterchainBlockSignatures:
     get:
       tags:
-      - V2
+      - v2
       summary: getMasterchainBlockSignatures
       operationId: getMasterchainBlockSignatures
       parameters:
@@ -688,7 +688,7 @@ paths:
   /getMasterchainInfo:
     get:
       tags:
-      - V2
+      - v2
       summary: getMasterchainInfo
       operationId: getMasterchainInfo
       responses:
@@ -735,7 +735,7 @@ paths:
   /getShardBlockProof:
     get:
       tags:
-      - V2
+      - v2
       summary: getShardBlockProof
       operationId: getShardBlockProof
       parameters:
@@ -800,7 +800,7 @@ paths:
   /getTokenData:
     get:
       tags:
-      - V2
+      - v2
       summary: getTokenData
       operationId: getTokenData
       parameters:
@@ -844,7 +844,7 @@ paths:
   /getTransactions:
     get:
       tags:
-      - V2
+      - v2
       summary: getTransactions
       operationId: getTransactions
       parameters:
@@ -929,7 +929,7 @@ paths:
   /getWalletInformation:
     get:
       tags:
-      - V2
+      - v2
       summary: getWalletInformation
       operationId: getWalletInformation
       parameters:
@@ -976,9 +976,9 @@ paths:
   /jsonRPC:
     post:
       tags:
-      - V2
+      - v2
       summary: Jsonrpc Handler
-      description: All methods in the API are available through JSON-RPC protocol ([spec](https://www.jsonrpc.org/specification)).
+      description: All methods in the API are available through JSON-RPC protocol (spec).
       operationId: jsonrpc_handler_jsonRPC_post
       requestBody:
         content:
@@ -1003,7 +1003,7 @@ paths:
   /lookupBlock:
     get:
       tags:
-      - V2
+      - v2
       summary: lookupBlock
       operationId: lookupBlock
       parameters:
@@ -1090,7 +1090,7 @@ paths:
   /packAddress:
     get:
       tags:
-      - V2
+      - v2
       summary: packAddress
       operationId: packAddress
       parameters:
@@ -1116,7 +1116,7 @@ paths:
   /runGetMethod:
     post:
       tags:
-      - V2
+      - v2
       summary: runGetMethod
       operationId: runGetMethod
       requestBody:
@@ -1168,7 +1168,7 @@ paths:
   /sendBoc:
     post:
       tags:
-      - V2
+      - v2
       summary: sendBoc
       operationId: sendBoc
       requestBody:
@@ -1209,7 +1209,7 @@ paths:
   /sendBocReturnHash:
     post:
       tags:
-      - V2
+      - v2
       summary: sendBocReturnHash
       operationId: sendBocReturnHash
       requestBody:
@@ -1251,7 +1251,7 @@ paths:
   /sendQuery:
     post:
       tags:
-      - V2
+      - v2
       summary: sendQuery
       operationId: sendQuery
       requestBody:
@@ -1303,7 +1303,7 @@ paths:
   /shards:
     get:
       tags:
-      - V2
+      - v2
       summary: Shards
       operationId: shards
       parameters:
@@ -1346,7 +1346,7 @@ paths:
   /tryLocateResultTx:
     get:
       tags:
-      - V2
+      - v2
       summary: tryLocateResultTx
       operationId: tryLocateResultTx
       parameters:
@@ -1412,7 +1412,7 @@ paths:
   /tryLocateSourceTx:
     get:
       tags:
-      - V2
+      - v2
       summary: tryLocateSourceTx
       operationId: tryLocateSourceTx
       parameters:
@@ -1478,7 +1478,7 @@ paths:
   /tryLocateTx:
     get:
       tags:
-      - V2
+      - v2
       summary: tryLocateTx
       operationId: tryLocateTx
       parameters:
@@ -1544,7 +1544,7 @@ paths:
   /unpackAddress:
     get:
       tags:
-      - V2
+      - v2
       summary: unpackAddress
       operationId: unpackAddress
       parameters:
@@ -1569,6 +1569,25 @@ paths:
                     description: The unpacked address in raw format
 components:
   schemas:
+    TonRequestJsonRPC:
+      properties:
+        method:
+          type: string
+          title: Method
+        params:
+          type: object
+          title: Params
+          default: {}
+        id:
+          type: string
+          title: Id
+        jsonrpc:
+          type: string
+          title: Jsonrpc
+      type: object
+      required:
+      - method
+      title: TonRequestJsonRPC
     DeprecatedTonResponseJsonRPC:
       properties:
         ok:
@@ -1594,25 +1613,6 @@ components:
       - ok
       - id
       title: DeprecatedTonResponseJsonRPC
-    TonRequestJsonRPC:
-      properties:
-        method:
-          type: string
-          title: Method
-        params:
-          type: object
-          title: Params
-          default: {}
-        id:
-          type: string
-          title: Id
-        jsonrpc:
-          type: string
-          title: Jsonrpc
-      type: object
-      required:
-      - method
-      title: TonRequestJsonRPC
   securitySchemes:
     APIKeyHeader:
       type: apiKey

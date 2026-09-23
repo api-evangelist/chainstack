@@ -2,7 +2,7 @@ openapi: 3.2.0
 info:
   title: Chainstack TON Node V3 API
   version: 1.0.0
-  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/<key>). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
   contact:
     name: Chainstack API Support
     email: support@chainstack.com
@@ -20,7 +20,7 @@ servers:
       default: <api-key>
       description: Per-node access key
 tags:
-- name: V3
+- name: v3
 paths:
   /getAccountInfo:
     get:
@@ -28,7 +28,7 @@ paths:
       description: Retrieves information about a specific account on the TON blockchain
       operationId: getAccountInfo
       tags:
-      - V3
+      - v3
       parameters:
       - name: address
         in: query
@@ -70,7 +70,7 @@ paths:
       description: Query account states with historical data
       operationId: getAccountStates
       tags:
-      - V3
+      - v3
       parameters:
       - name: account_address
         in: query
@@ -160,7 +160,7 @@ paths:
       description: Retrieves decoded actions from transactions
       operationId: getActions
       tags:
-      - V3
+      - v3
       parameters:
       - name: action_id
         in: query
@@ -276,7 +276,7 @@ paths:
       description: Retrieves information about an address from the address book
       operationId: getAddressBookInfo
       tags:
-      - V3
+      - v3
       parameters:
       - name: address
         in: query
@@ -314,7 +314,7 @@ paths:
       description: Retrieves a list of transactions adjacent to a specific transaction
       operationId: getAdjacentTransactions
       tags:
-      - V3
+      - v3
       parameters:
       - name: hash
         in: query
@@ -398,7 +398,7 @@ paths:
       description: Retrieves a list of blocks from the TON blockchain
       operationId: getBlocks
       tags:
-      - V3
+      - v3
       parameters:
       - name: limit
         in: query
@@ -461,7 +461,7 @@ paths:
       description: Query blockchain events with decoded actions
       operationId: getEvents
       tags:
-      - V3
+      - v3
       parameters:
       - name: account
         in: query
@@ -554,7 +554,7 @@ paths:
       description: Retrieves a list of Jetton burn events for a specific Jetton address from the TON blockchain
       operationId: getJettonBurns
       tags:
-      - V3
+      - v3
       parameters:
       - name: address
         in: query
@@ -639,7 +639,7 @@ paths:
       description: Retrieves a list of Jetton master contracts from the TON blockchain
       operationId: getJettonMasters
       tags:
-      - V3
+      - v3
       parameters:
       - name: limit
         in: query
@@ -701,7 +701,7 @@ paths:
       description: Retrieves a list of Jetton transfers from the TON blockchain
       operationId: getJettonTransfers
       tags:
-      - V3
+      - v3
       parameters:
       - name: direction
         in: query
@@ -796,7 +796,7 @@ paths:
       description: Retrieves a list of Jetton wallets from the TON blockchain
       operationId: getJettonWallets
       tags:
-      - V3
+      - v3
       parameters:
       - name: limit
         in: query
@@ -855,7 +855,7 @@ paths:
       description: Retrieves the shard state of a specific masterchain block
       operationId: getMasterchainBlockShardState
       tags:
-      - V3
+      - v3
       parameters:
       - name: seqno
         in: query
@@ -899,7 +899,7 @@ paths:
       description: Retrieves the shards of a specific masterchain block
       operationId: getMasterchainBlockShards
       tags:
-      - V3
+      - v3
       parameters:
       - name: seqno
         in: query
@@ -942,7 +942,7 @@ paths:
       description: Retrieves a list of messages from the TON blockchain
       operationId: getMessages
       tags:
-      - V3
+      - v3
       parameters:
       - name: limit
         in: query
@@ -1001,7 +1001,7 @@ paths:
       description: Query address metadata including names and labels
       operationId: getMetadata
       tags:
-      - V3
+      - v3
       parameters:
       - name: address
         in: query
@@ -1039,7 +1039,7 @@ paths:
       description: Get pending orders for multisig wallets
       operationId: getMultisigOrders
       tags:
-      - V3
+      - v3
       parameters:
       - name: multisig_address
         in: query
@@ -1119,7 +1119,7 @@ paths:
       description: Get multisig wallet contracts and their configuration
       operationId: getMultisigWallets
       tags:
-      - V3
+      - v3
       parameters:
       - name: address
         in: query
@@ -1187,7 +1187,7 @@ paths:
       description: Retrieves a list of NFT collections from the TON blockchain
       operationId: getNFTCollections
       tags:
-      - V3
+      - v3
       parameters:
       - name: limit
         in: query
@@ -1246,7 +1246,7 @@ paths:
       description: Retrieves a list of NFT items from the TON blockchain
       operationId: getNFTItems
       tags:
-      - V3
+      - v3
       parameters:
       - name: address
         in: query
@@ -1370,7 +1370,7 @@ paths:
       description: Retrieves a list of NFT transfers from the TON blockchain
       operationId: getNFTTransfers
       tags:
-      - V3
+      - v3
       parameters:
       - name: direction
         in: query
@@ -1462,7 +1462,7 @@ paths:
       description: Get traces that are pending completion
       operationId: getPendingTraces
       tags:
-      - V3
+      - v3
       parameters:
       - name: trace_id
         in: query
@@ -1530,7 +1530,7 @@ paths:
       description: Get transactions that are pending finalization
       operationId: getPendingTransactions
       tags:
-      - V3
+      - v3
       parameters:
       - name: account
         in: query
@@ -1589,7 +1589,7 @@ paths:
       description: Get accounts with the highest TON balances
       operationId: getTopAccountsByBalance
       tags:
-      - V3
+      - v3
       parameters:
       - name: limit
         in: query
@@ -1637,7 +1637,7 @@ paths:
       description: Retrieves transaction traces by specified filters
       operationId: getTraces
       tags:
-      - V3
+      - v3
       parameters:
       - name: trace_id
         in: query
@@ -1737,7 +1737,7 @@ paths:
       description: Retrieves a list of transactions for a specific masterchain block
       operationId: getTransactionsByMasterchainBlock
       tags:
-      - V3
+      - v3
       parameters:
       - name: seqno
         in: query
@@ -1810,7 +1810,7 @@ paths:
       description: Retrieves a list of transactions related to a specific message
       operationId: getTransactionsByMessage
       tags:
-      - V3
+      - v3
       parameters:
       - name: direction
         in: query
@@ -1883,7 +1883,7 @@ paths:
       description: Retrieves information about a specific wallet on the TON blockchain
       operationId: getWalletInfo
       tags:
-      - V3
+      - v3
       parameters:
       - name: address
         in: query
@@ -1928,7 +1928,7 @@ paths:
       description: Query wallet states for addresses
       operationId: getWalletStates
       tags:
-      - V3
+      - v3
       parameters:
       - name: address
         in: query
@@ -1992,7 +1992,7 @@ paths:
       description: Sends an external message to the TON network
       operationId: sendMessage
       tags:
-      - V3
+      - v3
       requestBody:
         required: true
         content:
@@ -2026,7 +2026,7 @@ paths:
       - APIKeyQuery: []
       description: Get vesting contracts by specified filters
       tags:
-      - V3
+      - v3
       summary: Get Vesting Contracts
       operationId: api_v3_get_vesting_contracts
       parameters:
@@ -2086,6 +2086,19 @@ paths:
                 $ref: '#/components/schemas/RequestError'
 components:
   schemas:
+    AddressBook:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AddressBookRow'
+    VestingContractsResponse:
+      type: object
+      properties:
+        address_book:
+          $ref: '#/components/schemas/AddressBook'
+        vesting_contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/index.VestingInfo'
     index.VestingInfo:
       type: object
       properties:
@@ -2109,19 +2122,13 @@ components:
           type: array
           items:
             type: string
-    AddressBook:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AddressBookRow'
-    VestingContractsResponse:
+    RequestError:
       type: object
       properties:
-        address_book:
-          $ref: '#/components/schemas/AddressBook'
-        vesting_contracts:
-          type: array
-          items:
-            $ref: '#/components/schemas/index.VestingInfo'
+        code:
+          type: integer
+        error:
+          type: string
     AddressBookRow:
       type: object
       properties:
@@ -2132,13 +2139,6 @@ components:
           items:
             type: string
         user_friendly:
-          type: string
-    RequestError:
-      type: object
-      properties:
-        code:
-          type: integer
-        error:
           type: string
   securitySchemes:
     APIKeyHeader:

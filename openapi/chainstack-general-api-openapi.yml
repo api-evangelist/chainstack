@@ -8,7 +8,7 @@ info:
   license:
     name: Chainstack Terms
     url: https://chainstack.com/terms-of-service/
-  description: 'Operations tagged General across 14 of this provider''s published API definitions: chainstack-aurora-node-api-openapi.yml, chainstack-base-node-api-openapi.yml, chainstack-bitcoin-node-api-openapi.yml, chainstack-bnb-node-api-openapi.yml, chainstack-cronos-node-api-openapi.yml, chainstack-fantom-node-api-openapi.yml, chainstack-hyperliquid-node-api-openapi.yml, chainstack-optimism-node-api-openapi.yml, chainstack-polygon-zkevm-node-api-openapi.yml, chainstack-ronin-node-api-openapi.yml, chainstack-solana-node-api-openapi.yml, chainstack-starknet-node-api-openapi.yml, chainstack-tron-node-api-openapi.yml, chainstack-zksync-node-api-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged General across 9 of this provider''s published API definitions: chainstack-base-node-api-openapi.yml, chainstack-bitcoin-node-api-openapi.yml, chainstack-bnb-node-api-openapi.yml, chainstack-hyperliquid-node-api-openapi.yml, chainstack-polygon-zkevm-node-api-openapi.yml, chainstack-solana-node-api-openapi.yml, chainstack-starknet-node-api-openapi.yml, chainstack-tron-node-api-openapi.yml, chainstack-zksync-node-api-openapi.yml.'
 servers:
 - url: https://{node_id}.p2pify.com/{api_key}
   description: Chainstack-managed node endpoint
@@ -22,1567 +22,6 @@ servers:
 tags:
 - name: General
 paths:
-  /eth_blockNumber:
-    post:
-      tags:
-      - General
-      summary: eth_blockNumber
-      operationId: eth_blockNumber
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_blockNumber
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The latest block number.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_call:
-    post:
-      tags:
-      - General
-      summary: Eth_Call
-      operationId: ethCall
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_call
-                id:
-                  type: integer
-                  default: 1
-                params:
-                  type: array
-                  items:
-                    type: object
-                    title: Call object
-                    properties:
-                      to:
-                        type: string
-                        description: The address of the contract to call.
-                      data:
-                        type: string
-                        description: The data to send with the call.
-                  default:
-                  - to: '0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB'
-                    data: '0x313ce567'
-                  - latest
-      responses:
-        '200':
-          description: The result of the call.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_chainId:
-    post:
-      tags:
-      - General
-      summary: eth_chainId
-      operationId: getChainId
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_chainId
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The network Chain ID
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_estimateGas:
-    post:
-      tags:
-      - General
-      summary: eth_estimateGas
-      operationId: estimateGas
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_estimateGas
-                params:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      from:
-                        type: string
-                        format: byte
-                      to:
-                        type: string
-                        format: byte
-                  default:
-                  - from: '0xE9217BC70B7ED1f598ddD3199e80b093fA71124F'
-                    to: '0x2A39319dB98A3982F7C363380b72C66Ab1FFe228'
-                  - latest
-      responses:
-        '200':
-          description: The estimated gas amount
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-                    format: byte
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_gasPrice:
-    post:
-      tags:
-      - General
-      summary: eth_gasPrice
-      operationId: getGasPrice
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_gasPrice
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The value of the current gas base fee in Wei.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getBalance:
-    post:
-      tags:
-      - General
-      summary: eth_getBalance
-      operationId: getBalance
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBalance
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Address
-                      description: The address identifier.
-                    - type: string
-                      title: Block identifier
-                      description: The block identifier.
-                  default:
-                  - '0xf20BB5451591639A490aa65a6d08a13D420157b7'
-                  - pending
-      responses:
-        '200':
-          description: The account balance.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getBlockByHash:
-    post:
-      tags:
-      - General
-      summary: eth_getBlockByHash
-      operationId: getBlockByHash
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBlockByHash
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Block Hash
-                      description: The hash identifying the block.
-                    - type: boolean
-                      title: Transaction selector
-                      description: True for the full transactions, false for only the transaction hashes.
-                  default:
-                  - '0x555a1edee58ca5e8a4a8b6e994315efe365d10e62e185d7d38333437c8edbc7f'
-                  - true
-      responses:
-        '200':
-          description: The block information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getBlockByNumber:
-    post:
-      tags:
-      - General
-      summary: eth_getBlockByNumber
-      operationId: getBlockByNumber
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBlockByNumber
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Block identifier
-                      description: The block number or tag.
-                    - type: boolean
-                      title: Transaction selector
-                      description: True for the full transactions, false for only the transaction hashes.
-                  default:
-                  - latest
-                  - false
-      responses:
-        '200':
-          description: The block information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getBlockTransactionCountByHash:
-    post:
-      tags:
-      - General
-      summary: eth_getBlockTransactionCountByHash
-      operationId: getBlockTransactionCountByHash
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBlockTransactionCountByHash
-                params:
-                  type: array
-                  items:
-                    type: string
-                    title: Block hash
-                    description: The block hash identifier.
-                  default:
-                  - '0x5db8ff1beb252c1a9cb390ef25af04e2763bdee1bcd48c76977a17148bba503d'
-      responses:
-        '200':
-          description: The block information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getBlockTransactionCountByNumber:
-    post:
-      tags:
-      - General
-      summary: eth_getBlockTransactionCountByNumber
-      operationId: getBlockTransactionCountByNumber
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getBlockTransactionCountByNumber
-                params:
-                  type: array
-                  items:
-                    type: string
-                    title: Block identifier
-                    description: The block number or tag.
-                  default:
-                  - latest
-      responses:
-        '200':
-          description: The block transaction count information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getCode:
-    post:
-      tags:
-      - General
-      summary: eth_getCode
-      operationId: getCode
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getCode
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Smart contract address
-                      description: The address identifier.
-                    - type: string
-                      title: Block identifier
-                      description: The block identifier.
-                  default:
-                  - '0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB'
-                  - latest
-      responses:
-        '200':
-          description: The smart contract code.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getFilterChanges:
-    post:
-      summary: eth_getFilterChanges
-      operationId: getFilterChanges
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getFilterChanges
-                params:
-                  type: array
-                  items:
-                    type: string
-                    title: The filter ID
-                  default:
-                  - '0xbdc5b4b99ca699e1d734fc4202afee79'
-                id:
-                  type: integer
-                  default: 1
-      responses:
-        '200':
-          description: The filter changes.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: array
-                    items:
-                      type: string
-      tags:
-      - General
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getLogs:
-    post:
-      tags:
-      - General
-      summary: eth_getLogs
-      operationId: getLogs
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                method:
-                  type: string
-                  default: eth_getLogs
-                params:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      fromBlock:
-                        type: string
-                        title: from block
-                        description: The block number or tag to start searching for logs from.
-                        default: latest
-                      address:
-                        type: string
-                        title: smart contract address
-                        description: The contract address to retrieve the logs for.
-                      topics:
-                        type: array
-                        title: topics
-                        items:
-                          type: string
-                        description: An array of 32-byte topics to filter for. Each topic is treated as an OR condition.
-                  default:
-                  - fromBlock: latest
-                    address: '0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB'
-                    topics:
-                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-      responses:
-        '200':
-          description: An array of log objects matching the specified filter.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: array
-                    items:
-                      type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getStorageAt:
-    post:
-      tags:
-      - General
-      summary: eth_getStorageAt
-      operationId: getStorageAt
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                method:
-                  type: string
-                  default: eth_getStorageAt
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Smart contract address
-                      description: The address of the contract to query.
-                    - type: string
-                      title: Slot index
-                      description: The index of the storage position to query.
-                    - type: string
-                      title: Block ID
-                      description: The block number or tag to use as a reference.
-                  default:
-                  - '0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB'
-                  - '0x2'
-                  - latest
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-      responses:
-        '200':
-          description: The value stored at the specified position.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getTransactionByBlockHashAndIndex:
-    post:
-      tags:
-      - General
-      summary: eth_getTransactionByBlockHashAndIndex
-      operationId: getTransactionByBlockHashAndIndex
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getTransactionByBlockHashAndIndex
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Block hash
-                    - type: string
-                      title: Transaction index
-                  default:
-                  - '0x90146736f9cb8bece40fb0ee5bd1f22d8f96e1d01143ac0531cc2faeb05ae606'
-                  - '0x0'
-      responses:
-        '200':
-          description: The transaction information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getTransactionByBlockNumberAndIndex:
-    post:
-      tags:
-      - General
-      summary: eth_getTransactionByBlockNumberAndIndex
-      operationId: getTransactionByBlockNumberAndIndex
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getTransactionByBlockNumberAndIndex
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Block number
-                    - type: string
-                      title: Transaction index
-                  default:
-                  - '0x7155458'
-                  - '0x0'
-      responses:
-        '200':
-          description: The transaction information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getTransactionByHash:
-    post:
-      tags:
-      - General
-      summary: eth_getTransactionByHash
-      operationId: getTransactionByHash
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getTransactionByHash
-                params:
-                  type: array
-                  items:
-                    type: string
-                    title: Transaction hash
-                  default:
-                  - '0xd33ef2f7c09daaa50fd9694e2782bee2a40840abcc5929af685489ed5ad5cfd0'
-      responses:
-        '200':
-          description: The transaction information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getTransactionCount:
-    post:
-      tags:
-      - General
-      summary: eth_getTransactionCount
-      operationId: getTransactionCount
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getTransactionCount
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      title: Address
-                      description: The address to check
-                    - type: string
-                      title: Block identifier
-                      description: The block identifier
-                  default:
-                  - '0xF59A3094538DA6D733793Ec8d9F1da863BC33671'
-                  - latest
-      responses:
-        '200':
-          description: The address nonce
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_getTransactionReceipt:
-    post:
-      tags:
-      - General
-      summary: eth_getTransactionReceipt
-      operationId: getTransactionReceipt
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_getTransactionReceipt
-                params:
-                  type: array
-                  items:
-                    type: string
-                    title: Transaction hash
-                  default:
-                  - '0xd33ef2f7c09daaa50fd9694e2782bee2a40840abcc5929af685489ed5ad5cfd0'
-      responses:
-        '200':
-          description: The transaction receipt
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_newBlockFilter:
-    post:
-      summary: eth_newBlockFilter
-      operationId: newBlockFilter
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_newBlockFilter
-                params:
-                  type: array
-                  default: []
-                id:
-                  type: integer
-                  default: 1
-      responses:
-        '200':
-          description: The new filter ID.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: array
-                    items:
-                      type: string
-      tags:
-      - General
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_newFilter:
-    post:
-      tags:
-      - General
-      summary: eth_newFilter
-      operationId: newFilter
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                method:
-                  type: string
-                  default: eth_newFilter
-                params:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      fromBlock:
-                        type: string
-                        title: from block
-                        description: The block number or tag to start searching for logs from.
-                        default: latest
-                      address:
-                        type: string
-                        title: smart contract address
-                        description: The contract address to retrieve the logs for.
-                      topics:
-                        type: array
-                        title: topics
-                        items:
-                          type: string
-                        description: An array of 32-byte topics to filter for. Each topic is treated as an OR condition.
-                  default:
-                  - fromBlock: latest
-                    address: '0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB'
-                    topics:
-                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-      responses:
-        '200':
-          description: The filter ID.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_newPendingTransactionFilter:
-    post:
-      summary: eth_newPendingTransactionFilter
-      operationId: newPendingTransactionFilter
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_newPendingTransactionFilter
-                params:
-                  type: array
-                  default: []
-                id:
-                  type: integer
-                  default: 1
-      responses:
-        '200':
-          description: The new filter ID.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: array
-                    items:
-                      type: string
-      tags:
-      - General
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_sendRawTransaction:
-    post:
-      tags:
-      - General
-      summary: eth_sendRawTransaction
-      operationId: sendRawTransaction
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_sendRawTransaction
-                params:
-                  type: array
-                  items:
-                    anyOf:
-                    - type: string
-                      description: The signed transaction.
-                  default:
-                  - '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675'
-      responses:
-        '200':
-          description: The transaction hash.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_syncing:
-    post:
-      tags:
-      - General
-      summary: Eth_Syncing
-      operationId: syncing
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_syncing
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: Syncing information
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: object
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /eth_uninstallFilter:
-    post:
-      summary: eth_uninstallFilter
-      operationId: uninstallFilter
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: eth_uninstallFilter
-                params:
-                  type: array
-                  items:
-                    type: string
-                    title: Filter ID
-                  default:
-                  - '0xbdc5b4b99ca699e1d734fc4202afee79'
-                id:
-                  type: integer
-                  default: 1
-      responses:
-        '200':
-          description: Boolean value indicating if the filter was removed or not.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: boolean
-      tags:
-      - General
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /net_listening:
-    post:
-      tags:
-      - General
-      summary: Net_Listening
-      operationId: listening
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: net_listening
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The boolean value that indicates whether or not a node is currently actively seeking peer connections.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /net_peerCount:
-    post:
-      tags:
-      - General
-      summary: net_peerCount
-      operationId: peerCount
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: net_peerCount
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The number of peers connected to the client.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
-  /web3_clientVersion:
-    post:
-      tags:
-      - General
-      summary: web3_clientVersion
-      operationId: clientVersion
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                  default: 1
-                jsonrpc:
-                  type: string
-                  default: '2.0'
-                method:
-                  type: string
-                  default: web3_clientVersion
-                params:
-                  type: array
-                  default: []
-      responses:
-        '200':
-          description: The client running on this node.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  jsonrpc:
-                    type: string
-                  id:
-                    type: integer
-                  result:
-                    type: string
-    servers:
-    - url: https://{node_id}.p2pify.com/{api_key}
-      description: Chainstack-managed node endpoint
-      variables:
-        node_id:
-          default: nd-000-000-000
-          description: Your Chainstack node identifier
-        api_key:
-          default: <api-key>
-          description: Per-node access key
   /debug_getModifiedAccountsByHash:
     post:
       tags:
@@ -2185,6 +624,116 @@ paths:
         api_key:
           default: <api-key>
           description: Per-node access key
+  /eth_blockNumber:
+    post:
+      tags:
+      - General
+      summary: eth_blockNumber
+      operationId: blockNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_blockNumber
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The block number information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_call:
+    post:
+      tags:
+      - General
+      summary: Eth_Call
+      operationId: call
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_call
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        to:
+                          type: string
+                          default: '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'
+                        data:
+                          type: string
+                          default: '0x70a082310000000000000000000000001985ea6e9c68e1c272d8209f3b478ac2fdb25c87'
+                    - type: string
+                      default: latest
+                  default:
+                  - to: '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'
+                    data: '0x70a082310000000000000000000000001985ea6e9c68e1c272d8209f3b478ac2fdb25c87'
+                  - latest
+      responses:
+        '200':
+          description: The result of the call
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_callMany:
     post:
       tags:
@@ -2248,6 +797,52 @@ paths:
                     items:
                       type: object
                     description: The results of the executed calls.
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_chainId:
+    post:
+      tags:
+      - General
+      summary: eth_chainId
+      operationId: chainId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_chainId
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The current chain ID
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
     servers:
     - url: https://{node_id}.p2pify.com/{api_key}
       description: Chainstack-managed node endpoint
@@ -2336,6 +931,70 @@ paths:
         api_key:
           default: <api-key>
           description: Per-node access key
+  /eth_estimateGas:
+    post:
+      tags:
+      - General
+      summary: eth_estimateGas
+      operationId: estimateGas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_estimateGas
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: object
+                      properties:
+                        from:
+                          type: string
+                          default: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+                        to:
+                          type: string
+                          default: '0xbe0eb53f46cd790cd13851d5eff43d12404d33e8'
+                    - type: string
+                      default: latest
+                  default:
+                  - from: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+                    to: '0xbe0eb53f46cd790cd13851d5eff43d12404d33e8'
+                  - latest
+      responses:
+        '200':
+          description: The estimated gas required
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_feeHistory:
     post:
       tags:
@@ -2407,6 +1066,224 @@ paths:
                           type: array
                           items:
                             type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_gasPrice:
+    post:
+      tags:
+      - General
+      summary: eth_gasPrice
+      operationId: gasPrice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_gasPrice
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The current gas price
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getBalance:
+    post:
+      tags:
+      - General
+      summary: eth_getBalance
+      operationId: getBalance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBalance
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0xF977814e90dA44bFA03b6295A0616a897441aceC'
+                  - latest
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: The balance of the account
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getBlockByHash:
+    post:
+      tags:
+      - General
+      summary: eth_getBlockByHash
+      operationId: getBlockByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockByHash
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      default: '0x07fcc7d5f86839e12afa756e979de05812b5341f936b850c9409aa0938819b30'
+                    - type: boolean
+                      default: true
+                  default:
+                  - '0x07fcc7d5f86839e12afa756e979de05812b5341f936b850c9409aa0938819b30'
+                  - true
+      responses:
+        '200':
+          description: The block information by hash
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getBlockByNumber:
+    post:
+      tags:
+      - General
+      summary: eth_getBlockByNumber
+      operationId: getBlockByNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockByNumber
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      default: '0xbb623d'
+                    - type: boolean
+                      default: true
+                  default:
+                  - '0xbb623d'
+                  - true
+      responses:
+        '200':
+          description: The block information by number
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
     servers:
     - url: https://{node_id}.p2pify.com/{api_key}
       description: Chainstack-managed node endpoint
@@ -2519,6 +1396,247 @@ paths:
         api_key:
           default: <api-key>
           description: Per-node access key
+  /eth_getBlockTransactionCountByHash:
+    post:
+      tags:
+      - General
+      summary: eth_getBlockTransactionCountByHash
+      operationId: getBlockTransactionCountByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockTransactionCountByHash
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      default: '0x07fcc7d5f86839e12afa756e979de05812b5341f936b850c9409aa0938819b30'
+                  default:
+                  - '0x07fcc7d5f86839e12afa756e979de05812b5341f936b850c9409aa0938819b30'
+      responses:
+        '200':
+          description: The transaction count of the block by hash
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getBlockTransactionCountByNumber:
+    post:
+      tags:
+      - General
+      summary: eth_getBlockTransactionCountByNumber
+      operationId: getBlockTransactionCountByNumber
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getBlockTransactionCountByNumber
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    anyOf:
+                    - type: string
+                      default: '0xbb623d'
+                  default:
+                  - '0xbb623d'
+      responses:
+        '200':
+          description: The transaction count of the block by number
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getCode:
+    post:
+      tags:
+      - General
+      summary: eth_getCode
+      operationId: getCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getCode
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'
+                  - latest
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: The code from the specified address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getFilterChanges:
+    post:
+      tags:
+      - General
+      summary: eth_getFilterChanges
+      operationId: getFilterChanges
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getFilterChanges
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    type: string
+                  default:
+                  - '0x4a2b3c'
+      responses:
+        '200':
+          description: The changes of the filter since last accessed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        removed:
+                          type: boolean
+                        logIndex:
+                          type: string
+                        transactionIndex:
+                          type: string
+                        transactionHash:
+                          type: string
+                        blockHash:
+                          type: string
+                        blockNumber:
+                          type: string
+                        address:
+                          type: string
+                        data:
+                          type: string
+                        topics:
+                          type: array
+                          items:
+                            type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getFilterLogs:
     post:
       tags:
@@ -2550,6 +1668,98 @@ paths:
       responses:
         '200':
           description: All logs matching the filter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        removed:
+                          type: boolean
+                        logIndex:
+                          type: string
+                        transactionIndex:
+                          type: string
+                        transactionHash:
+                          type: string
+                        blockHash:
+                          type: string
+                        blockNumber:
+                          type: string
+                        address:
+                          type: string
+                        data:
+                          type: string
+                        topics:
+                          type: array
+                          items:
+                            type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getLogs:
+    post:
+      tags:
+      - General
+      summary: eth_getLogs
+      operationId: getLogs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getLogs
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - fromBlock: latest
+                    address: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+                    topics:
+                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+                  items:
+                    type: object
+                    properties:
+                      fromBlock:
+                        type: string
+                      address:
+                        type: string
+                      topics:
+                        type: array
+                        items:
+                          type: string
+      responses:
+        '200':
+          description: Logs matching the criteria
           content:
             application/json:
               schema:
@@ -2856,6 +2066,488 @@ paths:
         api_key:
           default: <api-key>
           description: Per-node access key
+  /eth_getStorageAt:
+    post:
+      tags:
+      - General
+      summary: eth_getStorageAt
+      operationId: getStorageAt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getStorageAt
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
+                  - '0x7'
+                  - latest
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: The value from the specified storage position
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getTransactionByBlockHashAndIndex:
+    post:
+      tags:
+      - General
+      summary: eth_getTransactionByBlockHashAndIndex
+      operationId: getTransactionByBlockHashAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByBlockHashAndIndex
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0x07fcc7d5f86839e12afa756e979de05812b5341f936b850c9409aa0938819b30'
+                  - '0x1'
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Transaction information for the given block hash and index
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      blockHash:
+                        type: string
+                      blockNumber:
+                        type: string
+                      from:
+                        type: string
+                      gas:
+                        type: string
+                      gasPrice:
+                        type: string
+                      hash:
+                        type: string
+                      input:
+                        type: string
+                      nonce:
+                        type: string
+                      to:
+                        type: string
+                      transactionIndex:
+                        type: string
+                      value:
+                        type: string
+                      v:
+                        type: string
+                      r:
+                        type: string
+                      s:
+                        type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getTransactionByBlockNumberAndIndex:
+    post:
+      tags:
+      - General
+      summary: eth_getTransactionByBlockNumberAndIndex
+      operationId: getTransactionByBlockNumberAndIndex
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByBlockNumberAndIndex
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0xbb623d'
+                  - '0x1'
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Transaction information for the given block number and index
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      blockHash:
+                        type: string
+                      blockNumber:
+                        type: string
+                      from:
+                        type: string
+                      gas:
+                        type: string
+                      gasPrice:
+                        type: string
+                      hash:
+                        type: string
+                      input:
+                        type: string
+                      nonce:
+                        type: string
+                      to:
+                        type: string
+                      transactionIndex:
+                        type: string
+                      value:
+                        type: string
+                      v:
+                        type: string
+                      r:
+                        type: string
+                      s:
+                        type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getTransactionByHash:
+    post:
+      tags:
+      - General
+      summary: eth_getTransactionByHash
+      operationId: getTransactionByHash
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionByHash
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0x1759c699e6e2b1f249fa0ed605c0de18998bc66556cd6ea3362f92f511aeb06a'
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Transaction information for the given hash
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      blockHash:
+                        type: string
+                      blockNumber:
+                        type: string
+                      from:
+                        type: string
+                      gas:
+                        type: string
+                      gasPrice:
+                        type: string
+                      hash:
+                        type: string
+                      input:
+                        type: string
+                      nonce:
+                        type: string
+                      to:
+                        type: string
+                      transactionIndex:
+                        type: string
+                      value:
+                        type: string
+                      v:
+                        type: string
+                      r:
+                        type: string
+                      s:
+                        type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getTransactionCount:
+    post:
+      tags:
+      - General
+      summary: eth_getTransactionCount
+      operationId: getTransactionCount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionCount
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0x1985EA6E9c68E1C272d8209f3B478AC2Fdb25c87'
+                  - latest
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: The number of transactions sent from the address
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_getTransactionReceipt:
+    post:
+      tags:
+      - General
+      summary: eth_getTransactionReceipt
+      operationId: getTransactionReceipt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_getTransactionReceipt
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0x1759c699e6e2b1f249fa0ed605c0de18998bc66556cd6ea3362f92f511aeb06a'
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Transaction receipt for the given transaction hash
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      transactionHash:
+                        type: string
+                      transactionIndex:
+                        type: string
+                      blockHash:
+                        type: string
+                      blockNumber:
+                        type: string
+                      from:
+                        type: string
+                      to:
+                        type: string
+                      cumulativeGasUsed:
+                        type: string
+                      gasUsed:
+                        type: string
+                      contractAddress:
+                        type: string
+                      logs:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            removed:
+                              type: boolean
+                            logIndex:
+                              type: string
+                            transactionIndex:
+                              type: string
+                            transactionHash:
+                              type: string
+                            blockHash:
+                              type: string
+                            blockNumber:
+                              type: string
+                            address:
+                              type: string
+                            data:
+                              type: string
+                            topics:
+                              type: array
+                              items:
+                                type: string
+                      logsBloom:
+                        type: string
+                      status:
+                        type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_getUncleByBlockHashAndIndex:
     post:
       tags:
@@ -3126,6 +2818,166 @@ paths:
         api_key:
           default: <api-key>
           description: Per-node access key
+  /eth_newBlockFilter:
+    post:
+      tags:
+      - General
+      summary: eth_newBlockFilter
+      operationId: newBlockFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_newBlockFilter
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The ID of the created block filter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_newFilter:
+    post:
+      tags:
+      - General
+      summary: eth_newFilter
+      operationId: newFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_newFilter
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      fromBlock:
+                        type: string
+                        default: latest
+                      address:
+                        type: string
+                        default: '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'
+                      topics:
+                        type: array
+                        items:
+                          type: string
+                        default:
+                        - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+                  default:
+                  - fromBlock: latest
+                    address: '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913'
+                    topics:
+                    - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef'
+      responses:
+        '200':
+          description: The ID of the created filter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_newPendingTransactionFilter:
+    post:
+      tags:
+      - General
+      summary: eth_newPendingTransactionFilter
+      operationId: newPendingTransactionFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_newPendingTransactionFilter
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The ID of the created pending transaction filter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
   /eth_protocolVersion:
     post:
       tags:
@@ -3162,6 +3014,64 @@ paths:
                     type: integer
                   result:
                     type: string
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_sendRawTransaction:
+    post:
+      tags:
+      - General
+      summary: eth_sendRawTransaction
+      operationId: sendRawTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              - params
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_sendRawTransaction
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  default:
+                  - '0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675'
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: The transaction hash of the submitted transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+                    description: The hash of the transaction that was sent.
     servers:
     - url: https://{node_id}.p2pify.com/{api_key}
       description: Chainstack-managed node endpoint
@@ -3251,6 +3161,166 @@ paths:
                       status:
                         type: string
                         example: '0x1'
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_syncing:
+    post:
+      tags:
+      - General
+      summary: Eth_Syncing
+      operationId: syncing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_syncing
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Syncing status of the node
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: object
+                    properties:
+                      startingBlock:
+                        type: string
+                      currentBlock:
+                        type: string
+                      highestBlock:
+                        type: string
+                    required:
+                    - startingBlock
+                    - currentBlock
+                    - highestBlock
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /eth_uninstallFilter:
+    post:
+      tags:
+      - General
+      summary: eth_uninstallFilter
+      operationId: uninstallFilter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: eth_uninstallFilter
+                id:
+                  type: integer
+                  default: 1
+                params:
+                  type: array
+                  items:
+                    type: string
+                  default:
+                  - '0x1a2b3c'
+      responses:
+        '200':
+          description: Success status of filter removal
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: boolean
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /net_listening:
+    post:
+      tags:
+      - General
+      summary: Net_Listening
+      operationId: listening
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: net_listening
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: Whether the client is listening for network connections
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: boolean
+                    description: True if the client is actively listening for network connections, false otherwise.
     servers:
     - url: https://{node_id}.p2pify.com/{api_key}
       description: Chainstack-managed node endpoint
@@ -3710,6 +3780,57 @@ paths:
                         type: boolean
                         description: Indicates whether the transaction failed.
                     description: The detailed execution trace of the transaction.
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /web3_clientVersion:
+    post:
+      tags:
+      - General
+      summary: web3_clientVersion
+      operationId: clientVersion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              - id
+              properties:
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: web3_clientVersion
+                id:
+                  type: integer
+                  default: 1
+      responses:
+        '200':
+          description: The version of the Ethereum client
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
+                    description: The client version string.
     servers:
     - url: https://{node_id}.p2pify.com/{api_key}
       description: Chainstack-managed node endpoint
@@ -6188,6 +6309,55 @@ paths:
                     type: integer
                   result:
                     type: object
+    servers:
+    - url: https://{node_id}.p2pify.com/{api_key}
+      description: Chainstack-managed node endpoint
+      variables:
+        node_id:
+          default: nd-000-000-000
+          description: Your Chainstack node identifier
+        api_key:
+          default: <api-key>
+          description: Per-node access key
+  /net_peerCount:
+    post:
+      tags:
+      - General
+      summary: net_peerCount
+      operationId: peerCount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  default: 1
+                jsonrpc:
+                  type: string
+                  default: '2.0'
+                method:
+                  type: string
+                  default: net_peerCount
+                params:
+                  type: array
+                  default: []
+      responses:
+        '200':
+          description: The number of peers connected to the client.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jsonrpc:
+                    type: string
+                  id:
+                    type: integer
+                  result:
+                    type: string
     servers:
     - url: https://{node_id}.p2pify.com/{api_key}
       description: Chainstack-managed node endpoint
@@ -26843,7 +27013,6 @@ paths:
   /starknet_estimateFee:
     post:
       summary: starknet_estimateFee
-      description: starknet_estimateFee
       operationId: starknetEstimateFee
       requestBody:
         required: true
@@ -26954,7 +27123,6 @@ paths:
   /starknet_estimateMessageFee:
     post:
       summary: starknet_estimateMessageFee
-      description: starknet_estimateMessageFee
       operationId: starknetEstimateMessageFee
       requestBody:
         required: true
@@ -27020,7 +27188,6 @@ paths:
   /starknet_getClassAt:
     post:
       summary: starknet_getClassAt
-      description: starknet_getClassAt
       operationId: starknetGetClassAt
       requestBody:
         required: true
@@ -27074,7 +27241,6 @@ paths:
   /starknet_getClassHashAt:
     post:
       summary: starknet_getClassHashAt
-      description: starknet_getClassHashAt
       operationId: starknetGetClassHashAt
       requestBody:
         required: true
@@ -27128,7 +27294,6 @@ paths:
   /starknet_getNonce:
     post:
       summary: starknet_getNonce
-      description: starknet_getNonce
       operationId: starknetGetNonce
       requestBody:
         required: true
@@ -27182,7 +27347,6 @@ paths:
   /starknet_getStorageAt:
     post:
       summary: starknet_getStorageAt
-      description: starknet_getStorageAt
       operationId: starknetGetStorageAt
       requestBody:
         required: true
@@ -27226,7 +27390,6 @@ paths:
   /starknet_getTransactionByBlockIdAndIndex:
     post:
       summary: starknet_getTransactionByBlockIdAndIndex
-      description: starknet_getTransactionByBlockIdAndIndex
       operationId: starknetGetTransactionByBlockIdAndIndex
       requestBody:
         required: true
@@ -27280,7 +27443,6 @@ paths:
   /starknet_getTransactionByHash:
     post:
       summary: starknet_getTransactionByHash
-      description: starknet_getTransactionByHash
       operationId: starknetGetTransactionByHash
       requestBody:
         required: true
@@ -27322,7 +27484,6 @@ paths:
   /starknet_simulateTransactions:
     post:
       summary: starknet_simulateTransactions
-      description: starknet_simulateTransactions
       operationId: starknetSimulateTransactions
       requestBody:
         required: true
@@ -27438,7 +27599,6 @@ paths:
   /starknet_traceBlockTransactions:
     post:
       summary: starknet_traceBlockTransactions
-      description: starknet_traceBlockTransactions
       operationId: starknetTraceBlockTransactions
       requestBody:
         required: true
@@ -38778,29 +38938,7 @@ components:
       title: Field element
       description: A field element. represented by at most 63 hex digits
       pattern: ^0x(0|[a-fA-F1-9]{1}[a-fA-F0-9]{0,62})$
-    JsonRpcResponseForRawBlockTransactions:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: array
-          items:
-            type: object
-            properties:
-              transactions_details:
-                type: object
-                description: The details of transactions in the block.
-    JsonRpcResponseForBridgeContracts:
+    JsonRpcResponseForTransactionDetails:
       type: object
       required:
       - jsonrpc
@@ -38817,31 +38955,10 @@ components:
         result:
           type: object
           properties:
-            bridgeContractAddresses:
+            txDetails:
               type: object
-              additionalProperties:
-                type: string
-    JsonRpcResponseForMainContract:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            contractAddress:
-              type: string
-              description: The address of zkSync main contract on L1.
-    JsonRpcRequestForTransactionDetails:
+              description: The details of the transaction.
+    JsonRpcRequestForBridgeContracts:
       type: object
       required:
       - jsonrpc
@@ -38859,136 +38976,19 @@ components:
           default: 1
         method:
           type: string
-          example: zks_getTransactionDetails
-          default: zks_getTransactionDetails
-        params:
-          type: array
-          default:
-          - '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
-          items:
-            type: string
-            example: '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
-            default: '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
-    JsonRpcResponseForL2ToL1LogProof:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            logProof:
-              type: object
-              description: The log proof information.
-              properties:
-                blockNumber:
-                  type: integer
-                  description: The block number.
-                logIndex:
-                  type: integer
-                  description: The log index within the block.
-                transactionHash:
-                  type: string
-                  description: The transaction hash associated with the log.
-                logEntries:
-                  type: array
-                  items:
-                    type: string
-                    description: Log entry data.
-    JsonRpcRequestForRawBlockTransactions:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_getRawBlockTransactions
-          default: zks_getRawBlockTransactions
-        params:
-          type: array
-          default:
-          - 27221521
-          items:
-            type: integer
-            example: 27221521
-            default: 27221521
-    JsonRpcRequestForL1BatchBlockRange:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_getL1BatchBlockRange
-          default: zks_getL1BatchBlockRange
-        params:
-          type: array
-          default:
-          - 443314
-          items:
-            type: integer
-            example: 443314
-            default: 443314
-    JsonRpcRequestForL1ChainId:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_L1ChainId
-          default: zks_L1ChainId
+          example: zks_getBridgeContracts
+          default: zks_getBridgeContracts
         params:
           type: array
           default: []
-    JsonRpcResponseForL1ChainId:
+          items: {}
+    JsonRpcRequestForTestnetPaymaster:
       type: object
       required:
       - jsonrpc
       - id
-      - result
+      - method
+      - params
       properties:
         jsonrpc:
           type: string
@@ -38996,13 +38996,15 @@ components:
           default: '2.0'
         id:
           type: integer
+          example: 1
           default: 1
-        result:
-          type: object
-          properties:
-            chainId:
-              type: integer
-              description: The chain ID of Layer 1.
+        method:
+          type: string
+          example: zks_getTestnetPaymaster
+          default: zks_getTestnetPaymaster
+        params:
+          type: array
+          default: []
     JsonRpcRequest:
       type: object
       required:
@@ -39044,7 +39046,7 @@ components:
                 type: string
                 example: 0x
                 default: 0x
-    JsonRpcResponseForBytecodeByHash:
+    JsonRpcResponseForMainContract:
       type: object
       required:
       - jsonrpc
@@ -39059,8 +39061,103 @@ components:
           type: integer
           default: 1
         result:
+          type: object
+          properties:
+            contractAddress:
+              type: string
+              description: The address of zkSync main contract on L1.
+    JsonRpcResponseForL1BatchNumber:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
           type: string
-          description: The bytecode of the transaction.
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          properties:
+            batchNumber:
+              type: integer
+              description: The latest L1 batch number.
+    JsonRpcResponseForTestnetPaymaster:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          properties:
+            paymasterAddress:
+              type: string
+              description: The address of the testnet paymaster.
+    JsonRpcResponseGasL1ToL2:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 2
+        result:
+          type: object
+          additionalProperties: true
+    JsonRpcResponseForL2ToL1LogProof:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          properties:
+            logProof:
+              type: object
+              description: The log proof information.
+              properties:
+                blockNumber:
+                  type: integer
+                  description: The block number.
+                logIndex:
+                  type: integer
+                  description: The log index within the block.
+                transactionHash:
+                  type: string
+                  description: The transaction hash associated with the log.
+                logEntries:
+                  type: array
+                  items:
+                    type: string
+                    description: Log entry data.
     JsonRpcRequestForMainContract:
       type: object
       required:
@@ -39084,7 +39181,7 @@ components:
         params:
           type: array
           default: []
-    JsonRpcRequestForBlockDetails:
+    JsonRpcRequestForBalances:
       type: object
       required:
       - jsonrpc
@@ -39102,17 +39199,17 @@ components:
           default: 1
         method:
           type: string
-          example: zks_getBlockDetails
-          default: zks_getBlockDetails
+          example: zks_getAllAccountBalances
+          default: zks_getAllAccountBalances
         params:
           type: array
           default:
-          - 27163792
+          - '0xB240316e290e976e31f1557b3B312Dd698efac4c'
           items:
-            type: integer
-            example: 27163792
-            default: 27163792
-    JsonRpcResponseForBlockDetails:
+            type: string
+            example: '0xB240316e290e976e31f1557b3B312Dd698efac4c'
+            default: '0xB240316e290e976e31f1557b3B312Dd698efac4c'
+    JsonRpcResponseForRawBlockTransactions:
       type: object
       required:
       - jsonrpc
@@ -39127,71 +39224,13 @@ components:
           type: integer
           default: 1
         result:
-          type: object
-          properties:
-            blockNumber:
-              type: integer
-            blockHash:
-              type: string
-            parentHash:
-              type: string
-            transactions:
-              type: array
-              items:
-                type: object
-                properties:
-                  txHash:
-                    type: string
-                  from:
-                    type: string
-                  to:
-                    type: string
-                  value:
-                    type: string
-                  gasUsed:
-                    type: integer
-    JsonRpcResponseForBalances:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          additionalProperties:
+          type: array
+          items:
             type: object
             properties:
-              balance:
-                type: string
-              symbol:
-                type: string
-              decimals:
-                type: integer
-    JsonRpcResponseGasL1ToL2:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 2
-        result:
-          type: object
-          additionalProperties: true
+              transactions_details:
+                type: object
+                description: The details of transactions in the block.
     JsonRpcResponse:
       type: object
       required:
@@ -39209,7 +39248,7 @@ components:
         result:
           type: object
           additionalProperties: true
-    JsonRpcResponseForL1BatchBlockRange:
+    JsonRpcResponseForBridgeContracts:
       type: object
       required:
       - jsonrpc
@@ -39226,140 +39265,10 @@ components:
         result:
           type: object
           properties:
-            startBlock:
-              type: integer
-              description: The starting block number of the L1 batch.
-            endBlock:
-              type: integer
-              description: The ending block number of the L1 batch.
-    JsonRpcResponseForTransactionDetails:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            txDetails:
+            bridgeContractAddresses:
               type: object
-              description: The details of the transaction.
-    JsonRpcResponseForTestnetPaymaster:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            paymasterAddress:
-              type: string
-              description: The address of the testnet paymaster.
-    JsonRpcRequestForBridgeContracts:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_getBridgeContracts
-          default: zks_getBridgeContracts
-        params:
-          type: array
-          default: []
-          items: {}
-    JsonRpcRequestGasL1ToL2:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 2
-          default: 2
-        method:
-          type: string
-          example: zks_estimateGasL1ToL2
-          default: zks_estimateGasL1ToL2
-        params:
-          type: array
-          default:
-          - from: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
-            to: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
-            data: 0x
-          items:
-            type: object
-            properties:
-              from:
+              additionalProperties:
                 type: string
-                example: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
-                default: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
-              to:
-                type: string
-                example: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
-                default: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
-              data:
-                type: string
-                example: 0x
-                default: 0x
-    JsonRpcRequestForTestnetPaymaster:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_getTestnetPaymaster
-          default: zks_getTestnetPaymaster
-        params:
-          type: array
-          default: []
     JsonRpcRequestForL1BatchDetails:
       type: object
       required:
@@ -39388,13 +39297,12 @@ components:
             type: integer
             example: 443314
             default: 443314
-    JsonRpcRequestForBytecodeByHash:
+    JsonRpcResponseForL1ChainId:
       type: object
       required:
       - jsonrpc
       - id
-      - method
-      - params
+      - result
       properties:
         jsonrpc:
           type: string
@@ -39402,20 +39310,13 @@ components:
           default: '2.0'
         id:
           type: integer
-          example: 1
           default: 1
-        method:
-          type: string
-          example: zks_getBytecodeByHash
-          default: zks_getBytecodeByHash
-        params:
-          type: array
-          default:
-          - '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
-          items:
-            type: string
-            example: '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
-            default: '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
+        result:
+          type: object
+          properties:
+            chainId:
+              type: integer
+              description: The chain ID of Layer 1.
     JsonRpcRequestForL1BatchNumber:
       type: object
       required:
@@ -39439,7 +39340,7 @@ components:
         params:
           type: array
           default: []
-    JsonRpcResponseForL1BatchNumber:
+    JsonRpcResponseForBalances:
       type: object
       required:
       - jsonrpc
@@ -39455,11 +39356,16 @@ components:
           default: 1
         result:
           type: object
-          properties:
-            batchNumber:
-              type: integer
-              description: The latest L1 batch number.
-    JsonRpcRequestForL2ToL1LogProof:
+          additionalProperties:
+            type: object
+            properties:
+              balance:
+                type: string
+              symbol:
+                type: string
+              decimals:
+                type: integer
+    JsonRpcRequestForBlockDetails:
       type: object
       required:
       - jsonrpc
@@ -39477,16 +39383,62 @@ components:
           default: 1
         method:
           type: string
-          example: zks_getL2ToL1LogProof
-          default: zks_getL2ToL1LogProof
+          example: zks_getBlockDetails
+          default: zks_getBlockDetails
         params:
           type: array
           default:
-          - '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
+          - 27163792
           items:
-            type: string
-            example: '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
-            default: '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
+            type: integer
+            example: 27163792
+            default: 27163792
+    JsonRpcRequestForL1ChainId:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_L1ChainId
+          default: zks_L1ChainId
+        params:
+          type: array
+          default: []
+    JsonRpcResponseForL1BatchBlockRange:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          properties:
+            startBlock:
+              type: integer
+              description: The starting block number of the L1 batch.
+            endBlock:
+              type: integer
+              description: The ending block number of the L1 batch.
     JsonRpcResponseForL1BatchDetails:
       type: object
       required:
@@ -39529,7 +39481,24 @@ components:
               type: string
               format: date-time
               description: The submission time of the L1 batch.
-    JsonRpcRequestForBalances:
+    JsonRpcResponseForBytecodeByHash:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: string
+          description: The bytecode of the transaction.
+    JsonRpcRequestForL1BatchBlockRange:
       type: object
       required:
       - jsonrpc
@@ -39547,27 +39516,213 @@ components:
           default: 1
         method:
           type: string
-          example: zks_getAllAccountBalances
-          default: zks_getAllAccountBalances
+          example: zks_getL1BatchBlockRange
+          default: zks_getL1BatchBlockRange
         params:
           type: array
           default:
-          - '0xB240316e290e976e31f1557b3B312Dd698efac4c'
+          - 443314
+          items:
+            type: integer
+            example: 443314
+            default: 443314
+    JsonRpcRequestGasL1ToL2:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 2
+          default: 2
+        method:
+          type: string
+          example: zks_estimateGasL1ToL2
+          default: zks_estimateGasL1ToL2
+        params:
+          type: array
+          default:
+          - from: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
+            to: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
+            data: 0x
+          items:
+            type: object
+            properties:
+              from:
+                type: string
+                example: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
+                default: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
+              to:
+                type: string
+                example: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
+                default: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
+              data:
+                type: string
+                example: 0x
+                default: 0x
+    JsonRpcRequestForL2ToL1LogProof:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getL2ToL1LogProof
+          default: zks_getL2ToL1LogProof
+        params:
+          type: array
+          default:
+          - '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
           items:
             type: string
-            example: '0xB240316e290e976e31f1557b3B312Dd698efac4c'
-            default: '0xB240316e290e976e31f1557b3B312Dd698efac4c'
+            example: '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
+            default: '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
+    JsonRpcRequestForRawBlockTransactions:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getRawBlockTransactions
+          default: zks_getRawBlockTransactions
+        params:
+          type: array
+          default:
+          - 27221521
+          items:
+            type: integer
+            example: 27221521
+            default: 27221521
+    JsonRpcRequestForBytecodeByHash:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getBytecodeByHash
+          default: zks_getBytecodeByHash
+        params:
+          type: array
+          default:
+          - '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
+          items:
+            type: string
+            example: '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
+            default: '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
+    JsonRpcRequestForTransactionDetails:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getTransactionDetails
+          default: zks_getTransactionDetails
+        params:
+          type: array
+          default:
+          - '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
+          items:
+            type: string
+            example: '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
+            default: '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
+    JsonRpcResponseForBlockDetails:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          properties:
+            blockNumber:
+              type: integer
+            blockHash:
+              type: string
+            parentHash:
+              type: string
+            transactions:
+              type: array
+              items:
+                type: object
+                properties:
+                  txHash:
+                    type: string
+                  from:
+                    type: string
+                  to:
+                    type: string
+                  value:
+                    type: string
+                  gasUsed:
+                    type: integer
 x-refined-from:
-- chainstack-aurora-node-api-openapi.yml
 - chainstack-base-node-api-openapi.yml
 - chainstack-bitcoin-node-api-openapi.yml
 - chainstack-bnb-node-api-openapi.yml
-- chainstack-cronos-node-api-openapi.yml
-- chainstack-fantom-node-api-openapi.yml
 - chainstack-hyperliquid-node-api-openapi.yml
-- chainstack-optimism-node-api-openapi.yml
 - chainstack-polygon-zkevm-node-api-openapi.yml
-- chainstack-ronin-node-api-openapi.yml
 - chainstack-solana-node-api-openapi.yml
 - chainstack-starknet-node-api-openapi.yml
 - chainstack-tron-node-api-openapi.yml
