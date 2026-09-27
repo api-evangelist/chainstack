@@ -1,0 +1,154 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Vesting API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: Vesting
+paths:
+  /vesting:
+    get:
+      security:
+      - APIKeyHeader: []
+      - APIKeyQuery: []
+      description: Get vesting contracts by specified filters
+      tags:
+      - Vesting
+      summary: Get Vesting Contracts
+      operationId: api_v3_get_vesting_contracts
+      parameters:
+      - name: contract_address
+        in: query
+        description: 'Vesting contract address in any form. Max: 1000.'
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: wallet_address
+        in: query
+        description: 'Wallet address to filter by owner or sender. Max: 1000.'
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: check_whitelist
+        in: query
+        description: Check if wallet address is in whitelist.
+        schema:
+          type: boolean
+          default: false
+      - name: limit
+        in: query
+        description: Limit number of queried rows. Use with *offset* to batch read.
+        schema:
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 1000
+          default: 10
+      - name: offset
+        in: query
+        description: Skip first N rows. Use with *limit* to batch read.
+        schema:
+          type: integer
+          format: int32
+          minimum: 0
+          default: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VestingContractsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestError'
+components:
+  schemas:
+    VestingContractsResponse:
+      type: object
+      properties:
+        address_book:
+          $ref: '#/components/schemas/AddressBook'
+        vesting_contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/index.VestingInfo'
+    index.VestingInfo:
+      type: object
+      properties:
+        address:
+          type: string
+        cliff_duration:
+          type: integer
+        owner_address:
+          type: string
+        sender_address:
+          type: string
+        start_time:
+          type: integer
+        total_amount:
+          type: string
+        total_duration:
+          type: integer
+        unlock_period:
+          type: integer
+        whitelist:
+          type: array
+          items:
+            type: string
+    AddressBookRow:
+      type: object
+      properties:
+        domain:
+          type: string
+        interfaces:
+          type: array
+          items:
+            type: string
+        user_friendly:
+          type: string
+    AddressBook:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AddressBookRow'
+    RequestError:
+      type: object
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

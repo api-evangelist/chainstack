@@ -1,0 +1,64 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get Config Param API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetConfigParam
+paths:
+  /getConfigParam:
+    get:
+      tags:
+      - GetConfigParam
+      summary: getConfigParam
+      operationId: getConfigParam
+      parameters:
+      - name: config_id
+        in: query
+        required: true
+        description: The ID of the configuration parameter to retrieve
+        schema:
+          type: integer
+          default: 5
+        example: 5
+      responses:
+        '200':
+          description: The requested configuration parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config_id:
+                    type: integer
+                    description: The ID of the configuration parameter
+                  value:
+                    type: object
+                    description: The value of the configuration parameter
+                    additionalProperties: true
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

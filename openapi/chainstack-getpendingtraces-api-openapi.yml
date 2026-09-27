@@ -1,0 +1,102 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get Pending Traces API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetPendingTraces
+paths:
+  /getPendingTraces:
+    get:
+      summary: Get Pending Traces
+      description: Get traces that are pending completion
+      operationId: getPendingTraces
+      tags:
+      - GetPendingTraces
+      parameters:
+      - name: trace_id
+        in: query
+        description: Filter by trace ID
+        schema:
+          type: string
+      - name: limit
+        in: query
+        description: Maximum number of traces to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of traces to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  traces:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        trace_id:
+                          type: string
+                          description: Trace ID
+                        external_hash:
+                          type: string
+                          description: External message hash
+                        mc_seqno_start:
+                          type: integer
+                          description: Start masterchain sequence number
+                        start_lt:
+                          type: integer
+                          description: Start logical time
+                        start_utime:
+                          type: integer
+                          description: Start unix timestamp
+                        state:
+                          type: string
+                          description: Trace state (pending)
+                        pending_edges:
+                          type: integer
+                          description: Number of pending message edges
+                        edges:
+                          type: integer
+                          description: Total edges
+                        nodes:
+                          type: integer
+                          description: Total nodes
+                  address_book:
+                    type: object
+                    description: Address book mapping
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

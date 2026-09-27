@@ -1,0 +1,100 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Try Locate Source Tx API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: TryLocateSourceTx
+paths:
+  /tryLocateSourceTx:
+    get:
+      tags:
+      - TryLocateSourceTx
+      summary: tryLocateSourceTx
+      operationId: tryLocateSourceTx
+      parameters:
+      - name: source
+        in: query
+        required: true
+        description: The source address of the result transaction
+        schema:
+          type: string
+          default: UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1
+        example: UQAX2d4C2d48JeA-0y2_peGabRVumnKY22xPvkuEayC3zTI1
+      - name: destination
+        in: query
+        required: true
+        description: The destination address of the result transaction
+        schema:
+          type: string
+          default: UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA
+        example: UQBP4mzpDIywL1SV-Wp9ZuBBlzprR9eXQgSYGEXiUEHm73vA
+      - name: created_lt
+        in: query
+        required: true
+        description: The logical time when the result transaction was created
+        schema:
+          type: string
+          default: '47597573000002'
+        example: '47597573000002'
+      responses:
+        '200':
+          description: Information about the located source transaction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  block:
+                    type: object
+                    properties:
+                      workchain:
+                        type: integer
+                        description: The workchain ID of the block containing the source transaction
+                      shard:
+                        type: string
+                        description: The shard ID of the block containing the source transaction
+                      seqno:
+                        type: integer
+                        description: The sequence number of the block containing the source transaction
+                      root_hash:
+                        type: string
+                        description: The root hash of the block containing the source transaction
+                      file_hash:
+                        type: string
+                        description: The file hash of the block containing the source transaction
+                  transaction_id:
+                    type: object
+                    properties:
+                      lt:
+                        type: string
+                        description: The logical time of the source transaction
+                      hash:
+                        type: string
+                        description: The hash of the source transaction
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

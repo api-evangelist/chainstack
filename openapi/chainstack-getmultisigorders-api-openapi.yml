@@ -1,0 +1,114 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get Multisig Orders API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetMultisigOrders
+paths:
+  /getMultisigOrders:
+    get:
+      summary: Get Multisig Orders
+      description: Get pending orders for multisig wallets
+      operationId: getMultisigOrders
+      tags:
+      - GetMultisigOrders
+      parameters:
+      - name: multisig_address
+        in: query
+        description: Filter by multisig wallet address
+        schema:
+          type: string
+      - name: order_address
+        in: query
+        description: Filter by order contract address
+        schema:
+          type: string
+      - name: is_executed
+        in: query
+        description: Filter by execution status
+        schema:
+          type: boolean
+      - name: limit
+        in: query
+        description: Maximum number of orders to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of orders to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  multisig_orders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Order contract address
+                        multisig_address:
+                          type: string
+                          description: Parent multisig wallet address
+                        order_seqno:
+                          type: integer
+                          description: Order sequence number
+                        threshold:
+                          type: integer
+                          description: Required signatures
+                        signers_num:
+                          type: integer
+                          description: Total number of signers
+                        approvals_num:
+                          type: integer
+                          description: Current approvals count
+                        approvals:
+                          type: array
+                          items:
+                            type: string
+                          description: List of approving addresses
+                        expiration_date:
+                          type: integer
+                          description: Order expiration timestamp
+                        is_executed:
+                          type: boolean
+                          description: Whether order is executed
+                  address_book:
+                    type: object
+                    description: Address book mapping
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

@@ -1,0 +1,107 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get Transactions By Masterchain Block…
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetTransactionsByMasterchainBlock
+paths:
+  /getTransactionsByMasterchainBlock:
+    get:
+      summary: Get Transactions by Masterchain Block
+      description: Retrieves a list of transactions for a specific masterchain block
+      operationId: getTransactionsByMasterchainBlock
+      tags:
+      - GetTransactionsByMasterchainBlock
+      parameters:
+      - name: seqno
+        in: query
+        description: The sequence number of the masterchain block
+        required: true
+        schema:
+          type: integer
+          default: 40467413
+      - name: limit
+        in: query
+        description: The maximum number of transactions to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of transactions to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: The sorting order of the transactions
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transactions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hash:
+                          type: string
+                          description: The transaction hash
+                        lt:
+                          type: string
+                          description: The logical time of the transaction
+                        account:
+                          type: string
+                          description: The account address involved in the transaction
+                        now:
+                          type: integer
+                          description: The timestamp of the transaction
+                        origStatus:
+                          type: string
+                          description: The original status of the account
+                        endStatus:
+                          type: string
+                          description: The end status of the account
+                        totalFees:
+                          type: string
+                          description: The total fees for the transaction
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

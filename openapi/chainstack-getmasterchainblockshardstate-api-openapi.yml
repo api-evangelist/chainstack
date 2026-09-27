@@ -1,0 +1,78 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get Masterchain Block Shard State API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetMasterchainBlockShardState
+paths:
+  /getMasterchainBlockShardState:
+    get:
+      summary: Get Masterchain Block Shard State
+      description: Retrieves the shard state of a specific masterchain block
+      operationId: getMasterchainBlockShardState
+      tags:
+      - GetMasterchainBlockShardState
+      parameters:
+      - name: seqno
+        in: query
+        description: The sequence number of the masterchain block
+        required: true
+        schema:
+          type: integer
+          default: 40467413
+          example: 40467413
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        workchain:
+                          type: integer
+                          description: The workchain ID
+                        shard:
+                          type: string
+                          description: The shard identifier
+                        seqno:
+                          type: integer
+                          description: The sequence number of the shard block
+                        root_hash:
+                          type: string
+                          description: The root hash of the shard block
+                        file_hash:
+                          type: string
+                          description: The file hash of the shard block
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

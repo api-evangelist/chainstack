@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get Account States API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetAccountStates
+paths:
+  /getAccountStates:
+    get:
+      summary: Get Account States
+      description: Query account states with historical data
+      operationId: getAccountStates
+      tags:
+      - GetAccountStates
+      parameters:
+      - name: account_address
+        in: query
+        description: Account address to query
+        schema:
+          type: string
+          default: EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs
+      - name: include_boc
+        in: query
+        description: Include account state BoC in response
+        schema:
+          type: boolean
+          default: false
+      - name: limit
+        in: query
+        description: Maximum number of states to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of states to skip
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: Sort order
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account_states:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account:
+                          type: string
+                          description: Account address
+                        hash:
+                          type: string
+                          description: State hash
+                        balance:
+                          type: string
+                          description: Account balance in nanotons
+                        account_status:
+                          type: string
+                          description: Account status (active, uninit, frozen)
+                        last_trans_lt:
+                          type: integer
+                          description: Last transaction logical time
+                        last_trans_hash:
+                          type: string
+                          description: Last transaction hash
+                        frozen_hash:
+                          type: string
+                          description: Frozen hash if account is frozen
+                        code_hash:
+                          type: string
+                          description: Code cell hash
+                        data_hash:
+                          type: string
+                          description: Data cell hash
+                        code_boc:
+                          type: string
+                          description: Code BoC if include_boc is true
+                        data_boc:
+                          type: string
+                          description: Data BoC if include_boc is true
+                  address_book:
+                    type: object
+                    description: Address book mapping
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

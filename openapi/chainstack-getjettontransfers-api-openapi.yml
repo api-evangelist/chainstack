@@ -1,0 +1,129 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get Jetton Transfers API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetJettonTransfers
+paths:
+  /getJettonTransfers:
+    get:
+      summary: Get Jetton Transfers
+      description: Retrieves a list of Jetton transfers from the TON blockchain
+      operationId: getJettonTransfers
+      tags:
+      - GetJettonTransfers
+      parameters:
+      - name: direction
+        in: query
+        description: The direction of transfers to retrieve
+        required: true
+        schema:
+          type: string
+          enum:
+          - in
+          - out
+          - both
+          default: both
+      - name: limit
+        in: query
+        description: The maximum number of transfers to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of transfers to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: sort
+        in: query
+        description: The sorting order of the transfers
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transfers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        jetton:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the Jetton master contract
+                            name:
+                              type: string
+                              description: The name of the Jetton
+                            symbol:
+                              type: string
+                              description: The symbol of the Jetton
+                        from:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the sender
+                        to:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: The address of the recipient
+                        transaction:
+                          type: object
+                          properties:
+                            hash:
+                              type: string
+                              description: The hash of the transaction
+                            time:
+                              type: integer
+                              description: The timestamp of the transaction
+                        amount:
+                          type: string
+                          description: The amount of Jettons transferred
+                        comment:
+                          type: string
+                          description: Any comment attached to the transfer
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

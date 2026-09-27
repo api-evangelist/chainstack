@@ -134,6 +134,30 @@ paths:
       - Configuration Info
 components:
   schemas:
+    ForkScheduleItem:
+      type: object
+      properties:
+        epoch:
+          type: integer
+          format: int64
+        version:
+          type: string
+          pattern: ^[0-9a-fA-F]{8}$
+      required:
+      - epoch
+      - version
+    ForkInformation:
+      type: object
+      properties:
+        epoch:
+          type: string
+          description: The epoch number at which the current version was applied.
+        previous_version:
+          type: string
+          description: The previous fork version.
+        current_version:
+          type: string
+          description: The current fork version.
     GenesisData:
       type: object
       properties:
@@ -153,6 +177,10 @@ components:
       - genesis_time
       - genesis_validators_root
       - genesis_fork_version
+    SpecConfig:
+      type: object
+      additionalProperties:
+        type: string
     DepositContractConfig:
       type: object
       properties:
@@ -165,22 +193,10 @@ components:
       required:
       - chain_id
       - address
-    ForkInformation:
-      type: object
-      properties:
-        epoch:
-          type: string
-          description: The epoch number at which the current version was applied.
-        previous_version:
-          type: string
-          description: The previous fork version.
-        current_version:
-          type: string
-          description: The current fork version.
-    SpecConfig:
-      type: object
-      additionalProperties:
-        type: string
+    ForkScheduleList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ForkScheduleItem'
     Error:
       type: object
       properties:
@@ -199,19 +215,3 @@ components:
           $ref: '#/components/schemas/GenesisData'
       required:
       - data
-    ForkScheduleList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ForkScheduleItem'
-    ForkScheduleItem:
-      type: object
-      properties:
-        epoch:
-          type: integer
-          format: int64
-        version:
-          type: string
-          pattern: ^[0-9a-fA-F]{8}$
-      required:
-      - epoch
-      - version

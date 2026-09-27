@@ -1,0 +1,82 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get Top Accounts By Balance API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetTopAccountsByBalance
+paths:
+  /getTopAccountsByBalance:
+    get:
+      summary: Get Top Accounts by Balance
+      description: Get accounts with the highest TON balances
+      operationId: getTopAccountsByBalance
+      tags:
+      - GetTopAccountsByBalance
+      parameters:
+      - name: limit
+        in: query
+        description: Maximum number of accounts to return
+        schema:
+          type: integer
+          default: 10
+      - name: offset
+        in: query
+        description: Number of accounts to skip
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Account address
+                        balance:
+                          type: string
+                          description: Balance in nanotons
+                        account_status:
+                          type: string
+                          description: Account status
+                        last_activity:
+                          type: integer
+                          description: Last activity timestamp
+                  address_book:
+                    type: object
+                    description: Address book mapping
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

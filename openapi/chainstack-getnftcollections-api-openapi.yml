@@ -1,0 +1,93 @@
+openapi: 3.2.0
+info:
+  title: Chainstack TON Node Get NFT Collections API
+  version: 1.0.0
+  description: Chainstack-managed RPC node API for the TON blockchain. Endpoints follow the canonical JSON-RPC over HTTPS interface for the network. Authenticate against your Chainstack node's per-node URL (e.g. https://nd-XXX-XXX-XXX.p2pify.com/). Merged from the Chainstack Developer Portal per-method fragments at https://github.com/chainstack/dev-portal/tree/main/openapi/ton_node_api.
+  contact:
+    name: Chainstack API Support
+    email: support@chainstack.com
+  license:
+    name: Chainstack Terms
+    url: https://chainstack.com/terms-of-service/
+servers:
+- url: https://{node_id}.p2pify.com/{api_key}
+  description: Chainstack-managed node endpoint
+  variables:
+    node_id:
+      default: nd-000-000-000
+      description: Your Chainstack node identifier
+    api_key:
+      default: <api-key>
+      description: Per-node access key
+tags:
+- name: GetNFTCollections
+paths:
+  /getNFTCollections:
+    get:
+      summary: Get NFT Collections
+      description: Retrieves a list of NFT collections from the TON blockchain
+      operationId: getNFTCollections
+      tags:
+      - GetNFTCollections
+      parameters:
+      - name: limit
+        in: query
+        description: The maximum number of collections to return
+        required: false
+        schema:
+          type: integer
+          default: 128
+      - name: offset
+        in: query
+        description: The number of collections to skip before starting to return results
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  collections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: The address of the NFT collection
+                        name:
+                          type: string
+                          description: The name of the NFT collection
+                        description:
+                          type: string
+                          description: The description of the NFT collection
+                        metadata:
+                          type: object
+                          description: Additional metadata of the NFT collection
+                        owner:
+                          type: string
+                          description: The owner's address of the NFT collection
+                        raw_collection_content:
+                          type: string
+                          description: The raw content of the NFT collection
+                        next_item_index:
+                          type: integer
+                          description: The index of the next item in the collection
+                        icon:
+                          type: string
+                          description: The URL of the collection's icon
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key

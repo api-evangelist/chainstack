@@ -257,6 +257,78 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 components:
+  responses:
+    NotFoundError:
+      description: Object does not exist or caller has insufficient permissions to access it.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    ValidationError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                  fields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    description: Optional. Field-level validation errors.
+    ForbiddenError:
+      description: The request is not allowed with the current permissions.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    UnauthorizedError:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
   parameters:
     Id:
       name: id
@@ -287,12 +359,27 @@ components:
         - name
         - created_at
   schemas:
-    NodeUpdateV2:
+    Pagination:
       type: object
       properties:
-        name:
-          type: string
-          description: Name of the node.
+        count:
+          type: integer
+          example: 123
+          description: Number of the objects in the paginated results.
+        next:
+          type:
+          - string
+          - 'null'
+          description: Link to the next page.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: Link to the previous page.
+        results:
+          type: array
+          items:
+            type: object
     NodeCreateV2:
       type: object
       properties:
@@ -371,99 +458,12 @@ components:
           type: string
           description: Blockchain identifier.
           example: BC-000-000
-    Pagination:
+    NodeUpdateV2:
       type: object
       properties:
-        count:
-          type: integer
-          example: 123
-          description: Number of the objects in the paginated results.
-        next:
-          type:
-          - string
-          - 'null'
-          description: Link to the next page.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: Link to the previous page.
-        results:
-          type: array
-          items:
-            type: object
-  responses:
-    ValidationError:
-      description: Validation error.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-                  fields:
-                    type: object
-                    additionalProperties:
-                      type: array
-                      items:
-                        type: string
-                    description: Optional. Field-level validation errors.
-    NotFoundError:
-      description: Object does not exist or caller has insufficient permissions to access it.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-    ForbiddenError:
-      description: The request is not allowed with the current permissions.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-    UnauthorizedError:
-      description: Authentication credentials were missing or incorrect.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
+        name:
+          type: string
+          description: Name of the node.
   securitySchemes:
     APIKeyAuthentication:
       type: http
