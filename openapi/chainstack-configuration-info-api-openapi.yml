@@ -134,6 +134,33 @@ paths:
       - Configuration Info
 components:
   schemas:
+    GenesisData:
+      type: object
+      properties:
+        genesis_time:
+          type: string
+          format: date-time
+          description: The genesis time as an ISO 8601 formatted string.
+        genesis_validators_root:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{64}$
+          description: The 32-byte genesis validators root as a hex string.
+        genesis_fork_version:
+          type: string
+          pattern: ^0x[a-fA-F0-9]{8}$
+          description: The 4-byte genesis fork version as a hex string.
+      required:
+      - genesis_time
+      - genesis_validators_root
+      - genesis_fork_version
+    ForkScheduleList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ForkScheduleItem'
+    SpecConfig:
+      type: object
+      additionalProperties:
+        type: string
     ForkScheduleItem:
       type: object
       properties:
@@ -158,29 +185,13 @@ components:
         current_version:
           type: string
           description: The current fork version.
-    GenesisData:
+    Genesis:
       type: object
       properties:
-        genesis_time:
-          type: string
-          format: date-time
-          description: The genesis time as an ISO 8601 formatted string.
-        genesis_validators_root:
-          type: string
-          pattern: ^0x[a-fA-F0-9]{64}$
-          description: The 32-byte genesis validators root as a hex string.
-        genesis_fork_version:
-          type: string
-          pattern: ^0x[a-fA-F0-9]{8}$
-          description: The 4-byte genesis fork version as a hex string.
+        data:
+          $ref: '#/components/schemas/GenesisData'
       required:
-      - genesis_time
-      - genesis_validators_root
-      - genesis_fork_version
-    SpecConfig:
-      type: object
-      additionalProperties:
-        type: string
+      - data
     DepositContractConfig:
       type: object
       properties:
@@ -193,10 +204,6 @@ components:
       required:
       - chain_id
       - address
-    ForkScheduleList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ForkScheduleItem'
     Error:
       type: object
       properties:
@@ -208,10 +215,3 @@ components:
       required:
       - code
       - message
-    Genesis:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/GenesisData'
-      required:
-      - data

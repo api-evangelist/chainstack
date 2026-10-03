@@ -204,39 +204,25 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 components:
-  examples:
-    PublicProjectCreate:
-      value:
-        name: My public chain project
-        description: My public chain project description
-        type: public
-    PublicProject:
-      value:
-        id: PR-123-456
-        name: My public chain project
-        type: public
-        networks: 0
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
   schemas:
-    ProjectTypeEnum:
+    ProjectCreate:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
+      - type: object
+        required:
+        - name
+    ProjectUpdate:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
+      - type: object
+        properties:
+          type:
+            readOnly: true
+    CreatedAt:
       type: string
-      description: 'Type of the project.
-
-        <br>
-
-        * `public` for public chain project
-
-        '
-      enum:
-      - public
+      format: date-time
+      readOnly: true
+      description: When the object was created.
     Creator:
       type: object
       description: Creator of the object.
@@ -259,6 +245,55 @@ components:
           allOf:
           - $ref: '#/components/schemas/Object'
           description: Creator's organization.
+    Project:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
+    Pagination:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+          description: Number of the objects in the paginated results.
+        next:
+          type:
+          - string
+          - 'null'
+          description: Link to the next page.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: Link to the previous page.
+        results:
+          type: array
+          items:
+            type: object
+    Object:
+      type: object
+      description: Common object representation.
+      readOnly: true
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+    ProjectMember:
+      type: object
+      description: Member organization of the consortium project.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
     BaseProject:
       type: object
       properties:
@@ -296,73 +331,67 @@ components:
           allOf:
           - $ref: '#/components/schemas/CreatedAt'
           description: When the project was created.
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 123
-          description: Number of the objects in the paginated results.
-        next:
-          type:
-          - string
-          - 'null'
-          description: Link to the next page.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: Link to the previous page.
-        results:
-          type: array
-          items:
-            type: object
-    ProjectMember:
-      type: object
-      description: Member organization of the consortium project.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        email:
-          type: string
-          format: email
-          readOnly: true
-    CreatedAt:
+    ProjectTypeEnum:
       type: string
-      format: date-time
-      readOnly: true
-      description: When the object was created.
-    Project:
-      allOf:
-      - $ref: '#/components/schemas/BaseProject'
-    Object:
-      type: object
-      description: Common object representation.
-      readOnly: true
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-    ProjectUpdate:
-      allOf:
-      - $ref: '#/components/schemas/BaseProject'
-      - type: object
-        properties:
-          type:
-            readOnly: true
-    ProjectCreate:
-      allOf:
-      - $ref: '#/components/schemas/BaseProject'
-      - type: object
-        required:
+      description: 'Type of the project.
+
+        <br>
+
+        * `public` for public chain project
+
+        '
+      enum:
+      - public
+  parameters:
+    ProjectOrdering:
+      name: order_by
+      required: false
+      in: query
+      description: 'Which field to use when ordering the results.
+
+        <br> Use the `-` prefix to perform descending ordering (`-name`).
+
+        '
+      schema:
+        type: string
+        enum:
         - name
+        - created_at
+    Pagination:
+      name: page
+      required: false
+      in: query
+      description: A page number within the paginated result set.
+      schema:
+        type: integer
+    NameFilter:
+      name: name
+      required: false
+      in: query
+      description: Filter by name.
+      schema:
+        type: string
+    Id:
+      name: id
+      in: path
+      required: true
+      description: A unique value identifying the Object.
+      schema:
+        type: string
+    ProjectTypeFilter:
+      name: type
+      required: false
+      in: query
+      description: Filter by project type.
+      schema:
+        $ref: '#/components/schemas/ProjectTypeEnum'
+    OrganizationIdFilter:
+      name: organization
+      required: false
+      in: query
+      description: Filter by organization ID.
+      schema:
+        type: string
   responses:
     ValidationError:
       description: Validation error.
@@ -403,56 +432,27 @@ components:
                   message:
                     type: string
                     description: A human-readable description of the error.
-  parameters:
-    ProjectTypeFilter:
-      name: type
-      required: false
-      in: query
-      description: Filter by project type.
-      schema:
-        $ref: '#/components/schemas/ProjectTypeEnum'
-    Id:
-      name: id
-      in: path
-      required: true
-      description: A unique value identifying the Object.
-      schema:
-        type: string
-    OrganizationIdFilter:
-      name: organization
-      required: false
-      in: query
-      description: Filter by organization ID.
-      schema:
-        type: string
-    Pagination:
-      name: page
-      required: false
-      in: query
-      description: A page number within the paginated result set.
-      schema:
-        type: integer
-    ProjectOrdering:
-      name: order_by
-      required: false
-      in: query
-      description: 'Which field to use when ordering the results.
-
-        <br> Use the `-` prefix to perform descending ordering (`-name`).
-
-        '
-      schema:
-        type: string
-        enum:
-        - name
-        - created_at
-    NameFilter:
-      name: name
-      required: false
-      in: query
-      description: Filter by name.
-      schema:
-        type: string
+  examples:
+    PublicProject:
+      value:
+        id: PR-123-456
+        name: My public chain project
+        type: public
+        networks: 0
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    PublicProjectCreate:
+      value:
+        name: My public chain project
+        description: My public chain project description
+        type: public
   securitySchemes:
     APIKeyAuthentication:
       type: http

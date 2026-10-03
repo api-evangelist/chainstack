@@ -98,6 +98,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/index.VestingInfo'
+    RequestError:
+      type: object
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
+    AddressBook:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AddressBookRow'
+    AddressBookRow:
+      type: object
+      properties:
+        domain:
+          type: string
+        interfaces:
+          type: array
+          items:
+            type: string
+        user_friendly:
+          type: string
     index.VestingInfo:
       type: object
       properties:
@@ -121,28 +143,6 @@ components:
           type: array
           items:
             type: string
-    AddressBookRow:
-      type: object
-      properties:
-        domain:
-          type: string
-        interfaces:
-          type: array
-          items:
-            type: string
-        user_friendly:
-          type: string
-    AddressBook:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AddressBookRow'
-    RequestError:
-      type: object
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

@@ -447,16 +447,49 @@ paths:
       - Validatiors Info
 components:
   schemas:
-    SignedBeaconBlockHeader:
+    BeaconPoolAttestationItem:
       type: object
       properties:
-        message:
-          $ref: '#/components/schemas/BeaconBlockHeader'
+        aggregation_bits:
+          type: string
+        data:
+          $ref: '#/components/schemas/AttestationData'
         signature:
           type: string
       required:
-      - message
+      - aggregation_bits
+      - data
       - signature
+    BeaconBlockHeader:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        proposer_index:
+          type: integer
+          format: int64
+        parent_root:
+          type: string
+        state_root:
+          type: string
+        body_root:
+          type: string
+      required:
+      - slot
+      - proposer_index
+      - parent_root
+      - state_root
+      - body_root
+    Validator:
+      type: object
+      properties:
+        data:
+          description: The validator's info.
+      required:
+      - index
+      - validator
+      - status
     BeaconPoolVoluntaryExitItem:
       type: object
       properties:
@@ -467,6 +500,33 @@ components:
       required:
       - message
       - signature
+    ProposerDuties:
+      type: array
+      items:
+        type: object
+        properties:
+          pubkey:
+            type: string
+          validator_index:
+            type: integer
+            format: int64
+          slot:
+            type: integer
+            format: int64
+        required:
+        - pubkey
+        - validator_index
+        - slot
+    BeaconPoolAttesterSlashingItem:
+      type: object
+      properties:
+        attestation_1:
+          $ref: '#/components/schemas/IndexedAttestation'
+        attestation_2:
+          $ref: '#/components/schemas/IndexedAttestation'
+      required:
+      - attestation_1
+      - attestation_2
     Checkpoint:
       type: object
       properties:
@@ -478,45 +538,37 @@ components:
       required:
       - epoch
       - root
-    BeaconPoolAttesterSlashingItem:
-      type: object
-      properties:
-        attestation_1:
-          $ref: '#/components/schemas/IndexedAttestation'
-        attestation_2:
-          $ref: '#/components/schemas/IndexedAttestation'
-      required:
-      - attestation_1
-      - attestation_2
+    BeaconPoolProposerSlashingsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BeaconPoolProposerSlashingItem'
     BeaconBlockAttestationsList:
       type: array
       items:
         $ref: '#/components/schemas/BeaconBlockAttestationItem'
-    BeaconPoolAttestationsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/BeaconPoolAttestationItem'
-    AttestationData:
+    SignedBeaconBlockHeader:
       type: object
       properties:
-        slot:
-          type: integer
-          format: int64
-        index:
-          type: integer
-          format: int64
-        beacon_block_root:
+        message:
+          $ref: '#/components/schemas/BeaconBlockHeader'
+        signature:
           type: string
-        source:
-          $ref: '#/components/schemas/Checkpoint'
-        target:
-          $ref: '#/components/schemas/Checkpoint'
       required:
-      - slot
-      - index
-      - beacon_block_root
-      - source
-      - target
+      - message
+      - signature
+    BeaconBlockAttestationItem:
+      type: object
+      properties:
+        aggregation_bits:
+          type: string
+        data:
+          $ref: '#/components/schemas/AttestationData'
+        signature:
+          type: string
+      required:
+      - aggregation_bits
+      - data
+      - signature
     Error:
       type: object
       properties:
@@ -540,56 +592,31 @@ components:
       required:
       - epoch
       - validator_index
-    BeaconPoolAttestationItem:
-      type: object
-      properties:
-        aggregation_bits:
-          type: string
-        data:
-          $ref: '#/components/schemas/AttestationData'
-        signature:
-          type: string
-      required:
-      - aggregation_bits
-      - data
-      - signature
-    BeaconPoolVoluntaryExitsList:
+    BeaconPoolAttesterSlashingsList:
       type: array
       items:
-        $ref: '#/components/schemas/BeaconPoolVoluntaryExitItem'
-    IndexedAttestation:
+        $ref: '#/components/schemas/BeaconPoolAttesterSlashingItem'
+    AttestationData:
       type: object
       properties:
-        attesting_indices:
-          type: array
-          items:
-            type: integer
-            format: int64
-        data:
-          $ref: '#/components/schemas/AttestationData'
-        signature:
+        slot:
+          type: integer
+          format: int64
+        index:
+          type: integer
+          format: int64
+        beacon_block_root:
           type: string
+        source:
+          $ref: '#/components/schemas/Checkpoint'
+        target:
+          $ref: '#/components/schemas/Checkpoint'
       required:
-      - attesting_indices
-      - data
-      - signature
-    ProposerDuties:
-      type: array
-      items:
-        type: object
-        properties:
-          pubkey:
-            type: string
-          validator_index:
-            type: integer
-            format: int64
-          slot:
-            type: integer
-            format: int64
-        required:
-        - pubkey
-        - validator_index
-        - slot
+      - slot
+      - index
+      - beacon_block_root
+      - source
+      - target
     BeaconPoolProposerSlashingItem:
       type: object
       properties:
@@ -600,27 +627,40 @@ components:
       required:
       - signed_header_1
       - signed_header_2
-    BeaconBlockHeader:
+    ValidatorBalances:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BalanceItem'
+      required:
+      - data
+    BeaconPoolAttestationsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BeaconPoolAttestationItem'
+    BeaconPoolVoluntaryExitsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/BeaconPoolVoluntaryExitItem'
+    Block:
       type: object
       properties:
         slot:
-          type: integer
-          format: int64
-        proposer_index:
           type: integer
           format: int64
         parent_root:
           type: string
         state_root:
           type: string
-        body_root:
-          type: string
+        body:
+          type: object
       required:
       - slot
-      - proposer_index
       - parent_root
       - state_root
-      - body_root
+      - body
     ValidatorInformation:
       type: object
       properties:
@@ -646,53 +686,22 @@ components:
             slashed:
               type: boolean
               description: Flag indicating if the validator is slashed.
-    BeaconPoolAttesterSlashingsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/BeaconPoolAttesterSlashingItem'
-    Block:
+    IndexedAttestation:
       type: object
       properties:
-        slot:
-          type: integer
-          format: int64
-        parent_root:
-          type: string
-        state_root:
-          type: string
-        body:
-          type: object
-      required:
-      - slot
-      - parent_root
-      - state_root
-      - body
-    BeaconBlockAttestationItem:
-      type: object
-      properties:
-        aggregation_bits:
-          type: string
+        attesting_indices:
+          type: array
+          items:
+            type: integer
+            format: int64
         data:
           $ref: '#/components/schemas/AttestationData'
         signature:
           type: string
       required:
-      - aggregation_bits
+      - attesting_indices
       - data
       - signature
-    ValidatorBalances:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BalanceItem'
-      required:
-      - data
-    BeaconPoolProposerSlashingsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/BeaconPoolProposerSlashingItem'
     BalanceItem:
       type: object
       properties:
@@ -703,12 +712,3 @@ components:
       required:
       - index
       - balance
-    Validator:
-      type: object
-      properties:
-        data:
-          description: The validator's info.
-      required:
-      - index
-      - validator
-      - status
