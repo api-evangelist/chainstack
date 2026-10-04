@@ -134,6 +134,25 @@ paths:
       - Configuration Info
 components:
   schemas:
+    Genesis:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/GenesisData'
+      required:
+      - data
+    DepositContractConfig:
+      type: object
+      properties:
+        chain_id:
+          type: integer
+          format: int64
+        address:
+          type: string
+          pattern: ^0x[0-9a-fA-F]{40}$
+      required:
+      - chain_id
+      - address
     GenesisData:
       type: object
       properties:
@@ -157,6 +176,18 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ForkScheduleItem'
+    ForkInformation:
+      type: object
+      properties:
+        epoch:
+          type: string
+          description: The epoch number at which the current version was applied.
+        previous_version:
+          type: string
+          description: The previous fork version.
+        current_version:
+          type: string
+          description: The current fork version.
     SpecConfig:
       type: object
       additionalProperties:
@@ -173,37 +204,6 @@ components:
       required:
       - epoch
       - version
-    ForkInformation:
-      type: object
-      properties:
-        epoch:
-          type: string
-          description: The epoch number at which the current version was applied.
-        previous_version:
-          type: string
-          description: The previous fork version.
-        current_version:
-          type: string
-          description: The current fork version.
-    Genesis:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/GenesisData'
-      required:
-      - data
-    DepositContractConfig:
-      type: object
-      properties:
-        chain_id:
-          type: integer
-          format: int64
-        address:
-          type: string
-          pattern: ^0x[0-9a-fA-F]{40}$
-      required:
-      - chain_id
-      - address
     Error:
       type: object
       properties:

@@ -398,73 +398,15 @@ paths:
       - State
 components:
   schemas:
-    SyncCommittee:
-      type: object
-      properties:
-        validators:
-          type: array
-          items:
-            type: integer
-            format: int64
-        validator_aggregates:
-          type: string
-      required:
-      - validators
-      - validator_aggregates
-    BeaconHeader:
-      type: object
-      properties:
-        root:
-          type: string
-        canonical:
-          type: boolean
-        header:
-          $ref: '#/components/schemas/Header'
-      required:
-      - root
-      - canonical
-      - header
-    StateRoot:
-      type: object
-      properties:
-        root:
-          type: string
-          format: byte
-          description: The root of the specified state.
-    SyncCommitteeData:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/SyncCommittee'
-      required:
-      - data
-    BeaconHeaders:
+    BlobsResponse:
       type: object
       properties:
         data:
           type: array
           items:
-            $ref: '#/components/schemas/BeaconHeader'
+            $ref: '#/components/schemas/BlobItem'
       required:
       - data
-    CommitteeItem:
-      type: object
-      properties:
-        index:
-          type: integer
-          format: int64
-        slot:
-          type: integer
-          format: int64
-        validators:
-          type: array
-          items:
-            type: integer
-            format: int64
-      required:
-      - index
-      - slot
-      - validators
     BeaconBlockItem:
       type: object
       properties:
@@ -475,61 +417,54 @@ components:
       required:
       - root
       - block
-    BeaconHeaderItem:
+    SyncCommitteeContribution:
+      type: object
+      properties:
+        slot:
+          type: integer
+          format: int64
+        beacon_block_root:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+        subcommittee_index:
+          type: integer
+          format: int64
+        aggregation_bits:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+        signature:
+          type: string
+          pattern: ^0x[0-9a-fA-F]+$
+      required:
+      - slot
+      - beacon_block_root
+      - subcommittee_index
+      - aggregation_bits
+      - signature
+    StateRoot:
       type: object
       properties:
         root:
           type: string
-        canonical:
-          type: boolean
-        header:
-          $ref: '#/components/schemas/Header'
-      required:
-      - root
-      - canonical
-      - header
-    BlobsResponse:
+          format: byte
+          description: The root of the specified state.
+    Header:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BlobItem'
+        slot:
+          type: integer
+          format: int64
+        parent_root:
+          type: string
+        state_root:
+          type: string
+        body_root:
+          type: string
       required:
-      - data
-    FinalityCheckpoints:
-      type: object
-      properties:
-        previous_justified:
-          type: object
-          properties:
-            epoch:
-              type: integer
-              description: Epoch number of the previous justified checkpoint.
-            root:
-              type: string
-              format: byte
-              description: Root of the previous justified checkpoint.
-        current_justified:
-          type: object
-          properties:
-            epoch:
-              type: integer
-              description: Epoch number of the current justified checkpoint.
-            root:
-              type: string
-              format: byte
-              description: Root of the current justified checkpoint.
-        finalized:
-          type: object
-          properties:
-            epoch:
-              type: integer
-              description: Epoch number of the finalized checkpoint.
-            root:
-              type: string
-              format: byte
-              description: Root of the finalized checkpoint.
+      - slot
+      - parent_root
+      - state_root
+      - body_root
     BlobItem:
       type: object
       properties:
@@ -565,56 +500,50 @@ components:
       - parent_root
       - state_root
       - body
-    Header:
+    CommitteeItem:
       type: object
       properties:
+        index:
+          type: integer
+          format: int64
         slot:
           type: integer
           format: int64
-        parent_root:
-          type: string
-        state_root:
-          type: string
-        body_root:
-          type: string
-      required:
-      - slot
-      - parent_root
-      - state_root
-      - body_root
-    CommitteeData:
-      type: object
-      properties:
-        data:
+        validators:
           type: array
           items:
-            $ref: '#/components/schemas/CommitteeItem'
+            type: integer
+            format: int64
       required:
-      - data
-    SyncCommitteeContribution:
+      - index
+      - slot
+      - validators
+    SyncCommittee:
       type: object
       properties:
-        slot:
-          type: integer
-          format: int64
-        beacon_block_root:
+        validators:
+          type: array
+          items:
+            type: integer
+            format: int64
+        validator_aggregates:
           type: string
-          pattern: ^0x[0-9a-fA-F]+$
-        subcommittee_index:
-          type: integer
-          format: int64
-        aggregation_bits:
-          type: string
-          pattern: ^0x[0-9a-fA-F]+$
-        signature:
-          type: string
-          pattern: ^0x[0-9a-fA-F]+$
       required:
-      - slot
-      - beacon_block_root
-      - subcommittee_index
-      - aggregation_bits
-      - signature
+      - validators
+      - validator_aggregates
+    BeaconHeader:
+      type: object
+      properties:
+        root:
+          type: string
+        canonical:
+          type: boolean
+        header:
+          $ref: '#/components/schemas/Header'
+      required:
+      - root
+      - canonical
+      - header
     Error:
       type: object
       properties:
@@ -626,6 +555,55 @@ components:
       required:
       - code
       - message
+    CommitteeData:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommitteeItem'
+      required:
+      - data
+    SyncCommitteeData:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SyncCommittee'
+      required:
+      - data
+    FinalityCheckpoints:
+      type: object
+      properties:
+        previous_justified:
+          type: object
+          properties:
+            epoch:
+              type: integer
+              description: Epoch number of the previous justified checkpoint.
+            root:
+              type: string
+              format: byte
+              description: Root of the previous justified checkpoint.
+        current_justified:
+          type: object
+          properties:
+            epoch:
+              type: integer
+              description: Epoch number of the current justified checkpoint.
+            root:
+              type: string
+              format: byte
+              description: Root of the current justified checkpoint.
+        finalized:
+          type: object
+          properties:
+            epoch:
+              type: integer
+              description: Epoch number of the finalized checkpoint.
+            root:
+              type: string
+              format: byte
+              description: Root of the finalized checkpoint.
     BeaconBlockRootItem:
       type: object
       properties:
@@ -633,3 +611,25 @@ components:
           type: string
       required:
       - root
+    BeaconHeaderItem:
+      type: object
+      properties:
+        root:
+          type: string
+        canonical:
+          type: boolean
+        header:
+          $ref: '#/components/schemas/Header'
+      required:
+      - root
+      - canonical
+      - header
+    BeaconHeaders:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BeaconHeader'
+      required:
+      - data

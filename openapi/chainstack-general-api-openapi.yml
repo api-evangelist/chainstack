@@ -38988,7 +38988,7 @@ components:
       title: Field element
       description: A field element. represented by at most 63 hex digits
       pattern: ^0x(0|[a-fA-F1-9]{1}[a-fA-F0-9]{0,62})$
-    JsonRpcResponseForL1BatchNumber:
+    JsonRpcResponseForMainContract:
       type: object
       required:
       - jsonrpc
@@ -39005,27 +39005,10 @@ components:
         result:
           type: object
           properties:
-            batchNumber:
-              type: integer
-              description: The latest L1 batch number.
-    JsonRpcResponseGasL1ToL2:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 2
-        result:
-          type: object
-          additionalProperties: true
-    JsonRpcRequestForL1ChainId:
+            contractAddress:
+              type: string
+              description: The address of zkSync main contract on L1.
+    JsonRpcRequestForRawBlockTransactions:
       type: object
       required:
       - jsonrpc
@@ -39043,60 +39026,40 @@ components:
           default: 1
         method:
           type: string
-          example: zks_L1ChainId
-          default: zks_L1ChainId
-        params:
-          type: array
-          default: []
-    JsonRpcResponseForTransactionDetails:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            txDetails:
-              type: object
-              description: The details of the transaction.
-    JsonRpcRequestForL1BatchDetails:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_getL1BatchDetails
-          default: zks_getL1BatchDetails
+          example: zks_getRawBlockTransactions
+          default: zks_getRawBlockTransactions
         params:
           type: array
           default:
-          - 443314
+          - 27221521
           items:
             type: integer
-            example: 443314
-            default: 443314
-    JsonRpcRequestForBalances:
+            example: 27221521
+            default: 27221521
+    JsonRpcResponseForL1BatchBlockRange:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          properties:
+            startBlock:
+              type: integer
+              description: The starting block number of the L1 batch.
+            endBlock:
+              type: integer
+              description: The ending block number of the L1 batch.
+    JsonRpcRequest:
       type: object
       required:
       - jsonrpc
@@ -39110,20 +39073,33 @@ components:
           default: '2.0'
         id:
           type: integer
-          example: 1
-          default: 1
+          example: 2
+          default: 2
         method:
           type: string
-          example: zks_getAllAccountBalances
-          default: zks_getAllAccountBalances
+          example: zks_estimateFee
+          default: zks_estimateFee
         params:
           type: array
           default:
-          - '0xB240316e290e976e31f1557b3B312Dd698efac4c'
+          - from: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
+            to: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
+            data: 0x
           items:
-            type: string
-            example: '0xB240316e290e976e31f1557b3B312Dd698efac4c'
-            default: '0xB240316e290e976e31f1557b3B312Dd698efac4c'
+            type: object
+            properties:
+              from:
+                type: string
+                example: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
+                default: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
+              to:
+                type: string
+                example: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
+                default: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
+              data:
+                type: string
+                example: 0x
+                default: 0x
     JsonRpcRequestForBridgeContracts:
       type: object
       required:
@@ -39148,13 +39124,12 @@ components:
           type: array
           default: []
           items: {}
-    JsonRpcRequestForBlockDetails:
+    JsonRpcResponseForBlockDetails:
       type: object
       required:
       - jsonrpc
       - id
-      - method
-      - params
+      - result
       properties:
         jsonrpc:
           type: string
@@ -39162,48 +39137,31 @@ components:
           default: '2.0'
         id:
           type: integer
-          example: 1
           default: 1
-        method:
-          type: string
-          example: zks_getBlockDetails
-          default: zks_getBlockDetails
-        params:
-          type: array
-          default:
-          - 27163792
-          items:
-            type: integer
-            example: 27163792
-            default: 27163792
-    JsonRpcRequestForTransactionDetails:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_getTransactionDetails
-          default: zks_getTransactionDetails
-        params:
-          type: array
-          default:
-          - '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
-          items:
-            type: string
-            example: '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
-            default: '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
+        result:
+          type: object
+          properties:
+            blockNumber:
+              type: integer
+            blockHash:
+              type: string
+            parentHash:
+              type: string
+            transactions:
+              type: array
+              items:
+                type: object
+                properties:
+                  txHash:
+                    type: string
+                  from:
+                    type: string
+                  to:
+                    type: string
+                  value:
+                    type: string
+                  gasUsed:
+                    type: integer
     JsonRpcResponse:
       type: object
       required:
@@ -39221,13 +39179,12 @@ components:
         result:
           type: object
           additionalProperties: true
-    JsonRpcRequestForL1BatchNumber:
+    JsonRpcResponseForTestnetPaymaster:
       type: object
       required:
       - jsonrpc
       - id
-      - method
-      - params
+      - result
       properties:
         jsonrpc:
           type: string
@@ -39235,15 +39192,13 @@ components:
           default: '2.0'
         id:
           type: integer
-          example: 1
           default: 1
-        method:
-          type: string
-          example: zks_L1BatchNumber
-          default: zks_L1BatchNumber
-        params:
-          type: array
-          default: []
+        result:
+          type: object
+          properties:
+            paymasterAddress:
+              type: string
+              description: The address of the testnet paymaster.
     JsonRpcResponseForBytecodeByHash:
       type: object
       required:
@@ -39284,6 +39239,34 @@ components:
         params:
           type: array
           default: []
+    JsonRpcRequestForTransactionDetails:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getTransactionDetails
+          default: zks_getTransactionDetails
+        params:
+          type: array
+          default:
+          - '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
+          items:
+            type: string
+            example: '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
+            default: '0x721ee3e8774620c2bd2add404efbd58563b592be75ad12a96684c24b95dce0d2'
     JsonRpcResponseForL1BatchDetails:
       type: object
       required:
@@ -39326,69 +39309,7 @@ components:
               type: string
               format: date-time
               description: The submission time of the L1 batch.
-    JsonRpcResponseForBridgeContracts:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            bridgeContractAddresses:
-              type: object
-              additionalProperties:
-                type: string
-    JsonRpcRequest:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 2
-          default: 2
-        method:
-          type: string
-          example: zks_estimateFee
-          default: zks_estimateFee
-        params:
-          type: array
-          default:
-          - from: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
-            to: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
-            data: 0x
-          items:
-            type: object
-            properties:
-              from:
-                type: string
-                example: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
-                default: '0x7AeD074cA56F5050D5A2E512eCc5bf7103937d76'
-              to:
-                type: string
-                example: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
-                default: '0x6B7f71BB1f5B74fB0Ff82cf4EA20A5F90d43E509'
-              data:
-                type: string
-                example: 0x
-                default: 0x
-    JsonRpcRequestForL2ToL1LogProof:
+    JsonRpcRequestForL1ChainId:
       type: object
       required:
       - jsonrpc
@@ -39406,109 +39327,39 @@ components:
           default: 1
         method:
           type: string
-          example: zks_getL2ToL1LogProof
-          default: zks_getL2ToL1LogProof
+          example: zks_L1ChainId
+          default: zks_L1ChainId
+        params:
+          type: array
+          default: []
+    JsonRpcRequestForL1BatchDetails:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getL1BatchDetails
+          default: zks_getL1BatchDetails
         params:
           type: array
           default:
-          - '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
+          - 443314
           items:
-            type: string
-            example: '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
-            default: '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
-    JsonRpcResponseForTestnetPaymaster:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            paymasterAddress:
-              type: string
-              description: The address of the testnet paymaster.
-    JsonRpcResponseForBlockDetails:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            blockNumber:
-              type: integer
-            blockHash:
-              type: string
-            parentHash:
-              type: string
-            transactions:
-              type: array
-              items:
-                type: object
-                properties:
-                  txHash:
-                    type: string
-                  from:
-                    type: string
-                  to:
-                    type: string
-                  value:
-                    type: string
-                  gasUsed:
-                    type: integer
-    JsonRpcResponseForL2ToL1LogProof:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          properties:
-            logProof:
-              type: object
-              description: The log proof information.
-              properties:
-                blockNumber:
-                  type: integer
-                  description: The block number.
-                logIndex:
-                  type: integer
-                  description: The log index within the block.
-                transactionHash:
-                  type: string
-                  description: The transaction hash associated with the log.
-                logEntries:
-                  type: array
-                  items:
-                    type: string
-                    description: Log entry data.
+            type: integer
+            example: 443314
+            default: 443314
     JsonRpcRequestGasL1ToL2:
       type: object
       required:
@@ -39550,7 +39401,7 @@ components:
                 type: string
                 example: 0x
                 default: 0x
-    JsonRpcResponseForMainContract:
+    JsonRpcResponseForBridgeContracts:
       type: object
       required:
       - jsonrpc
@@ -39567,9 +39418,222 @@ components:
         result:
           type: object
           properties:
-            contractAddress:
-              type: string
-              description: The address of zkSync main contract on L1.
+            bridgeContractAddresses:
+              type: object
+              additionalProperties:
+                type: string
+    JsonRpcResponseForBalances:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              balance:
+                type: string
+              symbol:
+                type: string
+              decimals:
+                type: integer
+    JsonRpcRequestForTestnetPaymaster:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getTestnetPaymaster
+          default: zks_getTestnetPaymaster
+        params:
+          type: array
+          default: []
+    JsonRpcResponseForTransactionDetails:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          properties:
+            txDetails:
+              type: object
+              description: The details of the transaction.
+    JsonRpcRequestForBytecodeByHash:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getBytecodeByHash
+          default: zks_getBytecodeByHash
+        params:
+          type: array
+          default:
+          - '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
+          items:
+            type: string
+            example: '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
+            default: '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
+    JsonRpcResponseForL1BatchNumber:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 1
+        result:
+          type: object
+          properties:
+            batchNumber:
+              type: integer
+              description: The latest L1 batch number.
+    JsonRpcRequestForL2ToL1LogProof:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getL2ToL1LogProof
+          default: zks_getL2ToL1LogProof
+        params:
+          type: array
+          default:
+          - '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
+          items:
+            type: string
+            example: '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
+            default: '0xf8a7e5649718e84649a4caa93f5e537704a6a0e8769a7dbbe4de967ba14fc748'
+    JsonRpcResponseGasL1ToL2:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - result
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          default: 2
+        result:
+          type: object
+          additionalProperties: true
+    JsonRpcRequestForL1BatchNumber:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_L1BatchNumber
+          default: zks_L1BatchNumber
+        params:
+          type: array
+          default: []
+    JsonRpcRequestForBalances:
+      type: object
+      required:
+      - jsonrpc
+      - id
+      - method
+      - params
+      properties:
+        jsonrpc:
+          type: string
+          example: '2.0'
+          default: '2.0'
+        id:
+          type: integer
+          example: 1
+          default: 1
+        method:
+          type: string
+          example: zks_getAllAccountBalances
+          default: zks_getAllAccountBalances
+        params:
+          type: array
+          default:
+          - '0xB240316e290e976e31f1557b3B312Dd698efac4c'
+          items:
+            type: string
+            example: '0xB240316e290e976e31f1557b3B312Dd698efac4c'
+            default: '0xB240316e290e976e31f1557b3B312Dd698efac4c'
     JsonRpcResponseForL1ChainId:
       type: object
       required:
@@ -39618,31 +39682,6 @@ components:
             type: integer
             example: 443314
             default: 443314
-    JsonRpcResponseForBalances:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - result
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          default: 1
-        result:
-          type: object
-          additionalProperties:
-            type: object
-            properties:
-              balance:
-                type: string
-              symbol:
-                type: string
-              decimals:
-                type: integer
     JsonRpcResponseForRawBlockTransactions:
       type: object
       required:
@@ -39665,7 +39704,7 @@ components:
               transactions_details:
                 type: object
                 description: The details of transactions in the block.
-    JsonRpcRequestForRawBlockTransactions:
+    JsonRpcRequestForBlockDetails:
       type: object
       required:
       - jsonrpc
@@ -39683,68 +39722,17 @@ components:
           default: 1
         method:
           type: string
-          example: zks_getRawBlockTransactions
-          default: zks_getRawBlockTransactions
+          example: zks_getBlockDetails
+          default: zks_getBlockDetails
         params:
           type: array
           default:
-          - 27221521
+          - 27163792
           items:
             type: integer
-            example: 27221521
-            default: 27221521
-    JsonRpcRequestForBytecodeByHash:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_getBytecodeByHash
-          default: zks_getBytecodeByHash
-        params:
-          type: array
-          default:
-          - '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
-          items:
-            type: string
-            example: '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
-            default: '0x0100067d861e2f5717a12c3e869cfb657793b86bbb0caa05cc1421f16c5217bc'
-    JsonRpcRequestForTestnetPaymaster:
-      type: object
-      required:
-      - jsonrpc
-      - id
-      - method
-      - params
-      properties:
-        jsonrpc:
-          type: string
-          example: '2.0'
-          default: '2.0'
-        id:
-          type: integer
-          example: 1
-          default: 1
-        method:
-          type: string
-          example: zks_getTestnetPaymaster
-          default: zks_getTestnetPaymaster
-        params:
-          type: array
-          default: []
-    JsonRpcResponseForL1BatchBlockRange:
+            example: 27163792
+            default: 27163792
+    JsonRpcResponseForL2ToL1LogProof:
       type: object
       required:
       - jsonrpc
@@ -39761,12 +39749,24 @@ components:
         result:
           type: object
           properties:
-            startBlock:
-              type: integer
-              description: The starting block number of the L1 batch.
-            endBlock:
-              type: integer
-              description: The ending block number of the L1 batch.
+            logProof:
+              type: object
+              description: The log proof information.
+              properties:
+                blockNumber:
+                  type: integer
+                  description: The block number.
+                logIndex:
+                  type: integer
+                  description: The log index within the block.
+                transactionHash:
+                  type: string
+                  description: The transaction hash associated with the log.
+                logEntries:
+                  type: array
+                  items:
+                    type: string
+                    description: Log entry data.
 x-refined-from:
 - chainstack-base-node-api-openapi.yml
 - chainstack-bitcoin-node-api-openapi.yml

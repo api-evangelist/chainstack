@@ -88,40 +88,18 @@ paths:
         '403':
           $ref: '#/components/responses/ForbiddenError'
 components:
-  responses:
-    ForbiddenError:
-      description: The request is not allowed with the current permissions.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
-    UnauthorizedError:
-      description: Authentication credentials were missing or incorrect.
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: object
-                properties:
-                  code:
-                    type: string
-                    description: A string indicating the kind of error.
-                  message:
-                    type: string
-                    description: A human-readable description of the error.
   schemas:
+    DeploymentOptionsResponse:
+      type: object
+      description: Response containing the list of available deployment options.
+      properties:
+        options:
+          type: array
+          description: List of available deployment options.
+          items:
+            $ref: '#/components/schemas/DeploymentOption'
+      required:
+      - options
     DeploymentOption:
       type: object
       description: A single deployable node option.
@@ -165,17 +143,39 @@ components:
       - protocol
       - network
       - features
-    DeploymentOptionsResponse:
-      type: object
-      description: Response containing the list of available deployment options.
-      properties:
-        options:
-          type: array
-          description: List of available deployment options.
-          items:
-            $ref: '#/components/schemas/DeploymentOption'
-      required:
-      - options
+  responses:
+    ForbiddenError:
+      description: The request is not allowed with the current permissions.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+    UnauthorizedError:
+      description: Authentication credentials were missing or incorrect.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
   securitySchemes:
     APIKeyAuthentication:
       type: http

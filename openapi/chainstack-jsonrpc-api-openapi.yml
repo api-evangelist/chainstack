@@ -51,25 +51,6 @@ paths:
       - APIKeyQuery: []
 components:
   schemas:
-    TonRequestJsonRPC:
-      properties:
-        method:
-          type: string
-          title: Method
-        params:
-          type: object
-          title: Params
-          default: {}
-        id:
-          type: string
-          title: Id
-        jsonrpc:
-          type: string
-          title: Jsonrpc
-      type: object
-      required:
-      - method
-      title: TonRequestJsonRPC
     DeprecatedTonResponseJsonRPC:
       properties:
         ok:
@@ -95,6 +76,25 @@ components:
       - ok
       - id
       title: DeprecatedTonResponseJsonRPC
+    TonRequestJsonRPC:
+      properties:
+        method:
+          type: string
+          title: Method
+        params:
+          type: object
+          title: Params
+          default: {}
+        id:
+          type: string
+          title: Id
+        jsonrpc:
+          type: string
+          title: Jsonrpc
+      type: object
+      required:
+      - method
+      title: TonRequestJsonRPC
   securitySchemes:
     APIKeyHeader:
       type: apiKey
