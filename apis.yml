@@ -2974,6 +2974,8 @@ apis:
   description: The GetEvents API from Chainstack — 1 operation(s) for getevents.
   humanURL: https://faucet.chainstack.com/
   tags:
+  - Get Events
+  tags_raw:
   - GetEvents
   properties:
   - type: OpenAPI
@@ -3715,6 +3717,8 @@ apis:
   description: The GetMetadata API from Chainstack — 1 operation(s) for getmetadata.
   humanURL: https://faucet.chainstack.com/
   tags:
+  - Get Metadata
+  tags_raw:
   - GetMetadata
   properties:
   - type: OpenAPI
@@ -4521,6 +4525,8 @@ apis:
   description: The GetTransactions API from Chainstack — 1 operation(s) for gettransactions.
   humanURL: https://faucet.chainstack.com/
   tags:
+  - Get Transactions
+  tags_raw:
   - GetTransactions
   properties:
   - type: OpenAPI
@@ -4925,6 +4931,8 @@ apis:
   description: The JsonRPC API from Chainstack — 1 operation(s) for jsonrpc.
   humanURL: https://faucet.chainstack.com/
   tags:
+  - JSON-RPC
+  tags_raw:
   - JsonRPC
   properties:
   - type: OpenAPI

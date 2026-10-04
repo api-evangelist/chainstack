@@ -1,22 +1,20 @@
-# Kin Score artifact — chainstack — 2026-08-27T140727
+# Kin Score artifact — chainstack — 2026-10-03T000835
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: chainstack
-  schema_version: 0.15.1
-  scored_at: '2026-08-27'
-  run_ts: 2026-08-27T140727
-  composite: 61.8
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T000835
+  composite: 59.6
   band: strong
   facets:
-    discoverability: 59.3
-    contract_quality: 67.0
-    governance: 28.8
-    operational_transparency: 73.7
-    developer_ergonomics: 59.5
-    commercial_clarity: 71.1
-    contract_governance: 28.8
-    access_clarity: 71.1
+    discoverability: 57.1
+    contract_quality: 60.5
+    contract_governance: 27.3
+    operational_transparency: 70.5
+    developer_ergonomics: 56.0
+    access_clarity: 67.9
   agent_readiness:
     score: 30.9
     band: agent-ready
@@ -40,10 +38,16 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 30.4
+    matched_via: fallback
   provenance:
     agentic_access: derived
     contracts:
-      total: 32
+      total: 88
       derived: 0
       coverage: 0.0
       callable: 100.0
