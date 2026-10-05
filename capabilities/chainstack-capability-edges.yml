@@ -1,0 +1,35 @@
+slug: chainstack
+provider: Chainstack
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Node
+  spec_file: chainstack-node-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /v1/nodes/ createNode 'Create Node'; DELETE /v1/nodes/{id}/ deleteNode; schemas EthereumNodeConfiguration,
+    SolanaNodeDetails
+  reason: Chainstack Platform API CRUD over managed blockchain nodes — provisioning and lifecycle of compute/network
+    infrastructure resources, which is IT Infrastructure Management. Some ambiguity as to whether this
+    is better read as tenant/resource provisioning, hence moderate confidence.
+- tag: Node V2
+  spec_file: chainstack-node-v2-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /v2/nodes/ createNodeV2 'Create node'; DELETE /v2/nodes/{id}/ deleteNodeV2; schema NodeCreateV2
+  reason: Versioned equivalent of the platform node lifecycle API — create/update/delete managed infrastructure
+    nodes, i.e. cloud infrastructure provisioning and management.
