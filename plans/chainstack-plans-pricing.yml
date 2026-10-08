@@ -365,3 +365,68 @@ notes:
   - Archive data requests cost 2 RU each; full-node requests cost 1 RU each.
   - Request Units are computed at the platform layer; no per-method multipliers are applied.
   - Crypto payments accepted via NOWPayments (150+ supported coins).
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - negotiated
+  - subscription
+  units:
+  - period
+  - request
+  plans:
+  - name: Developer
+    access: free
+    model: hybrid
+    model_how: derived
+    units:
+    - period
+    - request
+    periods:
+    - month
+  - name: Growth
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    - request
+    periods:
+    - month
+  - name: Pro
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    - request
+    periods:
+    - month
+  - name: Business
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    - request
+    periods:
+    - month
+  - name: Enterprise
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units:
+    - period
+    - request
+    periods:
+    - month
+  - name: Pay-As-You-Go
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - request
+    periods:
+    - month
