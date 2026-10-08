@@ -5867,6 +5867,8 @@ apis:
   - type: Documentation
     url: https://docs.chainstack.com/reference/tempo-getting-started
 common:
+  - type: Plans
+    url: plans/chainstack-plans-pricing.yml
   - type: CapabilityMap
     url: capabilities/chainstack-capability-edges.yml
     name: Chainstack Business Capability Map
