@@ -1,0 +1,36 @@
+# Front Door AI Index — chainstack — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: chainstack
+  lexicon_version: '1.0'
+  probed_at: '2026-09-25'
+  host: chainstack.com
+  final_host: chainstack.com
+  ownership: own
+  owner: chainstack
+  shares_host_with: null
+  inherited_from: null
+  alias_of: null
+  verdict: scored
+  score: 13
+  band: 5
+  band_label: prominent
+  host_score: 13
+  density: 7.98
+  words: 1629
+  tiers:
+    agentic: 6
+    core: 7
+    model: 0
+  ambiguous: 15
+  top_terms:
+    AI: 7
+    agent: 6
+    smart: 4
+    MCP: 3
+    automation: 3
+    AI agent: 2
+    autonomous agent: 1
+    intelligence: 1
+    predictive: 1
