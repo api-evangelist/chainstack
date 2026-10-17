@@ -89,13 +89,10 @@ paths:
                 $ref: '#/components/schemas/RequestError'
 components:
   schemas:
-    RequestError:
+    AddressBook:
       type: object
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
+      additionalProperties:
+        $ref: '#/components/schemas/AddressBookRow'
     index.VestingInfo:
       type: object
       properties:
@@ -119,10 +116,6 @@ components:
           type: array
           items:
             type: string
-    AddressBook:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AddressBookRow'
     AddressBookRow:
       type: object
       properties:
@@ -133,6 +126,13 @@ components:
           items:
             type: string
         user_friendly:
+          type: string
+    RequestError:
+      type: object
+      properties:
+        code:
+          type: integer
+        error:
           type: string
     VestingContractsResponse:
       type: object
