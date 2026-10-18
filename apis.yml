@@ -38,6 +38,23 @@ tags:
   - RPC
   - Node Infrastructure
   - Web3
+  - Cryptocurrency
+  - Ethereum
+  - Solana
+  - Bitcoin
+  - DeFi
+  - MEV
+  - Trader Node
+  - Archive Data
+  - MCP
+  - AI Agents
+  - Real-Time
+tags_raw:
+  - Blockchain
+  - Multi-Chain
+  - RPC
+  - Node Infrastructure
+  - Web3
   - Crypto
   - Ethereum
   - Solana
@@ -1966,6 +1983,8 @@ apis:
   description: The EstimateFee API from Chainstack — 1 operation(s) for estimatefee.
   humanURL: https://faucet.chainstack.com/
   tags:
+  - Estimate Fee
+  tags_raw:
   - EstimateFee
   properties:
   - type: OpenAPI
