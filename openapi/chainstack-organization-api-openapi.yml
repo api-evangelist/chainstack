@@ -5,7 +5,7 @@ info:
     backgroundColor: '#F5F8FC'
     altText: Chainstack
   title: 💙 CHAINSTACK PLATFORM Organization API
-  version: v2
+  version: v1
   contact:
     name: API Support
     email: support@chainstack.com
@@ -73,6 +73,22 @@ paths:
         '400':
           $ref: '#/components/responses/ValidationError'
 components:
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Name of the organization.
+    OrganizationUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the organization.
   responses:
     ValidationError:
       description: Validation error.
@@ -97,22 +113,6 @@ components:
                       items:
                         type: string
                     description: Optional. Field-level validation errors.
-  schemas:
-    Organization:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          description: Name of the organization.
-    OrganizationUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Name of the organization.
   securitySchemes:
     APIKeyAuthentication:
       type: http
@@ -136,3 +136,6 @@ components:
         All API requests must be made over HTTPS.
 
         '
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

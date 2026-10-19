@@ -629,73 +629,6 @@ apis:
     url: https://docs.chainstack.com/reference/plasma-getting-started
   - type: Documentation
     url: https://docs.chainstack.com/reference/tempo-getting-started
-- aid: chainstack:chainstack-deployment-options-api
-  name: Chainstack Deployment Options API
-  description: The Deployment Options API from Chainstack — 1 operation(s) for deployment options.
-  humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
-  tags:
-  - Deployment Options
-  properties:
-  - type: OpenAPI
-    url: openapi/chainstack-deployment-options-api-openapi.yml
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/platform-api-getting-started
-  - type: JSONSchema
-    url: json-schema/chainstack-node-schema.json
-  - type: JSONLD
-    url: json-ld/chainstack-context.jsonld
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ethereum-getting-started
-  - type: AsyncAPI
-    url: asyncapi/chainstack-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/chainstack-jsonrpc-envelope-schema.json
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/solana-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/bitcoin-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/bnb-chain-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/polygon-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/arbitrum-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/optimism-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/base-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/avalanche-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/fantom-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/gnosis-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/cronos-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/aurora-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ronin-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/tron-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ton-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/starknet-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/zksync-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/polygon-zkevm-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/hyperliquid-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/monad-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/plasma-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/tempo-getting-started
 - aid: chainstack:chainstack-events-api
   name: Chainstack Events API
   description: The Events API from Chainstack — 1 operation(s) for events.
@@ -1237,75 +1170,6 @@ apis:
     url: https://docs.chainstack.com/reference/plasma-getting-started
   - type: Documentation
     url: https://docs.chainstack.com/reference/tempo-getting-started
-- aid: chainstack:chainstack-node-v2-api
-  name: Chainstack Node V2 API
-  description: The Node V2 API from Chainstack — 2 operation(s) for node v2.
-  humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
-  tags:
-  - NODE_v2
-  tags_raw:
-  - Node V2
-  properties:
-  - type: OpenAPI
-    url: openapi/chainstack-node-v2-api-openapi.yml
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/platform-api-getting-started
-  - type: JSONSchema
-    url: json-schema/chainstack-node-schema.json
-  - type: JSONLD
-    url: json-ld/chainstack-context.jsonld
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ethereum-getting-started
-  - type: AsyncAPI
-    url: asyncapi/chainstack-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/chainstack-jsonrpc-envelope-schema.json
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/solana-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/bitcoin-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/bnb-chain-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/polygon-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/arbitrum-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/optimism-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/base-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/avalanche-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/fantom-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/gnosis-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/cronos-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/aurora-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ronin-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/tron-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ton-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/starknet-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/zksync-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/polygon-zkevm-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/hyperliquid-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/monad-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/plasma-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/tempo-getting-started
 - aid: chainstack:chainstack-organization-api
   name: Chainstack Organization API
   description: The Organization API from Chainstack — 1 operation(s) for organization.
@@ -1382,73 +1246,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/chainstack-project-api-openapi.yml
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/platform-api-getting-started
-  - type: JSONSchema
-    url: json-schema/chainstack-node-schema.json
-  - type: JSONLD
-    url: json-ld/chainstack-context.jsonld
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ethereum-getting-started
-  - type: AsyncAPI
-    url: asyncapi/chainstack-asyncapi.yml
-  - type: JSONSchema
-    url: json-schema/chainstack-jsonrpc-envelope-schema.json
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/solana-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/bitcoin-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/bnb-chain-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/polygon-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/arbitrum-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/optimism-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/base-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/avalanche-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/fantom-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/gnosis-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/cronos-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/aurora-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ronin-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/tron-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/ton-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/starknet-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/zksync-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/polygon-zkevm-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/hyperliquid-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/monad-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/plasma-getting-started
-  - type: Documentation
-    url: https://docs.chainstack.com/reference/tempo-getting-started
-- aid: chainstack:chainstack-project-v2-api
-  name: Chainstack Project V2 API
-  description: The Project V2 API from Chainstack — 2 operation(s) for project v2.
-  humanURL: https://docs.chainstack.com/reference/platform-api-getting-started
-  tags:
-  - Project V2
-  properties:
-  - type: OpenAPI
-    url: openapi/chainstack-project-v2-api-openapi.yml
   - type: Documentation
     url: https://docs.chainstack.com/reference/platform-api-getting-started
   - type: JSONSchema
@@ -5827,6 +5624,73 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/chainstack-vesting-api-openapi.yml
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/platform-api-getting-started
+  - type: JSONSchema
+    url: json-schema/chainstack-node-schema.json
+  - type: JSONLD
+    url: json-ld/chainstack-context.jsonld
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/ethereum-getting-started
+  - type: AsyncAPI
+    url: asyncapi/chainstack-asyncapi.yml
+  - type: JSONSchema
+    url: json-schema/chainstack-jsonrpc-envelope-schema.json
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/solana-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/bitcoin-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/bnb-chain-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/polygon-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/arbitrum-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/optimism-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/base-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/avalanche-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/fantom-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/gnosis-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/cronos-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/aurora-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/ronin-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/tron-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/ton-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/starknet-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/zksync-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/polygon-zkevm-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/hyperliquid-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/monad-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/plasma-getting-started
+  - type: Documentation
+    url: https://docs.chainstack.com/reference/tempo-getting-started
+- aid: chainstack:chainstack-marketplace-api
+  name: Chainstack Marketplace API
+  description: The Marketplace API from Chainstack — 1 operation(s) for marketplace.
+  humanURL: https://faucet.chainstack.com/
+  tags:
+  - Marketplace
+  properties:
+  - type: OpenAPI
+    url: openapi/chainstack-marketplace-api-openapi.yml
   - type: Documentation
     url: https://docs.chainstack.com/reference/platform-api-getting-started
   - type: JSONSchema

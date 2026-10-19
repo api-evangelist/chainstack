@@ -1,0 +1,107 @@
+openapi: 3.2.0
+info:
+  x-logo:
+    url: https://chainstack.com/assets/docs/api-docs-logo.svg
+    backgroundColor: '#F5F8FC'
+    altText: Chainstack
+  title: 💙 CHAINSTACK PLATFORM Marketplace API
+  version: v1
+  contact:
+    name: API Support
+    email: support@chainstack.com
+  description: 'A set of API endpoints to operate and manage the platform resources.
+
+
+    See also a quick API tutorial.'
+servers:
+- url: https://api.chainstack.com
+  description: API endpoint
+tags:
+- name: Marketplace
+paths:
+  /v1/marketplace/applications/{slug}/token/:
+    parameters:
+    - $ref: '#/components/parameters/Slug'
+    post:
+      operationId: retrieveToken
+      summary: Retrieve Application Token
+      description: Retrieve a token required to access a third-party application from Chainstack Marketplace.
+      tags:
+      - Marketplace
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessToken'
+              examples:
+                token:
+                  value:
+                    access_token: eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJSRy04MzctMzgwIiwiaXNzIjoiY2hhaW5zdGFjayIsImV4cCI6MTY3NTQzNjM0OSwibmJmIjoxNjc1NDMyNjg5LCJpYXQiOjE2NzU0MzI3NDl9.udMCKIV7y6XlNwfsvwwGm47R55yDdw9FeOR_Zb_14oVTi5ipPH3NPiJukB4mBR81aHfr1mIA2wtQM3jf7wDSAw
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+components:
+  responses:
+    NotFoundError:
+      description: Object does not exist or caller has insufficient permissions to access it.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+  schemas:
+    AccessToken:
+      type: object
+      description: Token required to access an application from Chainstack Marketplace.
+      readOnly: true
+      properties:
+        access_token:
+          type: string
+          readOnly: true
+          description: Token required to access an application from Chainstack Marketplace.
+  parameters:
+    Slug:
+      name: slug
+      in: path
+      required: true
+      description: A unique value identifying the marketplace application.
+      schema:
+        type: string
+  securitySchemes:
+    APIKeyAuthentication:
+      type: http
+      scheme: bearer
+      description: 'Chainstack API uses [API keys](https://docs.chainstack.com/reference/platform-api-getting-started) to authenticate requests. You can view and manage your API keys in the platform UI.
+
+        Your API keys carry many privileges, so be sure to keep them secure!
+
+        Provide your API key as the `Authorization` header. The value of the header consists of `Bearer` prefix and secret key generated through the platform UI.
+
+
+        ```bash
+
+        curl -X GET ''https://api.chainstack.com/v1/organization/'' \
+
+        --header ''Authorization: Bearer FX7CWlLg.FMpAO8cgCX2N7s41EncRru2nb5CmTZUt''
+
+        ```
+
+
+        All API requests must be made over HTTPS.
+
+        '
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

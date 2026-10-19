@@ -89,10 +89,17 @@ paths:
                 $ref: '#/components/schemas/RequestError'
 components:
   schemas:
-    AddressBook:
+    AddressBookRow:
       type: object
-      additionalProperties:
-        $ref: '#/components/schemas/AddressBookRow'
+      properties:
+        domain:
+          type: string
+        interfaces:
+          type: array
+          items:
+            type: string
+        user_friendly:
+          type: string
     index.VestingInfo:
       type: object
       properties:
@@ -116,24 +123,10 @@ components:
           type: array
           items:
             type: string
-    AddressBookRow:
+    AddressBook:
       type: object
-      properties:
-        domain:
-          type: string
-        interfaces:
-          type: array
-          items:
-            type: string
-        user_friendly:
-          type: string
-    RequestError:
-      type: object
-      properties:
-        code:
-          type: integer
-        error:
-          type: string
+      additionalProperties:
+        $ref: '#/components/schemas/AddressBookRow'
     VestingContractsResponse:
       type: object
       properties:
@@ -143,6 +136,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/index.VestingInfo'
+    RequestError:
+      type: object
+      properties:
+        code:
+          type: integer
+        error:
+          type: string
   securitySchemes:
     APIKeyHeader:
       type: apiKey

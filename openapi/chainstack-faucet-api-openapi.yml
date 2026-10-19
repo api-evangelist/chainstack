@@ -5,7 +5,7 @@ info:
     backgroundColor: '#F5F8FC'
     altText: Chainstack
   title: 💙 CHAINSTACK PLATFORM Faucet API
-  version: v2
+  version: v1
   contact:
     name: API Support
     email: support@chainstack.com
@@ -19,6 +19,41 @@ servers:
 tags:
 - name: Faucet
 paths:
+  /v1/faucet/goerli:
+    post:
+      operationId: faucetGoerli
+      summary: Goerli Faucet
+      description: Request test tokens.
+      tags:
+      - Faucet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FaucetGoerliRequest'
+            examples:
+              value:
+                value:
+                  address: '0x1111111111111111111111111111111111111111'
+        required: true
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FaucetGoerliResponse'
+              examples:
+                value:
+                  value:
+                    amountSent: 500000000000000000
+                    transaction: https://goerli.etherscan.io/tx/0x1111111111111111111111111111111111111111111111111111111111111111
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/TooManyRequestsError'
   /v1/faucet/sepolia:
     post:
       operationId: sepoliaGoerli
@@ -99,6 +134,15 @@ components:
                 type: string
                 description: The date when tokens can be requested next time.
   schemas:
+    FaucetGoerliResponse:
+      type: object
+      properties:
+        amountSent:
+          type: number
+          description: Amount sent.
+        transaction:
+          type: string
+          description: Transaction details URL.
     FaucetSepoliaResponse:
       type: object
       properties:
@@ -109,6 +153,12 @@ components:
           type: string
           description: Transaction details URL.
     FaucetSepoliaRequest:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Address to send tokens to.
+    FaucetGoerliRequest:
       type: object
       properties:
         address:
@@ -137,3 +187,6 @@ components:
         All API requests must be made over HTTPS.
 
         '
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

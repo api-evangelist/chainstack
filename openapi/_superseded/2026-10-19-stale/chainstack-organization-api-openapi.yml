@@ -1,0 +1,138 @@
+openapi: 3.2.0
+info:
+  x-logo:
+    url: https://chainstack.com/assets/docs/api-docs-logo.svg
+    backgroundColor: '#F5F8FC'
+    altText: Chainstack
+  title: 💙 CHAINSTACK PLATFORM Organization API
+  version: v2
+  contact:
+    name: API Support
+    email: support@chainstack.com
+  description: 'A set of API endpoints to operate and manage the platform resources.
+
+
+    See also a quick API tutorial.'
+servers:
+- url: https://api.chainstack.com
+  description: API endpoint
+tags:
+- name: Organization
+paths:
+  /v1/organization/:
+    get:
+      operationId: getOrganizatonInfo
+      summary: Get Organization name and ID
+      description: Get the name and ID of your organization.
+      tags:
+      - Organization
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+              examples:
+                organization:
+                  value:
+                    id: RG-123-456
+                    name: My organization
+          description: ''
+    patch:
+      operationId: updateOrganizationInfo
+      summary: Update Organization name
+      description: Change the name of your organization.
+      tags:
+      - Organization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationUpdate'
+            examples:
+              organization:
+                value:
+                  name: My organization
+        required: true
+      security:
+      - APIKeyAuthentication: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+              examples:
+                organization:
+                  value:
+                    id: RG-123-456
+                    name: My organization
+          description: ''
+        '400':
+          $ref: '#/components/responses/ValidationError'
+components:
+  responses:
+    ValidationError:
+      description: Validation error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: A string indicating the kind of error.
+                  message:
+                    type: string
+                    description: A human-readable description of the error.
+                  fields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                    description: Optional. Field-level validation errors.
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Name of the organization.
+    OrganizationUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the organization.
+  securitySchemes:
+    APIKeyAuthentication:
+      type: http
+      scheme: bearer
+      description: 'Chainstack API uses [API keys](https://docs.chainstack.com/reference/platform-api-getting-started) to authenticate requests. You can view and manage your API keys in the platform UI.
+
+        Your API keys carry many privileges, so be sure to keep them secure!
+
+        Provide your API key as the `Authorization` header. The value of the header consists of `Bearer` prefix and secret key generated through the platform UI.
+
+
+        ```bash
+
+        curl -X GET ''https://api.chainstack.com/v1/organization/'' \
+
+        --header ''Authorization: Bearer FX7CWlLg.FMpAO8cgCX2N7s41EncRru2nb5CmTZUt''
+
+        ```
+
+
+        All API requests must be made over HTTPS.
+
+        '

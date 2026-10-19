@@ -5,7 +5,7 @@ info:
     backgroundColor: '#F5F8FC'
     altText: Chainstack
   title: 💙 CHAINSTACK PLATFORM Project API
-  version: v2
+  version: v1
   contact:
     name: API Support
     email: support@chainstack.com
@@ -204,165 +204,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFoundError'
 components:
-  schemas:
-    ProjectCreate:
-      allOf:
-      - $ref: '#/components/schemas/BaseProject'
-      - type: object
-        required:
-        - name
-    ProjectUpdate:
-      allOf:
-      - $ref: '#/components/schemas/BaseProject'
-      - type: object
-        properties:
-          type:
-            readOnly: true
-    Project:
-      allOf:
-      - $ref: '#/components/schemas/BaseProject'
-    BaseProject:
-      type: object
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          description: Name of the project.
-        description:
-          type: string
-          description: Description of the project.
-        type:
-          allOf:
-          - $ref: '#/components/schemas/ProjectTypeEnum'
-          default: public
-        members:
-          type: integer
-          readOnly: true
-          description: 'Number of members invited to the consortium project.
-
-            <br>Only for the `consortium` project.
-
-            '
-        networks:
-          type: integer
-          readOnly: true
-          description: Number of networks created in the project.
-        creator:
-          allOf:
-          - $ref: '#/components/schemas/Creator'
-          readOnly: true
-          description: Creator of the project.
-        created_at:
-          allOf:
-          - $ref: '#/components/schemas/CreatedAt'
-          description: When the project was created.
-    ProjectTypeEnum:
-      type: string
-      description: 'Type of the project.
-
-        <br>
-
-        * `public` for public chain project
-
-        '
-      enum:
-      - public
-    Pagination:
-      type: object
-      properties:
-        count:
-          type: integer
-          example: 123
-          description: Number of the objects in the paginated results.
-        next:
-          type:
-          - string
-          - 'null'
-          description: Link to the next page.
-        previous:
-          type:
-          - string
-          - 'null'
-          description: Link to the previous page.
-        results:
-          type: array
-          items:
-            type: object
-    Creator:
-      type: object
-      description: Creator of the object.
-      readOnly: true
-      properties:
-        id:
-          type: string
-          readOnly: true
-        email:
-          type: string
-          format: email
-          readOnly: true
-        first_name:
-          type: string
-          readOnly: true
-        last_name:
-          type: string
-          readOnly: true
-        organization:
-          allOf:
-          - $ref: '#/components/schemas/Object'
-          description: Creator's organization.
-    Object:
-      type: object
-      description: Common object representation.
-      readOnly: true
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-    ProjectMember:
-      type: object
-      description: Member organization of the consortium project.
-      properties:
-        id:
-          type: string
-          readOnly: true
-        name:
-          type: string
-          readOnly: true
-        email:
-          type: string
-          format: email
-          readOnly: true
-    CreatedAt:
-      type: string
-      format: date-time
-      readOnly: true
-      description: When the object was created.
-  examples:
-    PublicProjectCreate:
-      value:
-        name: My public chain project
-        description: My public chain project description
-        type: public
-    PublicProject:
-      value:
-        id: PR-123-456
-        name: My public chain project
-        type: public
-        networks: 0
-        created_at: '2020-06-15T07:38:00.747Z'
-        creator:
-          id: UR-111-111-111
-          email: john.smith@example.com
-          first_name: John
-          last_name: Smith
-          organization:
-            id: RG-123-456
-            name: My organization
   responses:
     ValidationError:
       description: Validation error.
@@ -403,21 +244,145 @@ components:
                   message:
                     type: string
                     description: A human-readable description of the error.
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: A unique value identifying the Object.
-      schema:
-        type: string
+  schemas:
+    Project:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
     Pagination:
-      name: page
-      required: false
-      in: query
-      description: A page number within the paginated result set.
-      schema:
-        type: integer
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+          description: Number of the objects in the paginated results.
+        next:
+          type:
+          - string
+          - 'null'
+          description: Link to the next page.
+        previous:
+          type:
+          - string
+          - 'null'
+          description: Link to the previous page.
+        results:
+          type: array
+          items:
+            type: object
+    Object:
+      type: object
+      description: Common object representation.
+      readOnly: true
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+    BaseProject:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          description: Name of the project.
+        description:
+          type: string
+          description: Description of the project.
+        type:
+          allOf:
+          - $ref: '#/components/schemas/ProjectTypeEnum'
+          default: public
+        members:
+          type: integer
+          readOnly: true
+          description: 'Number of members invited to the consortium project.
+
+            <br>Only for the `consortium` project.
+
+            '
+        networks:
+          type: integer
+          readOnly: true
+          description: Number of networks created in the project.
+        creator:
+          allOf:
+          - $ref: '#/components/schemas/Creator'
+          readOnly: true
+          description: Creator of the project.
+        created_at:
+          allOf:
+          - $ref: '#/components/schemas/CreatedAt'
+          description: When the project was created.
+    Creator:
+      type: object
+      description: Creator of the object.
+      readOnly: true
+      properties:
+        id:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        first_name:
+          type: string
+          readOnly: true
+        last_name:
+          type: string
+          readOnly: true
+        organization:
+          allOf:
+          - $ref: '#/components/schemas/Object'
+          description: Creator's organization.
+    ProjectMember:
+      type: object
+      description: Member organization of the consortium project.
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+    ProjectTypeEnum:
+      type: string
+      description: 'Type of the project.
+
+        <br>
+
+        * `public` for public chain project
+
+        '
+      enum:
+      - public
+    ProjectUpdate:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
+      - type: object
+        properties:
+          type:
+            readOnly: true
+    CreatedAt:
+      type: string
+      format: date-time
+      readOnly: true
+      description: When the object was created.
+    ProjectCreate:
+      allOf:
+      - $ref: '#/components/schemas/BaseProject'
+      - type: object
+        required:
+        - name
+  parameters:
     ProjectTypeFilter:
       name: type
       required: false
@@ -425,13 +390,6 @@ components:
       description: Filter by project type.
       schema:
         $ref: '#/components/schemas/ProjectTypeEnum'
-    OrganizationIdFilter:
-      name: organization
-      required: false
-      in: query
-      description: Filter by organization ID.
-      schema:
-        type: string
     ProjectOrdering:
       name: order_by
       required: false
@@ -453,6 +411,48 @@ components:
       description: Filter by name.
       schema:
         type: string
+    OrganizationIdFilter:
+      name: organization
+      required: false
+      in: query
+      description: Filter by organization ID.
+      schema:
+        type: string
+    Pagination:
+      name: page
+      required: false
+      in: query
+      description: A page number within the paginated result set.
+      schema:
+        type: integer
+    Id:
+      name: id
+      in: path
+      required: true
+      description: A unique value identifying the Object.
+      schema:
+        type: string
+  examples:
+    PublicProject:
+      value:
+        id: PR-123-456
+        name: My public chain project
+        type: public
+        networks: 0
+        created_at: '2020-06-15T07:38:00.747Z'
+        creator:
+          id: UR-111-111-111
+          email: john.smith@example.com
+          first_name: John
+          last_name: Smith
+          organization:
+            id: RG-123-456
+            name: My organization
+    PublicProjectCreate:
+      value:
+        name: My public chain project
+        description: My public chain project description
+        type: public
   securitySchemes:
     APIKeyAuthentication:
       type: http
@@ -476,3 +476,6 @@ components:
         All API requests must be made over HTTPS.
 
         '
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
