@@ -110,6 +110,25 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: Developer Tools
+- partner_name: Artifact Hub (artifact-hub)
+  partner: artifact-hub
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: artifact-hub
+  evidence: https://artifacthub.io/packages/search?repo=tezos-node
+  mirror_of: artifact-hub/integrations/artifact-hub-integration-edges.yml
+  apps:
+  - tezos-node
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Artifact Hub listing (Helm chart)
+  badges:
+  - 'Verified publisher (Artifact Hub verified publisher: repository ownership proven)'
 generated: '2026-10-14'
 method: searched
 checked:
@@ -118,6 +137,7 @@ checked:
 - https://github.com/cosmos/chain-registry
 - https://registry.modelcontextprotocol.io/v0/servers
 - digital-ocean/integrations/digital-ocean-integration-edges.yml
+- artifact-hub/integrations/artifact-hub-integration-edges.yml
 source:
 - https://github.com/DefiLlama/chainlist/blob/main/constants/extraRpcs.js
 - https://chainid.network/chains.json
