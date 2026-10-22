@@ -14,7 +14,7 @@ edges:
     registered_name: com.chainstack/chainstack
     register_id: com.chainstack/chainstack
     detected_by: sweep-agent-tools.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   mcp_registry:
     servers:
     - com.chainstack/chainstack
@@ -93,6 +93,23 @@ edges:
     detected: '2026-10-18'
   detected_by: sweep-blockchain-rpc.py
   first_seen: '2026-10-18'
+- partner_name: Digital Ocean (own)
+  partner: digital-ocean
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.digitalocean.com/apps/chainstack-blockchain-management
+  mirror_of: digital-ocean/integrations/digital-ocean-integration-edges.yml
+  apps:
+  - Chainstack Blockchain Management
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: Developer Tools
 generated: '2026-10-14'
 method: searched
 checked:
@@ -100,6 +117,7 @@ checked:
 - https://github.com/DefiLlama/chainlist/blob/main/constants/extraRpcs.js
 - https://github.com/cosmos/chain-registry
 - https://registry.modelcontextprotocol.io/v0/servers
+- digital-ocean/integrations/digital-ocean-integration-edges.yml
 source:
 - https://github.com/DefiLlama/chainlist/blob/main/constants/extraRpcs.js
 - https://chainid.network/chains.json
