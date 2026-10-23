@@ -12,6 +12,9 @@ artifacts:
   authentication/chainstack-authentication.yml:
     method: derived
     evidence: declared in the artifact
+  capabilities/chainstack-capability-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-account-info-api.opencollection.json:
     method: derived
     evidence: openapi/chainstack-account-info-api
@@ -103,11 +106,11 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-debug-api
   collections/chainstack-deployment-options-api.opencollection.json:
-    method: derived
-    evidence: openapi/chainstack-deployment-options-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-deployment-options-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-deployment-options-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-ethereum-beacon-chain-api.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -205,11 +208,11 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-node-api
   collections/chainstack-node-v2-api.opencollection.json:
-    method: derived
-    evidence: openapi/chainstack-node-v2-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-node-v2-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-node-v2-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-optimism-node-api.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -253,11 +256,11 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-project-api
   collections/chainstack-project-v2-api.opencollection.json:
-    method: derived
-    evidence: openapi/chainstack-project-v2-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-project-v2-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-project-v2-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-ronin-node-api.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -325,17 +328,17 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-txpool-api
   collections/chainstack-v2-api.opencollection.json:
-    method: derived
-    evidence: openapi/chainstack-v2-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-v2-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-v2-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-v3-api.opencollection.json:
-    method: derived
-    evidence: openapi/chainstack-v3-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-v3-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-v3-api
+    method: unknown
+    evidence: no authorship recorded
   collections/chainstack-validatiors-info-api.opencollection.json:
     method: derived
     evidence: openapi/chainstack-validatiors-info-api
@@ -355,9 +358,15 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   finops/chainstack-finops.yml:
+    method: generated
+    evidence: declared in the artifact
+  front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
-  front-door-ai/2026-09-17.yml:
+  integrations/_index.yml:
+    method: generated
+    evidence: carries an API Evangelist house phrase
+  integrations/chainstack-integration-edges.yml:
     method: unknown
     evidence: no authorship recorded
   json-ld/chainstack-context.jsonld:
@@ -369,127 +378,7 @@ artifacts:
   json-schema/chainstack-node-schema.json:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -573,6 +462,21 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   openapi/_original/chainstack-arbitrum-node-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -625,15 +529,15 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
+  openapi/_original/chainstack-openapi.json:
+    method: harvested
+    evidence: byte-identical to https://docs.chainstack.com/openapi.json (sha256 aef1e97426b9, fetched
+      2026-10-19)
   openapi/_original/chainstack-optimism-node-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
   openapi/_original/chainstack-plasma-node-api-openapi.yml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
-  openapi/_original/chainstack-platform-api-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
@@ -697,7 +601,10 @@ artifacts:
   openapi/chainstack-debug-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/chainstack-deployment-options-api-openapi.yml:
+  openapi/chainstack-detectaddress-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-estimatefee-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/chainstack-events-api-openapi.yml:
@@ -718,7 +625,145 @@ artifacts:
   openapi/chainstack-general-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getaccountinfo-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getaccountstates-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getactions-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getaddressbalance-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getaddressbookinfo-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getaddressinformation-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getaddressstate-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getadjacenttransactions-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getblockheader-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getblocks-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getblocktransactions-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getblocktransactionsext-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getconfigparam-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getconsensusblock-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getevents-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getextendedaddressinformation-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getjettonburns-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getjettonmasters-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getjettontransfers-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getjettonwallets-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getmasterchainblockshards-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getmasterchainblockshardstate-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getmasterchainblocksignatures-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getmasterchaininfo-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getmessages-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getmetadata-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getmultisigorders-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getmultisigwallets-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getnftcollections-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getnftitems-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getnfttransfers-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getpendingtraces-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getpendingtransactions-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getshardblockproof-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-gettokendata-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-gettopaccountsbybalance-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-gettraces-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-gettransactions-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-gettransactionsbymasterchainblock-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-gettransactionsbymessage-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getwalletinfo-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getwalletinformation-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-getwalletstates-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-jsonrpc-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/chainstack-logs-and-events-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-lookupblock-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-marketplace-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/chainstack-network-api-openapi.yml:
@@ -727,16 +772,31 @@ artifacts:
   openapi/chainstack-node-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/chainstack-node-v2-api-openapi.yml:
+  openapi/chainstack-organization-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/chainstack-organization-api-openapi.yml:
+  openapi/chainstack-packaddress-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/chainstack-project-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/chainstack-project-v2-api-openapi.yml:
+  openapi/chainstack-rungetmethod-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-sendboc-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-sendbocreturnhash-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-sendmessage-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-sendquery-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-shards-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/chainstack-state-api-openapi.yml:
@@ -748,24 +808,33 @@ artifacts:
   openapi/chainstack-transaction-info-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-trylocateresulttx-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-trylocatesourcetx-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-trylocatetx-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/chainstack-txpool-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/chainstack-v2-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
-  openapi/chainstack-v3-api-openapi.yml:
+  openapi/chainstack-unpackaddress-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/chainstack-validatiors-info-api-openapi.yml:
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  openapi/chainstack-vesting-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/chainstack-zkevm-methods-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   plans/chainstack-plans-pricing.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: generated
+    evidence: declared in the artifact
   postman/chainstack-account-info-api.postman_collection.json:
     method: derived
     evidence: openapi/chainstack-account-info-api
@@ -791,8 +860,8 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-debug-api
   postman/chainstack-deployment-options-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-deployment-options-api
+    method: unknown
+    evidence: no authorship recorded
   postman/chainstack-events-api.postman_collection.json:
     method: derived
     evidence: openapi/chainstack-events-api
@@ -824,8 +893,8 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-node-api
   postman/chainstack-node-v2-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-node-v2-api
+    method: unknown
+    evidence: no authorship recorded
   postman/chainstack-organization-api.postman_collection.json:
     method: derived
     evidence: openapi/chainstack-organization-api
@@ -833,8 +902,8 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-project-api
   postman/chainstack-project-v2-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-project-v2-api
+    method: unknown
+    evidence: no authorship recorded
   postman/chainstack-state-api.postman_collection.json:
     method: derived
     evidence: openapi/chainstack-state-api
@@ -851,11 +920,11 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-txpool-api
   postman/chainstack-v2-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-v2-api
+    method: unknown
+    evidence: no authorship recorded
   postman/chainstack-v3-api.postman_collection.json:
-    method: derived
-    evidence: openapi/chainstack-v3-api
+    method: unknown
+    evidence: no authorship recorded
   postman/chainstack-validatiors-info-api.postman_collection.json:
     method: derived
     evidence: openapi/chainstack-validatiors-info-api
@@ -863,8 +932,8 @@ artifacts:
     method: derived
     evidence: openapi/chainstack-zkevm-methods-api
   rate-limits/chainstack-rate-limits.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: generated
+    evidence: declared in the artifact
   rules/chainstack-asyncapi-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
