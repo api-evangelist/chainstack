@@ -1,4 +1,4 @@
-# Chainstack (chainstack)
+# Chainstack
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -71,605 +71,299 @@ and node lifecycle management, JSON-RPC endpoints for every supported chain, a F
 time Solana streaming via Yellowstone gRPC, low-latency Trader Nodes via bloXroute, archive data with debug and trace
 namespaces, MEV protection, Flashblocks preconfirmations, and a Chainstack MCP server for AI agents.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/chainstack/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/chainstack/refs/heads/main/apis.yml)
+**Areas:** Blockchain · Multi-Chain · RPC · Node Infrastructure · Web3 · Cryptocurrency · Ethereum · Solana · Bitcoin · DeFi · MEV · Trader Node
+
+## Chainstack on APIs.io
+
+Everything profiled for Chainstack is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/chainstack/](https://apis.io/providers/chainstack/)** — or go straight to one of the APIs or properties below.
+
+### APIs (87)
+
+- [Chainstack Faucet API](https://apis.io/apis/chainstack/chainstack-faucet-api/) — Public Chainstack-operated testnet faucet for Hoodi, Sepolia, BNB Testnet, zkSync Testnet, Scroll Sepolia, and Polygon Amoy. JWT-authenticated POST…
+- [Chainstack Account Info API](https://apis.io/apis/chainstack/chainstack-account-info-api/) — The Account Info API from Chainstack — 6 operation(s) for account info.
+- [Chainstack Accounts Info API](https://apis.io/apis/chainstack/chainstack-accounts-info-api/) — The Accounts Info API from Chainstack — 6 operation(s) for accounts info.
+- [Chainstack Blocks Info API](https://apis.io/apis/chainstack/chainstack-blocks-info-api/) — The Blocks Info API from Chainstack — 13 operation(s) for blocks info.
+- [Chainstack Chain Info API](https://apis.io/apis/chainstack/chainstack-chain-info-api/) — The Chain Info API from Chainstack — 5 operation(s) for chain info.
+- [Chainstack Client Info API](https://apis.io/apis/chainstack/chainstack-client-info-api/) — The Client Info API from Chainstack — 5 operation(s) for client info.
+- [Chainstack Configuration Info API](https://apis.io/apis/chainstack/chainstack-configuration-info-api/) — The Configuration Info API from Chainstack — 5 operation(s) for configuration info.
+- [Chainstack Debug And Trace API](https://apis.io/apis/chainstack/chainstack-debug-and-trace-api/) — The Debug And Trace API from Chainstack — 37 operation(s) for debug and trace.
+- [Chainstack Debug API](https://apis.io/apis/chainstack/chainstack-debug-api/) — The Debug API from Chainstack — 3 operation(s) for debug.
+- [Chainstack Deployment Options API](https://apis.io/apis/chainstack/chainstack-deployment-options-api/) — The Deployment Options API from Chainstack — 1 operation(s) for deployment options.
+- [Chainstack Events API](https://apis.io/apis/chainstack/chainstack-events-api/) — The Events API from Chainstack — 1 operation(s) for events.
+- [Chainstack Execute Transactions API](https://apis.io/apis/chainstack/chainstack-execute-transactions-api/) — The Execute Transactions API from Chainstack — 6 operation(s) for execute transactions.
+- [Chainstack Filter Handling API](https://apis.io/apis/chainstack/chainstack-filter-handling-api/) — The Filter Handling API from Chainstack — 5 operation(s) for filter handling.
+- [Chainstack Gas Data API](https://apis.io/apis/chainstack/chainstack-gas-data-api/) — The Gas Data API from Chainstack — 5 operation(s) for gas data.
+- [Chainstack General API](https://apis.io/apis/chainstack/chainstack-general-api/) — The General API from Chainstack — 520 operation(s) for general.
+- [Chainstack Logs And Events API](https://apis.io/apis/chainstack/chainstack-logs-and-events-api/) — The Logs And Events API from Chainstack — 3 operation(s) for logs and events.
+- [Chainstack Network API](https://apis.io/apis/chainstack/chainstack-network-api/) — The Network API from Chainstack — 2 operation(s) for network.
+- [Chainstack Node API](https://apis.io/apis/chainstack/chainstack-node-api/) — The Node API from Chainstack — 2 operation(s) for node.
+- [Chainstack Node V2 API](https://apis.io/apis/chainstack/chainstack-node-v2-api/) — The Node V2 API from Chainstack — 2 operation(s) for node v2.
+- [Chainstack Organization API](https://apis.io/apis/chainstack/chainstack-organization-api/) — The Organization API from Chainstack — 1 operation(s) for organization.
+- [Chainstack Project API](https://apis.io/apis/chainstack/chainstack-project-api/) — The Project API from Chainstack — 3 operation(s) for project.
+- [Chainstack Project V2 API](https://apis.io/apis/chainstack/chainstack-project-v2-api/) — The Project V2 API from Chainstack — 2 operation(s) for project v2.
+- [Chainstack State API](https://apis.io/apis/chainstack/chainstack-state-api/) — The State API from Chainstack — 10 operation(s) for state.
+- [Chainstack Tempo Specific API](https://apis.io/apis/chainstack/chainstack-tempo-specific-api/) — The Tempo Specific API from Chainstack — 2 operation(s) for tempo specific.
+- [Chainstack Transaction Info API](https://apis.io/apis/chainstack/chainstack-transaction-info-api/) — The Transaction Info API from Chainstack — 14 operation(s) for transaction info.
+- [Chainstack Txpool API](https://apis.io/apis/chainstack/chainstack-txpool-api/) — The Txpool API from Chainstack — 2 operation(s) for txpool.
+- [Chainstack Validatiors Info API](https://apis.io/apis/chainstack/chainstack-validatiors-info-api/) — The Validatiors Info API from Chainstack — 12 operation(s) for validatiors info.
+- [Chainstack Zkevm Methods API](https://apis.io/apis/chainstack/chainstack-zkevm-methods-api/) — The Zkevm Methods API from Chainstack — 8 operation(s) for zkevm methods.
+- [Chainstack Detect Address API](https://apis.io/apis/chainstack/chainstack-detectaddress-api/) — The DetectAddress API from Chainstack — 1 operation(s) for detectaddress.
+- [Chainstack Estimate Fee API](https://apis.io/apis/chainstack/chainstack-estimatefee-api/) — The EstimateFee API from Chainstack — 1 operation(s) for estimatefee.
+- [Chainstack Get Account Info API](https://apis.io/apis/chainstack/chainstack-getaccountinfo-api/) — The GetAccountInfo API from Chainstack — 1 operation(s) for getaccountinfo.
+- [Chainstack Get Account States API](https://apis.io/apis/chainstack/chainstack-getaccountstates-api/) — The GetAccountStates API from Chainstack — 1 operation(s) for getaccountstates.
+- [Chainstack Get Actions API](https://apis.io/apis/chainstack/chainstack-getactions-api/) — The GetActions API from Chainstack — 1 operation(s) for getactions.
+- [Chainstack Get Address Balance API](https://apis.io/apis/chainstack/chainstack-getaddressbalance-api/) — The GetAddressBalance API from Chainstack — 1 operation(s) for getaddressbalance.
+- [Chainstack Get Address Book Info API](https://apis.io/apis/chainstack/chainstack-getaddressbookinfo-api/) — The GetAddressBookInfo API from Chainstack — 1 operation(s) for getaddressbookinfo.
+- [Chainstack Get Address Information API](https://apis.io/apis/chainstack/chainstack-getaddressinformation-api/) — The GetAddressInformation API from Chainstack — 1 operation(s) for getaddressinformation.
+- [Chainstack Get Address State API](https://apis.io/apis/chainstack/chainstack-getaddressstate-api/) — The GetAddressState API from Chainstack — 1 operation(s) for getaddressstate.
+- [Chainstack Get Adjacent Transactions API](https://apis.io/apis/chainstack/chainstack-getadjacenttransactions-api/) — The GetAdjacentTransactions API from Chainstack — 1 operation(s) for getadjacenttransactions.
+- [Chainstack Get Block Header API](https://apis.io/apis/chainstack/chainstack-getblockheader-api/) — The GetBlockHeader API from Chainstack — 1 operation(s) for getblockheader.
+- [Chainstack Get Blocks API](https://apis.io/apis/chainstack/chainstack-getblocks-api/) — The GetBlocks API from Chainstack — 1 operation(s) for getblocks.
+- [Chainstack Get Block Transactions API](https://apis.io/apis/chainstack/chainstack-getblocktransactions-api/) — The GetBlockTransactions API from Chainstack — 1 operation(s) for getblocktransactions.
+- [Chainstack Get Block Transactions Ext API](https://apis.io/apis/chainstack/chainstack-getblocktransactionsext-api/) — The GetBlockTransactionsExt API from Chainstack — 1 operation(s) for getblocktransactionsext.
+- [Chainstack Get Config Param API](https://apis.io/apis/chainstack/chainstack-getconfigparam-api/) — The GetConfigParam API from Chainstack — 1 operation(s) for getconfigparam.
+- [Chainstack Get Consensus Block API](https://apis.io/apis/chainstack/chainstack-getconsensusblock-api/) — The GetConsensusBlock API from Chainstack — 1 operation(s) for getconsensusblock.
+- [Chainstack Get Events API](https://apis.io/apis/chainstack/chainstack-getevents-api/) — The GetEvents API from Chainstack — 1 operation(s) for getevents.
+- [Chainstack Get Extended Address Information API](https://apis.io/apis/chainstack/chainstack-getextendedaddressinformation-api/) — The GetExtendedAddressInformation API from Chainstack — 1 operation(s) for getextendedaddressinformation.
+- [Chainstack Get Jetton Burns API](https://apis.io/apis/chainstack/chainstack-getjettonburns-api/) — The GetJettonBurns API from Chainstack — 1 operation(s) for getjettonburns.
+- [Chainstack Get Jetton Masters API](https://apis.io/apis/chainstack/chainstack-getjettonmasters-api/) — The GetJettonMasters API from Chainstack — 1 operation(s) for getjettonmasters.
+- [Chainstack Get Jetton Transfers API](https://apis.io/apis/chainstack/chainstack-getjettontransfers-api/) — The GetJettonTransfers API from Chainstack — 1 operation(s) for getjettontransfers.
+- [Chainstack Get Jetton Wallets API](https://apis.io/apis/chainstack/chainstack-getjettonwallets-api/) — The GetJettonWallets API from Chainstack — 1 operation(s) for getjettonwallets.
+- [Chainstack Get Masterchain Block Shards API](https://apis.io/apis/chainstack/chainstack-getmasterchainblockshards-api/) — The GetMasterchainBlockShards API from Chainstack — 1 operation(s) for getmasterchainblockshards.
+- [Chainstack Get Masterchain Block Shard State API](https://apis.io/apis/chainstack/chainstack-getmasterchainblockshardstate-api/) — The GetMasterchainBlockShardState API from Chainstack — 1 operation(s) for getmasterchainblockshardstate.
+- [Chainstack Get Masterchain Block Signatures API](https://apis.io/apis/chainstack/chainstack-getmasterchainblocksignatures-api/) — The GetMasterchainBlockSignatures API from Chainstack — 1 operation(s) for getmasterchainblocksignatures.
+- [Chainstack Get Masterchain Info API](https://apis.io/apis/chainstack/chainstack-getmasterchaininfo-api/) — The GetMasterchainInfo API from Chainstack — 1 operation(s) for getmasterchaininfo.
+- [Chainstack Get Messages API](https://apis.io/apis/chainstack/chainstack-getmessages-api/) — The GetMessages API from Chainstack — 1 operation(s) for getmessages.
+- [Chainstack Get Metadata API](https://apis.io/apis/chainstack/chainstack-getmetadata-api/) — The GetMetadata API from Chainstack — 1 operation(s) for getmetadata.
+- [Chainstack Get Multisig Orders API](https://apis.io/apis/chainstack/chainstack-getmultisigorders-api/) — The GetMultisigOrders API from Chainstack — 1 operation(s) for getmultisigorders.
+- [Chainstack Get Multisig Wallets API](https://apis.io/apis/chainstack/chainstack-getmultisigwallets-api/) — The GetMultisigWallets API from Chainstack — 1 operation(s) for getmultisigwallets.
+- [Chainstack Get NFT Collections API](https://apis.io/apis/chainstack/chainstack-getnftcollections-api/) — The GetNFTCollections API from Chainstack — 1 operation(s) for getnftcollections.
+- [Chainstack Get NFT Items API](https://apis.io/apis/chainstack/chainstack-getnftitems-api/) — The GetNFTItems API from Chainstack — 1 operation(s) for getnftitems.
+- [Chainstack Get NFT Transfers API](https://apis.io/apis/chainstack/chainstack-getnfttransfers-api/) — The GetNFTTransfers API from Chainstack — 1 operation(s) for getnfttransfers.
+- [Chainstack Get Pending Traces API](https://apis.io/apis/chainstack/chainstack-getpendingtraces-api/) — The GetPendingTraces API from Chainstack — 1 operation(s) for getpendingtraces.
+- [Chainstack Get Pending Transactions API](https://apis.io/apis/chainstack/chainstack-getpendingtransactions-api/) — The GetPendingTransactions API from Chainstack — 1 operation(s) for getpendingtransactions.
+- [Chainstack Get Shard Block Proof API](https://apis.io/apis/chainstack/chainstack-getshardblockproof-api/) — The GetShardBlockProof API from Chainstack — 1 operation(s) for getshardblockproof.
+- [Chainstack Get Token Data API](https://apis.io/apis/chainstack/chainstack-gettokendata-api/) — The GetTokenData API from Chainstack — 1 operation(s) for gettokendata.
+- [Chainstack Get Top Accounts By Balance API](https://apis.io/apis/chainstack/chainstack-gettopaccountsbybalance-api/) — The GetTopAccountsByBalance API from Chainstack — 1 operation(s) for gettopaccountsbybalance.
+- [Chainstack Get Traces API](https://apis.io/apis/chainstack/chainstack-gettraces-api/) — The GetTraces API from Chainstack — 1 operation(s) for gettraces.
+- [Chainstack Get Transactions API](https://apis.io/apis/chainstack/chainstack-gettransactions-api/) — The GetTransactions API from Chainstack — 1 operation(s) for gettransactions.
+- [Chainstack Get Transactions By Masterchain Block API](https://apis.io/apis/chainstack/chainstack-gettransactionsbymasterchainblock-api/) — The GetTransactionsByMasterchainBlock API from Chainstack — 1 operation(s) for gettransactionsbymasterchainblock.
+- [Chainstack Get Transactions By Message API](https://apis.io/apis/chainstack/chainstack-gettransactionsbymessage-api/) — The GetTransactionsByMessage API from Chainstack — 1 operation(s) for gettransactionsbymessage.
+- [Chainstack Get Wallet Info API](https://apis.io/apis/chainstack/chainstack-getwalletinfo-api/) — The GetWalletInfo API from Chainstack — 1 operation(s) for getwalletinfo.
+- [Chainstack Get Wallet Information API](https://apis.io/apis/chainstack/chainstack-getwalletinformation-api/) — The GetWalletInformation API from Chainstack — 1 operation(s) for getwalletinformation.
+- [Chainstack Get Wallet States API](https://apis.io/apis/chainstack/chainstack-getwalletstates-api/) — The GetWalletStates API from Chainstack — 1 operation(s) for getwalletstates.
+- [Chainstack JSON RPC API](https://apis.io/apis/chainstack/chainstack-jsonrpc-api/) — The JsonRPC API from Chainstack — 1 operation(s) for jsonrpc.
+- [Chainstack Lookup Block API](https://apis.io/apis/chainstack/chainstack-lookupblock-api/) — The LookupBlock API from Chainstack — 1 operation(s) for lookupblock.
+- [Chainstack Pack Address API](https://apis.io/apis/chainstack/chainstack-packaddress-api/) — The PackAddress API from Chainstack — 1 operation(s) for packaddress.
+- [Chainstack Run Get Method API](https://apis.io/apis/chainstack/chainstack-rungetmethod-api/) — The RunGetMethod API from Chainstack — 1 operation(s) for rungetmethod.
+- [Chainstack Send Boc API](https://apis.io/apis/chainstack/chainstack-sendboc-api/) — The SendBoc API from Chainstack — 1 operation(s) for sendboc.
+- [Chainstack Send Boc Return Hash API](https://apis.io/apis/chainstack/chainstack-sendbocreturnhash-api/) — The SendBocReturnHash API from Chainstack — 1 operation(s) for sendbocreturnhash.
+- [Chainstack Send Message API](https://apis.io/apis/chainstack/chainstack-sendmessage-api/) — The SendMessage API from Chainstack — 1 operation(s) for sendmessage.
+- [Chainstack Send Query API](https://apis.io/apis/chainstack/chainstack-sendquery-api/) — The SendQuery API from Chainstack — 1 operation(s) for sendquery.
+- [Chainstack Shards API](https://apis.io/apis/chainstack/chainstack-shards-api/) — The Shards API from Chainstack — 1 operation(s) for shards.
+- [Chainstack Try Locate Result Tx API](https://apis.io/apis/chainstack/chainstack-trylocateresulttx-api/) — The TryLocateResultTx API from Chainstack — 1 operation(s) for trylocateresulttx.
+- [Chainstack Try Locate Source Tx API](https://apis.io/apis/chainstack/chainstack-trylocatesourcetx-api/) — The TryLocateSourceTx API from Chainstack — 1 operation(s) for trylocatesourcetx.
+- [Chainstack Try Locate Tx API](https://apis.io/apis/chainstack/chainstack-trylocatetx-api/) — The TryLocateTx API from Chainstack — 1 operation(s) for trylocatetx.
+- [Chainstack Unpack Address API](https://apis.io/apis/chainstack/chainstack-unpackaddress-api/) — The UnpackAddress API from Chainstack — 1 operation(s) for unpackaddress.
+- [Chainstack Vesting API](https://apis.io/apis/chainstack/chainstack-vesting-api/) — The Vesting API from Chainstack — 1 operation(s) for vesting.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Chainstack RPC WebSocket APIs](https://apis.io/asyncapis/chainstack/chainstack-asyncapi/)
+
+#### Event channels (56)
+
+Individual events and webhooks the provider emits.
+
+- [arbitrum/eth_subscribe/logs](https://apis.io/channels/chainstack/arbitrum-eth-subscribe-logs/)
+- [arbitrum/eth_subscribe/newHeads](https://apis.io/channels/chainstack/arbitrum-eth-subscribe-newheads/)
+- [arbitrum/eth_subscribe/syncing](https://apis.io/channels/chainstack/arbitrum-eth-subscribe-syncing/)
+- [arbitrum/eth_unsubscribe](https://apis.io/channels/chainstack/arbitrum-eth-unsubscribe/)
+- [avalanche/eth_subscribe/logs](https://apis.io/channels/chainstack/avalanche-eth-subscribe-logs/)
+- [avalanche/eth_subscribe/newHeads](https://apis.io/channels/chainstack/avalanche-eth-subscribe-newheads/)
+- [avalanche/eth_subscribe/newPendingTransactions](https://apis.io/channels/chainstack/avalanche-eth-subscribe-newpendingtransactions/)
+- [avalanche/eth_subscribe/syncing](https://apis.io/channels/chainstack/avalanche-eth-subscribe-syncing/)
+- [avalanche/eth_unsubscribe](https://apis.io/channels/chainstack/avalanche-eth-unsubscribe/)
+- [base/eth_subscribe/newFlashblocks](https://apis.io/channels/chainstack/base-eth-subscribe-newflashblocks/)
+- [base/eth_subscribe/newFlashblockTransactions](https://apis.io/channels/chainstack/base-eth-subscribe-newflashblocktransactions/)
+- [base/eth_subscribe/pendingLogs](https://apis.io/channels/chainstack/base-eth-subscribe-pendinglogs/)
+- [base/eth_unsubscribe](https://apis.io/channels/chainstack/base-eth-unsubscribe/)
+- [ethereum/eth_subscribe/logs](https://apis.io/channels/chainstack/ethereum-eth-subscribe-logs/)
+- [ethereum/eth_subscribe/newHeads](https://apis.io/channels/chainstack/ethereum-eth-subscribe-newheads/)
+- [ethereum/eth_subscribe/newPendingTransactions](https://apis.io/channels/chainstack/ethereum-eth-subscribe-newpendingtransactions/)
+- [ethereum/eth_subscribe/syncing](https://apis.io/channels/chainstack/ethereum-eth-subscribe-syncing/)
+- [ethereum/eth_unsubscribe](https://apis.io/channels/chainstack/ethereum-eth-unsubscribe/)
+- [gnosis/eth_subscribe/logs](https://apis.io/channels/chainstack/gnosis-eth-subscribe-logs/)
+- [gnosis/eth_subscribe/newHeads](https://apis.io/channels/chainstack/gnosis-eth-subscribe-newheads/)
+- [gnosis/eth_subscribe/newPendingTransactions](https://apis.io/channels/chainstack/gnosis-eth-subscribe-newpendingtransactions/)
+- [gnosis/eth_subscribe/syncing](https://apis.io/channels/chainstack/gnosis-eth-subscribe-syncing/)
+- [gnosis/eth_unsubscribe](https://apis.io/channels/chainstack/gnosis-eth-unsubscribe/)
+- [hyperliquid/eth_subscribe/logs](https://apis.io/channels/chainstack/hyperliquid-eth-subscribe-logs/)
+- [hyperliquid/eth_subscribe/newHeads](https://apis.io/channels/chainstack/hyperliquid-eth-subscribe-newheads/)
+- …and 31 more published on APIs.io
 
-## Scope
+#### Agentic access (1)
 
-- **Access:** 3rd-Party
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Tags
+- [Chainstack Agentic Access](https://apis.io/agentic-access/chainstack/chainstack-agentic-access/)
 
-- Blockchain
-- Multi-Chain
-- RPC
-- Node Infrastructure
-- Web3
-- Crypto
-- Ethereum
-- Solana
-- Bitcoin
-- DeFi
-- MEV
-- Trader Node
-- Archive Data
-- MCP
-- AI Agents
+#### JSON Schema (2)
 
-## Timestamps
+The data models the API reads and writes.
 
-- **Modified:** Thu May 28 2026 20:00:00 GMT-0400 (Eastern Daylight Time)
+- [ChainstackJsonRpcEnvelope](https://apis.io/schemas/chainstack/chainstack-jsonrpc-envelope/)
+- [ChainstackNode](https://apis.io/schemas/chainstack/chainstack-node/)
 
-## APIs
+#### JSON-LD (1)
 
-### Chainstack Platform API
+Linked-data contexts for the provider's vocabulary.
 
-REST API at api.chainstack.com for managing your organization, projects, networks, and managed nodes. Bearer-token authenticated via per-user API keys. v2 endpoints recommended; v1 endpoints cover organizations, projects, networks, nodes, marketplace, and legacy Goerli/Sepolia faucets.
+- [Chainstack Context](https://apis.io/jsonld/chainstack/chainstack-context/)
 
-- **Human URL:** [https://docs.chainstack.com/reference/platform-api-getting-started](https://docs.chainstack.com/reference/platform-api-getting-started)
+#### Vocabulary (1)
 
-#### Tags
+The provider's domain terms, defined.
 
-- Platform
-- Organization
-- Projects
-- Networks
-- Nodes
-- Management
+- [Chainstack Vocabulary](https://apis.io/vocabularies/chainstack/chainstack-vocabulary/)
 
-#### Properties
+#### Collections (89)
 
-- [Documentation](https://docs.chainstack.com/reference/platform-api-getting-started)
-- [OpenAPI](openapi/chainstack-platform-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-platform-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-platform-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/chainstack-node-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/chainstack-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Postman and Open Collection request collections.
 
-### Chainstack Faucet API
+- [Chainstack Arbitrum Node Account Info API](https://apis.io/collections/chainstack/open-chainstack-account-info-api/)
+- [Chainstack Arbitrum Node Account Info Accounts Info API](https://apis.io/collections/chainstack/open-chainstack-accounts-info-api/)
+- [Chainstack Arbitrum Node API](https://apis.io/collections/chainstack/open-chainstack-arbitrum-node-api/)
+- [Chainstack Aurora Node API](https://apis.io/collections/chainstack/open-chainstack-aurora-node-api/)
+- [Chainstack Avalanche Node API](https://apis.io/collections/chainstack/open-chainstack-avalanche-node-api/)
+- [Chainstack Base Node API](https://apis.io/collections/chainstack/open-chainstack-base-node-api/)
+- [Chainstack Bitcoin Node API](https://apis.io/collections/chainstack/open-chainstack-bitcoin-node-api/)
+- [Chainstack Arbitrum Node Account Info Blocks Info API](https://apis.io/collections/chainstack/open-chainstack-blocks-info-api/)
+- [Chainstack BNB Smart Chain Node API](https://apis.io/collections/chainstack/open-chainstack-bnb-node-api/)
+- [Chainstack Arbitrum Node Account Info Chain Info API](https://apis.io/collections/chainstack/open-chainstack-chain-info-api/)
+- [Chainstack Arbitrum Node Account Info Client Info API](https://apis.io/collections/chainstack/open-chainstack-client-info-api/)
+- [Chainstack Arbitrum Node Account Info Configuration Info API](https://apis.io/collections/chainstack/open-chainstack-configuration-info-api/)
+- [Chainstack Cronos Node API](https://apis.io/collections/chainstack/open-chainstack-cronos-node-api/)
+- [Chainstack Arbitrum Node Account Info Debug And Trace API](https://apis.io/collections/chainstack/open-chainstack-debug-and-trace-api/)
+- [Chainstack Arbitrum Node Account Info Debug API](https://apis.io/collections/chainstack/open-chainstack-debug-api/)
+- [Chainstack Arbitrum Node Account Info Deployment Options API](https://apis.io/collections/chainstack/open-chainstack-deployment-options-api/)
+- [Chainstack Ethereum Beacon Chain API](https://apis.io/collections/chainstack/open-chainstack-ethereum-beacon-chain-api/)
+- [Chainstack Ethereum Node API](https://apis.io/collections/chainstack/open-chainstack-ethereum-node-api/)
+- [Chainstack Arbitrum Node Account Info Events API](https://apis.io/collections/chainstack/open-chainstack-events-api/)
+- [Chainstack Arbitrum Node Account Info Execute Transactions API](https://apis.io/collections/chainstack/open-chainstack-execute-transactions-api/)
+- [Chainstack Fantom Node API](https://apis.io/collections/chainstack/open-chainstack-fantom-node-api/)
+- [Chainstack Arbitrum Node Account Info faucet API](https://apis.io/collections/chainstack/open-chainstack-faucet-api/)
+- [Chainstack Arbitrum Node Account Info Filter Handling API](https://apis.io/collections/chainstack/open-chainstack-filter-handling-api/)
+- [Chainstack Arbitrum Node Account Info Gas Data API](https://apis.io/collections/chainstack/open-chainstack-gas-data-api/)
+- [Chainstack Arbitrum Node Account Info General API](https://apis.io/collections/chainstack/open-chainstack-general-api/)
+- …and 64 more published on APIs.io
 
-Public Chainstack-operated testnet faucet for Hoodi, Sepolia, BNB Testnet, zkSync Testnet, Scroll Sepolia, and Polygon Amoy. JWT-authenticated POST /v1/faucet/{chain} request endpoint plus a transaction-history endpoint. Also available as a Telegram Mini App and via the Chainstack MCP server.
+#### Governance rules (3)
 
-- **Human URL:** [https://faucet.chainstack.com/](https://faucet.chainstack.com/)
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Chainstack — asyncapi rules](https://apis.io/rules/chainstack/chainstack-asyncapi-spectral-rules/)
+- [Chainstack — jsonschema rules](https://apis.io/rules/chainstack/chainstack-jsonschema-spectral-rules/)
+- [Chainstack API Rules](https://apis.io/rules/chainstack/chainstack-rules/)
 
-- Faucet
-- Testnet
-- Developer Tools
+#### Security (3)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Faucet](https://faucet.chainstack.com/)
-- [OpenAPI](openapi/chainstack-faucet-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-faucet-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-faucet-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Chainstack Authentication](https://apis.io/security/chainstack/chainstack-authentication/)
+- [Chainstack Domain Security](https://apis.io/security/chainstack/chainstack-domain-security/)
+- [Chainstack Vulnerability Disclosure](https://apis.io/security/chainstack/chainstack-vulnerability-disclosure/)
 
-### Chainstack Ethereum Node API
+#### Plans and pricing (1)
 
-Chainstack-managed Ethereum mainnet and testnet JSON-RPC nodes. 40+ documented eth_/net_/web3_ methods plus debug_/trace_ namespaces on archive nodes. Global, Dedicated, Unlimited, and Trader node archetypes supported.
+Published plans, tiers and prices.
 
-- **Human URL:** [https://docs.chainstack.com/reference/ethereum-getting-started](https://docs.chainstack.com/reference/ethereum-getting-started)
+- [Chainstack Plans Pricing](https://apis.io/plans/chainstack/chainstack-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- Ethereum
-- EVM
-- JSON-RPC
-- Layer 1
+Published request limits.
 
-#### Properties
+- [Chainstack Rate Limits](https://apis.io/rate-limits/chainstack/chainstack-rate-limits/)
 
-- [Documentation](https://docs.chainstack.com/reference/ethereum-getting-started)
-- [OpenAPI](openapi/chainstack-ethereum-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-ethereum-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-ethereum-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [JSON Schema](json-schema/chainstack-jsonrpc-envelope-schema.json) — [JSON Schema](https://json-schema.org/specification)
+#### FinOps (1)
 
-### Chainstack Ethereum Beacon Chain API
+What the API costs to run, by operation.
 
-Ethereum consensus-layer Beacon Chain REST API exposed through Chainstack-managed nodes. Validator, state, block, sync, and node-info endpoints.
+- [Chainstack Finops](https://apis.io/finops/chainstack/chainstack-finops/)
 
-- **Human URL:** [https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started](https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started)
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- Ethereum
-- Beacon Chain
-- Consensus Layer
-- REST
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/ethereum-beacon-chain-api-getting-started)
-- [OpenAPI](openapi/chainstack-ethereum-beacon-chain-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-ethereum-beacon-chain-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-ethereum-beacon-chain-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Solana Node API
-
-Chainstack-managed Solana JSON-RPC nodes (mainnet, devnet, testnet) covering 52+ documented RPC methods plus Yellowstone gRPC Geyser plugin for real-time account, transaction, and slot streaming. Trader Node available for low-latency mempool access.
-
-- **Human URL:** [https://docs.chainstack.com/reference/solana-getting-started](https://docs.chainstack.com/reference/solana-getting-started)
-
-#### Tags
-
-- Solana
-- JSON-RPC
-- Yellowstone
-- gRPC
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/solana-getting-started)
-- [OpenAPI](openapi/chainstack-solana-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-solana-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-solana-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Bitcoin Node API
-
-Chainstack-managed Bitcoin Core nodes exposing the canonical Bitcoin JSON-RPC API. 40 documented methods covering blocks, transactions, wallet, mining, network, and raw-transaction operations.
-
-- **Human URL:** [https://docs.chainstack.com/reference/bitcoin-getting-started](https://docs.chainstack.com/reference/bitcoin-getting-started)
-
-#### Tags
-
-- Bitcoin
-- UTXO
-- JSON-RPC
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/bitcoin-getting-started)
-- [OpenAPI](openapi/chainstack-bitcoin-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-bitcoin-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-bitcoin-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack BNB Smart Chain Node API
-
-Chainstack-managed BNB Smart Chain JSON-RPC nodes. 43+ documented EVM methods plus archive support on dedicated nodes.
-
-- **Human URL:** [https://docs.chainstack.com/reference/bnb-chain-getting-started](https://docs.chainstack.com/reference/bnb-chain-getting-started)
-
-#### Tags
-
-- BNB Smart Chain
-- BSC
-- EVM
-- JSON-RPC
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/bnb-chain-getting-started)
-- [OpenAPI](openapi/chainstack-bnb-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-bnb-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-bnb-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Polygon Node API
-
-Chainstack-managed Polygon mainnet (PoS) and Polygon Amoy testnet JSON-RPC nodes with debug/trace namespaces available on archive nodes.
-
-- **Human URL:** [https://docs.chainstack.com/reference/polygon-getting-started](https://docs.chainstack.com/reference/polygon-getting-started)
-
-#### Tags
-
-- Polygon
-- EVM
-- JSON-RPC
-- PoS
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/polygon-getting-started)
-- [OpenAPI](openapi/chainstack-polygon-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-polygon-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-polygon-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Arbitrum Node API
-
-Chainstack-managed Arbitrum One and Arbitrum Sepolia JSON-RPC nodes. 51 documented eth_/arb_ methods.
-
-- **Human URL:** [https://docs.chainstack.com/reference/arbitrum-getting-started](https://docs.chainstack.com/reference/arbitrum-getting-started)
-
-#### Tags
-
-- Arbitrum
-- Layer 2
-- Rollup
-- EVM
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/arbitrum-getting-started)
-- [OpenAPI](openapi/chainstack-arbitrum-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-arbitrum-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-arbitrum-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Optimism Node API
-
-Chainstack-managed Optimism mainnet and Sepolia JSON-RPC nodes with Flashblocks preconfirmation support (250 ms). 48 documented eth_/op_ methods.
-
-- **Human URL:** [https://docs.chainstack.com/reference/optimism-getting-started](https://docs.chainstack.com/reference/optimism-getting-started)
-
-#### Tags
-
-- Optimism
-- Layer 2
-- Rollup
-- EVM
-- OP Stack
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/optimism-getting-started)
-- [OpenAPI](openapi/chainstack-optimism-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-optimism-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-optimism-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Base Node API
-
-Chainstack-managed Base mainnet and Sepolia JSON-RPC nodes. 60 documented eth_/op_ methods plus Flashblocks (200 ms preconfirmations).
-
-- **Human URL:** [https://docs.chainstack.com/reference/base-getting-started](https://docs.chainstack.com/reference/base-getting-started)
-
-#### Tags
-
-- Base
-- Layer 2
-- Rollup
-- EVM
-- OP Stack
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/base-getting-started)
-- [OpenAPI](openapi/chainstack-base-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-base-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-base-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Avalanche Node API
-
-Chainstack-managed Avalanche C-Chain JSON-RPC nodes and Subnets support.
-
-- **Human URL:** [https://docs.chainstack.com/reference/avalanche-getting-started](https://docs.chainstack.com/reference/avalanche-getting-started)
-
-#### Tags
-
-- Avalanche
-- Layer 1
-- EVM
-- C-Chain
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/avalanche-getting-started)
-- [OpenAPI](openapi/chainstack-avalanche-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-avalanche-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-avalanche-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Fantom Node API
-
-Chainstack-managed Fantom Opera mainnet JSON-RPC nodes.
-
-- **Human URL:** [https://docs.chainstack.com/reference/fantom-getting-started](https://docs.chainstack.com/reference/fantom-getting-started)
-
-#### Tags
-
-- Fantom
-- Sonic
-- EVM
-- Layer 1
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/fantom-getting-started)
-- [OpenAPI](openapi/chainstack-fantom-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-fantom-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-fantom-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Gnosis Node API
-
-Chainstack-managed Gnosis Chain JSON-RPC nodes.
-
-- **Human URL:** [https://docs.chainstack.com/reference/gnosis-getting-started](https://docs.chainstack.com/reference/gnosis-getting-started)
-
-#### Tags
-
-- Gnosis Chain
-- EVM
-- Layer 1
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/gnosis-getting-started)
-- [OpenAPI](openapi/chainstack-gnosis-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-gnosis-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-gnosis-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Cronos Node API
-
-Chainstack-managed Cronos JSON-RPC nodes.
-
-- **Human URL:** [https://docs.chainstack.com/reference/cronos-getting-started](https://docs.chainstack.com/reference/cronos-getting-started)
-
-#### Tags
-
-- Cronos
-- EVM
-- Layer 1
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/cronos-getting-started)
-- [OpenAPI](openapi/chainstack-cronos-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-cronos-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-cronos-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Aurora Node API
-
-Chainstack-managed Aurora (EVM on NEAR) JSON-RPC nodes.
-
-- **Human URL:** [https://docs.chainstack.com/reference/aurora-getting-started](https://docs.chainstack.com/reference/aurora-getting-started)
-
-#### Tags
-
-- Aurora
-- EVM
-- NEAR
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/aurora-getting-started)
-- [OpenAPI](openapi/chainstack-aurora-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-aurora-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-aurora-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Ronin Node API
-
-Chainstack-managed Ronin JSON-RPC nodes for the Axie Infinity gaming chain.
-
-- **Human URL:** [https://docs.chainstack.com/reference/ronin-getting-started](https://docs.chainstack.com/reference/ronin-getting-started)
-
-#### Tags
-
-- Ronin
-- EVM
-- Gaming
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/ronin-getting-started)
-- [OpenAPI](openapi/chainstack-ronin-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-ronin-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-ronin-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack TRON Node API
-
-Chainstack-managed TRON full and Solidity nodes with 150+ documented HTTP API methods.
-
-- **Human URL:** [https://docs.chainstack.com/reference/tron-getting-started](https://docs.chainstack.com/reference/tron-getting-started)
-
-#### Tags
-
-- TRON
-- Layer 1
-- Non-EVM
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/tron-getting-started)
-- [OpenAPI](openapi/chainstack-tron-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-tron-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-tron-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack TON Node API
-
-Chainstack-managed The Open Network (TON) HTTP API nodes. 59 documented methods covering accounts, blocks, transactions, jettons, and NFTs.
-
-- **Human URL:** [https://docs.chainstack.com/reference/ton-getting-started](https://docs.chainstack.com/reference/ton-getting-started)
-
-#### Tags
-
-- TON
-- The Open Network
-- Layer 1
-- Non-EVM
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/ton-getting-started)
-- [OpenAPI](openapi/chainstack-ton-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-ton-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-ton-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Starknet Node API
-
-Chainstack-managed Starknet JSON-RPC nodes.
-
-- **Human URL:** [https://docs.chainstack.com/reference/starknet-getting-started](https://docs.chainstack.com/reference/starknet-getting-started)
-
-#### Tags
-
-- Starknet
-- Layer 2
-- ZK Rollup
-- Cairo
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/starknet-getting-started)
-- [OpenAPI](openapi/chainstack-starknet-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-starknet-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-starknet-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack zkSync Era Node API
-
-Chainstack-managed zkSync Era JSON-RPC nodes with zks_ namespace extensions.
-
-- **Human URL:** [https://docs.chainstack.com/reference/zksync-getting-started](https://docs.chainstack.com/reference/zksync-getting-started)
-
-#### Tags
-
-- zkSync Era
-- Layer 2
-- ZK Rollup
-- EVM-Compatible
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/zksync-getting-started)
-- [OpenAPI](openapi/chainstack-zksync-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-zksync-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-zksync-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Polygon zkEVM Node API
-
-Chainstack-managed Polygon zkEVM JSON-RPC nodes with zkevm_ namespace extensions.
-
-- **Human URL:** [https://docs.chainstack.com/reference/polygon-zkevm-getting-started](https://docs.chainstack.com/reference/polygon-zkevm-getting-started)
-
-#### Tags
-
-- Polygon zkEVM
-- Layer 2
-- ZK Rollup
-- EVM
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/polygon-zkevm-getting-started)
-- [OpenAPI](openapi/chainstack-polygon-zkevm-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-polygon-zkevm-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-polygon-zkevm-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Hyperliquid Node API
-
-Chainstack-managed Hyperliquid HyperCore and HyperEVM nodes. 185 documented HTTP methods covering perpetual DEX state, orders, fills, and EVM RPC.
-
-- **Human URL:** [https://docs.chainstack.com/reference/hyperliquid-getting-started](https://docs.chainstack.com/reference/hyperliquid-getting-started)
-
-#### Tags
-
-- Hyperliquid
-- HyperCore
-- HyperEVM
-- Perpetual DEX
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/hyperliquid-getting-started)
-- [OpenAPI](openapi/chainstack-hyperliquid-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-hyperliquid-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-hyperliquid-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Monad Node API
-
-Chainstack-managed Monad JSON-RPC nodes (high-throughput EVM with parallel execution).
-
-- **Human URL:** [https://docs.chainstack.com/reference/monad-getting-started](https://docs.chainstack.com/reference/monad-getting-started)
-
-#### Tags
-
-- Monad
-- EVM
-- Parallel Execution
-- Layer 1
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/monad-getting-started)
-- [OpenAPI](openapi/chainstack-monad-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-monad-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-monad-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/chainstack-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Chainstack Plasma Node API
-
-Chainstack-managed Plasma JSON-RPC nodes (stablecoin-optimized chain).
-
-- **Human URL:** [https://docs.chainstack.com/reference/plasma-getting-started](https://docs.chainstack.com/reference/plasma-getting-started)
-
-#### Tags
-
-- Plasma
-- EVM
-- Stablecoins
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/plasma-getting-started)
-- [OpenAPI](openapi/chainstack-plasma-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-plasma-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-plasma-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Chainstack Tempo Node API
-
-Chainstack-managed Tempo JSON-RPC nodes (emerging EVM chain).
-
-- **Human URL:** [https://docs.chainstack.com/reference/tempo-getting-started](https://docs.chainstack.com/reference/tempo-getting-started)
-
-#### Tags
-
-- Tempo
-- EVM
-- Emerging
-
-#### Properties
-
-- [Documentation](https://docs.chainstack.com/reference/tempo-getting-started)
-- [OpenAPI](openapi/chainstack-tempo-node-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/chainstack-tempo-node-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/chainstack-tempo-node-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/chainstack/)
-- [Twitter](https://x.com/chainstackhq)
-- [Github](https://github.com/chainstack)
-- [Discord](https://discord.com/invite/Cymtg2f7pX)
-- [YouTube](https://www.youtube.com/@Chainstack)
 - [Website](https://chainstack.com)
-- [Portal](https://docs.chainstack.com)
 - [Documentation](https://docs.chainstack.com/reference/platform-api-getting-started)
-- [Documentation](https://docs.chainstack.com/reference/getting-started)
-- [Rate Limits](https://docs.chainstack.com/docs/about-limits)
-- [Documentation](https://docs.chainstack.com/docs/about-billing)
-- [Documentation](https://docs.chainstack.com/docs/pricing)
 - [Pricing](https://chainstack.com/pricing/)
-- [Faucet](https://faucet.chainstack.com/)
 - [Support](https://support.chainstack.com)
-- [Feedback](https://ideas.chainstack.com/)
-- [Blog](https://chainstack.com/blog/)
 - [Changelog](https://chainstack.com/changelog/)
-- [Status Page](https://chainstack.status.io)
-- [Terms of Service](https://chainstack.com/terms-of-service/)
-- [Privacy Policy](https://chainstack.com/privacy-policy/)
+- [Blog](https://chainstack.com/blog/)
 - [Security](https://chainstack.com/security/)
-- [Source](https://github.com/chainstack/dev-portal)
-- [Source](https://github.com/chainstack/erigon)
-- [Source](https://github.com/chainstack/bsc-erigon)
-- [Source](https://github.com/chainstack/op-erigon)
-- [Tools](https://github.com/chainstack/solana-exporter)
-- [SDK](https://github.com/chainstack/solana-rpc-ruby)
-- [SDK](https://github.com/chainstack/multichaincli)
-- [SDK](https://github.com/chainstack/bitcoincli)
-- [SDK](https://github.com/chainstack/web3quorum)
-- [Tools](https://github.com/chainstack/terraform-openstack-rke2)
-- [Product](https://chainstack.com/products/global-nodes/)
-- [Product](https://chainstack.com/products/dedicated-nodes/)
-- [Product](https://chainstack.com/products/unlimited-nodes/)
-- [Product](https://chainstack.com/products/trader-nodes/)
-- [Product](https://chainstack.com/products/yellowstone-grpc/)
-- [Documentation](https://chainstack.com/build-better/)
-- [Vocabulary](vocabulary/chainstack-vocabulary.yml)
-- [Spectral Rules](rules/chainstack-rules.yml)
-- [Fin Ops](finops/chainstack-finops.yml)
+- [Terms of service](https://chainstack.com/terms-of-service/)
+- [Privacy policy](https://chainstack.com/privacy-policy/)
+- [Status](https://chainstack.status.io)
+
+## API Evangelist rating
+
+**Kin Score 52.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 60.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 50.0 |
+| Developer ergonomics | 56.0 |
+| Access clarity | 47.4 |
+
+**Agent readiness 29.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 30.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/chainstack/](https://apis.io/providers/chainstack/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Chainstack: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/chainstack/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
